@@ -1,0 +1,27 @@
+{
+  "_commento": "Esempio da integrare in .claude/settings.json del repo. Adatta i comandi ai tuoi script npm reali.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm run lint --silent 2>&1 | tail -20 || echo 'LINT FALLITO: correggere prima di proseguire'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -qE 'push --force|reset --hard|rebase -i' && echo 'ATTENZIONE: operazione git distruttiva — richiedere conferma esplicita' || true"
+          }
+        ]
+      }
+    ]
+  }
+}

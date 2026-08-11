@@ -1,0 +1,24 @@
+name: docs
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20', cache: 'npm' }
+      - run: npm ci
+      # Generatori (attivare man mano nelle fasi della ROADMAP)
+      - run: npx typedoc || echo "typedoc non ancora configurato"
+      - run: npx git-cliff -o docs/CHANGELOG.md || echo "git-cliff non ancora configurato"
+      - run: node scripts/flow-status.mjs || echo "flow-status non ancora presente"
+      # Sito
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.x' }
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force

@@ -1,0 +1,23 @@
+site_name: XP Flow — Docs di dominio
+theme:
+  name: material
+  language: it
+  features:
+    - navigation.sections
+    - content.code.copy
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+  - admonition
+  - tables
+nav:
+  - Home: index.md
+  - Architettura:
+      - Contesto (C4): architecture/context.md
+      - Modello di dominio: architecture/domain-model.md
+  - ADR: adr/
+  - Features (Gherkin): features/
+  - Stato del flusso: flow/status.md
+  - Changelog: CHANGELOG.md

@@ -1,0 +1,52 @@
+{
+  "_commento": "Esempio per .claude/settings.json — permessi confinati al progetto. Deny vince su allow. Verifica la sintassi live con /permissions.",
+  "permissions": {
+    "allow": [
+      "Read(./**)",
+      "Edit(./src/**)",
+      "Edit(./test/**)",
+      "Edit(./features/**)",
+      "Edit(./docs/**)",
+      "Edit(./TODO.md)",
+      "Edit(./ROADMAP.md)",
+      "Edit(./CHANGELOG.md)",
+      "Write(./.xpflow/**)",
+      "Bash(npm run lint)",
+      "Bash(npm run test:*)",
+      "Bash(npm test)",
+      "Bash(docker compose up:*)",
+      "Bash(docker compose down:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh pr create:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Edit(./.git/**)",
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(curl:*)",
+      "Bash(sudo:*)"
+    ],
+    "additionalDirectories": []
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f .xpflow/events.jsonl ] && grep '\"esito\":\"azione_manuale\"' .xpflow/events.jsonl | while read -r e; do ts=$(echo \"$e\" | sed -n 's/.*\"ts\":\"\\([^\"]*\\)\".*/\\1/p'); grep -q \"\\\"cmd\\\":\\\"manual_done\\\".*\\\"ref\\\":\\\"$ts\\\"\" .xpflow/events.jsonl || echo \"⚠️ AZIONE MANUALE PENDENTE: $e\"; done || true"
+          }
+        ]
+      }
+    ]
+  },
+  "_commento_hooks": "SessionStart: a ogni apertura sessione elenca le azioni manuali pendenti (azione_manuale senza manual_done) e le inietta nel contesto."
+}

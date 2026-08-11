@@ -1,0 +1,33 @@
+flowchart TD
+    A["Issue GitHub #42<br/>Esempio: endpoint /health<br/>con stato dipendenze DB e cache"] --> B["/brainstorm"]
+
+    subgraph FASE1["Specifica - giorno 0"]
+        B --> C["problem-explorer (haiku)<br/>esplora codice esistente"]
+        C --> D["Spec Gherkin DDD<br/>positivi / negativi / edge / non-regressione"]
+        D --> E["test-writer (sonnet)<br/>E2E rossi + stima SP Fibonacci"]
+        E --> F{"SP > 8?"}
+        F -- "si" --> G["Scomponi in issue figlie"] --> D
+        F -- "no" --> H["Sync TODO + ROADMAP + issue<br/>evento su events.jsonl"]
+    end
+
+    H --> I["/sprint"]
+
+    subgraph FASE2["Sprint 2 giorni - trunk based"]
+        I --> J["docker compose up<br/>ambiente locale"]
+        J --> K["implementatore (sonnet)<br/>TDD top-down: rosso, verde, refactor"]
+        K --> L{"Test verdi<br/>e lint ok?"}
+        L -- "no" --> K
+        L -- "si" --> M["/pair-review"]
+        M --> N["adversarial-reviewer (opus)<br/>caccia flaky ed edge scoperti"]
+        N -- "obiezioni bloccanti" --> K
+        N -- "approvato" --> O["Commit su trunk<br/>Closes #42"]
+    end
+
+    O --> P["Pre-push: lint + complessita cognitiva<br/>+ bump semver da commit log"]
+    P --> Q["Deploy Docker: test poi prod"]
+    Q --> R["/retro settimanale<br/>retro-analyst (haiku)"]
+
+    H -.-> S[(".xpflow/events.jsonl<br/>event log append-only")]
+    O -.-> S
+    R -.-> S
+    S --> T["Dashboard di controllo<br/>+ Grafana OTel per consumo agenti"]
