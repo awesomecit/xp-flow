@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XP data contract — events and status of the agentic flow",
+  "description": "L'API del flusso: events.jsonl (una riga = un evento, append-only) e status.json (snapshot interrogabile). Qualsiasi consumatore (dashboard, script, futuro backend HTTP/OTel/NATS) legge questi formati. Il campo `scope` è valorizzato dall'ambiente ($XP_SCOPE), mai dal prompt; per scope=work il payload è redatto a whitelist (metadata-only).",
+  "$defs": {
+    "event": {
+      "type": "object",
+      "required": ["ts", "scope", "repo", "type"],
+      "properties": {
+        "ts": { "type": "string", "format": "date-time", "description": "istante dell'evento (dal commit o dall'emitter)" },
+        "scope": { "type": "string", "enum": ["personal", "work"], "description": "da $XP_SCOPE; default personal" },
+        "repo": { "type": "string" },
+        "type": { "type": "string", "enum": ["creation", "transition", "commit", "session", "gate"], "description": "creation=task nuovo in board; transition=cambio status; commit=commit di lavoro; session/gate=eventi emessi dagli hook (futuri, DIS-4)" },
+        "task": { "type": ["string", "null"], "description": "id del task (es. DIS-1, E0, D1)" },
+        "from": { "type": ["string", "null"], "description": "status precedente (solo transition)" },
+        "to": { "type": ["string", "null"], "description": "status nuovo (solo transition/creation)" },
+        "agent": { "type": ["string", "null"] },
+        "sp": { "type": ["number", "null"] },
+        "milestone": { "type": ["string", "null"] },
+        "flow": { "type": ["string", "null"], "description": "flusso di appartenenza (es. tdd-loop, spec, sprint-close) — emesso dagli hook, futuro" },
+        "commit": { "type": ["string", "null"], "description": "hash abbreviato" },
+        "message": { "type": ["string", "null"], "description": "assente per scope=work (redazione whitelist)" },
+        "payload": { "type": ["object", "null"], "description": "dati arricchiti (futuro, DIS-4); sempre null per scope=work" }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": ["generated_at", "repos"],
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "scope": { "type": "string", "enum": ["personal", "work"] },
+        "repos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "by_status", "wip", "claimable"],
+            "properties": {
+              "name": { "type": "string" },
+              "by_status": { "type": "object", "description": "conteggio task per status", "additionalProperties": { "type": "integer" } },
+              "by_milestone": { "type": "object", "description": "avanzamento SP per milestone", "additionalProperties": { "type": "object", "properties": { "sp_done": { "type": "number" }, "sp_total": { "type": "number" }, "items": { "type": "integer" } } } },
+              "wip": { "type": "integer", "description": "task in claimed/red/green/refactor" },
+              "claimable": { "type": "array", "items": { "type": "string" } },
+              "avg_cycle_time_hours": { "type": ["number", "null"], "description": "media claim→done; null finché non c'è un done" },
+              "throughput_7d": { "type": "integer", "description": "task passati a done negli ultimi 7 giorni" },
+              "commits_7d": { "type": "integer" },
+              "last_event": { "$ref": "#/$defs/event" }
+            }
+          }
+        },
+        "recent_events": { "type": "array", "items": { "$ref": "#/$defs/event" }, "description": "le hit per il monitor, più recente prima" }
+      }
+    }
+  }
+}
