@@ -1,0 +1,16 @@
+{
+  "version": "0.2",
+  "language": "en,it",
+  "words": [
+    "avviata", "avviato", "brainstorm", "bruciati", "fabbrica",
+    "loggare", "loggato", "jsonl", "xpflow", "sprint",
+    "manuali", "pendenti", "nessuno", "nessun", "registrato",
+    "ancora", "evento", "attivo", "azioni", "comando", "sconosciuto",
+    "totali", "bruciato", "scenari", "metodo", "retro", "agenti",
+    "esito", "scenario", "annotata", "deviazione", "chiusura",
+    "collettore", "strutturata", "appendEvent", "computeStatus",
+    "SprintStatus", "ManualAction", "XpEvent", "XpEventInput",
+    "parseEvents", "appendFileSync", "mkdirSync"
+  ],
+  "ignorePaths": ["node_modules", "dist", "*.jsonl"]
+}
