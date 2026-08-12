@@ -9,6 +9,10 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - [ ] Sessione con `claude --model opusplan`; verificare che `CLAUDE_CODE_SUBAGENT_MODEL` non sia impostata globalmente
 - [ ] Chiudere issue #1 (event log + `xpflow status`) attraversando l'intero flusso; ogni attrito col metodo → evento `metodo_feedback`, NON si corregge il metodo in corsa
 - ~~**Issue #2**: Life Quest slice 1 — deprecata, pilota cambiato.~~
+- [ ] **Issue #2 = PRODOTTO PILOTA: Dashboard di controllo** — punto unico per vedere lo stato della fabbrica, interagire col flusso e (slice future) dialogare via Telegram. Dichiarazione esplicita: pur servendo la fabbrica, È il prodotto che conta per la north-star. Slicing:
+  - Slice 1 (issue #2): dashboard web read-only su events.jsonl — zone Sprint attivo + Serve-da-te + Timeline. Scaffold da universal-canvas, design già pronto in design/dashboard/. Dipende da issue #1 (parser eventi). ~5-8 SP, stima in /brainstorm.
+  - Slice 2: interazione — chiudere azioni manuali (manual_done) e lanciare comandi del flusso dalla UI.
+  - Slice 3: canale Telegram bidirezionale (notifiche + messaggi verso il punto unico di controllo).
 
 ## ⚖️ Regole di governo (dal review del progetto)
 - **Freeze**: metodo congelato fino alla 2ª retro; modifiche solo in /retro dai `metodo_feedback` accumulati.
