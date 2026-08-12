@@ -40,6 +40,7 @@ export async function computeStatus(file: string = DEFAULT_EVENTS_FILE): Promise
   let spBruciati = 0
   const reviewPending: string[] = []
   const pending: ManualAction[] = []
+  const closed = new Set<string>()
 
   for (const ev of events) {
     if (ev.cmd === 'sprint' && ev.esito === 'avviato') {
@@ -52,8 +53,12 @@ export async function computeStatus(file: string = DEFAULT_EVENTS_FILE): Promise
     if (ev.esito === 'azione_manuale') {
       pending.push({ ts: ev.ts, cmd: ev.cmd, note: ev.note ?? '' })
     }
+    if (ev.cmd === 'manual_done') {
+      const ref = (ev as XpEvent & { ref?: string }).ref
+      if (ref) closed.add(ref)
+    }
   }
 
-  const azioniManuali = pending
+  const azioniManuali = pending.filter(a => !closed.has(a.ts))
   return { sprintAttivo, spTotali, spBruciati, reviewPending, azioniManuali, totalEvents: events.length }
 }

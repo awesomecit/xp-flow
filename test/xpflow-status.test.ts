@@ -13,6 +13,7 @@ function cleanup() {
 }
 
 test('sprint attivo mostra SP bruciati e stimati', async t => {
+  t.teardown(cleanup)
   writeEvents([
     { ts: '2026-08-12T10:00:00Z', cmd: 'sprint', issue: 1, sp: 5, esito: 'avviato', note: '' },
     { ts: '2026-08-12T11:00:00Z', cmd: 'scenario', issue: 1, sp: 1, esito: 'ok', note: 'scenario 1' },
@@ -25,16 +26,29 @@ test('sprint attivo mostra SP bruciati e stimati', async t => {
 })
 
 test('azione manuale pendente appare in status', async t => {
+  t.teardown(cleanup)
   writeEvents([
     { ts: '2026-08-12T10:00:00Z', cmd: 'sprint', issue: 1, sp: 3, esito: 'avviato', note: '' },
-    { ts: '2026-08-12T11:00:00Z', cmd: 'brainstorm', issue: 2, sp: 0, esito: 'azione_manuale', note: 'configurare secret TELEGRAM_TOKEN' },
+    { ts: '2026-08-12T11:00:00Z', cmd: 'deploy', esito: 'azione_manuale', note: 'configurare secret TELEGRAM_TOKEN' },
   ])
   const status = await computeStatus(EVENTS_FILE)
   t.equal(status.azioniManuali.length, 1, 'una azione manuale pendente')
   t.match(status.azioniManuali[0].note, /TELEGRAM_TOKEN/)
 })
 
+test('azione manuale chiusa da manual_done non appare in status', async t => {
+  t.teardown(cleanup)
+  writeEvents([
+    { ts: '2026-08-12T10:00:00Z', cmd: 'sprint', issue: 1, sp: 3, esito: 'avviato', note: '' },
+    { ts: '2026-08-12T11:00:00Z', cmd: 'deploy', esito: 'azione_manuale', note: 'configurare TOKEN' },
+    { ts: '2026-08-12T12:00:00Z', cmd: 'manual_done', ref: '2026-08-12T11:00:00Z' },
+  ])
+  const status = await computeStatus(EVENTS_FILE)
+  t.equal(status.azioniManuali.length, 0, 'azione manuale chiusa non compare')
+})
+
 test('nessuno sprint attivo', async t => {
+  t.teardown(cleanup)
   writeEvents([
     { ts: '2026-08-12T10:00:00Z', cmd: 'brainstorm', issue: 1, sp: 3, esito: 'ok', note: '' },
   ])
@@ -43,6 +57,7 @@ test('nessuno sprint attivo', async t => {
 })
 
 test('events.jsonl non esiste → fabbrica non avviata', async t => {
+  t.teardown(cleanup)
   cleanup()
   const status = await computeStatus(EVENTS_FILE)
   t.notOk(status.sprintAttivo)
@@ -51,6 +66,7 @@ test('events.jsonl non esiste → fabbrica non avviata', async t => {
 })
 
 test('riga malformata saltata, eventi validi elaborati', async t => {
+  t.teardown(cleanup)
   writeFileSync(
     EVENTS_FILE,
     JSON.stringify({ ts: '2026-08-12T10:00:00Z', cmd: 'sprint', issue: 1, sp: 3, esito: 'avviato', note: '' }) + '\n' +
@@ -64,6 +80,7 @@ test('riga malformata saltata, eventi validi elaborati', async t => {
 })
 
 test('events.jsonl esiste ma è vuoto → fabbrica non avviata', async t => {
+  t.teardown(cleanup)
   writeFileSync(EVENTS_FILE, '')
   const status = await computeStatus(EVENTS_FILE)
   t.notOk(status.sprintAttivo)
@@ -71,6 +88,7 @@ test('events.jsonl esiste ma è vuoto → fabbrica non avviata', async t => {
 })
 
 test('evento sprint senza sp e azione_manuale senza note → valori di default', async t => {
+  t.teardown(cleanup)
   writeEvents([
     { ts: '2026-08-12T10:00:00Z', cmd: 'sprint', esito: 'avviato' },
     { ts: '2026-08-12T11:00:00Z', cmd: 'scenario', esito: 'ok' },
