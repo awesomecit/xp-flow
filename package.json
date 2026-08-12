@@ -1,0 +1,32 @@
+{
+  "name": "xp-flow",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fabbrica agenti XP — event log e CLI di status",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "tap",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "lint": "eslint src test"
+  },
+  "dependencies": {
+    "pino": "^9"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tap": "^18.8.0",
+
+    "typescript": "^5"
+  },
+  "tap": {
+    "files": [
+      "test/**/*.test.ts"
+    ],
+    "node-arg": [],
+    "jobs": 1
+  }
+}
