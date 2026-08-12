@@ -42,6 +42,8 @@
       "Bash(rm -rf:*)",
       "Bash(git push:*)",
       "Bash(git push --force:*)",
+      "Bash(git rebase:*)",
+      "Bash(git commit --amend:*)",
       "Bash(git reset --hard:*)",
       "Bash(cd /Users/antoniocittadino/Repos:*)",
       "Bash(curl:*)",
