@@ -43,6 +43,26 @@ flowchart LR
     B --> F["/retro<br/>(venerdì)"]
 ```
 
+## Gli agenti: chi lavora quando
+
+| Agente | Modello | Lo invoca | Cosa fa |
+|---|---|---|---|
+| problem-explorer | haiku | `/brainstorm` (o a mano) | esplora codice/docs/issue in sola lettura, torna sintesi ≤15 righe |
+| test-writer | sonnet | `/brainstorm`, inizio scenario | Gherkin + E2E rossi + stima SP |
+| solution-architect | opus | decisioni costose da invertire | ADR breve in docs/adr/ + sintesi (è il "TL" del team) |
+| implementatore | sonnet | `/sprint` | TDD top-down; include il lavoro UI (mockup = spec) |
+| adversarial-reviewer | opus | `/pair-review` | caccia difetti/flaky; obiezioni numerate con severità |
+| documentarista | sonnet | fine scenario/sprint | allinea i docs non generabili al codice |
+| retro-analyst | haiku | `/retro` | dati (git, issue, eventi), niente opinioni |
+
+Regole d'uso:
+- **PO = l'umano**, non un agente: standup, gate e priorità restano fuori dal roster.
+- Attivi **2-3 per volta** (oltre 5 = sovra-frammentazione, si ri-accorpa).
+- Invocazione manuale: in sessione basta chiederlo in linguaggio naturale
+  ("usa il subagente problem-explorer per capire X") — il main orchestra.
+- Ritornano SOLO sintesi distillate; lo stato condiviso vive su file, mai in chat.
+- Escalation di modello: automatiche secondo docs/model-selection.md, loggate nell'event log.
+
 ## Dove vivono (per modificarli o aggiungerne)
 
 - Cerimonie/utility: `~/.claude/commands/{standup,stato,next}.md` — modificabili liberamente, NON coperti dal freeze.
