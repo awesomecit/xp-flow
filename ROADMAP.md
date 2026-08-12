@@ -23,7 +23,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 ## Fase 1 — Docs-as-code minimale
 - [ ] `mkdocs.yml` + Action `docs.yml` → GitHub Pages (già predisposti nel repo)
 - [ ] ADR in docs/adr/ (MADR puro), CHANGELOG via git-cliff
-- [ ] Estensioni VS Code: markdown-mermaid, markdownlint, code-spell-checker(+it), Cucumber official
+- [x] Estensioni VS Code: markdown-mermaid, markdownlint, code-spell-checker(+it), Cucumber official — installate 12/08 (graphviz-preview e openapi rimandate alle fasi che le usano)
 - Trigger stop: se il pilota non dà attrito, non aggiungere altro
 
 ## Fase 2 — Import mirato da BMAD (MIT) + generatori
