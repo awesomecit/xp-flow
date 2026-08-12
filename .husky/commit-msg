@@ -1,0 +1,2 @@
+#!/bin/sh
+. ~/.claude/shared-hooks/commit-msg
