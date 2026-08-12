@@ -22,6 +22,7 @@
 - [ ] Igiene post-spostamento: riferimenti morti a ~/dev/personal/* in issue #1 — 1 SP
 - [ ] Metodo — xp-flow multi-tenant (ADR 0005): comandi/agenti via symlink nei repo tenant, stato/sprint indipendente per repo; sostituisce la dedup flusso legacy come design — decisione di attivazione (candidato retro #2)
 - [ ] Dashboard — selettore tenant (tendina vicino al logo xpflow, ADR 0005): manifest statico dei repo/tenant workspace + file attesi per repo, non scanner dinamico (YAGNI) — dopo storia B in corso, slice successiva a #2
+- [ ] Quality gate locali al posto delle feature GitHub a pagamento: husky + eslint-plugin-sonarjs + script (precedente: citycat DECISIONI #11/#13); set minimo comune ai tenant ADR 0005 — candidato retro
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
