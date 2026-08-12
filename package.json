@@ -8,9 +8,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "tap",
     "typecheck": "tsc --noEmit",
     "prepare": "husky",
     "dev": "tsx bin/xpflow.ts",
@@ -24,12 +22,18 @@
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@types/node": "^22.20.1",
-    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^10.8.1",
     "husky": "^9.1.7",
+    "tap": "^18.8.0",
     "tsx": "^4.23.12",
     "typescript": "^5",
-    "typescript-eslint": "^8.67.0",
-    "vitest": "^4.1.10"
+    "typescript-eslint": "^8.67.0"
+  },
+  "tap": {
+    "files": [
+      "test/**/*.test.ts"
+    ],
+    "node-arg": [],
+    "jobs": 1
   }
 }
