@@ -10,12 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '20', cache: 'npm' }
-      - run: npm ci
+        with: { node-version: '22', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
       # Generatori (attivare man mano nelle fasi della ROADMAP)
-      - run: npx typedoc || echo "typedoc non ancora configurato"
-      - run: npx git-cliff -o docs/CHANGELOG.md || echo "git-cliff non ancora configurato"
+      - run: pnpm exec typedoc || echo "typedoc non ancora configurato"
+      - run: pnpm exec git-cliff -o docs/CHANGELOG.md || echo "git-cliff non ancora configurato"
       - run: node scripts/flow-status.mjs || echo "flow-status non ancora presente"
       # Sito
       - uses: actions/setup-python@v5
