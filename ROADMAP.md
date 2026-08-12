@@ -52,5 +52,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - RAG remoto on-demand (Cloud Run scale-to-zero + Atlas Vector Search + embeddings via API): casi d'uso coaching personale e normativa civica per prodotti di dominio
 - Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1). Design PRONTO: 19 mockup Stitch + design system in `design/dashboard/` di questo repo; brief e prompt in ~/dev/agile/ (2026-08-12). Implementazione: scaffold da `awesomecit/universal-canvas` (template repository, clone locale in ~/dev/universal-canvas) come `apps/dashboard` del monorepo
 - Eventuale agente fe-developer nel roster: SOLO se la retro mostra attrito FE reale (decisione da /retro, il roster è congelato; nel frattempo FE = implementatore+test-writer)
+- Pannello ruoli di cerimonia (PO/CEO/TL/BE/FE/DevOps) — ADR 0004 in stato proposta: attivazione SOLO da retro #2; bozza ceo-vision in docs/drafts/
+- Eventuale agente devops-engineer: SOLO alla prima frizione infra reale (Docker/CI/deploy/observability), decisione da /retro (ADR 0004)
 - Retrospettiva: analisi accuratezza stime Fibonacci per tipo di task
 - Micro-eval interna (5-10 task Gherkin/E2E reali) da rigirare a ogni release di modello per validare la Model Routing Policy

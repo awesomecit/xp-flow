@@ -17,6 +17,9 @@
 - [ ] Tech debt #4 — nessun comando CLI che appende `sprint/avviato`: oggi va scritto a mano — 1 SP
 - [ ] Tech debt #5 — `pino` installato ma non usato: rimuovere o usare per logging CLI — 1 SP
 - [ ] Metodo — gap mid-sprint: valutare comando `/nota` o campo `tech_debt` nell'event log (candidato retro #2)
+- [ ] Metodo — pannello ruoli cerimonia (ADR 0004 + bozza ceo-vision): decisione di attivazione (candidato retro #2)
+- [ ] Tech debt #6 — doppia serie ADR in docs/adr/ (000X MADR vs ADR-00X): consolidare nella serie 000X — 1 SP
+- [ ] Igiene post-spostamento: riferimenti morti a ~/dev/personal/* in issue #1 — 1 SP
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
