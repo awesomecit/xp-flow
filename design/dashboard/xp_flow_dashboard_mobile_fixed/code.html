@@ -1,0 +1,292 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>XP Flow Control Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-background": "#0d1c2d",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary-container": "#98805d",
+                    "error-container": "#ffdad6",
+                    "surface": "#0f172a",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-fixed": "#0b1c30",
+                    "background": "#0f172a",
+                    "primary": "#ffffff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-container": "#1e293b",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#cbd5e1",
+                    "inverse-primary": "#0f172a",
+                    "surface-variant": "#1e293b",
+                    "surface-bright": "#1e293b",
+                    "on-primary": "#0f172a",
+                    "surface-container-low": "#0f172a",
+                    "on-primary-container": "#cbd5e1",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-container-lowest": "#020617",
+                    "on-error": "#ffffff",
+                    "surface-container": "#1e293b",
+                    "on-surface": "#f8fafc",
+                    "surface-dim": "#0f172a",
+                    "tertiary-container": "#271901",
+                    "on-tertiary-fixed": "#271901",
+                    "on-surface-variant": "#cbd5e1",
+                    "inverse-surface": "#f8fafc",
+                    "secondary": "#94a3b8",
+                    "inverse-on-surface": "#0f172a",
+                    "secondary-fixed": "#d3e4fe",
+                    "surface-container-high": "#334155",
+                    "surface-container-highest": "#475569",
+                    "on-primary-fixed": "#131b2e",
+                    "primary-container": "#334155",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-tint": "#565e74",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "tertiary": "#000000",
+                    "outline": "#475569",
+                    "outline-variant": "#334155"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "padding-card": "16px",
+                    "margin-page": "24px",
+                    "gutter": "12px",
+                    "stack-compact": "8px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "data-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "body-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "data-mono": [
+                            "13px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "11px",
+                            {
+                                    "lineHeight": "14px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Low-contrast outline logic for components */
+        .technical-card {
+            border: 1px solid theme('colors.outline');
+            background-color: theme('colors.surface-container');
+        }
+        
+        /* Danger status accent */
+        .danger-accent-bar {
+            border-left: 4px solid theme('colors.error');
+        }
+        
+        /* Success status accent */
+        .success-accent-bar {
+            border-left: 4px solid #10b981; /* Fallback success color, adhering to system logic where possible */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col pt-14">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface text-primary docked full-width top-0 border-b border-outline-variant flat no shadows fixed w-full z-50 flex justify-between items-center px-margin-page h-14">
+<div class="flex items-center gap-2 text-headline-md font-headline-md font-bold tracking-tight text-primary hover:bg-surface-container transition-colors cursor-pointer rounded-DEFAULT p-1">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="">XP Flow</span>
+</div>
+<div class="flex items-center gap-4 text-label-caps font-label-caps text-secondary">
+<button class="hover:bg-surface-container transition-colors rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 p-margin-page flex flex-col gap-stack-compact max-w-md mx-auto w-full md:hidden">
+<!-- SECTION A: SPRINT ATTIVO -->
+<section class="technical-card rounded-lg overflow-hidden flex flex-col border-none bg-[#1e293b]/50">
+<!-- Header -->
+<div class="px-padding-card py-3 flex justify-between items-center bg-secondary-fixed/90 text-primary-fixed-dim">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#334155]">bolt</span>
+<h2 class="text-label-caps font-label-caps text-[#334155] tracking-wider uppercase">Sprint Attivo</h2>
+</div>
+<div class="bg-[#10b981]/20 text-[#10b981] px-2 py-0.5 rounded-sm text-label-caps font-label-caps border border-[#10b981]/40">
+                    IN PROGRESS
+                </div>
+</div>
+<!-- Content -->
+<div class="p-padding-card flex flex-col gap-gutter">
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-secondary">CURRENT TARGET</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">Issue #1</h3>
+<p class="text-body-sm font-body-sm text-secondary">Scenario 1/4: stato con sprint attivo</p>
+</div>
+<div class="text-right flex flex-col items-end gap-1">
+<span class="text-label-caps font-label-caps text-secondary">TIMEBOX</span>
+<div class="text-data-mono font-data-mono bg-surface-container-high text-on-surface px-2 py-1 rounded-sm border border-outline-variant">
+                            2gg<br>
+<span class="uppercase">Remaining</span>
+</div>
+</div>
+</div>
+<!-- Mini Burndown / Progress -->
+<div class="mt-2 flex flex-col gap-2">
+<div class="flex justify-between text-data-mono font-data-mono text-secondary">
+<span class="">SP BURNED: 1</span>
+<span class="">TOTAL EST: 3</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed w-1/3 rounded-r-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION B: SERVE DA TE (High Priority Action) -->
+<section class="technical-card rounded-lg overflow-hidden flex flex-col mt-2 border-none bg-surface-container">
+<!-- Header -->
+<div class="px-padding-card py-3 border-b border-error/20 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-error" style="font-variation-settings: 'FILL' 1;">error</span>
+<h2 class="text-label-caps font-label-caps text-error tracking-wider uppercase">Serve Da Te</h2>
+</div>
+<div class="text-data-mono font-data-mono text-error/80 text-[10px]">
+                    PENDING FOR 2H 15M
+                </div>
+</div>
+<!-- Content -->
+<div class="p-padding-card flex flex-col gap-gutter">
+<div class="flex flex-col gap-2">
+<span class="text-label-caps font-label-caps text-secondary">AZIONE MANUALE RICHIESTA</span>
+<p class="text-body-md font-body-md text-on-surface">
+                        Configurare secret <code class="text-data-mono font-data-mono bg-white text-error px-1 py-0.5 rounded-sm">TELEGRAM_TOKEN</code> nel repo.
+                    </p>
+</div>
+<!-- Instruction Block -->
+<div class="mt-2 p-3 bg-secondary-fixed/20 border-none rounded-DEFAULT flex items-start gap-3">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5">subdirectory_arrow_right</span>
+<div class="flex flex-col">
+<span class="text-label-caps font-label-caps text-secondary/60 mb-1">INSTRUCTION</span>
+<span class="text-data-mono font-data-mono text-on-surface/80">Go to GitHub Repo &gt; Settings &gt; Secrets</span>
+</div>
+</div>
+<button class="mt-2 w-full bg-error text-on-error py-2 rounded-DEFAULT text-label-caps font-label-caps hover:bg-error/90 transition-colors uppercase tracking-wider shadow-sm flex items-center justify-center gap-2">
+<span class="">Resolve Action</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<section class="technical-card rounded-lg overflow-hidden flex flex-col mt-2 border-none bg-[#1e293b]/50">
+  <div class="px-padding-card py-2 border-b border-outline-variant flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-[16px] text-secondary">hub</span>
+      <h2 class="text-label-caps font-label-caps text-secondary tracking-wider uppercase">Connectors</h2>
+    </div>
+  </div>
+  <div class="p-padding-card flex justify-around items-center">
+    <div class="flex flex-col items-center gap-1 cursor-pointer hover:bg-surface-container p-2 rounded-lg transition-colors">
+      <span class="material-symbols-outlined text-on-surface/80">code</span>
+      <span class="text-[10px] font-label-caps text-secondary uppercase">GitHub</span>
+    </div>
+    <div class="flex flex-col items-center gap-1 cursor-pointer hover:bg-surface-container p-2 rounded-lg transition-colors">
+      <span class="material-symbols-outlined text-on-surface/80">layers</span>
+      <span class="text-[10px] font-label-caps text-secondary uppercase">Stitch</span>
+    </div>
+    <div class="flex flex-col items-center gap-1 cursor-pointer hover:bg-surface-container p-2 rounded-lg transition-colors">
+      <span class="material-symbols-outlined text-on-surface/80">favorite</span>
+      <span class="text-[10px] font-label-caps text-secondary uppercase">Lovable</span>
+    </div>
+  </div>
+</section></main>
+
+
+</body></html>

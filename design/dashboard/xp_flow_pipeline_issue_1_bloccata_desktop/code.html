@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XP Flow - Pipeline Drill-down</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#76777d",
+                        "on-tertiary-container": "#98805d",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#e9f1ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-variant": "#d4e4fa",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#ccdbf2",
+                        "surface-tint": "#565e74",
+                        "tertiary": "#000000",
+                        "inverse-surface": "#233143",
+                        "inverse-primary": "#bec6e0",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary-fixed": "#131b2e",
+                        "background": "#f8f9ff",
+                        "surface-container-low": "#eef4ff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#505f76",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-container": "#54647a",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-container": "#271901",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#271901",
+                        "surface-container": "#e5efff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-high": "#dbe9ff",
+                        "on-surface": "#0d1c2d",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary": "#000000",
+                        "outline-variant": "#c6c6cd",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-container": "#131b2e",
+                        "on-background": "#0d1c2d",
+                        "surface-container-highest": "#d4e4fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "margin-page": "24px",
+                        "unit": "4px",
+                        "padding-card": "16px",
+                        "stack-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "data-mono": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "data-mono": ["13px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for dense data tables */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #565e74; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #76777d; }
+    </style>
+</head>
+<body class="bg-surface dark:bg-on-primary-fixed text-on-surface dark:text-inverse-on-surface antialiased h-screen w-screen overflow-hidden flex flex-col font-body-md text-body-md">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-surface dark:bg-surface-container-low text-primary dark:text-inverse-primary fixed top-0 w-full z-50 flex justify-between items-center px-margin-page h-14 border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex items-center gap-gutter">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-inverse-primary">XP Flow</h1>
+</div>
+<div class="flex items-center">
+<button aria-label="Settings" class="hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors p-2 rounded-DEFAULT opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-14 h-full w-full">
+<!-- NavigationDrawer (Shared Component) -->
+<nav class="bg-surface dark:bg-surface-container-lowest text-primary dark:text-inverse-primary fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-[240px] border-r border-outline-variant dark:border-outline flat no shadows hidden lg:flex flex-col py-margin-page z-40">
+<div class="px-margin-page mb-6">
+<h2 class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">XP FLOW OPS</h2>
+</div>
+<ul class="flex flex-col gap-1 px-3">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all text-body-md font-body-md" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="dashboard">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<!-- Active Tab: Pipelines -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold translate-x-1 opacity-80 text-body-md font-body-md" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_tree">account_tree</span>
+                        Pipelines
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all text-body-md font-body-md" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+                        Timeline
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all text-body-md font-body-md" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="analytics">analytics</span>
+                        Retro
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-0 lg:ml-[240px] flex-1 flex flex-col h-full bg-background dark:bg-on-primary-fixed overflow-hidden relative">
+<!-- Context Header & Stepper -->
+<div class="px-margin-page py-4 border-b border-outline-variant dark:border-on-primary-fixed-variant bg-surface dark:bg-inverse-surface shrink-0 z-10 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary dark:text-secondary-fixed-dim">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Issue #1 Drill-down</span>
+</div>
+<div class="flex gap-2">
+<button class="border border-outline-variant dark:border-outline px-3 py-1 rounded-DEFAULT text-label-caps font-label-caps hover:bg-surface-variant dark:hover:bg-on-primary-fixed-variant transition-colors">Abort Pipeline</button>
+</div>
+</div>
+<!-- Horizontal Stepper -->
+<div class="flex items-stretch w-full gap-2 relative">
+<!-- Step 1: Brainstorm (Done) -->
+<div class="flex-1 flex flex-col border border-outline-variant dark:border-on-primary-fixed-variant rounded-DEFAULT p-3 bg-surface-container-lowest dark:bg-primary-container relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary dark:bg-inverse-primary"></div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary dark:text-inverse-primary">check_circle</span>
+<span class="font-label-caps text-label-caps font-bold">BRAINSTORM</span>
+</div>
+<div class="font-data-mono text-data-mono text-secondary dark:text-secondary-fixed-dim text-[11px] mt-1 line-clamp-2">
+                            Done (10:15) <br/> Outcome: 4 scenari Gherkin, stima 3 SP
+                        </div>
+</div>
+<!-- Step 2: Sprint (Done) -->
+<div class="flex-1 flex flex-col border border-outline-variant dark:border-on-primary-fixed-variant rounded-DEFAULT p-3 bg-surface-container-lowest dark:bg-primary-container relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary dark:bg-inverse-primary"></div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary dark:text-inverse-primary">check_circle</span>
+<span class="font-label-caps text-label-caps font-bold">SPRINT</span>
+</div>
+<div class="font-data-mono text-data-mono text-secondary dark:text-secondary-fixed-dim text-[11px] mt-1">
+                            Done (14:30) <br/> Scenario 2 completato
+                        </div>
+</div>
+<!-- Step 3: Pair-review (BLOCKED - Dominant) -->
+<div class="flex-1 flex flex-col border-2 border-error dark:border-error-container rounded-DEFAULT p-3 bg-error-container dark:bg-on-primary-fixed-variant relative overflow-hidden shadow-[0_0_15px_rgba(186,26,26,0.1)] dark:shadow-[0_0_15px_rgba(255,218,214,0.1)]">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error dark:bg-error-container animate-pulse"></div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-error dark:text-error-container">warning</span>
+<span class="font-label-caps text-label-caps font-bold text-error dark:text-error-container">PAIR-REVIEW</span>
+</div>
+<div class="font-data-mono text-data-mono text-error dark:text-error-container text-[11px] mt-1 font-bold">
+                            STATUS: BLOCKED
+                        </div>
+</div>
+<!-- Step 4: Retro (Idle) -->
+<div class="flex-1 flex flex-col border border-outline-variant dark:border-outline/30 rounded-DEFAULT p-3 bg-surface-variant/30 dark:bg-inverse-surface/50 relative overflow-hidden opacity-60">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline dark:bg-outline-variant/50"></div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-outline">pending</span>
+<span class="font-label-caps text-label-caps text-outline">RETRO</span>
+</div>
+<div class="font-data-mono text-data-mono text-outline text-[11px] mt-1">
+                            Idle
+                        </div>
+</div>
+</div>
+</div>
+<!-- Central Split View -->
+<div class="flex-1 flex overflow-hidden w-full">
+<!-- Main Panel: Block Detail -->
+<section class="flex-1 overflow-y-auto p-margin-page bg-background dark:bg-on-primary-fixed">
+<div class="max-w-4xl mx-auto">
+<!-- Bento Grid layout for Block Detail -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Primary Issue Card (Spans 2 cols) -->
+<div class="md:col-span-2 border border-error dark:border-error/50 rounded-DEFAULT bg-surface dark:bg-inverse-surface relative overflow-hidden shadow-sm">
+<div class="absolute top-0 left-0 w-full h-1 bg-error dark:bg-error-container"></div>
+<div class="p-padding-card">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-error dark:bg-error-container text-on-error dark:text-on-error-container px-2 py-0.5 rounded-sm font-label-caps text-label-caps uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">block</span>
+                                            Bloccante
+                                        </span>
+<span class="font-data-mono text-data-mono text-secondary dark:text-secondary-fixed-dim">#PR-ERR-01</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface dark:text-inverse-on-surface mb-6 leading-tight">
+                                        Obiezione bloccante #1: il test dello scenario 2 dipende dall'ordine di esecuzione
+                                    </h3>
+<div class="grid grid-cols-2 gap-y-6 gap-x-4">
+<div>
+<div class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim mb-1">Reviewer</div>
+<div class="font-data-mono text-data-mono flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-tertiary-fixed-dim text-on-tertiary-container flex items-center justify-center text-[10px] font-bold">OP</div>
+                                                adversarial-reviewer (opus)
+                                            </div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim mb-1">Status Implementatore</div>
+<div class="font-data-mono text-data-mono flex items-center gap-2 text-on-surface-variant dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">hourglass_empty</span>
+                                                in attesa di correzione
+                                            </div>
+</div>
+<div class="col-span-2 border-t border-outline-variant dark:border-on-primary-fixed-variant pt-4 mt-2">
+<div class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim mb-2">Criteri di Risoluzione</div>
+<div class="bg-surface-container-low dark:bg-on-primary-fixed-variant p-3 rounded-DEFAULT font-data-mono text-data-mono border border-outline-variant/50 dark:border-outline/30 flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] mt-0.5">policy</span>
+<span>Chiusura permessa solo in assenza di obiezioni bloccanti aperte. L'implementatore deve inviare un nuovo commit che isola lo stato del test.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Context / Artifacts Card (Span 1 col) -->
+<div class="border border-outline-variant dark:border-on-primary-fixed-variant rounded-DEFAULT bg-surface dark:bg-inverse-surface p-padding-card flex flex-col">
+<h4 class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim border-b border-outline-variant dark:border-on-primary-fixed-variant pb-2 mb-4">Artefatti Coinvolti</h4>
+<div class="flex-1 flex flex-col gap-3">
+<div class="group flex items-start gap-3 p-2 hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant rounded-DEFAULT cursor-pointer transition-colors border border-transparent hover:border-outline-variant dark:hover:border-outline/50">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-[20px]">code</span>
+<div>
+<div class="font-data-mono text-data-mono text-[12px] truncate">src/tests/scenario2.spec.ts</div>
+<div class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed-dim">Linee 45-62</div>
+</div>
+</div>
+<div class="group flex items-start gap-3 p-2 hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant rounded-DEFAULT cursor-pointer transition-colors border border-transparent hover:border-outline-variant dark:hover:border-outline/50">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-[20px]">description</span>
+<div>
+<div class="font-data-mono text-data-mono text-[12px] truncate">features/auth.gherkin</div>
+<div class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed-dim">Scenario 2 Definition</div>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full bg-primary dark:bg-inverse-primary text-on-primary dark:text-primary font-label-caps text-label-caps py-2 rounded-DEFAULT hover:opacity-90 transition-opacity">
+                                    Visualizza Diff Completo
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side Panel: Scenarios -->
+<aside class="w-[320px] shrink-0 border-l border-outline-variant dark:border-on-primary-fixed-variant bg-surface-container-lowest dark:bg-inverse-surface flex flex-col h-full relative z-10">
+<div class="p-4 border-b border-outline-variant dark:border-on-primary-fixed-variant flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md">Scenari <span class="text-secondary dark:text-secondary-fixed-dim text-body-md font-normal">(Issue #1)</span></h3>
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim text-[18px]">list_alt</span>
+</div>
+<div class="flex-1 overflow-y-auto p-2 flex flex-col gap-1">
+<!-- Scenario 1 (Closed) -->
+<div class="flex items-center p-3 rounded-DEFAULT hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-colors border border-transparent group">
+<span class="material-symbols-outlined text-[18px] text-primary dark:text-inverse-primary mr-3">check_circle</span>
+<div class="flex-1 min-w-0">
+<div class="font-data-mono text-data-mono text-[12px] truncate dark:text-inverse-on-surface line-through opacity-70">S1: Login standard corretto</div>
+</div>
+<div class="ml-2 bg-surface-container dark:bg-primary-container text-on-surface-variant dark:text-inverse-primary font-label-caps text-[10px] px-1.5 py-0.5 rounded-sm border border-outline-variant/50 dark:border-outline/30">
+                                1 SP
+                            </div>
+</div>
+<!-- Scenario 2 (In Review - Blocked) -->
+<div class="flex items-center p-3 rounded-DEFAULT bg-error-container/20 dark:bg-error-container/10 border border-error/30 dark:border-error-container/50 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-0.5 bg-error dark:bg-error-container"></div>
+<span class="material-symbols-outlined text-[18px] text-error dark:text-error-container mr-3">warning</span>
+<div class="flex-1 min-w-0">
+<div class="font-data-mono text-data-mono text-[12px] truncate text-on-surface dark:text-inverse-on-surface font-bold">S2: Token scaduto rigenerato</div>
+<div class="font-label-caps text-[9px] text-error dark:text-error-container mt-0.5 uppercase tracking-wide">In Review - Blocked</div>
+</div>
+<div class="ml-2 bg-error dark:bg-error-container text-on-error dark:text-on-error-container font-label-caps text-[10px] px-1.5 py-0.5 rounded-sm">
+                                2 SP
+                            </div>
+</div>
+<!-- Scenario 3 (To Do) -->
+<div class="flex items-center p-3 rounded-DEFAULT hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-colors border border-transparent opacity-80">
+<span class="material-symbols-outlined text-[18px] text-outline dark:text-outline-variant mr-3">radio_button_unchecked</span>
+<div class="flex-1 min-w-0">
+<div class="font-data-mono text-data-mono text-[12px] truncate text-secondary dark:text-secondary-fixed-dim">S3: Login multiplo simultaneo</div>
+</div>
+<div class="ml-2 bg-surface-container dark:bg-primary-container text-on-surface-variant dark:text-inverse-primary font-label-caps text-[10px] px-1.5 py-0.5 rounded-sm border border-outline-variant/50 dark:border-outline/30">
+                                3 SP
+                            </div>
+</div>
+<!-- Scenario 4 (To Do) -->
+<div class="flex items-center p-3 rounded-DEFAULT hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-colors border border-transparent opacity-80">
+<span class="material-symbols-outlined text-[18px] text-outline dark:text-outline-variant mr-3">radio_button_unchecked</span>
+<div class="flex-1 min-w-0">
+<div class="font-data-mono text-data-mono text-[12px] truncate text-secondary dark:text-secondary-fixed-dim">S4: Blocco IP dopo 5 tentativi</div>
+</div>
+<div class="ml-2 bg-surface-container dark:bg-primary-container text-on-surface-variant dark:text-inverse-primary font-label-caps text-[10px] px-1.5 py-0.5 rounded-sm border border-outline-variant/50 dark:border-outline/30">
+                                2 SP
+                            </div>
+</div>
+</div>
+<div class="p-3 border-t border-outline-variant dark:border-on-primary-fixed-variant bg-surface-variant/30 dark:bg-on-primary-fixed/50">
+<div class="flex justify-between items-center font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim">
+<span>Totale SP</span>
+<span class="font-data-mono font-bold">8 SP</span>
+</div>
+<div class="w-full bg-outline-variant/30 dark:bg-outline/20 h-1 mt-2 rounded-full overflow-hidden flex">
+<div class="bg-primary dark:bg-inverse-primary h-full" style="width: 12.5%"></div>
+<div class="bg-error dark:bg-error-container h-full" style="width: 25%"></div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Bottom Log Strip -->
+<footer class="h-48 shrink-0 border-t border-outline-variant dark:border-on-primary-fixed-variant bg-surface dark:bg-[#0b121e] flex flex-col relative z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<div class="flex items-center justify-between px-4 py-2 border-b border-outline-variant dark:border-on-primary-fixed-variant bg-surface-container-low dark:bg-[#131b2e]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary dark:text-secondary-fixed-dim">terminal</span>
+<span class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim uppercase">Log Eventi: Pair-Review</span>
+</div>
+<div class="flex gap-2">
+<button class="text-[10px] font-label-caps uppercase text-secondary hover:text-primary dark:hover:text-inverse-primary transition-colors">Clear</button>
+<button class="text-[10px] font-label-caps uppercase text-secondary hover:text-primary dark:hover:text-inverse-primary transition-colors">Expand</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-3 font-data-mono text-[12px] leading-relaxed tracking-tight text-on-surface-variant dark:text-[#a0aabf] font-medium" id="log-container">
+<!-- Log lines styled like a terminal -->
+<div class="flex gap-3 hover:bg-surface-container-lowest dark:hover:bg-[#1a2333] px-2 py-0.5 rounded-sm">
+<span class="text-secondary dark:text-[#5c6a82] shrink-0">[14:35:02]</span>
+<span class="text-primary dark:text-[#7eb6ff] shrink-0 font-bold">&lt;system&gt;</span>
+<span class="truncate">Inizializzazione fase pair-review per Scenario 2.</span>
+</div>
+<div class="flex gap-3 hover:bg-surface-container-lowest dark:hover:bg-[#1a2333] px-2 py-0.5 rounded-sm">
+<span class="text-secondary dark:text-[#5c6a82] shrink-0">[14:35:05]</span>
+<span class="text-on-tertiary-container dark:text-[#e5b567] shrink-0 font-bold">&lt;agent:opus&gt;</span>
+<span class="truncate">Analisi statica del codice in corso...</span>
+</div>
+<div class="flex gap-3 hover:bg-surface-container-lowest dark:hover:bg-[#1a2333] px-2 py-0.5 rounded-sm">
+<span class="text-secondary dark:text-[#5c6a82] shrink-0">[14:35:12]</span>
+<span class="text-on-tertiary-container dark:text-[#e5b567] shrink-0 font-bold">&lt;agent:opus&gt;</span>
+<span class="truncate">Rilevata anomalia strutturale nel setup dei test Gherkin.</span>
+</div>
+<div class="flex gap-3 bg-error-container/20 dark:bg-error-container/10 px-2 py-0.5 rounded-sm border-l-2 border-error dark:border-error">
+<span class="text-error dark:text-error-container shrink-0">[14:35:14]</span>
+<span class="text-error dark:text-error-container shrink-0 font-bold">&lt;agent:opus&gt;</span>
+<span class="text-error dark:text-error-container">RAISED EXCEPTION: Obiezione bloccante #1 (Dipendenza ordine esecuzione).</span>
+</div>
+<div class="flex gap-3 hover:bg-surface-container-lowest dark:hover:bg-[#1a2333] px-2 py-0.5 rounded-sm">
+<span class="text-secondary dark:text-[#5c6a82] shrink-0">[14:35:15]</span>
+<span class="text-primary dark:text-[#7eb6ff] shrink-0 font-bold">&lt;system&gt;</span>
+<span class="truncate text-secondary dark:text-secondary-fixed-dim">Stato pipeline aggiornato a: BLOCKED. Notifica inviata all'implementatore.</span>
+</div>
+<div class="flex gap-3 hover:bg-surface-container-lowest dark:hover:bg-[#1a2333] px-2 py-0.5 rounded-sm">
+<span class="text-secondary dark:text-[#5c6a82] shrink-0">[14:35:15]</span>
+<span class="text-primary dark:text-[#7eb6ff] shrink-0 font-bold">&lt;system&gt;</span>
+<span class="truncate animate-pulse">In attesa di nuovo commit per risoluzione... _</span>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<script>
+        // Auto-scroll logs to bottom for realistic effect
+        const logContainer = document.getElementById('log-container');
+        if(logContainer) {
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+    </script>
+</body></html>

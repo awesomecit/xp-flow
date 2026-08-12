@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XP Flow Dashboard - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#0d1c2d",
+                        "primary-fixed": "#dae2fd",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-fixed": "#271901",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface": "#0d1c2d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container": "#e5efff",
+                        "surface": "#f8f9ff",
+                        "surface-container-high": "#dbe9ff",
+                        "on-secondary-container": "#54647a",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "inverse-primary": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131b2e",
+                        "outline-variant": "#c6c6cd",
+                        "tertiary-container": "#271901",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#eef4ff",
+                        "inverse-on-surface": "#e9f1ff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "secondary-fixed": "#d3e4fe",
+                        "background": "#f8f9ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "outline": "#76777d",
+                        "secondary": "#505f76",
+                        "primary": "#000000",
+                        "on-primary-container": "#7c839b",
+                        "on-surface-variant": "#45464d",
+                        "inverse-surface": "#233143",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#d4e4fa",
+                        "secondary-container": "#d0e1fb",
+                        "surface-container-highest": "#d4e4fa",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "surface-dim": "#ccdbf2",
+                        "surface-tint": "#565e74",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "secondary-fixed-dim": "#b7c8e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "margin-page": "24px",
+                        "stack-compact": "8px",
+                        "padding-card": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-mono": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "data-mono": ["13px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface dark:bg-surface-container-lowest text-on-surface dark:text-inverse-primary min-h-screen flex flex-col font-body-md overflow-x-hidden pt-14">
+<!-- TopAppBar (from JSON) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-page h-14 bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline text-primary dark:text-inverse-primary">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary">terminal</span>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-inverse-primary">XP Flow</h1>
+</div>
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary">settings</span>
+</header>
+<main class="flex-1 flex flex-col px-4 py-4 gap-6">
+<!-- Zone A: SPRINT ATTIVO -->
+<section class="flex flex-col gap-unit">
+<div class="flex justify-between items-end mb-1">
+<h2 class="text-label-caps font-label-caps text-secondary dark:text-secondary-fixed-dim">SPRINT ATTIVO</h2>
+</div>
+<div class="border border-outline-variant dark:border-outline rounded bg-surface dark:bg-surface-container-low overflow-hidden">
+<div class="border-l-4 border-[#0ea5e9] p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary dark:text-inverse-primary">Issue #1</h3>
+<p class="text-body-sm font-body-sm text-secondary dark:text-secondary-fixed-dim">Scenario 2/4: stato con sprint attivo</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-label-caps font-label-caps text-secondary dark:text-secondary-fixed-dim">SP BURNED</p>
+<p class="text-data-mono font-data-mono text-primary dark:text-inverse-primary">2</p>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-secondary dark:text-secondary-fixed-dim">TOTAL EST</p>
+<p class="text-data-mono font-data-mono text-primary dark:text-inverse-primary">3</p>
+</div>
+</div>
+<div class="bg-[#ffedd5] dark:bg-[#78350f] text-[#9a3412] dark:text-[#fcd34d] px-2 py-1 rounded text-label-caps font-label-caps inline-flex items-center gap-1 w-fit mt-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                        pair-review bloccata
+                    </div>
+</div>
+</div>
+</section>
+<!-- Zone B: SERVE DA TE -->
+<section class="flex flex-col gap-unit">
+<div class="flex justify-between items-center mb-1">
+<h2 class="text-label-caps font-label-caps text-error dark:text-error-container flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error dark:bg-error-container inline-block"></span>
+                    SERVE DA TE
+                </h2>
+<span class="bg-error dark:bg-error-container text-on-error dark:text-on-error-container px-2 py-0.5 rounded text-label-caps font-label-caps">
+                    2 PENDENTI
+                </span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Card 1 -->
+<div class="border border-error dark:border-error-container rounded bg-surface dark:bg-surface-container-low p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start gap-4">
+<h3 class="text-body-md font-body-md text-primary dark:text-inverse-primary">Configurare secret TELEGRAM_TOKEN nel repo</h3>
+</div>
+<div class="flex gap-4 text-body-sm font-body-sm text-secondary dark:text-secondary-fixed-dim">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">source</span> da /sprint</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> in attesa da 3h</span>
+</div>
+<button class="bg-error dark:bg-error-container text-on-error dark:text-on-error-container text-label-caps font-label-caps py-2 px-4 rounded w-full flex justify-center items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-[16px]">check</span>
+                        SEGNA COME FATTO
+                    </button>
+</div>
+<!-- Card 2 -->
+<div class="border border-error dark:border-error-container rounded bg-surface dark:bg-surface-container-low p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start gap-4">
+<h3 class="text-body-md font-body-md text-primary dark:text-inverse-primary">Eseguire git push dei commit locali (7)</h3>
+</div>
+<div class="flex gap-4 text-body-sm font-body-sm text-secondary dark:text-secondary-fixed-dim">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">source</span> da /stato</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> in attesa da 1g</span>
+</div>
+<button class="bg-error dark:bg-error-container text-on-error dark:text-on-error-container text-label-caps font-label-caps py-2 px-4 rounded w-full flex justify-center items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-[16px]">check</span>
+                        SEGNA COME FATTO
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Connectors Section -->
+<footer class="mt-auto px-4 py-6 border-t border-outline-variant dark:border-outline bg-surface dark:bg-surface-container-low">
+<h3 class="text-label-caps font-label-caps text-secondary dark:text-secondary-fixed-dim mb-3">CONNETTORI</h3>
+<div class="flex flex-wrap gap-2">
+<a class="border border-outline-variant dark:border-outline px-3 py-1.5 rounded flex items-center gap-2 text-body-sm font-body-sm text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">code</span>
+                GitHub
+            </a>
+<a class="border border-outline-variant dark:border-outline px-3 py-1.5 rounded flex items-center gap-2 text-body-sm font-body-sm text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">api</span>
+                Stitch
+            </a>
+<a class="border border-outline-variant dark:border-outline px-3 py-1.5 rounded flex items-center gap-2 text-body-sm font-body-sm text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+                Lovable
+            </a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XP Flow - Dashboard (Vuoto)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-low": "#eef4ff",
+                        "secondary": "#505f76",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "primary": "#000000",
+                        "surface-variant": "#d4e4fa",
+                        "outline-variant": "#c6c6cd",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#dbe9ff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "outline": "#76777d",
+                        "on-surface-variant": "#45464d",
+                        "surface-dim": "#ccdbf2",
+                        "inverse-surface": "#233143",
+                        "on-primary-container": "#7c839b",
+                        "surface-tint": "#565e74",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#98805d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container-highest": "#d4e4fa",
+                        "on-surface": "#0d1c2d",
+                        "surface-container": "#e5efff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-container": "#271901",
+                        "on-background": "#0d1c2d",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#e9f1ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed": "#271901",
+                        "background": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-container": "#54647a",
+                        "on-secondary-fixed-variant": "#38485d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "gutter": "12px",
+                        "stack-compact": "8px",
+                        "padding-card": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "data-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-mono": ["13px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0f172a] text-on-surface font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-page h-14 bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-2 text-primary dark:text-inverse-primary">
+<span class="material-symbols-outlined text-headline-md font-headline-md font-bold">terminal</span>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-inverse-primary">XP Flow</span>
+</div>
+<div class="flex items-center">
+<button class="text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-headline-md font-headline-md font-bold">settings</span>
+</button>
+</div>
+</header>
+<div class="flex h-screen pt-14">
+<!-- NavigationDrawer -->
+<nav class="hidden lg:flex flex-col border-r border-outline-variant py-margin-page bg-surface dark:bg-surface-container-lowest fixed left-0 top-14 h-[calc(100vh-56px)] w-[240px]">
+<div class="px-margin-page mb-6">
+<h2 class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">XP FLOW OPS</h2>
+</div>
+<ul class="flex flex-col gap-1 px-3">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined font-data-mono">dashboard</span>
+<span class="text-body-md font-body-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined font-data-mono">account_tree</span>
+<span class="text-body-md font-body-md">Pipelines</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined font-data-mono">history</span>
+<span class="text-body-md font-body-md">Timeline</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined font-data-mono">analytics</span>
+<span class="text-body-md font-body-md">Retro</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-[240px] p-margin-page overflow-y-auto">
+<div class="grid grid-cols-12 gap-gutter h-full">
+<!-- Zone A: Top Left Hero (Empty State) -->
+<div class="col-span-12 md:col-span-8 bg-[#1e293b] rounded-lg border border-[#334155] p-padding-card flex flex-col justify-center items-center text-center min-h-[250px]">
+<span class="material-symbols-outlined text-[48px] text-[#94a3b8] mb-4">terminal</span>
+<h1 class="text-headline-lg font-headline-lg text-[#f8fafc] mb-2">Nessuno sprint attivo</h1>
+<p class="text-body-md font-body-md text-[#94a3b8] mb-6">L'ultimo sprint si è chiuso con la issue #1 · 3/3 SP</p>
+<div class="bg-[#0f172a] border border-[#334155] rounded p-4 text-left w-full max-w-md">
+<p class="text-label-caps font-label-caps text-[#64748b] mb-2">SUGGERIMENTO</p>
+<code class="text-data-mono font-data-mono text-[#4ade80]">/brainstorm &lt;prossima idea&gt;</code>
+</div>
+</div>
+<!-- Zone B: Top Right "SERVE DA TE" (Green/OK) -->
+<div class="col-span-12 md:col-span-4 bg-[#1e293b] rounded-lg border border-[#334155] p-padding-card flex flex-col">
+<h2 class="text-label-caps font-label-caps text-[#94a3b8] mb-4 tracking-wider uppercase">Serve da te</h2>
+<div class="flex-1 flex flex-col items-center justify-center text-center border border-dashed border-[#334155] rounded">
+<span class="material-symbols-outlined text-[#4ade80] text-[32px] mb-2">check_circle</span>
+<p class="text-body-md font-body-md text-[#f8fafc]">Nessun gate pendente ✓</p>
+</div>
+</div>
+<!-- Zone C: Middle Left "PIPELINE" (Idle) -->
+<div class="col-span-12 md:col-span-8 bg-[#1e293b] rounded-lg border border-[#334155] p-padding-card">
+<h2 class="text-label-caps font-label-caps text-[#94a3b8] mb-6 tracking-wider uppercase">Pipeline</h2>
+<div class="grid grid-cols-4 gap-4 relative">
+<!-- Connecting Line -->
+<div class="absolute top-[28px] left-[12%] right-[12%] h-[2px] bg-[#334155] z-0"></div>
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-[#334155] border-4 border-[#1e293b] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[#94a3b8]">lightbulb</span>
+</div>
+<span class="text-label-caps font-label-caps text-[#f8fafc] mb-1">Brainstorm</span>
+<span class="text-[10px] text-[#64748b] font-data-mono">Completato 2gg fa</span>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-[#334155] border-4 border-[#1e293b] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[#94a3b8]">sprint</span>
+</div>
+<span class="text-label-caps font-label-caps text-[#f8fafc] mb-1">Sprint</span>
+<span class="text-[10px] text-[#64748b] font-data-mono">Completato 1gg fa</span>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-[#334155] border-4 border-[#1e293b] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[#94a3b8]">group</span>
+</div>
+<span class="text-label-caps font-label-caps text-[#f8fafc] mb-1">Pair-Review</span>
+<span class="text-[10px] text-[#64748b] font-data-mono">Completato 5h fa</span>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-[#334155] border-4 border-[#1e293b] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[#94a3b8]">analytics</span>
+</div>
+<span class="text-label-caps font-label-caps text-[#f8fafc] mb-1">Retro</span>
+<span class="text-[10px] text-[#64748b] font-data-mono">Completato 2h fa</span>
+</div>
+</div>
+</div>
+<!-- Zone D: Middle Right "NORTH-STAR" -->
+<div class="col-span-12 md:col-span-4 bg-[#1e293b] rounded-lg border border-[#334155] p-padding-card">
+<h2 class="text-label-caps font-label-caps text-[#94a3b8] mb-4 tracking-wider uppercase flex justify-between">
+<span>North-Star</span>
+<span class="text-[#4ade80]">1/1 Achieved</span>
+</h2>
+<div class="bg-[#0f172a] rounded p-4 border border-[#334155]">
+<h3 class="text-headline-md font-headline-md text-[#f8fafc] mb-2">1 incremento prodotto / settimana</h3>
+<div class="flex justify-between items-end mt-6">
+<div>
+<p class="text-[10px] text-[#64748b] font-label-caps mb-1 uppercase">Streak</p>
+<p class="text-data-mono font-data-mono text-[#f8fafc]">3 Weeks</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-[#64748b] font-label-caps mb-1 uppercase">Deadline</p>
+<p class="text-data-mono font-data-mono text-[#f8fafc]">30/09</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Zone E: Bottom Timeline -->
+<div class="col-span-12 bg-[#1e293b] rounded-lg border border-[#334155] p-padding-card">
+<h2 class="text-label-caps font-label-caps text-[#94a3b8] mb-4 tracking-wider uppercase">Timeline Recente (Issue #1)</h2>
+<div class="flex flex-col gap-2">
+<!-- Event 1 -->
+<div class="flex items-center gap-4 py-2 border-b border-[#334155] last:border-0">
+<span class="text-data-mono font-data-mono text-[#64748b] w-20">10:45 AM</span>
+<span class="px-2 py-1 bg-[#0f172a] text-[#4ade80] text-[10px] font-label-caps rounded border border-[#334155]">SUCCESS</span>
+<span class="text-body-sm font-body-sm text-[#f8fafc]">issue_closed</span>
+<span class="text-body-sm font-body-sm text-[#94a3b8] ml-auto">Issue #1 chiusa con successo</span>
+</div>
+<!-- Event 2 -->
+<div class="flex items-center gap-4 py-2 border-b border-[#334155] last:border-0">
+<span class="text-data-mono font-data-mono text-[#64748b] w-20">10:42 AM</span>
+<span class="px-2 py-1 bg-[#0f172a] text-[#4ade80] text-[10px] font-label-caps rounded border border-[#334155]">SUCCESS</span>
+<span class="text-body-sm font-body-sm text-[#f8fafc]">run_tests</span>
+<span class="text-body-sm font-body-sm text-[#94a3b8] ml-auto">124/124 tests passed</span>
+</div>
+<!-- Event 3 -->
+<div class="flex items-center gap-4 py-2 border-b border-[#334155] last:border-0">
+<span class="text-data-mono font-data-mono text-[#64748b] w-20">09:15 AM</span>
+<span class="px-2 py-1 bg-[#0f172a] text-[#cbd5e1] text-[10px] font-label-caps rounded border border-[#334155]">INFO</span>
+<span class="text-body-sm font-body-sm text-[#f8fafc]">code_review_approved</span>
+<span class="text-body-sm font-body-sm text-[#94a3b8] ml-auto">Approvato da @reviewer1</span>
+</div>
+<!-- Event 4 -->
+<div class="flex items-center gap-4 py-2 border-b border-[#334155] last:border-0">
+<span class="text-data-mono font-data-mono text-[#64748b] w-20">Ieri</span>
+<span class="px-2 py-1 bg-[#0f172a] text-[#cbd5e1] text-[10px] font-label-caps rounded border border-[#334155]">INFO</span>
+<span class="text-body-sm font-body-sm text-[#f8fafc]">sprint_complete</span>
+<span class="text-body-sm font-body-sm text-[#94a3b8] ml-auto">Obiettivi sprint raggiunti</span>
+</div>
+<!-- Event 5 -->
+<div class="flex items-center gap-4 py-2 border-b border-[#334155] last:border-0">
+<span class="text-data-mono font-data-mono text-[#64748b] w-20">Ieri</span>
+<span class="px-2 py-1 bg-[#0f172a] text-[#cbd5e1] text-[10px] font-label-caps rounded border border-[#334155]">INFO</span>
+<span class="text-body-sm font-body-sm text-[#f8fafc]">brainstorm_conclude</span>
+<span class="text-body-sm font-body-sm text-[#94a3b8] ml-auto">Architettura definita</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

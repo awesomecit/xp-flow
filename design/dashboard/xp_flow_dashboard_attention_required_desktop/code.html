@@ -1,0 +1,316 @@
+<!DOCTYPE html><html class="dark" lang="it"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>XP Flow Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-background": "#0d1c2d",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#98805d",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed": "#0b1c30",
+                        "background": "#0f172a",
+                        "primary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed": "#fcdeb5",
+                        "secondary-container": "#d0e1fb",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "inverse-primary": "#bec6e0",
+                        "surface-variant": "#d4e4fa",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#1e293b",
+                        "on-primary-container": "#7c839b",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-container-lowest": "#0f172a",
+                        "on-error": "#ffffff",
+                        "surface-container": "#334155",
+                        "on-surface": "#f8fafc",
+                        "surface-dim": "#ccdbf2",
+                        "tertiary-container": "#271901",
+                        "on-tertiary-fixed": "#271901",
+                        "on-surface-variant": "#cbd5e1",
+                        "inverse-surface": "#233143",
+                        "secondary": "#94a3b8",
+                        "inverse-on-surface": "#e9f1ff",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-high": "#475569",
+                        "surface-container-highest": "#64748b",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-container": "#3b82f6",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-tint": "#565e74",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "tertiary": "#000000",
+                        "outline": "#475569",
+                        "outline-variant": "#334155"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-compact": "8px",
+                        "gutter": "12px",
+                        "margin-page": "24px",
+                        "unit": "4px",
+                        "padding-card": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "data-mono": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "data-mono": ["13px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0f172a] text-on-surface font-body-md min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- Left Sidebar: NavigationDrawer -->
+<nav class="hidden lg:flex flex-col border-r border-outline-variant py-margin-page bg-[#0f172a] text-primary font-body-md text-body-md fixed left-0 top-0 h-full w-[240px]">
+<div class="px-margin-page mb-8">
+<h2 class="text-headline-md font-headline-md font-bold text-primary">XP FLOW OPS</h2>
+</div>
+<ul class="flex flex-col gap-unit px-unit">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-surface-container-low text-primary font-bold translate-x-1 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                    Pipelines
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+                    Timeline
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                    Retro
+                </a>
+</li>
+</ul>
+<div class="mt-8 px-unit">
+    <p class="px-4 mb-2 font-label-caps text-label-caps text-secondary uppercase tracking-wider opacity-60">Connectors</p>
+    <ul class="flex flex-col gap-unit">
+        <li class="">
+            <a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all text-body-sm" href="#">
+                <span class="material-symbols-outlined text-[18px]">link</span>
+                GitHub
+            </a>
+        </li>
+        <li class="">
+            <a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all text-body-sm" href="#">
+                <span class="material-symbols-outlined text-[18px]">database</span>
+                Stitch
+            </a>
+        </li>
+        <li class="">
+            <a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all text-body-sm" href="#">
+                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                Lovable
+            </a>
+        </li>
+    </ul>
+</div></nav>
+<!-- Main Container (offset by sidebar) -->
+<div class="flex-1 lg:ml-[240px] flex flex-col min-h-screen bg-[#0f172a]">
+<!-- Top Bar: TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-page h-14 bg-[#0f172a] text-primary border-b border-outline lg:w-[calc(100%-240px)]">
+<div class="flex items-center gap-4">
+<button class="lg:hidden text-primary hover:bg-surface-container transition-colors rounded p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="material-symbols-outlined opacity-80">terminal</span>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary">XP Flow</h1>
+</div>
+<button class="text-primary hover:bg-surface-container transition-colors p-2 rounded">
+<span class="material-symbols-outlined opacity-80">settings</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 pt-14 p-margin-page overflow-y-auto">
+<div class="grid grid-cols-12 gap-gutter mb-gutter">
+<!-- A: SPRINT ATTIVO (Hero) -->
+<div class="col-span-12 lg:col-span-8 border border-outline rounded bg-[#0f172a] p-padding-card">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-1">Sprint Attivo</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Issue #1: Core Pipeline Setup</h3>
+</div>
+<div class="flex items-center gap-2 bg-surface-container text-on-surface px-3 py-1 rounded">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-data-mono text-data-mono">2 giorni rimasti</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="border border-outline-variant rounded p-3 bg-surface-container-low/50">
+<p class="font-label-caps text-label-caps text-secondary uppercase mb-1">Scenario Progress</p>
+<div class="flex items-end gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">2<span class="text-secondary text-sm">/4</span></span>
+<span class="font-body-sm text-body-sm text-secondary pb-1">(Stato con sprint attivo)</span>
+</div>
+</div>
+<div class="border border-outline-variant rounded p-3 bg-surface-container-low/50">
+<p class="font-label-caps text-label-caps text-secondary uppercase mb-1">Burndown SP</p>
+<div class="flex items-end gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">1<span class="text-secondary text-sm">/3 total</span></span>
+<span class="font-body-sm text-body-sm text-secondary pb-1">burned</span>
+</div>
+</div>
+</div>
+</div>
+<!-- B: SERVE DA TE (Manual Actions) -->
+<div class="col-span-12 lg:col-span-4 border border-error rounded bg-error-container/20 text-on-error-container p-padding-card flex flex-col justify-between shadow-[0_0_15px_rgba(186,26,26,0.15)]"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span><h3 class="font-headline-md text-headline-md text-error font-bold tracking-tight uppercase">2 PENDENTI</h3></div></div><div class="flex flex-col gap-3"><div class="border border-error/50 bg-error/10 rounded p-3"><div class="flex justify-between items-start mb-2"><div><p class="font-body-md text-body-md font-bold text-[#ffdad6]">Configurare secret TELEGRAM_TOKEN nel repo</p><p class="font-data-mono text-[10px] text-secondary uppercase mt-1">Sorgente: /sprint</p></div><button class="text-error hover:bg-error/20 p-1 rounded transition-colors"><span class="material-symbols-outlined">check_box_outline_blank</span></button></div><div class="flex justify-between items-center mt-2"><span class="font-data-mono text-xs text-error">in attesa da 3h</span><span class="text-[10px] font-bold text-error uppercase">manual_done</span></div></div><div class="border border-error/50 bg-error/10 rounded p-3"><div class="flex justify-between items-start mb-2"><div><p class="font-body-md text-body-md font-bold text-[#ffdad6]">Eseguire git push dei commit locali (7)</p><p class="font-data-mono text-[10px] text-secondary uppercase mt-1">Sorgente: /stato</p></div><button class="text-error hover:bg-error/20 p-1 rounded transition-colors"><span class="material-symbols-outlined">check_box_outline_blank</span></button></div><div class="flex justify-between items-center mt-2"><span class="font-data-mono text-xs text-error">in attesa da 1g</span><span class="text-[10px] font-bold text-error uppercase">manual_done</span></div></div></div></div>
+</div>
+<div class="grid grid-cols-12 gap-gutter mb-gutter">
+<!-- C: PIPELINE DEL FLUSSO -->
+<div class="col-span-12 lg:col-span-8 border border-outline rounded bg-[#0f172a] p-padding-card">
+<h3 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-4">Pipeline Del Flusso</h3>
+<div class="flex gap-2">
+<!-- Brainstorm -->
+<div class="flex-1 border border-outline-variant rounded p-3 relative overflow-hidden bg-surface-container-low/50">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-fixed"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary">Brainstorm</span>
+<span class="material-symbols-outlined text-sm text-secondary-fixed">check_circle</span>
+</div>
+<span class="font-data-mono text-data-mono text-secondary">Done</span>
+</div>
+<!-- Sprint -->
+<div class="flex-1 border border-outline rounded p-3 relative overflow-hidden bg-surface-container">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps uppercase text-on-surface">Sprint</span>
+<span class="material-symbols-outlined text-sm text-primary animate-pulse">sync</span>
+</div>
+<span class="font-data-mono text-data-mono text-on-surface">In Progress</span>
+</div>
+<!-- Pair-Review -->
+<div class="flex-1 border border-tertiary-fixed-dim rounded p-3 relative overflow-hidden bg-tertiary-container/20"><div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary-fixed-dim"></div><div class="flex items-center justify-between mb-2"><span class="font-label-caps text-label-caps uppercase text-tertiary-fixed-dim">Pair-Review</span><span class="bg-tertiary-fixed-dim text-tertiary-container px-1.5 rounded text-[10px] font-bold">1</span></div><span class="font-data-mono text-data-mono text-tertiary-fixed-dim font-bold">BLOCKED</span><div class="mt-2 text-[10px] uppercase font-bold text-tertiary-fixed-dim bg-tertiary-container/40 p-1 rounded leading-tight">obiezione bloccante: test dipende dall'ordine di esecuzione</div></div>
+<!-- Retro -->
+<div class="flex-1 border border-outline-variant rounded p-3 relative overflow-hidden opacity-50 bg-surface-container-low/20">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary">Retro</span>
+</div>
+<span class="font-data-mono text-data-mono text-secondary">Pending</span>
+</div>
+</div>
+</div>
+<!-- D: NORTH-STAR METRIC -->
+<div class="col-span-12 lg:col-span-4 border border-outline rounded bg-[#0f172a] p-padding-card flex flex-col justify-center">
+<h3 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-2">North-Star Metric</h3>
+<p class="font-headline-md text-headline-md text-on-surface mb-4">1 incremento prodotto / settimana</p>
+<div class="flex items-end justify-between border-t border-outline-variant pt-4">
+<div>
+<p class="font-data-mono text-data-mono text-secondary mb-1">Status</p>
+<p class="font-headline-md text-headline-md text-primary">1/1 <span class="text-sm font-normal text-secondary">Achieved</span></p>
+</div>
+<div class="text-right">
+<p class="font-data-mono text-data-mono text-secondary mb-1">Streak</p>
+<p class="font-body-md text-body-md font-bold text-on-surface flex items-center gap-1 justify-end">
+<span class="material-symbols-outlined text-sm text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                3 Weeks
+                            </p>
+</div>
+</div>
+<div class="mt-4 bg-surface-container-low rounded p-2 flex justify-between items-center text-xs">
+<span class="font-data-mono text-data-mono text-secondary">Deadline: 30/09</span>
+<span class="bg-surface-container-high text-on-surface px-2 py-0.5 rounded uppercase font-bold text-[10px]">Prodotto</span>
+</div>
+</div>
+</div>
+<!-- E: TIMELINE EVENTI -->
+<div class="border border-outline rounded bg-[#0f172a] overflow-hidden">
+<div class="p-4 border-b border-outline bg-surface-container-low/50">
+<h3 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Timeline Eventi (.xpflow/events.jsonl)</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/20 border-b border-outline-variant">
+<th class="p-3 font-label-caps text-label-caps text-secondary uppercase">TS (ISO)</th>
+<th class="p-3 font-label-caps text-label-caps text-secondary uppercase">CMD</th>
+<th class="p-3 font-label-caps text-label-caps text-secondary uppercase">ISSUE</th>
+<th class="p-3 font-label-caps text-label-caps text-secondary uppercase">ESITO</th>
+<th class="p-3 font-label-caps text-label-caps text-secondary uppercase">NOTE</th>
+</tr>
+</thead>
+<tbody class="font-data-mono text-data-mono divide-y divide-outline-variant/50"><tr class="bg-error-container/20 transition-colors border-l-2 border-error"><td class="p-3 text-secondary">2023-10-24T14:20:00Z</td><td class="p-3 text-on-surface">azione_manuale</td><td class="p-3 text-on-surface">#1</td><td class="p-3"><span class="bg-error text-white px-2 py-1 rounded text-xs font-bold animate-pulse">PENDING</span></td><td class="p-3 text-error truncate max-w-xs">Richiesta configurazione secret e push</td></tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-3 text-secondary">2023-10-24T10:15:30Z</td>
+<td class="p-3 text-on-surface">start_sprint</td>
+<td class="p-3 text-on-surface">#1</td>
+<td class="p-3"><span class="bg-surface-container-high text-on-surface px-2 py-1 rounded text-xs">SUCCESS</span></td>
+<td class="p-3 text-secondary truncate max-w-xs">Sprint initialized successfully.</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-error-container/10">
+<td class="p-3 text-secondary">2023-10-24T11:05:12Z</td>
+<td class="p-3 text-on-surface">run_tests</td>
+<td class="p-3 text-on-surface">#1</td>
+<td class="p-3"><span class="bg-error text-white px-2 py-1 rounded text-xs font-bold">FAILED</span></td>
+<td class="p-3 text-error truncate max-w-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                    Missing TELEGRAM_TOKEN
+                                </td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-3 text-secondary">2023-10-24T09:00:00Z</td>
+<td class="p-3 text-on-surface">brainstorm_conclude</td>
+<td class="p-3 text-on-surface">#1</td>
+<td class="p-3"><span class="bg-surface-container-high text-on-surface px-2 py-1 rounded text-xs">SUCCESS</span></td>
+<td class="p-3 text-secondary truncate max-w-xs">Requirements gathered and approved.</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors opacity-60">
+<td class="p-3 text-secondary">2023-10-23T18:30:00Z</td>
+<td class="p-3 text-on-surface">init_repo</td>
+<td class="p-3 text-on-surface">-</td>
+<td class="p-3"><span class="bg-surface-container-high text-on-surface px-2 py-1 rounded text-xs">SUCCESS</span></td>
+<td class="p-3 text-secondary truncate max-w-xs">Base skeleton generated.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+
+
+</body></html>

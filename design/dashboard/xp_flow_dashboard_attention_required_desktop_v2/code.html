@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XP Flow Ops - Attenzione Richiesta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#000000",
+                      "surface": "#f8f9ff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-surface-variant": "#45464d",
+                      "secondary": "#505f76",
+                      "surface-container-high": "#dbe9ff",
+                      "inverse-primary": "#bec6e0",
+                      "outline-variant": "#c6c6cd",
+                      "surface-variant": "#d4e4fa",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "primary-container": "#131b2e",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "inverse-on-surface": "#e9f1ff",
+                      "secondary-container": "#d0e1fb",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#dae2fd",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#7c839b",
+                      "surface-tint": "#565e74",
+                      "primary-fixed-dim": "#bec6e0",
+                      "surface-container-low": "#eef4ff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#271901",
+                      "outline": "#76777d",
+                      "on-error": "#ffffff",
+                      "on-background": "#0d1c2d",
+                      "surface-container": "#e5efff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "primary": "#000000",
+                      "surface-container-highest": "#d4e4fa",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#98805d",
+                      "surface-bright": "#f8f9ff",
+                      "on-secondary-container": "#54647a",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-fixed": "#fcdeb5",
+                      "tertiary-container": "#271901",
+                      "background": "#f8f9ff",
+                      "on-primary-fixed": "#131b2e",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#ccdbf2",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#233143",
+                      "on-surface": "#0d1c2d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "gutter": "12px",
+                      "stack-compact": "8px",
+                      "unit": "4px",
+                      "margin-page": "24px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "data-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #0d1c2d; color: #bec6e0; }
+        .grid-dashboard {
+            display: grid;
+            grid-template-columns: 240px 1fr 320px;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .main-content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 12px;
+            padding: 16px;
+            height: calc(100vh - 56px);
+            overflow-y: auto;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            align-content: start;
+        }
+        .bento-item-full {
+            grid-column: span 2;
+        }
+        
+        /* Specific borders and layers for Dark Mode as per styling rules */
+        .panel-border { border: 1px solid #1E293B; }
+        .layer-1 { background-color: #131b2e; } /* primary-container approx */
+        .layer-0 { background-color: #0d1c2d; } /* background approx */
+        
+        /* Utilities for status */
+        .status-danger { border-left: 4px solid #ba1a1a; }
+        .status-danger-bg { background-color: rgba(186, 26, 26, 0.1); }
+        .status-danger-text { color: #ffdad6; }
+        
+        .status-amber { border-left: 4px solid #d97706; } /* Amber placeholder */
+        .status-amber-bg { background-color: rgba(217, 119, 6, 0.1); }
+        .status-amber-text { color: #fcd34d; }
+        
+        .status-active { border-left: 4px solid #bec6e0; }
+    </style>
+</head>
+<body class="antialiased overflow-hidden">
+<div class="grid-dashboard">
+<!-- TopAppBar -->
+<header class="col-span-3 border-b border-outline layer-1 flex justify-between items-center px-margin-page h-14 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-inverse-primary">terminal</span>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-inverse-primary">XP Flow</h1>
+</div>
+<div class="flex gap-6 items-center">
+<nav class="flex gap-4">
+<a class="text-inverse-primary border-b-2 border-inverse-primary pb-1 font-label-caps text-label-caps uppercase" href="#">DASHBOARD</a>
+<a class="text-secondary-fixed-dim hover:text-inverse-primary transition-colors font-label-caps text-label-caps uppercase" href="#">PIPELINES</a>
+<a class="text-secondary-fixed-dim hover:text-inverse-primary transition-colors font-label-caps text-label-caps uppercase" href="#">TIMELINE</a>
+<a class="text-secondary-fixed-dim hover:text-inverse-primary transition-colors font-label-caps text-label-caps uppercase" href="#">RETRO</a>
+</nav>
+<span class="material-symbols-outlined text-secondary-fixed-dim hover:text-inverse-primary cursor-pointer transition-colors">settings</span>
+</div>
+</header>
+<!-- SideNav (Connectors) -->
+<aside class="layer-1 border-r border-outline flex flex-col py-margin-page px-4 gap-6 row-start-2 overflow-y-auto">
+<div>
+<h2 class="text-label-caps font-label-caps text-secondary-fixed-dim uppercase mb-4 tracking-widest">Connectors</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between p-2 rounded hover:bg-surface-container-highest transition-colors cursor-pointer border border-transparent hover:border-outline">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px]">code</span>
+<span class="font-data-mono text-data-mono">GitHub</span>
+</div>
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+</div>
+<div class="flex items-center justify-between p-2 rounded hover:bg-surface-container-highest transition-colors cursor-pointer border border-transparent hover:border-outline">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px]">data_object</span>
+<span class="font-data-mono text-data-mono">Stitch</span>
+</div>
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+</div>
+<div class="flex items-center justify-between p-2 rounded hover:bg-surface-container-highest transition-colors cursor-pointer border border-transparent hover:border-outline">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="font-data-mono text-data-mono">Lovable</span>
+</div>
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="layer-0 row-start-2 main-content-grid">
+<!-- Center Column (Zones B, A, C) -->
+<div class="bento-grid">
+<!-- Zone B: SERVE DA TE (Now Visually Dominant / Alert) -->
+<div class="bento-item-full layer-1 panel-border rounded flex flex-col p-padding-card gap-4 status-danger border border-error/30 relative">
+<div class="absolute inset-0 bg-error/5 pointer-events-none rounded"></div>
+<div class="flex justify-between items-start z-10">
+<h2 class="text-label-caps font-label-caps uppercase text-error-container tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+                        SERVE DA TE
+                    </h2>
+<span class="px-2 py-1 bg-error/20 text-error-container text-label-caps font-label-caps rounded font-bold border border-error/50">2 PENDENTI</span>
+</div>
+<div class="flex flex-col gap-2 z-10 mt-2">
+<!-- Action Card 1 -->
+<div class="bg-surface-container-low/5 border border-error/20 p-3 rounded flex justify-between items-center group hover:bg-error/10 transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-body-md text-body-md text-inverse-primary font-bold">Configurare secret TELEGRAM_TOKEN nel repo</span>
+<div class="flex gap-3 items-center">
+<span class="font-data-mono text-label-caps text-secondary-fixed-dim bg-surface-container-high/10 px-1.5 py-0.5 rounded">da /sprint</span>
+<span class="font-data-mono text-label-caps text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    in attesa da 3h
+                                </span>
+</div>
+</div>
+<button class="flex items-center justify-center p-2 rounded hover:bg-surface-container-high border border-outline-variant/30 text-secondary-fixed-dim hover:text-inverse-primary transition-all">
+<span class="material-symbols-outlined text-[20px]">check_box_outline_blank</span>
+</button>
+</div>
+<!-- Action Card 2 -->
+<div class="bg-surface-container-low/5 border border-error/20 p-3 rounded flex justify-between items-center group hover:bg-error/10 transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-body-md text-body-md text-inverse-primary font-bold">Eseguire git push dei commit locali (7)</span>
+<div class="flex gap-3 items-center">
+<span class="font-data-mono text-label-caps text-secondary-fixed-dim bg-surface-container-high/10 px-1.5 py-0.5 rounded">da /stato</span>
+<span class="font-data-mono text-label-caps text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    in attesa da 1g
+                                </span>
+</div>
+</div>
+<button class="flex items-center justify-center p-2 rounded hover:bg-surface-container-high border border-outline-variant/30 text-secondary-fixed-dim hover:text-inverse-primary transition-all">
+<span class="material-symbols-outlined text-[20px]">check_box_outline_blank</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Zone C: PIPELINE (Amber / Blocked State) -->
+<div class="layer-1 panel-border rounded flex flex-col p-padding-card gap-4 status-amber opacity-90">
+<div class="flex justify-between items-start">
+<h2 class="text-label-caps font-label-caps uppercase text-secondary-fixed-dim tracking-widest">PIPELINE</h2>
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]">account_tree</span>
+</div>
+<div class="flex flex-col gap-3 mt-2">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<span class="font-data-mono text-data-mono text-secondary-fixed-dim">build</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-500">check_circle</span>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<span class="font-data-mono text-data-mono text-secondary-fixed-dim">test</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-500">check_circle</span>
+</div>
+<div class="flex flex-col gap-2 border-b border-outline-variant/30 pb-3 status-amber-bg p-2 rounded border border-amber-500/30">
+<div class="flex items-center justify-between">
+<span class="font-data-mono text-data-mono text-amber-400 font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">sync_problem</span>
+                                pair-review
+                            </span>
+<span class="text-label-caps font-label-caps px-1.5 py-0.5 bg-amber-500/20 text-amber-400 rounded">1 OBIEZIONE APERTA</span>
+</div>
+<span class="font-body-sm text-body-sm text-amber-200/80">Obiezione bloccante: test dipende dall'ordine di esecuzione</span>
+</div>
+<div class="flex items-center justify-between pt-1 opacity-50">
+<span class="font-data-mono text-data-mono text-secondary-fixed-dim">deploy</span>
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed-dim">pending</span>
+</div>
+</div>
+</div>
+<!-- Zone A: SPRINT ATTIVO (Visually secondary) -->
+<div class="layer-1 panel-border rounded flex flex-col p-padding-card gap-4 status-active opacity-70 hover:opacity-100 transition-opacity">
+<div class="flex justify-between items-start">
+<h2 class="text-label-caps font-label-caps uppercase text-secondary-fixed-dim tracking-widest">SPRINT ATTIVO</h2>
+<span class="px-2 py-0.5 bg-surface-container-high/20 text-inverse-primary text-label-caps font-label-caps rounded">IN CORSO</span>
+</div>
+<div class="mt-4">
+<div class="font-headline-md text-headline-md text-inverse-primary mb-1">Issue #1</div>
+<div class="font-data-mono text-data-mono text-secondary-fixed-dim mb-4">Implementazione core logic pipeline</div>
+<div class="flex flex-col gap-3">
+<div>
+<div class="flex justify-between text-label-caps font-label-caps text-secondary-fixed-dim mb-1">
+<span>SCENARI COMPLETATI</span>
+<span>2/4</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5">
+<div class="bg-inverse-primary h-1.5 rounded-full" style="width: 50%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-caps font-label-caps text-secondary-fixed-dim mb-1">
+<span>STORY POINTS</span>
+<span>2/3 SP</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5">
+<div class="bg-inverse-primary h-1.5 rounded-full" style="width: 66%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Zone E: TIMELINE) -->
+<aside class="layer-1 panel-border rounded flex flex-col p-padding-card overflow-y-auto">
+<div class="flex justify-between items-center mb-6 sticky top-0 bg-[#131b2e] z-10 pb-2">
+<h2 class="text-label-caps font-label-caps uppercase text-secondary-fixed-dim tracking-widest">TIMELINE EVENTI</h2>
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]">history</span>
+</div>
+<div class="flex flex-col relative before:absolute before:inset-y-0 before:left-[11px] before:w-[2px] before:bg-outline-variant/20">
+<!-- Timeline Event 1: Azione Manuale (Red Accent) -->
+<div class="relative pl-8 pb-6 group">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-error/20 border-2 border-error flex items-center justify-center z-10 shadow-[0_0_8px_rgba(186,26,26,0.4)]">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<span class="font-data-mono text-label-caps text-error">azione_manuale</span>
+<span class="font-data-mono text-label-caps text-secondary-fixed-dim">adesso</span>
+</div>
+<span class="font-body-sm text-body-sm text-inverse-primary">Richiesta configurazione TELEGRAM_TOKEN</span>
+</div>
+</div>
+<!-- Timeline Event 2 -->
+<div class="relative pl-8 pb-6 group">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center z-10">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<span class="font-data-mono text-label-caps text-amber-500">pipeline_blocked</span>
+<span class="font-data-mono text-label-caps text-secondary-fixed-dim">10m fa</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary-fixed-dim">Pair-review bloccata per dipendenze test</span>
+</div>
+</div>
+<!-- Timeline Event 3 -->
+<div class="relative pl-8 pb-6 group">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center z-10">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<span class="font-data-mono text-label-caps text-emerald-500">commit_push</span>
+<span class="font-data-mono text-label-caps text-secondary-fixed-dim">45m fa</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary-fixed-dim">fix: risolto baco visualizzazione lista (bot)</span>
+</div>
+</div>
+<!-- Timeline Event 4 -->
+<div class="relative pl-8 pb-6 group">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center z-10">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<span class="font-data-mono text-label-caps text-secondary-fixed-dim">sprint_start</span>
+<span class="font-data-mono text-label-caps text-secondary-fixed-dim">3h fa</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary-fixed-dim">Iniziato Issue #1</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

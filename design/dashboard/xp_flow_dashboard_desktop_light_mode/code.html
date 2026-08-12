@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XP Flow - Pipeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-dim": "#d2d9f4",
+                        "on-surface": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f2f3ff",
+                        "primary": "#004ac6",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "on-secondary-container": "#57657a",
+                        "secondary-container": "#d5e3fc",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-surface-variant": "#434655",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container": "#eaedff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-tint": "#0053db",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#dae2fd",
+                        "surface": "#faf8ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-primary-fixed": "#00174b",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#283044",
+                        "on-background": "#131b2e",
+                        "outline": "#737686",
+                        "surface-bright": "#faf8ff",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary-container": "#bc4800",
+                        "outline-variant": "#c3c6d7",
+                        "on-tertiary-container": "#ffede6",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "tertiary": "#943700",
+                        "secondary": "#515f74",
+                        "surface-container-highest": "#dae2fd",
+                        "primary-fixed": "#dbe1ff",
+                        "background": "#faf8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-desktop": "24px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Hanken Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "title-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f8f9fa; color: #0f172a; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid #e2e8f0; }
+        .data-row { border-bottom: 1px solid #e2e8f0; }
+        .data-row:last-child { border-bottom: none; }
+        .mono-text { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="antialiased min-h-screen font-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest text-primary font-headline-sm fixed top-0 w-full z-50 flex justify-between items-center px-lg h-16 border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md font-bold text-primary">XP Flow</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface rounded-full border border-outline-variant text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container w-64 mono-text text-label-md" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low font-label-md text-label-md fixed left-0 top-16 h-[calc(100vh-64px)] w-[240px] flex flex-col py-md border-r border-outline-variant flat no shadows z-40">
+<div class="px-md mb-xl flex items-center gap-sm">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a system architect in a well-lit modern office setting. Light mode aesthetic, sharp focus, corporate tech style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1ZuIC6SZjDzHQwWs9HP_ZOOW0D6OTzQ-M2xVipuxoF703bY-5u46kpzzm4-T9-KgJnxK3Mxc2XRV9QenILIoWkY8xywTGhaObo0m24KIdd1_IEIAFNPbte4YRJ1uDRNeOgIhLTGA_i5YHuLWAEBvZXsigBYqc9Jc-cutWnSit4OZPB5KU2m8a_DKCpckxA3R_KbKaNUGV1buZcKVVv2LZNU5H6FP6zqGJrd0SCXioTEHbVsaK6kQA"/>
+<div>
+<div class="font-headline-sm text-headline-sm font-black text-on-surface">System Architect</div>
+<div class="text-on-surface-variant text-label-sm">Standard Ops</div>
+</div>
+</div>
+<div class="flex flex-col flex-grow px-sm gap-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-secondary-container text-on-secondary-container font-semibold transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                Pipelines
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">reorder</span>
+                Timeline
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">history</span>
+                Retro
+            </a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="ml-[240px] mt-16 p-margin-desktop bg-surface min-h-[calc(100vh-64px)]">
+<!-- Header -->
+<div class="mb-xl">
+<div class="flex items-center gap-sm text-on-surface-variant mb-xs mono-text text-label-sm">
+<span>/</span><span>projects</span><span>/</span><span>core-sys</span><span>/</span><span class="text-on-surface font-semibold">pipelines</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Pipeline Del Flusso</h1>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Zones A, B, C -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-lg">
+<!-- Zone A: Sprint Info -->
+<div class="glass-card rounded-xl p-lg flex justify-between items-center">
+<div>
+<div class="text-on-surface-variant text-label-md mono-text mb-xs uppercase">Sprint Attivo</div>
+<div class="font-title-lg text-title-lg text-on-surface">Issue #1: Core Pipeline Setup</div>
+</div>
+<div class="bg-surface-container px-md py-sm rounded-full border border-outline-variant flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-on-surface mono-text text-label-sm font-semibold">In Progress</span>
+</div>
+</div>
+<!-- Zone B: Alert -->
+<div class="bg-error-container border border-error/30 rounded-xl p-lg flex items-start gap-md">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-error-container mb-xs">Azione Manuale Richiesta</h3>
+<p class="text-on-error-container/80 text-body-sm mb-md">La validazione del Pair-Review è bloccata. È richiesta l'approvazione di un Senior Engineer prima di procedere con il deploy in staging.</p>
+<button class="bg-error text-on-error px-md py-sm rounded-md text-label-md font-semibold hover:bg-error/90 transition-colors">Richiedi Review Ora</button>
+</div>
+</div>
+<!-- Zone C: Stepper -->
+<div class="glass-card rounded-xl p-lg">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-lg border-b border-outline-variant pb-sm">Stato Esecuzione</h3>
+<div class="relative pl-sm">
+<!-- Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-outline-variant"></div>
+<!-- Step 1 -->
+<div class="relative flex items-start gap-md mb-lg">
+<div class="w-6 h-6 rounded-full bg-green-100 border border-green-500 flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined text-green-600 text-[14px]">check</span>
+</div>
+<div>
+<div class="font-semibold text-on-surface text-body-md">Checkout Repo</div>
+<div class="text-on-surface-variant text-label-sm mono-text">0.4s • Completato</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-start gap-md mb-lg">
+<div class="w-6 h-6 rounded-full bg-green-100 border border-green-500 flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined text-green-600 text-[14px]">check</span>
+</div>
+<div>
+<div class="font-semibold text-on-surface text-body-md">Build &amp; Test</div>
+<div class="text-on-surface-variant text-label-sm mono-text">42.1s • Completato con warning</div>
+</div>
+</div>
+<!-- Step 3 (Blocked) -->
+<div class="relative flex items-start gap-md mb-lg">
+<div class="w-6 h-6 rounded-full bg-amber-100 border border-amber-500 flex items-center justify-center z-10 shrink-0 relative">
+<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+</div>
+<div class="w-full">
+<div class="flex justify-between items-center mb-xs">
+<div class="font-semibold text-on-surface text-body-md">Pair-Review</div>
+<span class="text-amber-700 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded text-label-sm mono-text">BLOCCATO</span>
+</div>
+<div class="text-on-surface-variant text-label-sm mono-text mb-sm">In attesa di approvazione manuale</div>
+<div class="bg-surface-container-lowest p-sm border border-outline-variant rounded-md mono-text text-label-sm text-on-surface-variant">
+                                    &gt; requires_approval: true<br/>
+                                    &gt; min_reviewers: 1<br/>
+                                    &gt; current_status: pending
+                                </div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex items-start gap-md">
+<div class="w-6 h-6 rounded-full bg-surface-container border border-outline-variant flex items-center justify-center z-10 shrink-0">
+</div>
+<div>
+<div class="font-semibold text-on-surface-variant text-body-md">Deploy to Staging</div>
+<div class="text-outline text-label-sm mono-text">In attesa</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Zones D, E -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-lg">
+<!-- Zone D: Metrics -->
+<div class="grid grid-cols-2 gap-md">
+<div class="glass-card rounded-xl p-md flex flex-col">
+<span class="text-on-surface-variant text-label-sm mono-text uppercase mb-sm">North-Star Metric</span>
+<div class="flex items-end gap-sm mt-auto">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">94</span>
+<span class="text-on-surface-variant text-body-sm pb-1">pts</span>
+</div>
+<div class="mt-sm text-green-600 text-label-sm mono-text flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +2.4%
+                        </div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col">
+<span class="text-on-surface-variant text-label-sm mono-text uppercase mb-sm">Status</span>
+<div class="flex items-end gap-sm mt-auto">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">1/1</span>
+</div>
+<div class="mt-sm text-on-surface-variant text-label-sm mono-text flex items-center gap-xs">
+                            Nodi attivi
+                        </div>
+</div>
+</div>
+<!-- Zone E: Timeline Log -->
+<div class="glass-card rounded-xl flex flex-col h-full overflow-hidden">
+<div class="p-md border-b border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg text-on-surface">Timeline Eventi</h3>
+<button class="text-primary text-label-sm mono-text flex items-center gap-xs hover:underline">
+<span class="material-symbols-outlined text-[14px]">download</span> Export
+                        </button>
+</div>
+<div class="p-0 overflow-y-auto max-h-[400px]">
+<table class="w-full text-left border-collapse">
+<tbody>
+<tr class="data-row hover:bg-surface-container-lowest transition-colors">
+<td class="p-sm text-label-sm mono-text text-on-surface-variant w-[80px] border-r border-outline-variant/50">14:32:01</td>
+<td class="p-sm text-label-sm mono-text text-on-surface">{"event": "review_requested", "user": "sys_arch"}</td>
+</tr>
+<tr class="data-row hover:bg-surface-container-lowest transition-colors">
+<td class="p-sm text-label-sm mono-text text-on-surface-variant w-[80px] border-r border-outline-variant/50">14:31:55</td>
+<td class="p-sm text-label-sm mono-text text-amber-600">{"event": "pipeline_paused", "reason": "manual_gate"}</td>
+</tr>
+<tr class="data-row hover:bg-surface-container-lowest transition-colors">
+<td class="p-sm text-label-sm mono-text text-on-surface-variant w-[80px] border-r border-outline-variant/50">14:31:12</td>
+<td class="p-sm text-label-sm mono-text text-on-surface">{"event": "tests_completed", "passed": 142, "warnings": 3}</td>
+</tr>
+<tr class="data-row hover:bg-surface-container-lowest transition-colors">
+<td class="p-sm text-label-sm mono-text text-on-surface-variant w-[80px] border-r border-outline-variant/50">14:30:30</td>
+<td class="p-sm text-label-sm mono-text text-on-surface">{"event": "build_started", "worker": "node-eu-west-1a"}</td>
+</tr>
+<tr class="data-row hover:bg-surface-container-lowest transition-colors">
+<td class="p-sm text-label-sm mono-text text-on-surface-variant w-[80px] border-r border-outline-variant/50">14:30:29</td>
+<td class="p-sm text-label-sm mono-text text-on-surface">{"event": "repo_checkout", "commit": "a1b2c3d"}</td>
+</tr>
+<tr class="data-row hover:bg-surface-container-lowest transition-colors opacity-60">
+<td class="p-sm text-label-sm mono-text text-on-surface-variant w-[80px] border-r border-outline-variant/50">14:30:00</td>
+<td class="p-sm text-label-sm mono-text text-on-surface">{"event": "trigger_received", "source": "webhook"}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
