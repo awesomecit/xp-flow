@@ -43,6 +43,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 
 ## Backlog futuro (non ora)
 - RAG remoto on-demand (Cloud Run scale-to-zero + Atlas Vector Search + embeddings via API): casi d'uso coaching personale e normativa civica per prodotti di dominio
-- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1)
+- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1; mockup Stitch in preparazione — brief in ~/dev/personal/agile/2026-08-12-brief-dashboard-stitch.md)
+- Eventuale agente fe-developer nel roster: SOLO se la retro mostra attrito FE reale (decisione da /retro, il roster è congelato; nel frattempo FE = implementatore+test-writer)
 - Retrospettiva: analisi accuratezza stime Fibonacci per tipo di task
 - Micro-eval interna (5-10 task Gherkin/E2E reali) da rigirare a ogni release di modello per validare la Model Routing Policy
