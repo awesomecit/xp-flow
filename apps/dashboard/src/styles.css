@@ -1,0 +1,443 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "@fontsource-variable/hanken-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
+@import "material-symbols/outlined.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * XP Flow — Technical Precision design system.
+ *
+ * Tema DARK = base (`.dark` sull'<html>, default dell'app).
+ * Tema LIGHT = canonical (`.light` oppure [data-theme="light"] sull'<html>).
+ *
+ * Regola: nessun colore hardcoded nelle viste. Ogni colore proviene da un token.
+ * Semantica di stato:
+ *   ok        -> verde   (successo, sprint sano)
+ *   blocked   -> ambra   (bloccato, obiezione, warning)
+ *   action    -> rosso   (serve l'utente — SOLO zona "Serve da te")
+ *   escalation-> viola   (escalation modello)
+ *   pending   -> slate   (neutro / in attesa)
+ */
+
+@theme inline {
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-surface-variant: var(--surface-variant);
+  --color-surface-variant-foreground: var(--surface-variant-foreground);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Stati semantici XP Flow */
+  --color-ok: var(--ok);
+  --color-ok-foreground: var(--ok-foreground);
+  --color-ok-surface: var(--ok-surface);
+  --color-blocked: var(--blocked);
+  --color-blocked-foreground: var(--blocked-foreground);
+  --color-blocked-surface: var(--blocked-surface);
+  --color-action: var(--action);
+  --color-action-foreground: var(--action-foreground);
+  --color-action-surface: var(--action-surface);
+  --color-escalation: var(--escalation);
+  --color-escalation-foreground: var(--escalation-foreground);
+  --color-escalation-surface: var(--escalation-surface);
+  --color-pending: var(--pending);
+  --color-pending-foreground: var(--pending-foreground);
+  --color-pending-surface: var(--pending-surface);
+
+  /* Gerarchia superficie Material (surface-container-*) */
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-surface-tint: var(--surface-tint);
+
+  /* Triadi Material: primary, secondary, tertiary, error */
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-inverse-primary: var(--inverse-primary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ---------- DARK (base / default) ---------- */
+:root,
+.dark,
+[data-theme="dark"] {
+  --radius: 4px; /* ROUND_FOUR */
+
+  --background: oklch(0.129 0.041 264.7); /* #020617 */
+  --foreground: oklch(0.982 0.002 247.8); /* #F8F9FA */
+  --surface: oklch(0.208 0.04 265.8); /* #0F172A */
+  --surface-foreground: oklch(0.982 0.002 247.8);
+  --surface-variant: oklch(0.279 0.037 260); /* #1E293B */
+  --surface-variant-foreground: oklch(0.869 0.02 252.9);
+  --outline: oklch(0.372 0.039 257.3); /* #334155 */
+  --outline-variant: oklch(0.279 0.037 260);
+
+  --card: oklch(0.208 0.04 265.8);
+  --card-foreground: oklch(0.982 0.002 247.8);
+  --popover: oklch(0.208 0.04 265.8);
+  --popover-foreground: oklch(0.982 0.002 247.8);
+
+  --primary: oklch(0.754 0.139 232.7); /* #38BDF8 */
+  --primary-foreground: oklch(0.129 0.041 264.7);
+  --secondary: oklch(0.279 0.037 260);
+  --secondary-foreground: oklch(0.982 0.002 247.8);
+  --muted: oklch(0.279 0.037 260);
+  --muted-foreground: oklch(0.711 0.035 256.8); /* #94A3B8 */
+  --accent: oklch(0.279 0.037 260);
+  --accent-foreground: oklch(0.982 0.002 247.8);
+  --destructive: oklch(0.637 0.208 25.3); /* #EF4444 */
+  --destructive-foreground: oklch(0.982 0.002 247.8);
+
+  --border: oklch(0.372 0.039 257.3 / 60%);
+  --input: oklch(0.372 0.039 257.3 / 80%);
+  --ring: oklch(0.754 0.139 232.7);
+
+  --ok: oklch(0.723 0.192 149.6); /* #22C55E */
+  --ok-foreground: oklch(0.129 0.041 264.7);
+  --ok-surface: oklch(0.723 0.192 149.6 / 14%);
+  --blocked: oklch(0.769 0.165 70.1); /* #F59E0B */
+  --blocked-foreground: oklch(0.129 0.041 264.7);
+  --blocked-surface: oklch(0.769 0.165 70.1 / 14%);
+  --action: oklch(0.637 0.208 25.3); /* #EF4444 */
+  --action-foreground: oklch(0.982 0.002 247.8);
+  --action-surface: oklch(0.637 0.208 25.3 / 14%);
+  --escalation: oklch(0.606 0.219 292.7); /* #8B5CF6 */
+  --escalation-foreground: oklch(0.982 0.002 247.8);
+  --escalation-surface: oklch(0.606 0.219 292.7 / 16%);
+  --pending: oklch(0.554 0.041 257.4); /* #64748B */
+  --pending-foreground: oklch(0.982 0.002 247.8);
+  --pending-surface: oklch(0.554 0.041 257.4 / 18%);
+
+  --chart-1: oklch(0.754 0.139 232.7);
+  --chart-2: oklch(0.723 0.192 149.6);
+  --chart-3: oklch(0.769 0.165 70.1);
+  --chart-4: oklch(0.606 0.219 292.7);
+  --chart-5: oklch(0.637 0.208 25.3);
+
+  --sidebar: oklch(0.208 0.04 265.8);
+  --sidebar-foreground: oklch(0.869 0.02 252.9);
+  --sidebar-primary: oklch(0.754 0.139 232.7);
+  --sidebar-primary-foreground: oklch(0.129 0.041 264.7);
+  --sidebar-accent: oklch(0.279 0.037 260);
+  --sidebar-accent-foreground: oklch(0.982 0.002 247.8);
+  --sidebar-border: oklch(0.372 0.039 257.3 / 60%);
+  --sidebar-ring: oklch(0.754 0.139 232.7);
+
+  /* Material surface hierarchy — dark */
+  --surface-dim: oklch(0.095 0.038 265);        /* più scuro del background */
+  --surface-bright: oklch(0.32 0.038 262);       /* più chiaro di surface-variant */
+  --surface-container-lowest: oklch(0.129 0.041 264.7); /* = background */
+  --surface-container-low: oklch(0.165 0.04 265);
+  --surface-container: oklch(0.208 0.04 265.8);  /* = surface */
+  --surface-container-high: oklch(0.279 0.037 260); /* = surface-variant */
+  --surface-container-highest: oklch(0.33 0.037 258);
+
+  /* on-surface dark */
+  --on-surface: oklch(0.982 0.002 247.8);        /* = foreground */
+  --on-surface-variant: oklch(0.869 0.02 252.9); /* = surface-foreground */
+
+  /* inverse dark */
+  --inverse-surface: oklch(0.93 0.010 252);
+  --inverse-on-surface: oklch(0.16 0.04 265);
+  --inverse-primary: oklch(0.50 0.13 235);
+  --surface-tint: oklch(0.754 0.139 232.7);      /* = primary */
+
+  /* Triade primary dark */
+  --primary-container: oklch(0.22 0.10 240);
+  --on-primary-container: oklch(0.86 0.07 235);
+
+  /* Triade secondary dark */
+  --secondary-container: oklch(0.23 0.05 255);
+  --on-secondary-container: oklch(0.78 0.03 255);
+
+  /* Triade tertiary dark — ambra calda */
+  --tertiary: oklch(0.72 0.14 55);
+  --on-tertiary: oklch(0.15 0.04 60);
+  --tertiary-container: oklch(0.30 0.10 50);
+  --on-tertiary-container: oklch(0.88 0.06 55);
+
+  /* Error container dark */
+  --error-container: oklch(0.25 0.12 25);
+  --on-error-container: oklch(0.87 0.08 25);
+}
+
+/* ---------- LIGHT (canonical) ---------- */
+.light,
+[data-theme="light"] {
+  --background: oklch(0.982 0.002 247.8); /* #F8F9FA */
+  --foreground: oklch(0.208 0.04 265.8); /* #0F172A */
+  --surface: oklch(1 0 0);
+  --surface-foreground: oklch(0.208 0.04 265.8);
+  --surface-variant: oklch(0.929 0.013 255.5); /* #E2E8F0 */
+  --surface-variant-foreground: oklch(0.372 0.039 257.3);
+  --outline: oklch(0.869 0.02 252.9); /* #CBD5E1 */
+  --outline-variant: oklch(0.929 0.013 255.5);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.208 0.04 265.8);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.208 0.04 265.8);
+
+  --primary: oklch(0.685 0.148 237.3); /* #0EA5E9 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.929 0.013 255.5);
+  --secondary-foreground: oklch(0.208 0.04 265.8);
+  --muted: oklch(0.929 0.013 255.5);
+  --muted-foreground: oklch(0.446 0.037 257.3); /* #475569 */
+  --accent: oklch(0.929 0.013 255.5);
+  --accent-foreground: oklch(0.208 0.04 265.8);
+  --destructive: oklch(0.577 0.215 27.3); /* #DC2626 */
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.869 0.02 252.9);
+  --input: oklch(0.869 0.02 252.9);
+  --ring: oklch(0.685 0.148 237.3);
+
+  --ok: oklch(0.627 0.17 149.2); /* #16A34A */
+  --ok-foreground: oklch(1 0 0);
+  --ok-surface: oklch(0.627 0.17 149.2 / 12%);
+  --blocked: oklch(0.666 0.157 58.3); /* #D97706 */
+  --blocked-foreground: oklch(1 0 0);
+  --blocked-surface: oklch(0.666 0.157 58.3 / 14%);
+  --action: oklch(0.577 0.215 27.3); /* #DC2626 */
+  --action-foreground: oklch(1 0 0);
+  --action-surface: oklch(0.577 0.215 27.3 / 10%);
+  --escalation: oklch(0.541 0.247 293); /* #7C3AED */
+  --escalation-foreground: oklch(1 0 0);
+  --escalation-surface: oklch(0.541 0.247 293 / 12%);
+  --pending: oklch(0.554 0.041 257.4);
+  --pending-foreground: oklch(1 0 0);
+  --pending-surface: oklch(0.554 0.041 257.4 / 12%);
+
+  --chart-1: oklch(0.685 0.148 237.3);
+  --chart-2: oklch(0.627 0.17 149.2);
+  --chart-3: oklch(0.666 0.157 58.3);
+  --chart-4: oklch(0.541 0.247 293);
+  --chart-5: oklch(0.577 0.215 27.3);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.372 0.039 257.3);
+  --sidebar-primary: oklch(0.685 0.148 237.3);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.929 0.013 255.5);
+  --sidebar-accent-foreground: oklch(0.208 0.04 265.8);
+  --sidebar-border: oklch(0.869 0.02 252.9);
+  --sidebar-ring: oklch(0.685 0.148 237.3);
+
+  /* Material surface hierarchy — light (da xp_flow_technical_dashboard/DESIGN.md) */
+  --surface-dim: oklch(0.85 0.04 255);            /* #ccdbf2 */
+  --surface-bright: oklch(0.981 0.005 264);        /* #f8f9ff */
+  --surface-container-lowest: oklch(1 0 0);        /* #ffffff */
+  --surface-container-low: oklch(0.966 0.016 255); /* #eef4ff */
+  --surface-container: oklch(0.948 0.020 258);     /* #e5efff */
+  --surface-container-high: oklch(0.928 0.025 257); /* #dbe9ff */
+  --surface-container-highest: oklch(0.910 0.024 256); /* #d4e4fa */
+
+  /* on-surface light */
+  --on-surface: oklch(0.15 0.04 265);             /* #0d1c2d */
+  --on-surface-variant: oklch(0.35 0.015 262);    /* #45464d */
+
+  /* inverse light */
+  --inverse-surface: oklch(0.22 0.04 265);        /* #233143 */
+  --inverse-on-surface: oklch(0.96 0.02 258);     /* #e9f1ff */
+  --inverse-primary: oklch(0.80 0.08 258);        /* #b4c5ff */
+  --surface-tint: oklch(0.45 0.04 258);           /* #565e74 */
+
+  /* Triade primary light (da technical_precision_light/DESIGN.md) */
+  --primary-container: oklch(0.955 0.014 264);    /* #eeefff */
+  --on-primary-container: oklch(0.14 0.09 265);   /* #00174b */
+
+  /* Triade secondary light */
+  --secondary-container: oklch(0.88 0.03 255);    /* #d5e3fc */
+  --on-secondary-container: oklch(0.44 0.04 258); /* #57657a */
+
+  /* Triade tertiary light — arancio caldo */
+  --tertiary: oklch(0.50 0.16 35);                /* #943700 */
+  --on-tertiary: oklch(1 0 0);
+  --tertiary-container: oklch(0.59 0.18 35);      /* #bc4800 */
+  --on-tertiary-container: oklch(0.96 0.02 40);   /* #ffede6 */
+
+  /* Error container light */
+  --error-container: oklch(0.94 0.04 25);         /* #ffdad6 */
+  --on-error-container: oklch(0.28 0.13 25);      /* #93000a */
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv01", "ss01";
+  }
+
+  code,
+  kbd,
+  pre,
+  samp,
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Testo tecnico: ID, timestamp, comandi */
+@utility tech-id {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ── Scala tipografica (da xp_flow_technical_dashboard + technical_precision_light DESIGN.md) ── */
+
+@utility headline-lg {
+  font-family: var(--font-sans);
+  font-size: 1.875rem;  /* 30px */
+  font-weight: 700;
+  line-height: 2.25rem; /* 36px */
+  letter-spacing: -0.02em;
+}
+
+@utility headline-md {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;    /* 24px */
+  font-weight: 600;
+  line-height: 2rem;    /* 32px */
+  letter-spacing: -0.01em;
+}
+
+@utility headline-sm {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;   /* 20px */
+  font-weight: 600;
+  line-height: 1.75rem; /* 28px */
+}
+
+@utility title-lg {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;  /* 18px */
+  font-weight: 600;
+  line-height: 1.5rem;  /* 24px */
+}
+
+@utility body-lg {
+  font-family: var(--font-sans);
+  font-size: 1rem;      /* 16px */
+  font-weight: 400;
+  line-height: 1.5rem;  /* 24px */
+}
+
+@utility body-md {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;  /* 14px */
+  font-weight: 400;
+  line-height: 1.25rem; /* 20px */
+}
+
+@utility body-sm {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;   /* 12px */
+  font-weight: 400;
+  line-height: 1rem;    /* 16px */
+}
+
+@utility label-md {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;   /* 12px */
+  font-weight: 500;
+  line-height: 1rem;    /* 16px */
+  letter-spacing: 0.02em;
+}
+
+@utility label-sm {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;  /* 10px */
+  font-weight: 500;
+  line-height: 0.875rem; /* 14px */
+  letter-spacing: 0.05em;
+}
+
+/* Dati tecnici variabili: ID, metriche, timestamp inline */
+@utility data-mono {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem; /* 13px */
+  font-weight: 500;
+  line-height: 1rem;    /* 16px */
+  letter-spacing: -0.02em;
+}
+
+/* Etichette di sezione in maiuscolo monospace */
+@utility label-caps {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 700;
+  line-height: 0.875rem; /* 14px */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
