@@ -11,6 +11,12 @@
 - [ ] Setup docs-as-code Fase 1 (mkdocs + Action + Pages) — 2 SP
 - [ ] Import tecniche brainstorming BMAD in /brainstorm — 2 SP
 - [ ] Regole dependency-cruiser boundary DDD — 3 SP
+- [ ] Tech debt #1 — sprint mai chiuso: aggiungere evento `sprint/chiuso` e resettare `sprintAttivo` di conseguenza — 1 SP
+- [ ] Tech debt #2 — `reviewPending` sempre vuoto: implementare o rimuovere il campo da SprintStatus — 1 SP
+- [ ] Tech debt #3 — `appendFileSync` non thread-safe con più agenti in parallelo: valutare lock o stream — 2 SP
+- [ ] Tech debt #4 — nessun comando CLI che appende `sprint/avviato`: oggi va scritto a mano — 1 SP
+- [ ] Tech debt #5 — `pino` installato ma non usato: rimuovere o usare per logging CLI — 1 SP
+- [ ] Metodo — gap mid-sprint: valutare comando `/nota` o campo `tech_debt` nell'event log (candidato retro #2)
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
