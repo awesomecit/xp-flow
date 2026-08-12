@@ -12,6 +12,7 @@
 | A che punto siamo? (al volo) | `/stato` | TL;DR ≤15 righe: focus, repo, pendenze, prossimo passo |
 | Aggiornamento completo con roadmap | `/stato deep` | + Gantt/diagrammi, scoperte, decisioni, deprecati, rischi, north-star |
 | Cosa succede adesso, in concreto? | `/next` | UN passo: cosa fa Claude, e l'eventuale gate che tocca a me |
+| Fine giornata: chiudo e riordino | `/consolida` | fonde i md del giorno in un unico canonico `agile/YYYY-MM-DD.md`, pota il deprecato col perché, history di sviluppo — leggibile anche dagli agenti |
 
 Ogni output viene anche salvato nel diario `~/dev/personal/agile/YYYY-MM-DD-<comando>.md`.
 
