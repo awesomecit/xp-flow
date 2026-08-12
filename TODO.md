@@ -20,6 +20,8 @@
 - [ ] Metodo — pannello ruoli cerimonia (ADR 0004 + bozza ceo-vision): decisione di attivazione (candidato retro #2)
 - [ ] Tech debt #6 — doppia serie ADR in docs/adr/ (000X MADR vs ADR-00X): consolidare nella serie 000X — 1 SP
 - [ ] Igiene post-spostamento: riferimenti morti a ~/dev/personal/* in issue #1 — 1 SP
+- [ ] Config — dedup flusso XP legacy (`~/dev/.claude`, comandi /spec /tdd /qa /commit /park /adr /close-session) vs xp-flow: decidere se legacy resta solo per tech-citizen o si fonde — candidata retro
+- [ ] Config — collisione nome `/discovery`: esiste sia in `~/.claude/commands/` (DDD "spiegami come a un bambino") sia in `~/dev/.claude/commands/` (esplorazione storia read-only); il secondo probabilmente oscura il primo dentro ~/dev. Rinominare uno dei due — 1 SP
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
