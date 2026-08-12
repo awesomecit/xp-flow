@@ -2,3 +2,6 @@ node_modules/
 dist/
 .env
 .env.*
+.nyc_output/
+.tap/
+.xpflow/test-*.jsonl
