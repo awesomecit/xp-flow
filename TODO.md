@@ -20,8 +20,8 @@
 - [ ] Metodo — pannello ruoli cerimonia (ADR 0004 + bozza ceo-vision): decisione di attivazione (candidato retro #2)
 - [ ] Tech debt #6 — doppia serie ADR in docs/adr/ (000X MADR vs ADR-00X): consolidare nella serie 000X — 1 SP
 - [ ] Igiene post-spostamento: riferimenti morti a ~/dev/personal/* in issue #1 — 1 SP
-- [ ] Config — dedup flusso XP legacy (`~/dev/.claude`, comandi /spec /tdd /qa /commit /park /adr /close-session) vs xp-flow: decidere se legacy resta solo per tech-citizen o si fonde — candidata retro
-- [ ] Dashboard — selettore repo/app (tendina vicino al logo xpflow): manifest statico dei repo workspace + file attesi per repo, non scanner dinamico (YAGNI) — dopo storia B in corso, slice successiva a #2
+- [ ] Metodo — xp-flow multi-tenant (ADR 0005): comandi/agenti via symlink nei repo tenant, stato/sprint indipendente per repo; sostituisce la dedup flusso legacy come design — decisione di attivazione (candidato retro #2)
+- [ ] Dashboard — selettore tenant (tendina vicino al logo xpflow, ADR 0005): manifest statico dei repo/tenant workspace + file attesi per repo, non scanner dinamico (YAGNI) — dopo storia B in corso, slice successiva a #2
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
