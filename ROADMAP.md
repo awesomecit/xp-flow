@@ -8,7 +8,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - [ ] `gh auth login`, Docker attivo, creare issue #1 da good-first-issue.md
 - [ ] Sessione con `claude --model opusplan`; verificare che `CLAUDE_CODE_SUBAGENT_MODEL` non sia impostata globalmente
 - [ ] Chiudere issue #1 (event log + `xpflow status`) attraversando l'intero flusso; ogni attrito col metodo → evento `metodo_feedback`, NON si corregge il metodo in corsa
-- [ ] **Issue #2 = prodotto vero**: slice minima di Life Quest — cron 21:45 di controllo giornata + messaggio Telegram (3-5 SP). La fabbrica esiste per spedire questo.
+- ~~**Issue #2**: Life Quest slice 1 — deprecata, pilota cambiato.~~
 
 ## ⚖️ Regole di governo (dal review del progetto)
 - **Freeze**: metodo congelato fino alla 2ª retro; modifiche solo in /retro dai `metodo_feedback` accumulati.
@@ -46,7 +46,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 
 ## Backlog futuro (non ora)
 - RAG remoto on-demand (Cloud Run scale-to-zero + Atlas Vector Search + embeddings via API): casi d'uso coaching personale e normativa civica per prodotti di dominio
-- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1). Design PRONTO: 19 mockup Stitch + design system in `design/dashboard/` di questo repo; brief e prompt in ~/dev/personal/agile/ (2026-08-12). Implementazione: scaffold da ui-boilerplate (repo template) come `apps/dashboard` del monorepo
+- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1). Design PRONTO: 19 mockup Stitch + design system in `design/dashboard/` di questo repo; brief e prompt in ~/dev/personal/agile/ (2026-08-12). Implementazione: scaffold da `awesomecit/universal-canvas` (template repository, clone locale in ~/dev/personal/universal-canvas) come `apps/dashboard` del monorepo
 - Eventuale agente fe-developer nel roster: SOLO se la retro mostra attrito FE reale (decisione da /retro, il roster è congelato; nel frattempo FE = implementatore+test-writer)
 - Retrospettiva: analisi accuratezza stime Fibonacci per tipo di task
 - Micro-eval interna (5-10 task Gherkin/E2E reali) da rigirare a ogni release di modello per validare la Model Routing Policy
