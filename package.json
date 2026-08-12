@@ -8,12 +8,13 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "tap",
-    "typecheck": "tsc --noEmit",
+    "test": "tap && pnpm -r --if-present run test",
+    "typecheck": "tsc --noEmit && pnpm -r --if-present run typecheck",
     "prepare": "husky",
     "dev": "tsx bin/xpflow.ts",
     "build": "tsc",
-    "lint": "eslint src test"
+    "lint": "eslint src test --max-warnings 0 && pnpm -r --if-present run lint",
+    "dashboard": "pnpm --filter dashboard dev"
   },
   "dependencies": {
     "pino": "^9"
@@ -35,5 +36,6 @@
     ],
     "node-arg": [],
     "jobs": 1
-  }
+  },
+  "packageManager": "pnpm@10.34.5+sha512.a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e"
 }
