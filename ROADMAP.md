@@ -41,6 +41,9 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - [ ] Valutare claude-code-action per doc-sync su merge (max-turns basso)
 - Trigger portale: con ≥3 domini attivi → mkdocs-multirepo-plugin
 
+## Vincoli trasversali (valgono da subito, si applicano quando nasce il primo servizio)
+- **Cloud-ready anche in locale**: essere compliant con gli standard dei principali provider cloud pur lavorando in locale. Primo riferimento: logging strutturato compatibile GKE/Cloud Logging (JSON su stdout con `severity`, `message`, `timestamp`, campi trace) — mai formati log custom. Predisporre spazio per altri provider (AWS/Azure) tramite astrazione minima: il codice logga in un formato neutro-strutturato, l'adattamento al provider è configurazione, non riscrittura. Vale anche per health check (`/healthz`-style), graceful shutdown (SIGTERM) e config via env — i pattern che Docker locale e cloud condividono. ADR alla prima implementazione.
+
 ## Backlog futuro (non ora)
 - RAG remoto on-demand (Cloud Run scale-to-zero + Atlas Vector Search + embeddings via API): casi d'uso coaching personale e normativa civica per prodotti di dominio
 - Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1; mockup Stitch in preparazione — brief in ~/dev/personal/agile/2026-08-12-brief-dashboard-stitch.md)
