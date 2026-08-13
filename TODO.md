@@ -5,7 +5,7 @@
 ## Prossimo sprint (2 giorni)
 - [ ] #2 Dashboard di controllo slice 1: web read-only su events.jsonl — 12 SP da /pianifica (PRODOTTO PILOTA: north-star; dipende da #1 ✅)
   - Epica operativa: [universal-canvas#1](https://github.com/awesomecit/universal-canvas/issues/1) — A token bridge 3 SP · B stile viste 5 SP · C dati reali 3 SP · D cleanup 1 SP
-  - Stato 13/08: giro Lovable rientrato nel branch `feat/storia-c-dati-reali` · A token bridge ✅ · B da verificare sul branch · C in corso (WIP backend REST su events.jsonl) · D da fare
+  - Stato 13/08 sera: slice 1 COMPLETA nel monorepo `apps/dashboard` (ADR 0006) — A ✅ · B ✅ (138 scenari e2e demo) · C ✅ (8 unit flow-api + e2e reale senza MSW) · D ✅ (cleanup per sottrazione nel porting). Restano i gate umani: push branch `feat/monorepo-dashboard`, CI verde, PR e merge
 
 ## In coda
 - [ ] Setup docs-as-code Fase 1 (mkdocs + Action + Pages) — 2 SP
@@ -25,6 +25,9 @@
 - [ ] Quality gate locali al posto delle feature GitHub a pagamento: husky + eslint-plugin-sonarjs + script (precedente: citycat DECISIONI #11/#13); set minimo comune ai tenant ADR 0005 — candidato retro
 - [ ] Metodo — chiavi di correlazione negli eventi (`commit` sha + `refs`) per dare contesto/storico agli agenti — candidato retro #2 (prerequisito: tech debt #3)
 - [ ] Metodo — freeze-guard: hook PreToolUse che blocca modifiche ai file di metodo fuori da `/retro` — candidato retro #2 (design nell'event log del 13/08)
+- [ ] Monorepo — spostare la CLI in `packages/cli` quando nasce `packages/events` (trigger in ADR 0006) — 2 SP
+- [ ] Monorepo — duplicazione parser eventi: CLI `src/events.ts` vs dashboard `src/domain/events.ts` → candidata `packages/events` (ADR 0002 L1) — 3 SP
+- [ ] Dominio — vocabolario eventi disallineato: il log reale usa `esito:"ok"` e `cmd:"pianifica"`, fuori catalogo dello schema dashboard (righe scartate dal monitor) — estendere catalogo o normalizzare il log — 2 SP
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅

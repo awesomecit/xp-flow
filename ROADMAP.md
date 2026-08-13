@@ -10,7 +10,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - [ ] Chiudere issue #1 (event log + `xpflow status`) attraversando l'intero flusso; ogni attrito col metodo → evento `metodo_feedback`, NON si corregge il metodo in corsa
 - ~~**Issue #2**: Life Quest slice 1 — deprecata, pilota cambiato.~~
 - [ ] **Issue #2 = PRODOTTO PILOTA: Dashboard di controllo** — punto unico per vedere lo stato della fabbrica, interagire col flusso e (slice future) dialogare via Telegram. Dichiarazione esplicita: pur servendo la fabbrica, È il prodotto che conta per la north-star. Slicing:
-  - Slice 1 (issue #2): dashboard web read-only su events.jsonl — zone Sprint attivo + Serve-da-te + Timeline. Scaffold da universal-canvas, design già pronto in design/dashboard/. Dipende da issue #1 (parser eventi). ~5-8 SP, stima in /brainstorm.
+  - Slice 1 (issue #2): dashboard web read-only su events.jsonl — zone Sprint attivo + Serve-da-te + Timeline. Scaffold da universal-canvas, design già pronto in design/dashboard/. Dipende da issue #1 (parser eventi). ~5-8 SP, stima in /brainstorm. **13/08: completata nel monorepo `apps/dashboard` (ADR 0006, epica a ~16 SP con l'infra); restano push+CI+PR (gate umani).**
   - Slice 2: interazione — chiudere azioni manuali (manual_done) e lanciare comandi del flusso dalla UI.
   - Slice 3: canale Telegram bidirezionale (notifiche + messaggi verso il punto unico di controllo) — architettura decisa in ADR 0003 (dispatcher local-only, long-polling, claude headless con permission-mode).
 
@@ -50,7 +50,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 
 ## Backlog futuro (non ora)
 - RAG remoto on-demand (Cloud Run scale-to-zero + Atlas Vector Search + embeddings via API): casi d'uso coaching personale e normativa civica per prodotti di dominio
-- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1). Design PRONTO: 19 mockup Stitch + design system in `design/dashboard/` di questo repo; brief e prompt in ~/dev/agile/ (2026-08-12). Implementazione: scaffold da `awesomecit/universal-canvas` (template repository, clone locale in ~/dev/universal-canvas) come `apps/dashboard` del monorepo
+- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1). Design PRONTO: 19 mockup Stitch + design system in `design/dashboard/` di questo repo; brief e prompt in ~/dev/agile/ (2026-08-12). Implementazione: scaffold da `awesomecit/universal-canvas` (template repository, clone locale in ~/dev/universal-canvas) come `apps/dashboard` del monorepo — **scaffold eseguito il 13/08 per la slice 1 (ADR 0006)**
 - Eventuale agente fe-developer nel roster: SOLO se la retro mostra attrito FE reale (decisione da /retro, il roster è congelato; nel frattempo FE = implementatore+test-writer)
 - Pannello ruoli di cerimonia (PO/CEO/TL/BE/FE/DevOps) — ADR 0004 in stato proposta: attivazione SOLO da retro #2; bozza ceo-vision in docs/drafts/
 - Eventuale agente devops-engineer: SOLO alla prima frizione infra reale (Docker/CI/deploy/observability), decisione da /retro (ADR 0004)
