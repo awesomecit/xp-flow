@@ -27,7 +27,14 @@
 - [ ] Metodo — freeze-guard: hook PreToolUse che blocca modifiche ai file di metodo fuori da `/retro` — candidato retro #2 (design nell'event log del 13/08)
 - [ ] Monorepo — spostare la CLI in `packages/cli` quando nasce `packages/events` (trigger in ADR 0006) — 2 SP
 - [ ] Monorepo — duplicazione parser eventi: CLI `src/events.ts` vs dashboard `src/domain/events.ts` → candidata `packages/events` (ADR 0002 L1) — 3 SP
-- [ ] Dominio — vocabolario eventi disallineato: il log reale usa `esito:"ok"` e `cmd:"pianifica"`, fuori catalogo dello schema dashboard (righe scartate dal monitor) — estendere catalogo o normalizzare il log — 2 SP
+- [ ] Dominio — vocabolario eventi: TRE cataloghi divergenti (CLI `status.ts`: `avviato`/`ok`/`scenario`; dashboard `schema.ts`: `in_corso`/`chiuso`/`bloccato`/`escalation`; legacy `agile/XP`: `todo`/`claimed`/`red`/`green`/`refactor`/`done` + eventi `transition` con `from`/`to`). Sul log reale la dashboard scarta 7 righe (`esito:"ok"`, `cmd:"pianifica"`). Convergenza proposta: outcomes della dashboard + `transition from/to` del legacy, CLI allineata — decisione vocabolario in retro #2 — 2 SP
+- [ ] Metodo — macchina a stati esplicita (TEMA UNIFICANTE retro #2): stati storia/sprint/review dichiarati come dato, transizioni all'indietro con causa (bocciature review e riaperture visibili nel log), validazione all'append (evento fuori vocabolario o transizione illegale → rifiutato); poi `xpflow next` che CALCOLA il prossimo passo (sprint attivo? review pendenti? azioni manuali? cima TODO) — dopo la decisione di vocabolario: attuazione A in CLI ~5 SP, B `packages/events` a vocabolario stabile
+- [ ] Metodo — comandi che non loggano: `/pair-review` e `/retro` non hanno mai prodotto eventi propri nel log reale; `manual_done` mai usato (il ciclo azione_manuale non si è mai chiuso formalmente) — i prompt sono file di metodo, retro #2
+- [ ] Tech debt #7 — `xpflow status` esce su "nessuno sprint attivo" senza stampare le azioni manuali pendenti (`bin/xpflow.ts`) — 1 SP
+- [ ] Tech debt #8 — `ref` fuori da `XpEventInput` (letto via cast in `status.ts`) e `ts` sovrascrivibile dallo spread in `events.ts` — 1 SP
+- [ ] Tech debt #9 — dashboard `parseFlowEvents`: payload API fuori contratto → fallimento silenzioso con `discardedRows=0` — 1 SP
+- [ ] Issue GH — struttura: template issue nel repo xp-flow (oggi esistono solo in `~/dev/.github`), label di stato, milestone per slice — 2 SP
+- [ ] Igiene — chiudere il ciclo `azione_manuale` con eventi `manual_done` (ref = ts dell'evento aperto) man mano che i gate umani del 13-14/08 vengono eseguiti — 1 SP
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
