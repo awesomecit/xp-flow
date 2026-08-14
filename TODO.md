@@ -35,6 +35,7 @@
 - [ ] Tech debt #9 — dashboard `parseFlowEvents`: payload API fuori contratto → fallimento silenzioso con `discardedRows=0` — 1 SP
 - [ ] Issue GH — struttura: template issue nel repo xp-flow (oggi esistono solo in `~/dev/.github`), label di stato, milestone per slice — 2 SP
 - [ ] Igiene — chiudere il ciclo `azione_manuale` con eventi `manual_done` (ref = ts dell'evento aperto) man mano che i gate umani del 13-14/08 vengono eseguiti — 1 SP
+- [ ] Metodo — permessi auto mode troppo stretti per operatività autonoma: durante la chiusura slice 1 il classificatore ha bloccato un `kill` su un processo dev residuo già verificato stray (bloccava porta 8081/`test:e2e:reale`), dopo averne permesso uno analogo poco prima nella stessa sessione — decidere quali azioni locali reversibili (kill di processi dev/test verificati stray, pulizia porte) allentare, senza toccare i gate hard (push, --force, --no-verify, reset --hard) — candidato retro #2
 
 ## Fatto
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
