@@ -5,8 +5,9 @@
 Docker Desktop attivo · Claude Code aggiornato · Node 22 via nvm (`.nvmrc`)
 
 ## Struttura
-Il laboratorio è **xp-flow** (metodo + fabbrica + diario `agile/`);
-**universal-canvas** è la sua UI (monitor). `~/dev` è solo il contenitore:
+Il laboratorio è **xp-flow** (metodo + fabbrica + diario `agile/` + monitor
+in `apps/dashboard`, ADR 0006); **universal-canvas** è il template FE puro
+per le app future. `~/dev` è solo il contenitore:
 tiene le cerimonie personali (`claude-commands/`), il kit git per repo
 esterni (`git-toolchain/`) e la config workspace — i repo annidati sono
 gitignorati e autonomi (niente submodules).
@@ -45,7 +46,7 @@ accettare il dialog. Sintomi tipici: i comandi custom "spariti" e il warning
 - Sessioni quotidiane: da `xp-flow/` (`claude --model opusplan`) — comandi
   `/brainstorm /sprint /pair-review /retro`; la memoria auto di Claude Code
   vive sulla chiave di questa directory.
-- UI/monitor: repo `universal-canvas` (bun, vitest, Playwright).
+- UI/monitor: `apps/dashboard` di questo repo (`pnpm dashboard` → :8080).
 - VS Code: aprire `~/dev/dev.code-workspace` (multi-root).
 
 ## Ordine di lavoro

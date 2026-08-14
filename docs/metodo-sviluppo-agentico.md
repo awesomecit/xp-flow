@@ -1,6 +1,6 @@
 # Metodo di sviluppo agentico — XP Flow
 
-> **Governo del metodo**: congelato fino alla 2ª retrospettiva; si modifica solo in /retro (eventi `metodo_feedback`). North-star: 1 incremento di prodotto rilasciato a settimana. Kill-list dei tagli candidati in ROADMAP.md.
+> **Governo del metodo**: si modifica SOLO in /retro (regola permanente; il freeze iniziale è stato sciolto dalla retro #2 del 14/08/2026). Fuori dalla retro: eventi `metodo_feedback`. North-star: 1 incremento di prodotto rilasciato a settimana. Kill-list dei tagli candidati in ROADMAP.md.
 
 ## 1. Principi
 
