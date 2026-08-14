@@ -29,6 +29,18 @@ Cerimonie personali via symlink:
 Hook husky condivisi in `~/.claude/shared-hooks/` (delegati da ogni repo via
 `.husky/pre-commit` e `.husky/commit-msg`).
 
+## Fiducia dei workspace (Claude Code)
+Claude Code lega la fiducia al **path assoluto** della directory: al primo
+avvio in un workspace va accettato il trust dialog, altrimenti i comandi di
+progetto (`.claude/commands/` — qui `/brainstorm /sprint /pair-review
+/retro`) e le regole `permissions.allow` dei settings vengono **ignorati in
+silenzio**; i comandi utente in `~/.claude/commands/` restano attivi.
+Dopo un clone nuovo o uno **spostamento del repo** il trust va ridato:
+lanciare `claude` una volta in ogni workspace (`~/dev` e `~/dev/xp-flow`) e
+accettare il dialog. Sintomi tipici: i comandi custom "spariti" e il warning
+`Ignoring N permissions.allow entries … has not been trusted` in headless
+(successo il 14/08/2026 dopo lo spostamento dei repo da `~/dev/personal/*`).
+
 ## Da dove si lavora
 - Sessioni quotidiane: da `xp-flow/` (`claude --model opusplan`) — comandi
   `/brainstorm /sprint /pair-review /retro`; la memoria auto di Claude Code
