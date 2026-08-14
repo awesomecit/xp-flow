@@ -2,7 +2,7 @@
 @settings
 Funzionalità: Impostazioni e diagnostica
   Come product owner
-  Voglio scegliere lingua e tema e vedere da dove arrivano i dati
+  Voglio scegliere lingua e tema e vedere piattaforma e feature attive
   Così da usare il cruscotto come preferisco e capire cosa sto guardando
 
   @positive
@@ -10,7 +10,7 @@ Funzionalità: Impostazioni e diagnostica
     Dato l'utente apre la pagina "/impostazioni"
     Allora vede il testo "Preferenze"
     E vede il testo "Diagnostica"
-    E vede il testo "Origine dati"
+    E vede il testo "Piattaforma"
 
   @positive
   Scenario: Il cambio lingua si applica subito e resta dopo un reload
