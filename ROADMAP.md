@@ -45,6 +45,8 @@ Percorso critico (dettagli e censimento del 14/08 in TODO.md ed event log):
 - [ ] Lock append `events.jsonl` (tech debt #3, prerequisito concorrenza) — 2 SP
 - [ ] Runner semi-auto: script sequenziale stop-on-red su UNA storia alla
   volta (aprire issue dedicata) — ~3 SP
+- [ ] Catena PR automatica (ADR 0007): review agente required + auto-merge
+  con merge commit; push scoped `feat/*` dopo ratifica retro #2 — 3 SP
 - Convergenza: la slice 2 della #2 (interazione dalla UI) È il pannello di
   controllo del semi-auto; la slice 3 Telegram (ADR 0003) il suo telecomando.
 - Assunzione da testare al primo giro: le spec Gherkin di /brainstorm bastano
