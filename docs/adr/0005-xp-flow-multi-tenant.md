@@ -1,6 +1,6 @@
 # 5. xp-flow multi-tenant: metodo condiviso via symlink, stato indipendente per app
 
-Data: 2026-08-12 · Stato: proposta (gate di attivazione: retro #2, ~21/08)
+Data: 2026-08-12 · Stato: **accettata** (retro #2, 14/08/2026) — attivazione condizionata alla decisione sul vocabolario/macchina a stati (spike beads dello sprint corrente)
 
 ## Contesto
 Il workspace ha più app da costruire (citycat.app, foundation, universal-canvas,

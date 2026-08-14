@@ -2,10 +2,10 @@
 
 > Fonte di verità operativa insieme a issue GitHub e .xpflow/events.jsonl. Item stimati in SP Fibonacci.
 
-## Prossimo sprint (2 giorni)
-- [ ] #2 Dashboard di controllo slice 1: web read-only su events.jsonl — 12 SP da /pianifica (PRODOTTO PILOTA: north-star; dipende da #1 ✅)
-  - Epica operativa: [universal-canvas#1](https://github.com/awesomecit/universal-canvas/issues/1) — A token bridge 3 SP · B stile viste 5 SP · C dati reali 3 SP · D cleanup 1 SP
-  - Stato 13/08 sera: slice 1 COMPLETA nel monorepo `apps/dashboard` (ADR 0006) — A ✅ · B ✅ (138 scenari e2e demo) · C ✅ (8 unit flow-api + e2e reale senza MSW) · D ✅ (cleanup per sottrazione nel porting). Restano i gate umani: push branch `feat/monorepo-dashboard`, CI verde, PR e merge
+## Prossimo sprint (2 giorni) — azioni dalla retro #2 (docs/retro/2026-33.md)
+- [ ] A1 — Spike beads sul backlog reale → verdetto adotta/copia-contratto in ADR 0008 — 2 SP
+- [ ] A2 — Attivare catena PR (ADR 0007 accettata): branch protection + auto-merge + variabile/secret (azioni manuali), poi prima PR reale attraverso la catena — 2 SP
+- [ ] A3 — Guardrail e igiene: freeze-guard hook attivo, `manual_done` arretrati, fix tech debt #7 — 2 SP
 
 ## In coda
 - [ ] Setup docs-as-code Fase 1 (mkdocs + Action + Pages) — 2 SP
@@ -41,6 +41,7 @@
 - [ ] Metodo — regola "mai git push, lo eseguo io" (CLAUDE.md globale + workspace, 30/07): in questa sessione (14/08) ho dato autorizzazione puntuale a Claude per push branch + `gh pr create` (xp-flow feat/monorepo-dashboard) e push tag (canvas archive/storia-c-dati-reali), scavalcando la regola invece di modificarla. Decidere in retro: (a) tenere la regola invariata e trattare ogni eccezione come puntuale/esplicita come oggi, o (b) modificare CLAUDE.md con condizioni esplicite sotto cui Claude può pushare in autonomia (es. solo dopo parità CI locale verificata + conferma esplicita in sessione) — evitare che le eccezioni puntuale-per-puntuale diventino la norma non scritta — candidato retro #2
 
 ## Fatto
+- [x] #2 Dashboard di controllo slice 1 nel monorepo `apps/dashboard` (ADR 0006) — 16 SP, PR #3 mergiata il 14/08 ✅ NORTH-STAR: primo incremento di prodotto spedito (A token bridge · B stile viste, 138 e2e · C dati reali · D cleanup) ✅
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
 - [x] Config — collisione nome `/discovery`: unico comando in `~/dev/.claude/commands/discovery.md` (esplorazione codice + interview DDD "spiegami come a un bambino" innestata dentro); duplicato utente rimosso ✅
 

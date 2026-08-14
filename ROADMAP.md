@@ -15,7 +15,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
   - Slice 3: canale Telegram bidirezionale (notifiche + messaggi verso il punto unico di controllo) — architettura decisa in ADR 0003 (dispatcher local-only, long-polling, claude headless con permission-mode).
 
 ## ⚖️ Regole di governo (dal review del progetto)
-- **Freeze**: metodo congelato fino alla 2ª retro; modifiche solo in /retro dai `metodo_feedback` accumulati.
+- **Governo**: metodo modificabile SOLO in /retro dai `metodo_feedback` accumulati (regola permanente; freeze iniziale sciolto alla retro #2 del 14/08 — freeze-guard in attivazione).
 - **North-star**: 1 incremento di prodotto/settimana. Fine settembre senza prodotto spedito → si semplifica, non si estende.
 
 ## 🔪 Kill-list (tagli candidati, attivabili SOLO dalla retro se c'è attrito)
