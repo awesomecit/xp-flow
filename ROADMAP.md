@@ -30,6 +30,26 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - [x] Estensioni VS Code: markdown-mermaid, markdownlint, code-spell-checker(+it), Cucumber official — installate 12/08 (graphviz-preview e openapi rimandate alle fasi che le usano)
 - Trigger stop: se il pilota non dà attrito, non aggiungere altro
 
+## Traguardo — Fabbrica semi-auto (tra Fase 1 e Fase 2 · gate: retro #2)
+Obiettivo: un agente completa una storia ben specificata in headless
+(`claude -p "/sprint ..."`) con stop-on-red; l'umano resta sui gate
+(push/PR/merge) e supervisiona dalla dashboard. ~15-17 SP, 2-3 sprint,
+realistico entro fine agosto (prima del checkpoint north-star di settembre).
+Percorso critico (dettagli e censimento del 14/08 in TODO.md ed event log):
+- [ ] Retro #2 decide: vocabolario eventi unificato (tre cataloghi divergenti),
+  freeze-guard, permessi auto-mode, attivazione ADR 0005 — 0 SP, sblocca tutto
+- [ ] Attuazione A in CLI: vocabolario chiuso + `sprint start/close` (tech debt
+  #1/#4/#7) + `xpflow next` che CALCOLA il prossimo passo — ~6 SP
+- [ ] Spec pronte-per-agente: DoR + struttura story file (import BMAD
+  anticipato dalla Fase 2) + template/label/milestone issue GH — ~4 SP
+- [ ] Lock append `events.jsonl` (tech debt #3, prerequisito concorrenza) — 2 SP
+- [ ] Runner semi-auto: script sequenziale stop-on-red su UNA storia alla
+  volta (aprire issue dedicata) — ~3 SP
+- Convergenza: la slice 2 della #2 (interazione dalla UI) È il pannello di
+  controllo del semi-auto; la slice 3 Telegram (ADR 0003) il suo telecomando.
+- Assunzione da testare al primo giro: le spec Gherkin di /brainstorm bastano
+  senza intervento umano mid-sprint (gap `/nota` in TODO, candidato retro #2).
+
 ## Fase 2 — Import mirato da BMAD (MIT) + generatori
 - [ ] Tecniche di brainstorming (CSV/skill BMAD) → dentro /brainstorm
 - [ ] Struttura story file (contesto+AC) e Definition of Ready → dentro /sprint
