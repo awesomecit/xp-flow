@@ -10,7 +10,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - [ ] Chiudere issue #1 (event log + `xpflow status`) attraversando l'intero flusso; ogni attrito col metodo → evento `metodo_feedback`, NON si corregge il metodo in corsa
 - ~~**Issue #2**: Life Quest slice 1 — deprecata, pilota cambiato.~~
 - [ ] **Issue #2 = PRODOTTO PILOTA: Dashboard di controllo** — punto unico per vedere lo stato della fabbrica, interagire col flusso e (slice future) dialogare via Telegram. Dichiarazione esplicita: pur servendo la fabbrica, È il prodotto che conta per la north-star. Slicing:
-  - Slice 1 (issue #2): dashboard web read-only su events.jsonl — zone Sprint attivo + Serve-da-te + Timeline. Scaffold da universal-canvas, design già pronto in design/dashboard/. Dipende da issue #1 (parser eventi). ~5-8 SP, stima in /brainstorm.
+  - Slice 1 (issue #2): dashboard web read-only su events.jsonl — zone Sprint attivo + Serve-da-te + Timeline. Scaffold da universal-canvas, design già pronto in design/dashboard/. Dipende da issue #1 (parser eventi). ~5-8 SP, stima in /brainstorm. **13/08: completata nel monorepo `apps/dashboard` (ADR 0006, epica a ~16 SP con l'infra); restano push+CI+PR (gate umani).**
   - Slice 2: interazione — chiudere azioni manuali (manual_done) e lanciare comandi del flusso dalla UI.
   - Slice 3: canale Telegram bidirezionale (notifiche + messaggi verso il punto unico di controllo) — architettura decisa in ADR 0003 (dispatcher local-only, long-polling, claude headless con permission-mode).
 
@@ -29,6 +29,28 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 - [ ] ADR in docs/adr/ (MADR puro), CHANGELOG via git-cliff
 - [x] Estensioni VS Code: markdown-mermaid, markdownlint, code-spell-checker(+it), Cucumber official — installate 12/08 (graphviz-preview e openapi rimandate alle fasi che le usano)
 - Trigger stop: se il pilota non dà attrito, non aggiungere altro
+
+## Traguardo — Fabbrica semi-auto (tra Fase 1 e Fase 2 · gate: retro #2)
+Obiettivo: un agente completa una storia ben specificata in headless
+(`claude -p "/sprint ..."`) con stop-on-red; l'umano resta sui gate
+(push/PR/merge) e supervisiona dalla dashboard. ~15-17 SP, 2-3 sprint,
+realistico entro fine agosto (prima del checkpoint north-star di settembre).
+Percorso critico (dettagli e censimento del 14/08 in TODO.md ed event log):
+- [ ] Retro #2 decide: vocabolario eventi unificato (tre cataloghi divergenti),
+  freeze-guard, permessi auto-mode, attivazione ADR 0005 — 0 SP, sblocca tutto
+- [ ] Attuazione A in CLI: vocabolario chiuso + `sprint start/close` (tech debt
+  #1/#4/#7) + `xpflow next` che CALCOLA il prossimo passo — ~6 SP
+- [ ] Spec pronte-per-agente: DoR + struttura story file (import BMAD
+  anticipato dalla Fase 2) + template/label/milestone issue GH — ~4 SP
+- [ ] Lock append `events.jsonl` (tech debt #3, prerequisito concorrenza) — 2 SP
+- [ ] Runner semi-auto: script sequenziale stop-on-red su UNA storia alla
+  volta (aprire issue dedicata) — ~3 SP
+- [ ] Catena PR automatica (ADR 0007): review agente required + auto-merge
+  con merge commit; push scoped `feat/*` dopo ratifica retro #2 — 3 SP
+- Convergenza: la slice 2 della #2 (interazione dalla UI) È il pannello di
+  controllo del semi-auto; la slice 3 Telegram (ADR 0003) il suo telecomando.
+- Assunzione da testare al primo giro: le spec Gherkin di /brainstorm bastano
+  senza intervento umano mid-sprint (gap `/nota` in TODO, candidato retro #2).
 
 ## Fase 2 — Import mirato da BMAD (MIT) + generatori
 - [ ] Tecniche di brainstorming (CSV/skill BMAD) → dentro /brainstorm
@@ -50,7 +72,7 @@ Obiettivo del giorno 1: UN giro completo brainstorm→sprint→review→retro su
 
 ## Backlog futuro (non ora)
 - RAG remoto on-demand (Cloud Run scale-to-zero + Atlas Vector Search + embeddings via API): casi d'uso coaching personale e normativa civica per prodotti di dominio
-- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1). Design PRONTO: 19 mockup Stitch + design system in `design/dashboard/` di questo repo; brief e prompt in ~/dev/agile/ (2026-08-12). Implementazione: scaffold da `awesomecit/universal-canvas` (template repository, clone locale in ~/dev/universal-canvas) come `apps/dashboard` del monorepo
+- Dashboard di controllo evoluta sopra events.jsonl (dopo issue #1). Design PRONTO: 19 mockup Stitch + design system in `design/dashboard/` di questo repo; brief e prompt in ~/dev/agile/ (2026-08-12). Implementazione: scaffold da `awesomecit/universal-canvas` (template repository, clone locale in ~/dev/universal-canvas) come `apps/dashboard` del monorepo — **scaffold eseguito il 13/08 per la slice 1 (ADR 0006)**
 - Eventuale agente fe-developer nel roster: SOLO se la retro mostra attrito FE reale (decisione da /retro, il roster è congelato; nel frattempo FE = implementatore+test-writer)
 - Pannello ruoli di cerimonia (PO/CEO/TL/BE/FE/DevOps) — ADR 0004 in stato proposta: attivazione SOLO da retro #2; bozza ceo-vision in docs/drafts/
 - Eventuale agente devops-engineer: SOLO alla prima frizione infra reale (Docker/CI/deploy/observability), decisione da /retro (ADR 0004)

@@ -1,0 +1,32 @@
+name: SonarCloud
+
+# Richiede: progetto creato su SonarCloud, sonar-project.properties nel repo
+# e il secret SONAR_TOKEN. Il quality gate va impostato come bloccante sulle PR
+# dalle impostazioni del repository (branch protection).
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  analisi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+
+      - uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

@@ -5,3 +5,13 @@ dist/
 .nyc_output/
 .tap/
 .xpflow/test-*.jsonl
+
+# apps/dashboard (vite + tanstack + playwright)
+.output/
+.tanstack/
+.features-gen*/
+test-results/
+playwright-report/
+blob-report/
+coverage/
+!.env.example

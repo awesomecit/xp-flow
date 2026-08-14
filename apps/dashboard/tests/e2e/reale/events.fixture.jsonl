@@ -1,0 +1,4 @@
+{"ts":"2026-08-10T09:00:00Z","cmd":"brainstorm","issue":7,"sp":5,"esito":"chiuso","note":"specifica sensore lunare approvata con test rossi"}
+{"ts":"2026-08-10T10:00:00Z","cmd":"sprint","issue":7,"sp":5,"esito":"in_corso","note":"sprint sensore lunare avviato in tdd"}
+{"ts":"2026-08-10T11:00:00Z","cmd":"sprint","issue":7,"esito":"azione_manuale","note":"caricare la chiave api del sensore lunare"}
+riga corrotta di proposito {

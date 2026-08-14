@@ -1,0 +1,62 @@
+name: CI
+
+# Trigger frugali (minuti Actions limitati sul piano Free, vedi event log
+# 12/08): PR sempre, push solo su main, lancio manuale quando serve.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4 # versione pnpm letta da "packageManager"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # allineato a .nvmrc/engines: CI = stesso comando locale
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test # tap (CLI root) + vitest (dashboard)
+      - run: pnpm --filter dashboard build
+
+  e2e:
+    runs-on: ubuntu-latest
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter dashboard exec playwright install --with-deps chromium
+
+      - run: pnpm --filter dashboard run test:e2e
+        env:
+          VITE_DEMO_MODE: "true" # solo su questo step: il profilo reale non deve ereditarlo
+
+      - run: pnpm --filter dashboard run test:e2e:reale
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: apps/dashboard/playwright-report/
+          retention-days: 7
+          if-no-files-found: ignore

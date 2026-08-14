@@ -1,0 +1,5 @@
+{"ts":"2026-08-12T10:00:00Z","cmd":"brainstorm","issue":1,"sp":3,"esito":"chiuso","note":"specifica pronta con test rossi"}
+{"ts":"2026-08-12T11:00:00Z","cmd":"sprint","issue":1,"sp":3,"esito":"chiuso","note":"tutti i test verdi, issue chiusa"}
+{"ts":"2026-08-12T12:00:00Z","cmd":"sprint","issue":2,"esito":"azione_manuale","note":"configurare il secret CI nel repo"}
+{"ts":"2026-08-12T13:00:00Z","cmd":"metodo_feedback","note":"nota di metodo per la retro"}
+QUESTA RIGA NON E JSON {rotta
