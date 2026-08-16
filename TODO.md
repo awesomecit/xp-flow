@@ -8,7 +8,8 @@
 - [ ] A3 — Guardrail e igiene: freeze-guard hook attivo, `manual_done` arretrati, fix tech debt #7 — 2 SP
 
 ## In coda
-- [ ] Catalogo pattern FE — slice 1: `apps/patterns`, landing hello-world + catalogo dati dei pattern del workspace (issue GH dedicata, ADR 0009; niente copia di codice, solo censimento con puntatori a universal-canvas/dashboard) — 3 SP
+- [ ] Catalogo pattern FE — slice 1: `apps/patterns`, landing hello-world + catalogo dati dei pattern del workspace (issue #6, ADR 0009; niente copia di codice, solo censimento con puntatori a universal-canvas/dashboard) — 3 SP — **16/08: implementata su feat/patterns-catalogo, pair-review passata (round 2), PR #7 in attesa di merge umano**
+- [ ] Tech debt #10 — hardening test apps/patterns (rilievi non bloccanti ri-review issue #6): guardia anti-slug fragile con label i18n identiche allo slug (categoria `i18n`), test `patterns={[]}` mancante, guardia `CATEGORIES` senza `all`, smoke test `App` e dedup `length===24` — 1 SP
 - [ ] Setup docs-as-code Fase 1 (mkdocs + Action + Pages) — 2 SP
 - [ ] Import tecniche brainstorming BMAD in /brainstorm — 2 SP
 - [ ] Regole dependency-cruiser boundary DDD — 3 SP
