@@ -8,12 +8,15 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "tap",
-    "typecheck": "tsc --noEmit",
+    "test": "tap && pnpm -r --if-present run test",
+    "typecheck": "tsc --noEmit && pnpm -r --if-present run typecheck",
     "prepare": "husky",
     "dev": "tsx bin/xpflow.ts",
     "build": "tsc",
-    "lint": "eslint src test"
+    "lint": "eslint src test --max-warnings 0 && pnpm -r --if-present run lint",
+    "dashboard": "pnpm --filter dashboard dev",
+    "release:preview": "git-cliff --bump --unreleased",
+    "release": "bash scripts/release.sh"
   },
   "dependencies": {
     "pino": "^9"
@@ -23,6 +26,7 @@
     "@commitlint/config-conventional": "^21.2.0",
     "@types/node": "^22.20.1",
     "eslint": "^10.8.1",
+    "git-cliff": "^2.13.1",
     "husky": "^9.1.7",
     "tap": "^18.8.0",
     "tsx": "^4.23.12",
@@ -35,5 +39,12 @@
     ],
     "node-arg": [],
     "jobs": 1
-  }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "msw"
+    ]
+  },
+  "packageManager": "pnpm@10.34.5+sha512.a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e"
 }

@@ -1,0 +1,53 @@
+# Review adversarial della PR via agente + auto-merge (ADR 0007).
+# SPENTO finché la variabile di repo PR_REVIEW_ENABLED non vale "true":
+# l'attivazione richiede anche branch protection su main, "Allow auto-merge"
+# e il secret dell'action — tutte azioni manuali umane (mai automatizzate).
+name: pr-review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: pr-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  claude-review:
+    if: ${{ vars.PR_REVIEW_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Review adversarial secondo il metodo
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Fai una review adversarial di questa PR secondo il metodo del repo
+            (CLAUDE.md): KISS/YAGNI (complessità solo con trigger esplicito),
+            ciclo XP rosso-prima (test nuovi presenti e significativi, test
+            esistenti non modificati dall'implementatore), retrocompatibilità
+            dei contratti, niente markdown duplicati, commit convenzionali in
+            italiano. Cerca i buchi, non certificare: elenca problemi concreti
+            con file e riga. Se trovi un blocco vero, chiudi la review con
+            REQUEST_CHANGES; altrimenti APPROVE con le osservazioni minori.
+
+  enable-auto-merge:
+    if: ${{ vars.PR_REVIEW_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Abilita auto-merge (merge commit, mai rebase)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
