@@ -31,7 +31,8 @@ export type SourceRepo = "universal-canvas" | "xp-flow";
  */
 export type PatternStatus = "available-in-template" | "used-in-dashboard" | "to-extract";
 
-export type Pattern = {
+/** Voce del catalogo: tipo usato sia dai dati sia dai componenti UI. */
+export type PatternView = {
   id: string;
   name: string;
   description: { it: string; en: string };
@@ -40,7 +41,7 @@ export type Pattern = {
   status: PatternStatus;
 };
 
-export const catalog: readonly Pattern[] = [
+export const catalog: readonly PatternView[] = [
   {
     id: "provider-composition",
     name: "Provider Composition",
@@ -82,8 +83,8 @@ export const catalog: readonly Pattern[] = [
       en: "Single error model with a React boundary and centralized notification.",
     },
     category: "errors",
-    source: { repo: "universal-canvas", path: "src/errors/AppError.ts" },
-    status: "available-in-template",
+    source: { repo: "xp-flow", path: "apps/dashboard/src/errors/AppError.ts" },
+    status: "used-in-dashboard",
   },
   {
     id: "stateful-msw-scenarios",
@@ -195,8 +196,8 @@ export const catalog: readonly Pattern[] = [
       en: "CloudEvents-style event bus with interchangeable transports.",
     },
     category: "data",
-    source: { repo: "universal-canvas", path: "src/events/bus.ts" },
-    status: "available-in-template",
+    source: { repo: "xp-flow", path: "apps/dashboard/src/domain/events.ts" },
+    status: "used-in-dashboard",
   },
   {
     id: "console-debug-bridge",

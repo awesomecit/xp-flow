@@ -8,7 +8,7 @@ import { catalog } from "./catalog/catalog";
 
 export function App() {
   return (
-    <main>
+    <main className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-10">
       <HelloWorld />
       <CatalogList patterns={catalog} />
     </main>

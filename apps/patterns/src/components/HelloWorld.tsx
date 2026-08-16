@@ -9,9 +9,9 @@ export function HelloWorld() {
   const t = messages[DEFAULT_LOCALE].landing;
 
   return (
-    <header>
-      <h1>{t.title}</h1>
-      <p>{t.subtitle}</p>
+    <header className="flex flex-col gap-2">
+      <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
+      <p className="text-base text-foreground/70">{t.subtitle}</p>
     </header>
   );
 }
