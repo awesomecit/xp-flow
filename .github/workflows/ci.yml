@@ -28,8 +28,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm typecheck
-      - run: pnpm test # tap (CLI root) + vitest (dashboard)
+      - run: pnpm test # tap (CLI root) + vitest (dashboard) + vitest (patterns)
       - run: pnpm --filter dashboard build
+      - run: pnpm --filter patterns build # catalogo pattern fe (issue #6)
 
   e2e:
     runs-on: ubuntu-latest

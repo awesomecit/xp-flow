@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/*
+ * XP Flow — sottoinsieme minimo dei design token della dashboard
+ * (vedi apps/dashboard/src/styles.css): sfondo, testo, superficie, accento.
+ * Tema dark come base; nessuna variante light per questa slice (YAGNI).
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+}
+
+:root {
+  --background: oklch(0.129 0.041 264.7); /* #020617 */
+  --foreground: oklch(0.982 0.002 247.8); /* #F8F9FA */
+  --surface: oklch(0.208 0.04 265.8); /* #0F172A */
+  --surface-foreground: oklch(0.982 0.002 247.8);
+  --accent: oklch(0.754 0.139 232.7); /* #38BDF8 */
+  --accent-foreground: oklch(0.129 0.041 264.7);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
