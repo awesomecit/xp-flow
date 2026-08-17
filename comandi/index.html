@@ -731,7 +731,7 @@
 </tr>
 </tbody>
 </table>
-<p>Ogni output viene anche salvato nel diario <code>~/dev/personal/agile/YYYY-MM-DD-&lt;comando&gt;.md</code>.</p>
+<p>Ogni output viene anche salvato nel diario <code>agile/YYYY-MM-DD-&lt;comando&gt;.md</code> di questo repo.</p>
 <h2 id="si-lavora-flusso-xp-li-orchestra-claude-dentro-una-sessione-xp-flow">"Si lavora" — flusso XP (li orchestra Claude, dentro una sessione xp-flow)</h2>
 <table>
 <thead>
@@ -765,7 +765,9 @@
 </tbody>
 </table>
 <h2 id="gate-umani-lunica-cosa-che-eseguo-io">Gate umani (l'unica cosa che eseguo io)</h2>
-<p><code>git push</code> · secret/token · pagamenti · verifiche in-app · scritture su DB.
+<p><code>git push</code> verso <code>main</code> (gli agenti possono SOLO <code>git push origin feat/*</code>, ADR
+0007 — main si entra via PR con required checks) · secret/token · pagamenti ·
+verifiche in-app · scritture su DB.
 Vengono sempre elencati in "serve da te" (standup/stato) e tracciati come eventi
 <code>azione_manuale</code> nell'event log finché non li chiudo.</p>
 <h2 id="giornata-tipo">Giornata tipo</h2>

@@ -19,7 +19,7 @@
     
     
       
-        <title>5. xp-flow multi-tenant: metodo condiviso via symlink, stato indipendente per app - XP Flow — Docs di dominio</title>
+        <title>Retro #2 — settimana 33 (08–14/08/2026) - XP Flow — Docs di dominio</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-xp-flow-multi-tenant-metodo-condiviso-via-symlink-stato-indipendente-per-app" class="md-skip">
+        <a href="#retro-2-settimana-33-0814082026" class="md-skip">
           Vai al contenuto
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. xp-flow multi-tenant: metodo condiviso via symlink, stato indipendente per app
+              Retro #2 — settimana 33 (08–14/08/2026)
             
           </span>
         </div>
@@ -361,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../adr/" class="md-nav__link">
         
   
   
@@ -489,10 +489,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#contesto" class="md-nav__link">
+  <a href="#dati" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contesto
+        Dati
       
     </span>
   </a>
@@ -500,32 +500,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decisione" class="md-nav__link">
+  <a href="#analisi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Decisione
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alternative-scartate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Alternative scartate
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conseguenze" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conseguenze
+        Analisi
       
     </span>
   </a>
@@ -549,53 +527,101 @@
 
 
 
-<h1 id="5-xp-flow-multi-tenant-metodo-condiviso-via-symlink-stato-indipendente-per-app">5. xp-flow multi-tenant: metodo condiviso via symlink, stato indipendente per app</h1>
-<p>Data: 2026-08-12 · Stato: <strong>accettata</strong> (retro #2, 14/08/2026) — attivazione condizionata alla decisione sul vocabolario/macchina a stati (spike beads dello sprint corrente)</p>
-<h2 id="contesto">Contesto</h2>
-<p>Il workspace ha più app da costruire (citycat.app, foundation, universal-canvas,
-future) e la richiesta esplicita è <strong>un solo flusso, un solo set di comandi</strong> —
-niente comandi duplicati/copiati tra repo (spreco di sync), ma nemmeno un solo
-sprint globale che blocca tutte le app a turno. Il flusso legacy (<code>~/dev/.claude</code>,
-usato da citycat.app) e xp-flow hanno però <strong>modelli di concorrenza diversi</strong>:
-legacy = task-board con <code>depends_on</code> e claim, pensato per più task paralleli
-dentro un repo; xp-flow = un solo sprint attivo alla volta, roster congelato.
-Questo ADR nasce da <code>TODO.md</code> ("Config — dedup flusso XP legacy vs xp-flow —
-candidata retro") e dal backlog dashboard ("selettore repo/app").</p>
-<h2 id="decisione">Decisione</h2>
-<p><strong>xp-flow resta l'unica sorgente di verità per comandi e agenti</strong>
-(<code>.claude/commands/</code>, <code>.claude/agents/</code>) — nessun altro repo li copia, li
-ottiene via <strong>symlink</strong> (stesso pattern già in uso per i comandi legacy di
-citycat.app e per le cerimonie personali in <code>~/.claude/commands/</code>). Ogni repo
-che adotta il metodo diventa un <strong>tenant</strong>: mantiene il proprio
-<code>.xpflow/events.jsonl</code> e la propria fonte di backlog (TODO.md semplice dove
-non esiste altro, oppure <code>.ai/tasks/</code> board dove già esiste, es. citycat) —
-lo <strong>stato è indipendente per tenant</strong>, non globale. Più tenant possono avere
-uno sprint attivo contemporaneamente, ciascuno nel proprio repo.</p>
-<p>La dashboard (già in backlog TODO.md) diventa il <strong>selettore di tenant</strong>: legge
-un manifest dei repo noti (statico, non scanner dinamico — YAGNI) e mostra lo
-stato di un tenant o l'aggregato di "tutti".</p>
-<h2 id="alternative-scartate">Alternative scartate</h2>
+<h1 id="retro-2-settimana-33-0814082026">Retro #2 — settimana 33 (08–14/08/2026)</h1>
+<blockquote>
+<p>Prima retrospettiva formalizzata del laboratorio (nessun evento <code>retro</code>
+esisteva prima nel log). Condotta il 14/08 in sessione, decisioni
+dell'utente via domande esplicite. È la retro che ha sciolto il freeze.</p>
+</blockquote>
+<h2 id="dati">Dati</h2>
 <ul>
-<li><strong>Sprint singolo globale per tutto il workspace</strong>: troppo stretto, blocca
-  ogni altra app finché quella attiva non chiude.</li>
-<li><strong>Importare il task-board a claim multiplo di citycat dentro xp-flow
-  globalmente</strong>: confonde due livelli diversi — "N task paralleli dentro un
-  repo" (quello che fa il board) non è lo stesso problema di "N tenant
-  paralleli tra repo" (quello che risolve questo ADR). Il board di citycat
-  NON viene ritirato: resta la fonte di backlog per il tenant citycat quando
-  il metodo si attiva lì, senza dover essere rifuso nel modello xp-flow.</li>
+<li><strong>North-star: RAGGIUNTA</strong> — 1 incremento di prodotto spedito: dashboard
+  slice 1 su main (PR #3 mergiata il 14/08, ~2.500 righe di nucleo sano).
+  Kill-list non attivata.</li>
+<li><strong>Git</strong>: 61 commit in 7 giorni (media 5,4 file, +654/−229 righe), atomici;
+  4 fix/revert. Lavoro riconoscibile per fasi: fondazione (12/08), monorepo
+  ed estrazione (13/08), determinismo e governance (14/08).</li>
+<li><strong>Issue</strong>: #1 chiusa (3 SP, stima accurata); #2 slice 1 completata in ~2,5
+  giorni su ripianificazione dichiarata 12→16 SP (sottostima di scope — non
+  includeva l'infra monorepo — non di difficoltà).</li>
+<li><strong>Eventi</strong>: 27 nel log; <strong>19 <code>metodo_feedback</code></strong> accumulati sotto freeze;
+  1 <code>azione_manuale</code> aperta dal 13/08 (parzialmente eseguita); <code>manual_done</code>
+  mai usato nella vita del log.</li>
+<li><strong>Test</strong>: 30 tap (CLI) + 81 vitest (dashboard) verdi in 3,4s; 138+2 e2e
+  verdi al merge; nessun flaky segnalato nelle pair-review.</li>
 </ul>
-<h2 id="conseguenze">Conseguenze</h2>
+<h2 id="analisi">Analisi</h2>
+<p><strong>Bene</strong>: north-star al primo colpo con il prodotto dichiarato (il monitor);
+commit disciplinati; il freeze ha funzionato — 19 feedback ordinati invece di
+19 modifiche in corsa; l'audit make-or-reuse è arrivato PRIMA di spendere SP
+(dossier in <code>docs/drafts/2026-08-14-audit-make-or-reuse.md</code>).</p>
+<p><strong>Male</strong>: lo stato della fabbrica non è leggibile dall'utente — frustrazione
+esplicita del 14/08 ("non so dove siamo") nonostante il tracking; il monitor
+scarta 7 righe del log reale; la CLI nasconde le azioni manuali (tech debt</p>
+<h1 id="7-un-episodio-di-regola-mai-push-scavalcata-da-un-agente-1408">7); un episodio di regola mai-push scavalcata da un agente (14/08).</h1>
+<p><strong>Sorpresa</strong>: la macchina a stati task-level esisteva già nel legacy
+<code>agile/XP/</code> (transition <code>from</code>/<code>to</code>) — dimenticata, mai collegata; e beads
+(Yegge) implementa <code>bd ready</code> = il nostro <code>xpflow next</code>.</p>
+<p><strong>Stime</strong>: Fibonacci accurato sul piccolo (#1); lo scope-creep infra è il
+pattern di sottostima da tenere d'occhio (12→16 SP dichiarato, non subito).</p>
+<h2 id="causa-radice-unica">Causa radice unica</h2>
+<p><strong>Lo stato della fabbrica non è calcolabile</strong> (macchina a stati implicita,
+tre vocabolari divergenti). Spiega: frustrazione utente, righe scartate dal
+monitor, sprint mai chiuso, azioni manuali invisibili, <code>manual_done</code> mai
+loggato. Quasi metà dei feedback converge qui.</p>
+<h2 id="decisioni-utente-1408">Decisioni (utente, 14/08)</h2>
+<ol>
+<li><strong>Spike beads 2 SP</strong> prima di scegliere adotta-o-costruisci per la
+   macchina a stati (poi: integrazione beads ~2 SP o attuazione A in CLI ~6 SP).</li>
+<li><strong>ADR 0007 ratificata</strong>: push scoped <code>feat/*</code> agli agenti; CLAUDE.md
+   (workspace + globale, eccezione scoped ai repo awesomecit) e deny
+   aggiornati in questa retro.</li>
+<li><strong>Freeze sciolto, pattern permanente</strong>: metodo modificabile solo in
+   /retro; freeze-guard hook da attivare (azione A3).</li>
+<li><strong>ADR 0005 accettata</strong>, attivazione condizionata all'esito dello spike
+   (niente replica di <code>.xpflow</code> con vocabolario ancora divergente).</li>
+</ol>
+<h2 id="azioni-per-la-prossima-settimana-max-3">Azioni per la prossima settimana (max 3)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Azione</th>
+<th>SP</th>
+<th>Criterio di verifica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td><strong>Spike beads</strong> sul backlog reale (<code>bd init</code>, <code>bd ready</code>, sync git) → verdetto adotta/copia-contratto scritto in ADR 0008</td>
+<td>2</td>
+<td>ADR 0008 committata con verdetto motivato; se "copia": contratto <code>ready</code> specificato</td>
+</tr>
+<tr>
+<td>A2</td>
+<td><strong>Attivare la catena PR</strong> (ADR 0007): branch protection su main + required checks, allow auto-merge, <code>PR_REVIEW_ENABLED=true</code> + secret (azioni manuali umane), poi prima PR reale attraverso la catena</td>
+<td>2</td>
+<td>Una PR mergiata in automatico con check <code>claude-review</code> verde e zero intervento umano post-push</td>
+</tr>
+<tr>
+<td>A3</td>
+<td><strong>Guardrail e igiene</strong>: hook freeze-guard attivo; <code>manual_done</code> arretrati loggati; fix tech debt #7 (status non nasconde più le azioni manuali)</td>
+<td>2</td>
+<td>L'hook blocca un edit di metodo fuori /retro (test manuale); <code>xpflow status</code> stampa le pendenti senza sprint attivo; zero <code>azione_manuale</code> aperte &gt;7 giorni</td>
+</tr>
+</tbody>
+</table>
+<h2 id="azioni-manuali-pendenti">⚠️ Azioni manuali pendenti</h2>
 <ul>
-<li>Nessun file <code>.claude/</code> di xp-flow cambia. <strong>Nessun symlink viene creato</strong>
-  in citycat.app/foundation/universal-canvas prima che la retro #2 approvi.</li>
-<li>Il task-board di citycat.app resta intatto e diventa opzionale-riusabile
-  come fonte di backlog per il proprio tenant, non sostituito.</li>
-<li><strong>Prerequisito tecnico</strong> (condiviso con ADR 0004): tech debt #3
-  (<code>appendFileSync</code> non thread-safe) — più rilevante qui perché un dashboard
-  multi-tenant legge più <code>events.jsonl</code> in parallelo, uno per repo.</li>
-<li>All'attivazione: symlink dei comandi/agenti nei repo tenant scelti, ognuno
-  con il proprio <code>.xpflow/events.jsonl</code>; il manifest dashboard elenca i tenant.</li>
+<li>Dal 13/08 (1 giorno): dell'evento <code>azione_manuale</code> di chiusura slice 1
+  restano: <strong>(5) release</strong> (<code>pnpm release:preview</code> → <code>pnpm release</code> → push del
+  tag v0.1.0) e <strong>(3) aggiornare issue universal-canvas#1</strong>. Fatte: push, CI,
+  PR, merge. Da chiudere con <code>manual_done</code> (dentro A3).</li>
+<li>Nuove da ADR 0007 (per A2): branch protection, allow auto-merge, variabile
+  e secret dell'action — gate di billing/identità, restano umane.</li>
+<li>Canvas: push del tag <code>archive/storia-c-dati-reali</code>, eventuale delete del
+  branch remoto, push di main (avanti 3).</li>
 </ul>
 
 

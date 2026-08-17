@@ -565,8 +565,9 @@
 <p><code>gh auth status</code> ok (account awesomecit, alias SSH <code>github-antonio</code>) ·
 Docker Desktop attivo · Claude Code aggiornato · Node 22 via nvm (<code>.nvmrc</code>)</p>
 <h2 id="struttura">Struttura</h2>
-<p>Il laboratorio è <strong>xp-flow</strong> (metodo + fabbrica + diario <code>agile/</code>);
-<strong>universal-canvas</strong> è la sua UI (monitor). <code>~/dev</code> è solo il contenitore:
+<p>Il laboratorio è <strong>xp-flow</strong> (metodo + fabbrica + diario <code>agile/</code> + monitor
+in <code>apps/dashboard</code>, ADR 0006); <strong>universal-canvas</strong> è il template FE puro
+per le app future. <code>~/dev</code> è solo il contenitore:
 tiene le cerimonie personali (<code>claude-commands/</code>), il kit git per repo
 esterni (<code>git-toolchain/</code>) e la config workspace — i repo annidati sono
 gitignorati e autonomi (niente submodules).</p>
@@ -576,7 +577,7 @@ git<span class="w"> </span>clone<span class="w"> </span>git@github-antonio:aweso
 </code></pre></div>
 <p>In ogni repo applicare l'identity locale (git non legge <code>.gitconfig</code> del
 workspace da solo):</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Cit&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;awesome.cit.dev@gmail.com&quot;</span>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Cit"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"awesome.cit.dev@gmail.com"</span>
 </code></pre></div>
 <p>Cerimonie personali via symlink:
 <code>ln -s ~/dev/claude-commands/&lt;cmd&gt;.md ~/.claude/commands/&lt;cmd&gt;.md</code>.
@@ -598,7 +599,7 @@ accettare il dialog. Sintomi tipici: i comandi custom "spariti" e il warning
 <li>Sessioni quotidiane: da <code>xp-flow/</code> (<code>claude --model opusplan</code>) — comandi
   <code>/brainstorm /sprint /pair-review /retro</code>; la memoria auto di Claude Code
   vive sulla chiave di questa directory.</li>
-<li>UI/monitor: repo <code>universal-canvas</code> (bun, vitest, Playwright).</li>
+<li>UI/monitor: <code>apps/dashboard</code> di questo repo (<code>pnpm dashboard</code> → :8080).</li>
 <li>VS Code: aprire <code>~/dev/dev.code-workspace</code> (multi-root).</li>
 </ul>
 <h2 id="ordine-di-lavoro">Ordine di lavoro</h2>

@@ -19,7 +19,7 @@
     
     
       
-        <title>5. xp-flow multi-tenant: metodo condiviso via symlink, stato indipendente per app - XP Flow — Docs di dominio</title>
+        <title>Audit make-or-reuse della fabbrica semi-auto — dossier per la retro #2 - XP Flow — Docs di dominio</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-xp-flow-multi-tenant-metodo-condiviso-via-symlink-stato-indipendente-per-app" class="md-skip">
+        <a href="#audit-make-or-reuse-della-fabbrica-semi-auto-dossier-per-la-retro-2" class="md-skip">
           Vai al contenuto
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. xp-flow multi-tenant: metodo condiviso via symlink, stato indipendente per app
+              Audit make-or-reuse della fabbrica semi-auto — dossier per la retro #2
             
           </span>
         </div>
@@ -361,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../adr/" class="md-nav__link">
         
   
   
@@ -489,10 +489,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#contesto" class="md-nav__link">
+  <a href="#north-star-ux-criterio-di-accettazione-della-fabbrica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contesto
+        North-star UX (criterio di accettazione della fabbrica)
       
     </span>
   </a>
@@ -500,10 +500,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decisione" class="md-nav__link">
+  <a href="#griglia-adotta-integra-costruisci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Decisione
+        Griglia adotta / integra / costruisci
       
     </span>
   </a>
@@ -511,10 +511,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alternative-scartate" class="md-nav__link">
+  <a href="#sintesi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Alternative scartate
+        Sintesi
       
     </span>
   </a>
@@ -522,10 +522,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conseguenze" class="md-nav__link">
+  <a href="#decisione-principale-per-la-retro-beads-vs-attuazione-a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conseguenze
+        Decisione principale per la retro: beads vs attuazione A
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report-claudeai-da-incollare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report claude.ai (da incollare)
       
     </span>
   </a>
@@ -549,54 +560,139 @@
 
 
 
-<h1 id="5-xp-flow-multi-tenant-metodo-condiviso-via-symlink-stato-indipendente-per-app">5. xp-flow multi-tenant: metodo condiviso via symlink, stato indipendente per app</h1>
-<p>Data: 2026-08-12 · Stato: <strong>accettata</strong> (retro #2, 14/08/2026) — attivazione condizionata alla decisione sul vocabolario/macchina a stati (spike beads dello sprint corrente)</p>
-<h2 id="contesto">Contesto</h2>
-<p>Il workspace ha più app da costruire (citycat.app, foundation, universal-canvas,
-future) e la richiesta esplicita è <strong>un solo flusso, un solo set di comandi</strong> —
-niente comandi duplicati/copiati tra repo (spreco di sync), ma nemmeno un solo
-sprint globale che blocca tutte le app a turno. Il flusso legacy (<code>~/dev/.claude</code>,
-usato da citycat.app) e xp-flow hanno però <strong>modelli di concorrenza diversi</strong>:
-legacy = task-board con <code>depends_on</code> e claim, pensato per più task paralleli
-dentro un repo; xp-flow = un solo sprint attivo alla volta, roster congelato.
-Questo ADR nasce da <code>TODO.md</code> ("Config — dedup flusso XP legacy vs xp-flow —
-candidata retro") e dal backlog dashboard ("selettore repo/app").</p>
-<h2 id="decisione">Decisione</h2>
-<p><strong>xp-flow resta l'unica sorgente di verità per comandi e agenti</strong>
-(<code>.claude/commands/</code>, <code>.claude/agents/</code>) — nessun altro repo li copia, li
-ottiene via <strong>symlink</strong> (stesso pattern già in uso per i comandi legacy di
-citycat.app e per le cerimonie personali in <code>~/.claude/commands/</code>). Ogni repo
-che adotta il metodo diventa un <strong>tenant</strong>: mantiene il proprio
-<code>.xpflow/events.jsonl</code> e la propria fonte di backlog (TODO.md semplice dove
-non esiste altro, oppure <code>.ai/tasks/</code> board dove già esiste, es. citycat) —
-lo <strong>stato è indipendente per tenant</strong>, non globale. Più tenant possono avere
-uno sprint attivo contemporaneamente, ciascuno nel proprio repo.</p>
-<p>La dashboard (già in backlog TODO.md) diventa il <strong>selettore di tenant</strong>: legge
-un manifest dei repo noti (statico, non scanner dinamico — YAGNI) e mostra lo
-stato di un tenant o l'aggregato di "tutti".</p>
-<h2 id="alternative-scartate">Alternative scartate</h2>
+<h1 id="audit-make-or-reuse-della-fabbrica-semi-auto-dossier-per-la-retro-2">Audit make-or-reuse della fabbrica semi-auto — dossier per la retro #2</h1>
+<blockquote>
+<p>Bozza (docs/drafts, canale sanzionato dal freeze). Origine: paura esplicita
+del 14/08 "quello che stiamo facendo potrebbe già esistere → lavoro inutile",
+gestita con la regola workspace "configure-over-build". Ricerca web 14/08 con
+due agenti (panorama tool + ecosistema Claude Code). Da consolidare in ADR
+0008 alla retro.</p>
+</blockquote>
+<h2 id="north-star-ux-criterio-di-accettazione-della-fabbrica">North-star UX (criterio di accettazione della fabbrica)</h2>
+<p>Dichiarata dall'utente il 14/08, è la definizione di "fatto" del traguardo
+Fabbrica semi-auto:</p>
+<blockquote>
+<p><strong>Scrivo spec strutturate → avvio uno sprint → torno a fine timebox →
+faccio review da TL/PO per vedere se è tutto ok.</strong></p>
+</blockquote>
+<p>Ogni decisione della retro va misurata contro questo loop: lo avvicina o no?</p>
+<h2 id="griglia-adotta-integra-costruisci">Griglia adotta / integra / costruisci</h2>
+<table>
+<thead>
+<tr>
+<th>Blocco</th>
+<th>Candidato migliore</th>
+<th>Verdetto</th>
+<th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Macchina a stati + <code>xpflow next</code></td>
+<td><a href="https://github.com/steveyegge/beads">beads</a> (Yegge, ~26k stelle, MIT, <code>bd setup claude</code>; <strong><code>bd ready</code> = esattamente il nostro <code>next</code></strong>: lavoro pronto senza blocker, deterministico, transizioni indietro, audit trail). Alternativa leggera markdown-first: <a href="https://github.com/MrLesk/Backlog.md">Backlog.md</a> (~6,5k, MIT, web UI + MCP)</td>
+<td><strong>DECISIONE RETRO: adotta-o-costruisci</strong></td>
+<td>beads sostituirebbe stati+ready-work in toto, MA porta binario Go + backend Dolt (attrito con as-code/KISS: il nostro JSONL è diffabile in git). <code>events.jsonl</code> sopravvive comunque per la telemetria di metodo (metodo_feedback, materiale retro), che NESSUN tracker copre</td>
+</tr>
+<tr>
+<td>Catena PR review+auto-merge</td>
+<td><a href="https://github.com/anthropics/claude-code-action">claude-code-action</a> (ufficiale; <a href="https://code.claude.com/docs/en/code-review">docs code-review</a> con auto-merge)</td>
+<td><strong>adotta — GIÀ FATTO</strong></td>
+<td>ADR 0007 è configurazione del tool standard, non codice: nessuno spreco. La catena è commodity 2026 (anche Copilot coding agent, CodeRabbit, Greptile). Costruire altro qui = spreco puro</td>
+</tr>
+<tr>
+<td>Quality gate per agenti</td>
+<td>Hooks nativi Claude Code (31 eventi, exit code 2 = blocco con feedback all'agente)</td>
+<td><strong>adotta</strong></td>
+<td>"refactor solo con test/lint verdi" diventa meccanico invece che prosa; entra nella costituzione di codice (TODO 14/08)</td>
+</tr>
+<tr>
+<td>Runner headless stop-on-red</td>
+<td>Claude Agent SDK (<a href="https://github.com/anthropics/claude-agent-sdk-python">Python</a>/TS) + hooks ≈ 80% nativo; CCPM (<a href="https://github.com/automazeio/ccpm">automazeio</a>, ~8,3k, GH-Issues-first) è parallel-first, non equivalente</td>
+<td><strong>costruisci sottile</strong></td>
+<td>non esiste come prodotto; poche decine di righe sopra l'SDK — giusto costruirlo perché è sottile. Errore da evitare: scrivere orchestrazione da zero ignorando SDK/hook</td>
+</tr>
+<tr>
+<td>Spec / DoR (story file)</td>
+<td><a href="https://github.com/github/spec-kit">spec-kit</a> (GitHub, ~128k stelle, MIT, constitution→specify→plan→tasks→implement, supporta Claude Code)</td>
+<td><strong>integra</strong></td>
+<td>rubare la struttura specify/plan/tasks dentro /brainstorm e /sprint. Aggiorna la Fase 2: meglio di un import BMAD pieno (<a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD v6</a> è agile-a-documenti, non XP)</td>
+</tr>
+<tr>
+<td>Cerimonie XP (red-green-refactor come gate, implementatore che non tocca i test, review avversariale)</td>
+<td>nessuno (BMAD non-XP; SuperClaude generico; agent-os solo standards-injection)</td>
+<td><strong>costruisci</strong></td>
+<td>è il layer identitario della fabbrica: nessuno lo vende</td>
+</tr>
+<tr>
+<td>Dashboard monitor</td>
+<td><a href="https://github.com/BloopAI/vibe-kanban">vibe-kanban</a> (~28k ma <strong>Bloop chiusa 04/2026</strong>, manutenzione a rischio); web UI di Backlog.md generica</td>
+<td><strong>costruisci</strong></td>
+<td>è il PRODOTTO pilota north-star; il custom si giustifica con le viste specifiche del metodo (timeline eventi, serve-da-te, red/green)</td>
+</tr>
+<tr>
+<td>Multi-agente con task list condivisa</td>
+<td>Agent Teams nativo Claude Code (task list condivisa, plan approval del lead)</td>
+<td><strong>valutare (spike)</strong></td>
+<td>potrebbe sostituire parte dell'orchestrazione dello sprint; da provare prima di investirci</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sintesi">Sintesi</h2>
 <ul>
-<li><strong>Sprint singolo globale per tutto il workspace</strong>: troppo stretto, blocca
-  ogni altra app finché quella attiva non chiude.</li>
-<li><strong>Importare il task-board a claim multiplo di citycat dentro xp-flow
-  globalmente</strong>: confonde due livelli diversi — "N task paralleli dentro un
-  repo" (quello che fa il board) non è lo stesso problema di "N tenant
-  paralleli tra repo" (quello che risolve questo ADR). Il board di citycat
-  NON viene ritirato: resta la fonte di backlog per il tenant citycat quando
-  il metodo si attiva lì, senza dover essere rifuso nel modello xp-flow.</li>
+<li><strong>La paura era fondata su UN blocco</strong>: la macchina a stati — beads esiste ed
+  è maturo. L'audit è arrivato prima di spendere gli SP: nessun danno.</li>
+<li><strong>Già evitato lo spreco altrove</strong>: ADR 0007 = configurazione di tool standard;
+  runner pianificato sottile sopra l'SDK.</li>
+<li><strong>Il lavoro identitario non ha equivalenti</strong>: cerimonie XP col nostro rigore,
+  dashboard-prodotto, e la colla metodologica (cerimonia → stato → next →
+  runner → gate umano). Il valore della fabbrica sta lì.</li>
+<li>Claude Code nativo copre ~70% dell'infrastruttura (Agent Teams, hooks,
+  Sessions, SDK headless, workflows): la fabbrica deve essere un layer sottile
+  e opinionated sopra il nativo, mai un motore parallelo.</li>
 </ul>
-<h2 id="conseguenze">Conseguenze</h2>
-<ul>
-<li>Nessun file <code>.claude/</code> di xp-flow cambia. <strong>Nessun symlink viene creato</strong>
-  in citycat.app/foundation/universal-canvas prima che la retro #2 approvi.</li>
-<li>Il task-board di citycat.app resta intatto e diventa opzionale-riusabile
-  come fonte di backlog per il proprio tenant, non sostituito.</li>
-<li><strong>Prerequisito tecnico</strong> (condiviso con ADR 0004): tech debt #3
-  (<code>appendFileSync</code> non thread-safe) — più rilevante qui perché un dashboard
-  multi-tenant legge più <code>events.jsonl</code> in parallelo, uno per repo.</li>
-<li>All'attivazione: symlink dei comandi/agenti nei repo tenant scelti, ognuno
-  con il proprio <code>.xpflow/events.jsonl</code>; il manifest dashboard elenca i tenant.</li>
-</ul>
+<h2 id="decisione-principale-per-la-retro-beads-vs-attuazione-a">Decisione principale per la retro: beads vs attuazione A</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A. Adottare beads</th>
+<th>B. Costruire (attuazione A in CLI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copertura</td>
+<td>stati, dipendenze, <code>ready</code> subito</td>
+<td>~6 SP di lavoro, vocabolario nostro</td>
+</tr>
+<tr>
+<td>Filosofia</td>
+<td>binario Go + Dolt, meno as-code</td>
+<td>JSONL diffabile, KISS, tutto in git</td>
+</tr>
+<tr>
+<td>Rischio</td>
+<td>lock-in, tool giovane (10/2025)</td>
+<td>reinventare peggio un problema risolto</td>
+</tr>
+<tr>
+<td>Via di mezzo</td>
+<td>—</td>
+<td>copiare il <strong>contratto</strong> <code>bd ready</code> senza adottare il tool</td>
+</tr>
+<tr>
+<td>events.jsonl</td>
+<td>resta per telemetria di metodo</td>
+<td>resta per tutto</td>
+</tr>
+</tbody>
+</table>
+<p>Prerequisito in ogni caso: vocabolario eventi unificato (tema già a log).</p>
+<h2 id="report-claudeai-da-incollare">Report claude.ai (da incollare)</h2>
+<p><em>Sezione vuota: qui va il report della ricerca approfondita lanciata su
+claude.ai dal prompt consegnato il 14/08 (verdetti confermati/smentiti,
+approfondimenti su beads in pratica, spec eseguibili, review da TL/PO,
+runner stop-on-red).</em></p>
 
 
 
