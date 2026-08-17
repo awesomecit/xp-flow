@@ -1,0 +1,966 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Open-source-grade & Enterprise-ready: requisiti Baseline / Enterprise-gate / Killer, con roadmap per un solo dev su Hetzner + Cloudflare - XP Flow — Docs di dominio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#open-source-grade-enterprise-ready-requisiti-baseline-enterprise-gate-killer-con-roadmap-per-un-solo-dev-su-hetzner-cloudflare" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href="../.." title="XP Flow — Docs di dominio" class="md-header__button md-logo" aria-label="XP Flow — Docs di dominio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XP Flow — Docs di dominio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Open-source-grade &amp; Enterprise-ready: requisiti Baseline / Enterprise-gate / Killer, con roadmap per un solo dev su Hetzner + Cloudflare
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="XP Flow — Docs di dominio" class="md-nav__button md-logo" aria-label="XP Flow — Docs di dominio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    XP Flow — Docs di dominio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comandi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandi (cheat-sheet)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guida-file-e-priorita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File e priorità (guida)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architettura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architettura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contesto (C4)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/domain-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modello di dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features (Gherkin)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flow/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stato del flusso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Findings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Details
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contesto-e-principio-guida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contesto e principio guida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#area-1-security-application-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AREA 1 — Security (Application Security)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#area-2-access-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AREA 2 — Access &amp; Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#area-3-audit-audit-trail-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AREA 3 — Audit (Audit Trail / Logs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#area-4-logging-log-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AREA 4 — Logging &amp; Log Retention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#area-5-monitoring-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AREA 5 — Monitoring &amp; Observability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-vs-buy-osservabilita-logging-audit-per-solo-dev-su-hetznercloudflare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BUILD vs BUY — Osservabilità, Logging, Audit per solo dev su Hetzner+Cloudflare
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BUILD vs BUY — Osservabilità, Logging, Audit per solo dev su Hetzner+Cloudflare">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#footprint-self-hosted-ram-dati-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Footprint self-hosted (RAM) — dati community
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managed-free-tier-numeri" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managed free tier (numeri)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-storage-per-retention-economica-numeri-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object storage per retention economica (numeri 2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudflare-free-cosa-ottieni-davvero-docs-ufficiali-last-updated-aug-14-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloudflare Free — cosa ottieni davvero (docs ufficiali, "Last updated Aug 14, 2026")
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations-roadmap-prioritizzata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendations (roadmap prioritizzata)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caveats
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="open-source-grade-enterprise-ready-requisiti-baseline-enterprise-gate-killer-con-roadmap-per-un-solo-dev-su-hetzner-cloudflare">Open-source-grade &amp; Enterprise-ready: requisiti Baseline / Enterprise-gate / Killer, con roadmap per un solo dev su Hetzner + Cloudflare</h1>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li><strong>Per un solo dev EU su Hetzner+Cloudflare con budget minimo, quasi tutta la baseline "seria" è raggiungibile gratis e self-hosted</strong>: OWASP ASVS L1/L2, TLS + security headers, <code>npm audit</code>/Trivy/Dependabot, Cloudflare WAF free + allowlist IP origine, fail2ban, secrets fuori da git, logging JSON strutturato (Pino), Uptime Kuma + un unico backend osservabilità leggero (VictoriaLogs/VictoriaMetrics oppure OpenObserve), Sentry free per gli errori.</li>
+<li><strong>Le feature "Enterprise-gate" (SSO SAML/OIDC, SCIM, audit log immutabili con retention, report di compliance) NON vanno costruite in anticipo</strong>: si differiscono finché un cliente enterprise le richiede per iscritto. L'ordine consigliato dalla community (enterpriseready.io, Hashorn) è <strong>RBAC → audit log → SSO → SCIM</strong>.</li>
+<li><strong>I "killer/extra" (SLSA L3, tracing distribuito OpenTelemetry completo, WORM/object-lock, ABAC, retention log a lungo termine)</strong> sono giustificati solo su scala o come leva di vendita; per ora bastano pattern append-only + hash-chain in MongoDB ed export su <strong>Cloudflare R2</strong> (egress zero).</li>
+</ul>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li><strong>Il grosso della baseline enterprise-grade costa ~0 €</strong> su questo stack: Cloudflare free assorbe TLS, WAF e DDoS; il resto è open-source self-hosted a footprint contenuto.</li>
+<li><strong>OpenTelemetry è lo standard de facto per l'osservabilità</strong>: progetto CNCF <strong>graduato il 21 maggio 2026</strong>, con la seconda project velocity più alta tra oltre 240 progetti del cloud native, seconda solo a Kubernetes.</li>
+<li><strong>Non anticipare le feature enterprise</strong>: la community è unanime — "Wait until one customer asks in writing". Costruire SSO da zero costa realisticamente 6-18 mesi.</li>
+<li><strong>Per MongoDB Community l'audit nativo non esiste</strong> (solo Enterprise/Atlas): serve un pattern applicativo (collection insert-only + Change Streams + hash-chain + export WORM).</li>
+<li><strong>Cloudflare R2 (egress zero) è la scelta ovvia</strong> per retention economica di log/audit su uno stack già dietro Cloudflare.</li>
+<li><strong>Gli indirizzi IP sono dati personali (GDPR)</strong>: retention breve e minimizzazione fin dalla sorgente sono obbligatorie per un'app EU-hosted.</li>
+</ol>
+<h2 id="details">Details</h2>
+<h3 id="contesto-e-principio-guida">Contesto e principio guida</h3>
+<p>Stack di riferimento: <strong>Node.js + MongoDB + Redis, Docker</strong>, su VPS/dedicato <strong>Hetzner (EU)</strong>, dominio dietro <strong>proxy Cloudflare</strong>. Budget minimo: preferenza per free tier e open-source self-hosted; SaaS a pagamento solo se "killer". Principio della community (enterpriseready.io, Hashorn): non costruire feature enterprise in modo speculativo. L'ordine corretto è <strong>RBAC prima</strong> (tutto dipende dai ruoli), poi <strong>audit log</strong> (ogni cliente enterprise li chiede e servono per SOC 2), poi <strong>SSO</strong>, infine <strong>SCIM</strong> solo su richiesta esplicita — "If you skip audit logs, you fail SOC 2 and you can't answer the customer's 'who did this' question."</p>
+<hr />
+<h3 id="area-1-security-application-security">AREA 1 — Security (Application Security)</h3>
+<p><strong>Baseline (table stakes)</strong>
+- <strong>OWASP ASVS Livello 1</strong> come minimo assoluto per ogni app ("Level 1 is the bare minimum that all applications should strive for" — OWASP ASVS). Punta a <strong>L2</strong> appena tratti dati sensibili/B2B ("Level 2 is recommended for most applications handling sensitive data or transactions").
+- <strong>TLS ovunque</strong> (gestito gratis da Cloudflare + Let's Encrypt sull'origine), <strong>security headers</strong> HTTP (CSP, HSTS, X-Content-Type-Options), <strong>rate limiting</strong>.
+- <strong>Dependency scanning gratuito</strong>: <code>npm audit</code> (incluso in Node), <strong>Dependabot</strong> (nativo GitHub, gratis, apre PR di fix), <strong>Trivy</strong> (Apache-2.0, scansiona dipendenze + immagini container + IaC + secrets in un solo binario, gira in &lt;60s). Consenso: "fix con Dependabot, diagnostica con Trivy". <strong>Renovate</strong> (OSS) se non sei su GitHub.
+- <strong>Container hardening</strong>: immagini base minimal, utente non-root, <code>npm ci</code>/<code>--frozen-lockfile</code> nei Dockerfile, pin per digest (SHA) non per tag.
+- <strong>Cloudflare Free WAF</strong>: custom rules (5 slot free), Managed Challenge, blocco user-agent scanner, geo-restrizione admin panel, blocco <code>wp-login.php</code>/<code>xmlrpc.php</code>. "Cloudflare's free tier WAF is more powerful than most people use."
+- <strong>Origin protection</strong>: allowlist degli IP pubblicati da Cloudflare sulle porte 80/443 (ufw/nftables), deny tutto il resto; oppure <strong>Cloudflare Tunnel</strong> (<code>cloudflared</code>, outbound-only, origine senza IP pubblico — "Very secure", disponibile a tutti). Senza questo, chiunque scopra l'IP origine (DNS storico, CT log) bypassa WAF e rate limit.
+- <strong>SSH hardening + fail2ban</strong>: solo chiavi SSH, password auth disabilitata, UFW con sole porte 22/80/443. Su un singolo server fail2ban basta ("On one box, fail2ban is plenty").
+- <strong>Aggiornamenti automatici</strong> (<code>unattended-upgrades</code>).
+- <strong>Secrets fuori da git</strong>: per un solo dev, <strong>SOPS</strong> (Mozilla, gratis, cripta i secret nel repo con age/KMS), <strong>Infisical</strong> (open-source MIT, free tier fino a 5 utenti, self-host con Postgres+Redis) o <strong>Doppler</strong> (free tier usabile ma senza self-host). 1Password CLI se già cliente.</p>
+<p><strong>Enterprise-gate</strong>
+- ASVS <strong>L2 verificato</strong> (pentest/audit) come evidenza per i questionari di sicurezza.
+- <strong>SBOM</strong> per artefatto (Syft/Trivy, formati CycloneDX/SPDX) — richiesto sempre più spesso in procurement (spinta EU Cyber Resilience Act / EO 14028).
+- <strong>Firma degli artefatti con Sigstore/cosign</strong> (keyless via OIDC, log di trasparenza Rekor) — "SLSA Level 2 achievable in an afternoon".
+- Report di vulnerability scanning periodici.</p>
+<p><strong>Killer / Extra (solo su scala)</strong>
+- <strong>SLSA Livello 3</strong> (build isolate/hardened, provenance verificabile) — target per componenti critici o settori regolati; per la maggior parte "target SLSA Level 2 as near-term goal".
+- <strong>CrowdSec</strong> al posto/accanto a fail2ban: threat intelligence community, blocca IP prima che colpiscano ("Across a fleet, CrowdSec's shared bans earn the extra complexity"); overhead maggiore (200-500MB vs pochi MB di fail2ban), ha senso su più server.
+- Admission controller che verifica firme/provenance in deploy (Kyverno/policy-controller) — rilevante solo con Kubernetes.</p>
+<hr />
+<h3 id="area-2-access-identity">AREA 2 — Access &amp; Identity</h3>
+<p><strong>Baseline</strong>
+- <strong>OAuth2 / OIDC</strong> come standard di autenticazione (OAuth 2.1: PKCE obbligatorio, no implicit grant). Per Node esistono librerie di prima classe (<code>openid-client</code>).
+- <strong>MFA</strong> (TOTP; passkey/WebAuthn come upgrade), session management robusto (Redis è ideale come session store), API key con hashing e scope.
+- <strong>RBAC</strong>: "Build it once, properly. RBAC first because everything else depends on roles." Evitare il boolean <code>isAdmin</code> hard-coded.
+- Isolamento multi-tenancy (tenant ID su ogni query/documento).</p>
+<p><strong>Enterprise-gate</strong>
+- <strong>SSO via SAML o OIDC</strong>: hard blocker in procurement. La <strong>CISA/FBI "Secure by Demand Guide" (6 ago 2024)</strong> chiede espressamente ai buyer di verificare: <em>"Does the manufacturer support integrating standards-based single sign-on (SSO) for customers at no additional cost?"</em> SAML resta il "lingua franca" enterprise.
+- <strong>SCIM 2.0</strong> per provisioning/deprovisioning automatico — solo quando il cliente lo chiede esplicitamente. "Ship SSO without SCIM and you will still fail security reviews" se il cliente lo esige.
+- Il "three-legged stool" enterprise: SAML/OIDC (login) + SCIM (lifecycle) + MFA enforcement + audit logging.
+- Costruire SSO da zero: 6-18 mesi realistici → valuta un IdP/servizio (Logto/WorkOS/Clerk/Authgear) prima di reinventare.</p>
+<p><strong>Killer / Extra</strong>
+- <strong>ABAC</strong> / modelli di autorizzazione fine-grained (policy engine tipo OPA/Cedar) — "the most obvious differentiator between professional and enterprise tiers is the sophistication of the authorization model", ma solo su domanda enterprise.
+- Audit di ogni decisione di autorizzazione, sessioni con revoca centralizzata, dedicated egress IP.</p>
+<hr />
+<h3 id="area-3-audit-audit-trail-logs">AREA 3 — Audit (Audit Trail / Logs)</h3>
+<p><strong>Cosa registrare (baseline, da ISO-27002 via enterpriseready.io)</strong>: attività utente applicative, eccezioni, eventi di sicurezza (successi e rifiuti), uso di privilegi, login falliti/riusciti, logout, dati acceduti/tentati, modifiche di configurazione amministrativa. Modello: <em>actor / action / resource / timestamp / source IP / result</em>. <strong>Regola d'oro OWASP</strong>: tenere PII e secret FUORI dall'audit log. Timestamp in GMT al millisecondo da server sincronizzato NTP.</p>
+<p><strong>Baseline</strong>
+- Audit log applicativo <strong>separato</strong> dai log di debug, append-only.
+- Per lo stack MongoDB: <strong>l'audit nativo MongoDB NON è disponibile in Community Edition</strong> (solo Enterprise/Atlas; Atlas aggiunge +10% al costo orario del cluster e ritiene i log 30 giorni di default). Quindi per il solo dev il pattern è a livello applicativo.
+- <strong>Pattern append-only in MongoDB</strong>: collection insert-only (permessi solo INSERT) + <strong>MongoDB Change Streams</strong> (<code>db.watch()</code>) per catturare CRUD in modo reattivo. Librerie Node/Mongoose open-source concrete: <strong>mongoose-audit-log</strong> (registra save/update/delete + utente + timestamp), <strong>mongoose-audit-trail</strong> (diff-based, opzione <code>omit</code> per escludere campi), <strong>mongoose-audit-logger</strong> (fork mantenuto), <strong>mongoose-log-history</strong> (field-level, soft delete, batch, contextual logging).</p>
+<p><strong>Enterprise-gate</strong>
+- <strong>Audit log come feature di prodotto</strong>: viewer in-app, export CSV, API accessibile (poll con etag / push via webhook) per ingestione in SIEM (Splunk). "Customers want to query the audit log, not just generate it."
+- <strong>Retention controllabile</strong> e report di compliance (SOC 2 / ISO 27001).
+- <strong>Tamper-evidence</strong>: hash-chaining SHA-256 (ogni record include l'hash del precedente, con genesis block "GENESIS") — rende l'alterazione rilevabile. "Modify any record retroactively and every hash from that point forward becomes invalid." Attenzione: append-only ≠ tamper-evident — una collection INSERT-only è append-only ma da sola non basta.</p>
+<p><strong>Killer / Extra</strong>
+- <strong>Immutabilità WORM reale</strong>: export dei record su object storage con <strong>Object Lock</strong> (modalità GOVERNANCE/COMPLIANCE + Legal Hold) — es. <strong>Cloudflare R2</strong> (S3-compatibile, object-lock, egress zero), Backblaze B2, Hetzner Object Storage. Ancoraggio esterno dell'head della hash-chain (bucket object-locked, Sigstore Rekor, o timestamp RFC 3161): "a privileged rewrite of the entire table is detectable only against such an external anchor."
+- Attenzione: COMPLIANCE mode è <strong>irreversibile</strong> — un errore di retention = dati non cancellabili che accumulano costi (in tensione anche con il diritto di cancellazione GDPR).</p>
+<hr />
+<h3 id="area-4-logging-log-retention">AREA 4 — Logging &amp; Log Retention</h3>
+<p><strong>Baseline</strong>
+- <strong>Logging strutturato JSON</strong>. Per Node: <strong>Pino</strong> (il più veloce, 10.000+ log/s, basso overhead, <strong>redaction integrata</strong> per campi sensibili, child logger per contesto richiesta, transport su worker thread). Consenso community: Pino default per produzione; Winston se serve massima flessibilità; Morgan per HTTP.
+- <strong>Correlation ID</strong> per request, log level configurabili, log rotation.
+- Aggregazione centralizzata leggera (vedi build-vs-buy sotto).</p>
+<p><strong>Enterprise-gate</strong>
+- Policy di retention documentate e differenziate per tipo di log (es. security 90-365 giorni, debug 7-30 giorni).
+- Controllo accessi ai log, cifratura.</p>
+<p><strong>Killer / Extra</strong>
+- Retention a lungo termine su object storage con tiering (Loki/VictoriaLogs con backend S3-compatibile; lifecycle rules per spostare/eliminare dati vecchi — Loki gestisce la retention via Compactor).
+- Log analytics avanzata, anomaly detection.</p>
+<p><strong>GDPR (rilevante per EU-hosted)</strong>
+- Gli <strong>indirizzi IP sono dati personali</strong> (Recital 30; CGUE <em>Breyer</em> 2016, anche IP dinamici). Log pieni di IP = dati personali regolati.
+- <strong>Art. 5 — data minimization &amp; storage limitation</strong>: raccogli solo ciò che serve, tieni solo il tempo necessario. Nessun periodo fisso in GDPR: per i security log tipicamente <strong>6-12 mesi</strong> giustificabili; molte guide indicano <strong>30-90 giorni</strong> per log di sicurezza standard.
+- Tecniche: troncamento IP (pseudonimizzazione, NON anonimizzazione), hashing con salt, esclusione PII alla sorgente (redaction Pino). La retention si applica anche a backup e archivi.</p>
+<hr />
+<h3 id="area-5-monitoring-observability">AREA 5 — Monitoring &amp; Observability</h3>
+<p><strong>📖 Box per neofiti — Monitoraggio vs Osservabilità: che differenza c'è?</strong></p>
+<p>I due termini vengono spesso usati come sinonimi, ma indicano due cose diverse. Capire la differenza aiuta a scegliere gli strumenti giusti e a non comprare (o costruire) più del necessario.</p>
+<ul>
+<li>
+<p><strong>Monitoraggio</strong> = rispondere a domande <strong>decise in anticipo</strong>. Definisci cosa controllare ("il sito risponde?", "la CPU è sotto l'80%?", "il disco è pieno oltre il 90%?") e imposti soglie di allarme. Quando la soglia scatta, ricevi una notifica. Il monitoraggio ti dice <strong>CHE</strong> qualcosa è rotto. Analogia: la spia dell'olio in macchina — si accende, sai che c'è un problema, ma non sai il perché.</p>
+</li>
+<li>
+<p><strong>Osservabilità</strong> = la capacità del sistema di rispondere a domande <strong>che non avevi previsto</strong>. Se l'applicazione emette segnali abbastanza ricchi (log strutturati con contesto, metriche, tracce delle richieste), puoi investigare a posteriori problemi mai visti prima: "perché le richieste dell'utente X sono lente solo dopo le 18?". L'osservabilità ti dice <strong>PERCHÉ</strong> è rotto. Analogia: il meccanico che collega la diagnostica alla centralina e ricostruisce la sequenza di eventi.</p>
+</li>
+</ul>
+<p>In gergo: il monitoraggio copre i <strong>known unknowns</strong> (cose che sai che possono rompersi), l'osservabilità gli <strong>unknown unknowns</strong> (guasti che non potevi prevedere). Il monitoraggio è di fatto un sottoinsieme dell'osservabilità: un sistema osservabile include il monitoraggio, non viceversa.</p>
+<p>I tre segnali (pillar) dell'osservabilità:
+1. <strong>Metriche</strong> — numeri aggregati nel tempo (richieste/sec, latenza media, RAM usata). Economiche da conservare, ottime per allarmi e dashboard.
+2. <strong>Log</strong> — eventi discreti con contesto ("l'utente 42 ha fatto login alle 14:03 da IP x.y.z"). Raccontano cosa è successo.
+3. <strong>Tracce</strong> — il percorso di una singola richiesta attraverso i componenti (API → DB → cache), con i tempi di ogni passaggio. Fondamentali con i microservizi, spesso overkill per un monolite.</p>
+<p>Mappato sugli strumenti di questo report: <strong>Uptime Kuma = monitoraggio</strong> (domande predefinite: "è su?"). <strong>VictoriaLogs/OpenObserve + OpenTelemetry = osservabilità</strong> (puoi interrogare i dati con domande nuove). <strong>Sentry</strong> sta a metà: monitora gli errori ma dà contesto ricco per capirne la causa. Per un solo dev la strategia sensata è: prima il monitoraggio (poche ore di setup, copre il 90% delle emergenze), poi l'osservabilità in modo incrementale (log strutturati subito, metriche dopo, tracce solo se servono).</p>
+<p><strong>Baseline</strong>
+- <strong>OpenTelemetry (OTel) è LO standard</strong> — progetto CNCF <strong>graduato il 21 maggio 2026</strong>, "de facto observability standard". Ha raggiunto la seconda project velocity più alta tra oltre 240 progetti cloud native, seconda solo a Kubernetes, con oltre 12.000 contributori da più di 2.800 aziende. Instrumentare con OTel = vendor-neutral (una volta, verso qualsiasi backend).
+- I tre segnali: metriche, log, tracce. Baseline realistica per solo dev: metriche + log + <strong>uptime monitoring</strong> + <strong>error tracking</strong>.
+- <strong>Uptime Kuma</strong> (self-hosted, 50-200MB RAM, SQLite, 90+ canali di notifica, status page pubblica, monitor illimitati gratis) — table stakes per "è su, dall'esterno, e mi ha avvisato".
+- <strong>Health check</strong> endpoint (<code>/health</code>, <code>/ready</code>).
+- <strong>Error tracking</strong>: <strong>Sentry free</strong> (5.000 errori/mese) — "start with Sentry for error tracking (free tier handles your volume)".</p>
+<p><strong>Enterprise-gate</strong>
+- Dashboard e alerting affidabili, SLO/error budget documentati, on-call.
+- Report di uptime/SLA per i clienti.</p>
+<p><strong>Killer / Extra</strong>
+- <strong>Tracing distribuito</strong> completo (Tempo/Jaeger/OTel) — utile su microservizi, overkill per un monolite singolo.
+- SLO formali con error budget, RUM/session replay, AI SRE / root-cause automatica.</p>
+<hr />
+<h2 id="build-vs-buy-osservabilita-logging-audit-per-solo-dev-su-hetznercloudflare">BUILD vs BUY — Osservabilità, Logging, Audit per solo dev su Hetzner+Cloudflare</h2>
+<h3 id="footprint-self-hosted-ram-dati-community">Footprint self-hosted (RAM) — dati community</h3>
+<ul>
+<li><strong>Uptime Kuma</strong>: 50-200MB (256MB gestiscono centinaia di monitor). Il primo tool da installare.</li>
+<li><strong>Beszel</strong>: agente ~10-15MB RAM, il più leggero per metriche server 1-20 host.</li>
+<li><strong>Netdata</strong>: 50-100MB (fino a 200-500MB con tutti i collector).</li>
+<li><strong>VictoriaLogs</strong>: footprint RAM/disco più piccolo della categoria — docs ufficiali: <em>"It uses up to 30x less RAM and up to 15x less disk space than other solutions such as Elasticsearch and Grafana Loki"</em>, e <em>"performs typical full-text queries up to 1000x faster than Grafana Loki"</em>; setup molto più semplice di Loki e gestisce campi ad alta cardinalità (trace_id, user_id) che mettono in crisi Loki.</li>
+<li><strong>OpenObserve</strong>: ~512MB RAM a idle, single binary Rust, logs/metrics/traces + object storage, SQL invece di LogQL. Su VPS da 8GB lascia &gt;7.5GB liberi.</li>
+<li><strong>SigNoz</strong>: OTel-native (logs/metrics/traces + APM in una UI), ClickHouse, multi-container. Su VPS da 8GB lascia ~6GB liberi (più pesante di OpenObserve).</li>
+<li><strong>Grafana LGTM stack</strong> (Loki+Grafana+Tempo+Mimir+Alloy): 500MB-1GB+, ecosistema più grande ma più componenti da gestire — per un solo dev è oneroso.</li>
+<li><strong>Sentry self-hosted</strong>: SCONSIGLIATO — 40+ container, min 16GB RAM. Usa il cloud free.</li>
+</ul>
+<p><strong>Verdetto self-host</strong>: per un solo dev con RAM limitata, un <strong>backend unificato leggero</strong> batte lo stack LGTM. Scelte consigliate: <strong>VictoriaMetrics + VictoriaLogs</strong> (massima efficienza, metriche primarie) oppure <strong>OpenObserve</strong> (un binario, logs+metrics+traces+object storage nativo). SigNoz se vuoi APM OTel-native e hai ≥8GB.</p>
+<h3 id="managed-free-tier-numeri">Managed free tier (numeri)</h3>
+<ul>
+<li><strong>Grafana Cloud Free</strong>: 10.000 serie metriche attive, 50GB logs, 50GB traces, 50GB profiles/mese, 3 utenti, <strong>retention 14 giorni</strong>, forever-free, no carta di credito. Ottimo per personal/prototipi; i due muri sono retention 14gg e cap 10k serie. Pro da $19/mese estende la retention (13 mesi metriche, 30gg log).</li>
+<li><strong>Sentry Free (Developer)</strong>: 5.000 errori/mese, 5M span di tracing.</li>
+<li><strong>Axiom Free</strong>: ingest molto generoso per i log (storicamente 500GB/mese) — "standout generous" per log management.</li>
+<li><strong>Better Stack Free</strong>: 3GB logs/traces/metrics, no carta di credito; error tracking compatibile con SDK Sentry a ~1/6 del costo; uptime a 30s; status page.</li>
+<li><strong>PostHog Free</strong>: 100.000 errori/mese (il più generoso per error tracking).</li>
+</ul>
+<h3 id="object-storage-per-retention-economica-numeri-2026">Object storage per retention economica (numeri 2026)</h3>
+<ul>
+<li><strong>Cloudflare R2</strong>: storage $0.015/GB/mese, <strong>egress ZERO</strong>, free tier 10GB storage + 1M Class A + 10M Class B op/mese. Vincitore per un setup già-Cloudflare (Loki/VictoriaLogs/OpenObserve puntano R2 come backend S3-compatibile; supporta Object Lock/WORM per audit immutabili).</li>
+<li><strong>Backblaze B2</strong>: <strong>$0.006/GB/mese</strong> (~$6/TB), il più economico per storage a freddo; egress gratis fino a 3× lo storage medio, poi $0.01/GB, e gratis verso Cloudflare (Bandwidth Alliance); durabilità 11 nine.</li>
+<li><strong>Hetzner Object Storage</strong>: prezzo base <strong>€4,99 / $5,99 al mese</strong> (IVA escl.), inclusi <strong>1TB di storage + 1TB di egress</strong>; oltre soglia €1,00/TB egress e €0,0067 per TB-ora storage. S3-compatibile, DC Falkenstein/Norimberga/Helsinki (utile per data residency EU), con versioning, object lock e SSE.</li>
+</ul>
+<h3 id="cloudflare-free-cosa-ottieni-davvero-docs-ufficiali-last-updated-aug-14-2026">Cloudflare Free — cosa ottieni davvero (docs ufficiali, "Last updated Aug 14, 2026")</h3>
+<ul>
+<li><strong>Web Analytics</strong>: gratis, cookieless, <strong>retention 30 giorni</strong>, campionamento 10% dei page load.</li>
+<li><strong>Security Events</strong> (dashboard): "sampled logs only", <strong>retention 24 ore</strong> su Free, no export (Business+ export fino a 500 eventi).</li>
+<li><strong>Security Analytics</strong> (dataset <code>httpRequestsAdaptive</code>): <strong>retention 7 giorni</strong> su Free, finestra query 24h.</li>
+<li><strong>GraphQL Analytics API</strong>: accessibile su TUTTI i piani incluso Free (granularità 1h, ultime 24h su Free).</li>
+<li><strong>Logpush</strong> (log HTTP/zone per-request): <strong>solo Enterprise</strong> (0 job su Free/Pro/Business). Eccezione: <strong>Workers Trace Events Logpush</strong> su Workers Paid ($5/mese, 10M richieste incluse, $0.05/M dopo).</li>
+<li><strong>Instant Logs</strong> (live tail): dal piano Business.</li>
+<li><strong>Implicazione</strong>: su Free la retention edge Cloudflare è breve e non-esportabile → per log durevoli/forensi spedisci i <strong>log origine</strong> (dalla tua app Node) al tuo storage, e usa la GraphQL API per conteggi giornalieri.</li>
+</ul>
+<hr />
+<h2 id="recommendations-roadmap-prioritizzata">Recommendations (roadmap prioritizzata)</h2>
+<p><strong>Fase 0 — Subito (giorni, costo ~0)</strong>
+1. SSH hardening (solo chiavi), UFW (22/80/443), fail2ban, <code>unattended-upgrades</code>.
+2. Cloudflare proxy attivo + allowlist IP Cloudflare sull'origine (o Cloudflare Tunnel); WAF free con 5 custom rules.
+3. Secrets fuori da git: SOPS o Infisical free.
+4. Pino (JSON, redaction PII/secret) in tutta l'app; correlation ID; health check endpoints.
+5. <code>npm audit</code> + Dependabot + Trivy in CI; immagini non-root, pin per digest.
+6. Uptime Kuma (su server SEPARATO se possibile) con ≥2 canali di notifica; alert disco &gt;80% e scadenza SSL.
+7. Sentry free per error tracking.
+8. Policy retention log documentata (es. security 90gg, app 30gg) con troncamento/hashing IP per GDPR.</p>
+<p><strong>Fase 1 — Settimane (baseline "seria")</strong>
+9. Un backend osservabilità unificato leggero: <strong>VictoriaMetrics+VictoriaLogs</strong> o <strong>OpenObserve</strong>, con Grafana per le dashboard; instrumentazione <strong>OpenTelemetry</strong>.
+10. Backup automatici (restic) + export log/metrics su <strong>Cloudflare R2</strong> (egress zero) con lifecycle per retention economica.
+11. RBAC pulito (no <code>isAdmin</code> hard-coded), OAuth2/OIDC + MFA (TOTP).
+12. Audit log applicativo append-only in MongoDB (collection insert-only + Change Streams + libreria Mongoose), schema actor/action/resource/result, PII esclusa.</p>
+<p><strong>Fase 2 — Quando arriva la trazione / primo cliente enterprise (differire!)</strong>
+13. Alla PRIMA richiesta scritta enterprise: audit log con viewer + export + API, retention controllabile; poi SSO (SAML/OIDC, valutare WorkOS/Logto per non costruire da zero); SCIM solo se richiesto.
+14. Hash-chain SHA-256 sull'audit + export WORM su R2 Object Lock quando serve tamper-evidence per compliance.
+15. SBOM (Syft/Trivy) + firma cosign/Sigstore (SLSA L2) nel CI.</p>
+<p><strong>Soglie che cambiano le scelte</strong>
+- Se superi ~50GB log/mese o retention &gt;14gg su Grafana Cloud free → self-host (VictoriaLogs) + R2.
+- Se passi da 1 a più server → valuta CrowdSec al posto di fail2ban.
+- Se il monolite diventa microservizi → attiva tracing distribuito OTel (Tempo/SigNoz).
+- Se un cliente esige SOC 2 → priorità ad audit log immutabili + report.</p>
+<h2 id="caveats">Caveats</h2>
+<ul>
+<li>Diverse fonti su pricing/free-tier e footprint RAM sono blog di vendor o terze parti (2026): i numeri Cloudflare provengono dai docs ufficiali (developers.cloudflare.com, "Last updated Aug 14, 2026"); i footprint RAM sono cifre indicative dipendenti dal carico. Alcune fonti terze riportano finestre di retention Cloudflare contraddittorie (72h, 14gg) — ho usato i docs ufficiali.</li>
+<li>Il prezzo di Hetzner Object Storage: la cifra corretta dai comunicati ufficiali Hetzner è <strong>€4,99/$5,99 al mese</strong> (IVA escl.) con 1TB storage + 1TB egress inclusi; alcune fonti terze citano €6,49 (probabilmente IVA/listino diverso).</li>
+<li>OpenTelemetry graduato CNCF il 21/5/2026 (comunicato CNCF/PRNewswire) — confermato.</li>
+<li>GDPR non fissa periodi di retention: le cifre 30-90gg / 6-12 mesi sono prassi comuni, non obblighi; documenta e giustifica la tua scelta.</li>
+<li>L'ordine RBAC→audit→SSO→SCIM e il "non costruire in anticipo" riflettono il consenso di enterpriseready.io/Hashorn/SSOJet, non una regola assoluta: adatta alla tua nicchia.</li>
+<li>L'audit nativo e le funzioni WORM non esistono in MongoDB Community: qualsiasi tamper-evidence va costruita a livello applicativo (hash-chain) e ancorata a storage esterno object-locked; la sola object-lock protegge il layer di storage ma non i metadati — per compliance seria servono hash + trusted timestamp + audit trail verificabile.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

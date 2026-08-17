@@ -1,0 +1,3492 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Sistema Notifiche — Specifica casi d'uso L1–L7 - XP Flow — Docs di dominio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sistema-notifiche-specifica-casi-duso-l1l7" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href="../.." title="XP Flow — Docs di dominio" class="md-header__button md-logo" aria-label="XP Flow — Docs di dominio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XP Flow — Docs di dominio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sistema Notifiche — Specifica casi d'uso L1–L7
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="XP Flow — Docs di dominio" class="md-nav__button md-logo" aria-label="XP Flow — Docs di dominio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    XP Flow — Docs di dominio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comandi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandi (cheat-sheet)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guida-file-e-priorita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File e priorità (guida)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architettura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architettura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contesto (C4)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/domain-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modello di dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features (Gherkin)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flow/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stato del flusso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-architettura-condivisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Architettura condivisa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Architettura condivisa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-topologia-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1 Topologia RabbitMQ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-message-contract-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.2 Message contract (v1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-convenzioni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.3 Convenzioni
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-mappa-livelli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.4 Mappa livelli
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sistema-notifiche-specifica-casi-duso-l1l7">Sistema Notifiche — Specifica casi d'uso L1–L7</h1>
+<blockquote>
+<p>Documento di design e acceptance per il sistema notifiche multi-canale su RabbitMQ.
+Ogni livello è un incremento shippabile autonomamente (north-star: 1 incremento/settimana).
+Le <strong>opzioni migliorative</strong> sono marcate <code>OPT-Lx.n</code> e raccolte a margine di ogni livello: NON fanno parte dello scope base. Si promuovono a scope solo con decisione esplicita (mini-ADR nel changelog).</p>
+</blockquote>
+<hr />
+<h2 id="0-architettura-condivisa">0. Architettura condivisa</h2>
+<h3 id="01-topologia-rabbitmq">0.1 Topologia RabbitMQ</h3>
+<div class="highlight"><pre><span></span><code>Producer → exchange "notifications" (topic, durable)
+              ├─ "toast.#"  → q.toast (exclusive, auto-delete)   [L1]
+              ├─ "inbox.#"  → q.inbox (durable)                  [L2–L4]
+              ├─ "email.#"  → q.email (durable)
+              │                 └─ DLX "notifications.dlx" → q.email.dead   [L5]
+              ├─ "push.#"   → q.push  (durable)
+              │                 └─ DLX → q.push.dead              [L6]
+              └─ (L7: il producer smette di decidere il canale —
+                  pubblica "event.#" e il router pubblica i routing key canale)
+</code></pre></div>
+<p>Regole:</p>
+<ul>
+<li><strong>Un solo publish per evento di dominio.</strong> I livelli aggiungono binding, mai refactor del producer.</li>
+<li>Exchange e code durable dichiarati via <strong>Rascal</strong> (config dichiarativa, reconnect e retry gestiti). <code>amqplib</code> nudo è vietato nei service: troppa superficie d'errore su reconnect/channel recovery.</li>
+<li>Ogni coda durable ha il suo <strong>DLX</strong> con <code>x-message-ttl</code> per retry a scaglioni (retry topology: <code>q.email → q.email.retry.30s → q.email → … → q.email.dead</code>).</li>
+<li>Prefetch per consumer: 10 (tuning successivo, non prima).</li>
+</ul>
+<h3 id="02-message-contract-v1">0.2 Message contract (v1)</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"eventId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.confirmed"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u123"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-17T10:00:00Z"</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Validazione <strong>ajv</strong> all'ingresso di ogni consumer. Messaggio invalido → scarto + log warn (L1) oppure DLQ diretta senza retry (code durable): un payload malformato non diventa mai valido ritentando.</li>
+<li><code>eventId</code> è la chiave di <strong>idempotenza</strong> ovunque: dedup client (L1), upsert inbox (L3), idempotency key invii (L5/L6).</li>
+<li>Evoluzione: campi solo additivi finché <code>v</code> non cambia. <code>v2</code> = nuova routing key suffix (<code>*.v2</code>), consumer dual-read durante la migrazione.</li>
+</ul>
+<h3 id="03-convenzioni">0.3 Convenzioni</h3>
+<ul>
+<li>Codice, identifiers, Gherkin: <strong>inglese</strong>. Documento umano: italiano.</li>
+<li>Test: E2E Gherkin come contratto, <strong>testcontainers</strong> per RabbitMQ/MongoDB/Redis.</li>
+<li>Feature flag per canale (<code>NOTIF_EMAIL_ENABLED</code>, …) per rollback istantaneo.</li>
+<li>Legenda casi: ✅ positivo · ❌ negativo · ⚠️ edge</li>
+</ul>
+<h3 id="04-mappa-livelli">0.4 Mappa livelli</h3>
+<table>
+<thead>
+<tr>
+<th>Lv</th>
+<th>Caso d'uso</th>
+<th>Flusso</th>
+<th>Canale</th>
+<th>Componenti nuovi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Toast realtime</td>
+<td>One-shot</td>
+<td>In-app WS</td>
+<td>WS gateway, <code>&lt;ToastHost&gt;</code></td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Badge counter</td>
+<td>Stateful-lite</td>
+<td>In-app</td>
+<td>Counter Redis, <code>&lt;NotificationBell&gt;</code></td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Inbox read/unread</td>
+<td>Con stato</td>
+<td>In-app</td>
+<td>Collection <code>notifications</code>, API REST, <code>&lt;InboxPanel&gt;</code></td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Feed storico</td>
+<td>Con storico</td>
+<td>In-app</td>
+<td>Cursor pagination, retention, filtri, <code>&lt;FeedPage&gt;</code></td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Email transazionale</td>
+<td>One-shot garantito</td>
+<td>Email</td>
+<td>Outbox, adapter email, retry+DLQ</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Web Push</td>
+<td>One-shot best-effort</td>
+<td>Push</td>
+<td>Service worker, VAPID, subscription store</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Mixed + preferenze</td>
+<td>Orchestrazione</td>
+<td>Tutti</td>
+<td>Preference center, router, digest</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="l1-toast-realtime-one-shot-in-app">L1 — Toast realtime (one-shot, in-app)</h1>
+<h2 id="brainstorm-design">Brainstorm &amp; design</h2>
+<p><strong>Decisioni base:</strong></p>
+<ul>
+<li>Semantica <strong>at-most-once</strong>: client offline = notifica persa, by design. Niente DB, niente retry, niente recupero al reconnect.</li>
+<li><code>q.toast</code>: <strong>exclusive + auto-delete</strong> per istanza gateway. Gateway morto → coda sparisce (corretto per one-shot).</li>
+<li>Gateway WS: processo Node dedicato, socket.io, room <code>user:{id}</code>, auth JWT al handshake.</li>
+<li>Il gateway binda <code>toast.#</code> e smista internamente sul <code>userId</code> del payload.</li>
+<li><code>&lt;ToastHost&gt;</code> UI: stack max 3 visibili, auto-dismiss 5s, dismiss manuale, coda FIFO sui burst, dedup su <code>eventId</code>, <code>aria-live="polite"</code>.</li>
+</ul>
+<p><strong>Fuori scope (esplicito):</strong> persistenza, recupero eventi, ack di lettura.</p>
+<h2 id="opzioni-migliorative-a-margine-non-in-scope">Opzioni migliorative (a margine — non in scope)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Valore</th>
+<th>Costo/Rischio</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L1.1</td>
+<td><strong>Replay buffer</strong>: ultimi N eventi per utente in Redis (TTL 60s), replay al reconnect</td>
+<td>Copre il gap dei drop WS brevi</td>
+<td>È persistenza travestita → L3 anticipato; dedup obbligatoria; complica il contratto "effimero"</td>
+<td>❌ No. Se il bisogno emerge, il caso d'uso è L3, non un buffer</td>
+</tr>
+<tr>
+<td>OPT-L1.2</td>
+<td><strong>Scala orizzontale gateway</strong>: adapter socket.io-redis per N istanze</td>
+<td>Necessario solo con &gt;1 replica gateway</td>
+<td>Zero valore con 1 replica</td>
+<td>⏸ Rimandato al bisogno reale (trigger: seconda replica)</td>
+</tr>
+<tr>
+<td>OPT-L1.3</td>
+<td><strong>Toast actionable</strong> (bottone CTA nel toast, es. "Vedi ordine")</td>
+<td>UX migliore</td>
+<td>Payload <code>data.action</code> già previsto dal contract → costo minimo</td>
+<td>✅ Promuovibile subito se serve un caso d'uso concreto</td>
+</tr>
+<tr>
+<td>OPT-L1.4</td>
+<td>SSE al posto di WebSocket</td>
+<td>Meno infrastruttura, HTTP puro, proxy-friendly</td>
+<td>Unidirezionale (ok per toast); socket.io dà già fallback e room</td>
+<td>⏸ Alternativa valida; decidere una volta e non riaprire</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casi-positivi-negativi-edge">Casi positivi / negativi / edge</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Caso</th>
+<th>Comportamento atteso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅</td>
+<td>Utente connesso, evento pubblicato</td>
+<td>Toast entro 2s</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Burst di 10 eventi</td>
+<td>Max 3 visibili, resto in coda FIFO</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Dismiss manuale</td>
+<td>Toast rimosso, il successivo in coda entra</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Utente offline</td>
+<td>Nessuna delivery, nessun recupero al reconnect</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Payload malformato</td>
+<td>Scartato + log warn, gateway non crasha</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Token WS invalido/scaduto</td>
+<td>Handshake rifiutato 401</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Multi-tab stesso utente</td>
+<td>Toast su tutte le tab (room = tutte le socket)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Rabbit down</td>
+<td>Gateway resta up, reconnect con backoff, WS non cade</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>WS drop e reconnect</td>
+<td>Re-auth automatica; eventi nel gap NON recuperati</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Evento duplicato (stesso <code>eventId</code>)</td>
+<td>Un solo toast (dedup client)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acceptance-gherkin-e2e">Acceptance — Gherkin E2E</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Real-time toast notifications</span>
+<span class="nf">  As a logged-in user</span>
+<span class="nf">  I want to receive ephemeral toast notifications</span>
+<span class="nf">  So that I am informed of events while I am online</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">the notification exchange "</span><span class="s">notifications</span><span class="nf">" exists</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the WS gateway is running</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Connected user receives a toast</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" is connected via WebSocket</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event with routing key "</span><span class="s">toast.user</span><span class="nf">" and userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" sees a toast with the event title within </span><span class="s">2</span><span class="nf"> seconds</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Offline user does not receive past toasts</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" is not connected</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" connects </span><span class="s">10</span><span class="nf"> seconds later</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no toast is displayed</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Burst of events respects display limit</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" is connected</span>
+<span class="nf">    </span><span class="k">When </span><span class="s">10</span><span class="nf"> events for userId "</span><span class="s">u123</span><span class="nf">" are published within </span><span class="s">1</span><span class="nf"> second</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">at most </span><span class="s">3</span><span class="nf"> toasts are visible simultaneously</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">remaining toasts are queued in FIFO order</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Duplicate event is deduplicated</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" is connected</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the same event with eventId "</span><span class="s">e1</span><span class="nf">" is delivered twice</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">exactly one toast is displayed</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Malformed payload is discarded safely</span>
+<span class="k">    Given </span><span class="nf">the gateway is consuming from "</span><span class="s">q.toast</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">a message with an invalid schema is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the message is discarded</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a warning is logged</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the gateway keeps consuming subsequent messages</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Unauthenticated connection is rejected</span>
+<span class="k">    When </span><span class="nf">a client attempts a WebSocket handshake with an invalid token</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the connection is rejected with status </span><span class="s">401</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Gateway survives broker outage</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" is connected</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the message broker becomes unavailable for </span><span class="s">30</span><span class="nf"> seconds</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the WebSocket connection stays open</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">after broker recovery new events are delivered again</span>
+</code></pre></div>
+<h2 id="roadmap-l1-settimana-1">Roadmap L1 (settimana 1)</h2>
+<ol>
+<li><strong>G1:</strong> docker-compose Rabbit + config Rascal (exchange/binding), contract v1 + validazione ajv</li>
+<li><strong>G2:</strong> WS gateway — auth handshake, room per user, consumer <code>q.toast</code> (TDD sul dispatch)</li>
+<li><strong>G3:</strong> <code>&lt;ToastHost&gt;</code> — stack, FIFO, dedup, auto-dismiss</li>
+<li><strong>G4:</strong> E2E Gherkin (testcontainers per Rabbit)</li>
+<li><strong>G5:</strong> hardening reconnect (Rabbit e WS), log, ship</li>
+</ol>
+<hr />
+<h1 id="l2-badge-counter-stateful-lite-in-app">L2 — Badge counter (stateful-lite, in-app)</h1>
+<h2 id="brainstorm-design_1">Brainstorm &amp; design</h2>
+<p><strong>Decisioni base:</strong></p>
+<ul>
+<li>Il badge è un <strong>counter denormalizzato in Redis</strong> (<code>notif:unread:{userId}</code>), NON una <code>countDocuments</code> a ogni render.</li>
+<li>Nuovo consumer su <code>q.inbox</code> (binding <code>inbox.#</code>): per ora fa solo <code>INCR</code> del counter + publish interno di un evento <code>toast.badge</code> (riuso L1 per l'update realtime del numero).</li>
+<li><code>&lt;NotificationBell&gt;</code>: icona campanella + badge numerico, aggiornata via WS (riuso canale L1) con fallback <code>GET /notifications/count</code> al mount.</li>
+<li>Reset del counter: a L2 esiste solo "azzera tutto" (<code>DELETE /notifications/count</code> → <code>SET 0</code>); il decremento puntuale per singola lettura arriva con L3.</li>
+<li>Cap visuale: oltre 99 → "99+".</li>
+<li><strong>Fonte di verità</strong>: a L2 il counter È la verità (non c'è ancora la collection). A L3 la verità diventa MongoDB e il counter torna cache ricostruibile.</li>
+</ul>
+<p><strong>Fuori scope:</strong> lista delle notifiche (L3), decremento puntuale (L3).</p>
+<h2 id="opzioni-migliorative-a-margine">Opzioni migliorative (a margine)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Valore</th>
+<th>Costo/Rischio</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L2.1</td>
+<td><strong>Counter per categoria</strong> (<code>notif:unread:{userId}:{type}</code>)</td>
+<td>Badge separati (ordini vs sistema)</td>
+<td>Moltiplica chiavi e reset logic; nessun caso d'uso oggi</td>
+<td>❌ No finché la UI non lo chiede</td>
+</tr>
+<tr>
+<td>OPT-L2.2</td>
+<td><strong>Ricostruzione counter da Mongo</strong> (job di riconciliazione)</td>
+<td>Auto-guarigione da drift</td>
+<td>Ha senso solo da L3 in poi (a L2 non c'è la collection)</td>
+<td>⏸ Promuovere in L3 come task, non opzione</td>
+</tr>
+<tr>
+<td>OPT-L2.3</td>
+<td>Badge anche nel titolo tab (<code>(3) App</code>) e favicon</td>
+<td>Visibilità con tab in background</td>
+<td>Banale, solo FE</td>
+<td>✅ Promuovibile, costo ~0</td>
+</tr>
+<tr>
+<td>OPT-L2.4</td>
+<td>TTL sul counter (es. 30gg)</td>
+<td>Igiene chiavi utenti dormienti</td>
+<td>Rischio: counter sparito ≠ zero non letti → drift</td>
+<td>❌ No a L2; con L3 il TTL diventa sicuro (ricostruibile)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casi-positivi-negativi-edge_1">Casi positivi / negativi / edge</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Caso</th>
+<th>Comportamento atteso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅</td>
+<td>Evento <code>inbox.*</code> pubblicato</td>
+<td>Counter +1, badge aggiornato realtime se connesso</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Mount della bell</td>
+<td><code>GET /count</code> restituisce il valore corrente</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Azzera tutto</td>
+<td>Counter a 0, badge sparisce su tutte le tab</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><code>GET /count</code> senza auth</td>
+<td>401</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Redis down</td>
+<td>API <code>/count</code> risponde 200 con <code>{count: null}</code> degradato; consumer va in <strong>nack + requeue</strong> (l'INCR non deve perdersi)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Utente offline durante 5 eventi</td>
+<td>Al login la bell mostra 5 (fetch al mount)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Evento duplicato (<code>eventId</code> già visto)</td>
+<td>Counter NON incrementato due volte (dedup con <code>SET notif:seen:{eventId} NX EX 3600</code>)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>&gt;99 non letti</td>
+<td>Badge mostra "99+"</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Multi-tab, azzeramento da una tab</td>
+<td>Badge a 0 su tutte (broadcast via room)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Counter negativo (bug/race)</td>
+<td>Clamp a 0 lato API, log error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acceptance-gherkin-e2e_1">Acceptance — Gherkin E2E</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Unread notification badge</span>
+<span class="nf">  As a logged-in user</span>
+<span class="nf">  I want to see how many unread notifications I have</span>
+<span class="nf">  So that I know when something needs my attention</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">the inbox consumer is running</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the counter store is available</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Badge increments in real time</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" is connected with badge count </span><span class="s">0</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event with routing key "</span><span class="s">inbox.order</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the badge shows </span><span class="s">1</span><span class="nf"> within </span><span class="s">2</span><span class="nf"> seconds</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Count survives user absence</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" is not connected</span>
+<span class="nf">    </span><span class="k">When </span><span class="s">5</span><span class="nf"> inbox events for userId "</span><span class="s">u123</span><span class="nf">" are published</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" logs in</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the badge shows </span><span class="s">5</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Duplicate event does not double count</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has badge count </span><span class="s">1</span><span class="nf"> after event "</span><span class="s">e1</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the same event "</span><span class="s">e1</span><span class="nf">" is redelivered</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the badge still shows </span><span class="s">1</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Clear all resets the badge everywhere</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has badge count </span><span class="s">7</span><span class="nf"> on two open tabs</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user clears all notifications from the first tab</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the badge shows </span><span class="s">0</span><span class="nf"> on both tabs</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Counter store outage degrades gracefully</span>
+<span class="k">    Given </span><span class="nf">the counter store is unavailable</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" requests the unread count</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the API responds </span><span class="s">200</span><span class="nf"> with a null count</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the bell renders without a number</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Consumer requeues on counter store outage</span>
+<span class="k">    Given </span><span class="nf">the counter store is unavailable</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an inbox event is consumed</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the message is negatively acknowledged and requeued</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">it is processed successfully after the store recovers</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Badge caps at 99+</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has </span><span class="s">150</span><span class="nf"> unread notifications</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user opens the app</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the badge shows "</span><span class="s">99+</span><span class="nf">"</span>
+</code></pre></div>
+<h2 id="roadmap-l2-settimana-2">Roadmap L2 (settimana 2)</h2>
+<ol>
+<li><strong>G1:</strong> binding <code>inbox.#</code> + <code>q.inbox</code> durable in Rascal; consumer con INCR + dedup <code>eventId</code> (TDD)</li>
+<li><strong>G2:</strong> API <code>GET /notifications/count</code>, <code>DELETE /notifications/count</code> (auth, degradazione Redis-down)</li>
+<li><strong>G3:</strong> <code>&lt;NotificationBell&gt;</code> + update realtime via canale L1, fetch al mount, cap 99+</li>
+<li><strong>G4:</strong> E2E Gherkin (testcontainers Rabbit+Redis)</li>
+<li><strong>G5:</strong> hardening (nack/requeue, clamp negativi), ship</li>
+</ol>
+<hr />
+<h1 id="l3-inbox-readunread-con-stato-in-app">L3 — Inbox read/unread (con stato, in-app)</h1>
+<h2 id="brainstorm-design_2">Brainstorm &amp; design</h2>
+<p><strong>Decisioni base:</strong></p>
+<ul>
+<li>Collection MongoDB <code>notifications</code>, <strong>fan-out on write</strong> (un documento per destinatario):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ObjectId"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"eventId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u123"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.confirmed"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unread"</span><span class="p">,</span><span class="w">          </span><span class="c1">// unread | read</span>
+<span class="w">  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISO"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"readAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Indici: <code>{userId: 1, status: 1, createdAt: -1}</code> + <strong>unique</strong> <code>{eventId: 1, userId: 1}</code> (idempotenza a livello DB: il retry del consumer non duplica).</li>
+<li>Il consumer <code>q.inbox</code> ora fa: upsert documento → INCR counter (solo se insert effettivo) → publish <code>toast.badge</code>. Ordine: prima Mongo (verità), poi Redis (cache).</li>
+<li><strong>La verità migra a MongoDB</strong>: il counter Redis diventa cache; task di riconciliazione (ex OPT-L2.2) schedulato notturno.</li>
+<li>API:</li>
+<li><code>GET /notifications?status=unread&amp;limit=20</code> (a L3 offset semplice; cursor arriva a L4)</li>
+<li><code>PATCH /notifications/:id/read</code></li>
+<li><code>POST /notifications/read-all</code></li>
+<li><code>&lt;InboxPanel&gt;</code>: dropdown dalla bell, lista con stato visuale letto/non letto, click = mark read + navigazione su <code>data.action</code>, "segna tutte come lette".</li>
+</ul>
+<p><strong>Fuori scope:</strong> paginazione infinita, filtri, retention (L4); archiviazione/eliminazione singola.</p>
+<h2 id="opzioni-migliorative-a-margine_1">Opzioni migliorative (a margine)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Valore</th>
+<th>Costo/Rischio</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L3.1</td>
+<td>Stato <code>dismissed</code>/archived oltre a read</td>
+<td>Inbox più pulita</td>
+<td>Terzo stato = più transizioni da testare; YAGNI ora</td>
+<td>⏸ Solo se l'inbox diventa rumorosa in uso reale</td>
+</tr>
+<tr>
+<td>OPT-L3.2</td>
+<td><strong>Mark as unread</strong></td>
+<td>Parità con inbox email</td>
+<td>Banale (transizione inversa + INCR)</td>
+<td>✅ Promuovibile, costo basso</td>
+</tr>
+<tr>
+<td>OPT-L3.3</td>
+<td>Raggruppamento per tipo ("3 nuovi ordini")</td>
+<td>Riduce rumore</td>
+<td>Logica di collapse non banale, tocca UI e query</td>
+<td>❌ È digest embrionale → appartiene a L7</td>
+</tr>
+<tr>
+<td>OPT-L3.4</td>
+<td>Change stream Mongo → WS per sync multi-device dell'inbox</td>
+<td>Inbox live su più device</td>
+<td>Il badge è già live; il refetch all'apertura del panel basta</td>
+<td>❌ Over-engineering ora</td>
+</tr>
+<tr>
+<td>OPT-L3.5</td>
+<td>Soft-delete dei documenti invece di delete fisico</td>
+<td>Coerente con policy soft-delete generale</td>
+<td>Con retention L4 serve comunque una decisione</td>
+<td>⏸ Decidere in L4 insieme alla retention</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casi-positivi-negativi-edge_2">Casi positivi / negativi / edge</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Caso</th>
+<th>Comportamento atteso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅</td>
+<td>Evento <code>inbox.*</code> consumato</td>
+<td>Documento <code>unread</code> creato, counter +1, badge live</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Apertura panel</td>
+<td>Lista non lette, più recente in alto</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Click su notifica</td>
+<td><code>status=read</code>, <code>readAt</code> set, counter −1, navigazione a <code>data.action</code></td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Read-all</td>
+<td>Tutte read in un update, counter a 0, badge 0 ovunque</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>PATCH su notifica di un altro utente</td>
+<td>404 (scoping su <code>userId</code>, mai 403 che conferma l'esistenza)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>PATCH su id inesistente</td>
+<td>404</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Mongo down</td>
+<td>Consumer nack+requeue; API 503; il toast L1 continua a funzionare (canali indipendenti)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Redelivery stesso <code>eventId</code></td>
+<td>Unique index → no duplicato, counter invariato</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Doppio click rapido su "read"</td>
+<td>Idempotente: secondo PATCH no-op, counter decrementato una sola volta (decremento condizionato alla transizione effettiva)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Read da device A con panel aperto su device B</td>
+<td>B vede lo stato aggiornato al prossimo fetch; badge già sincronizzato via broadcast</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Drift counter vs Mongo</td>
+<td>Riconciliazione notturna riallinea; log del delta</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acceptance-gherkin-e2e_2">Acceptance — Gherkin E2E</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Notification inbox with read state</span>
+<span class="nf">  As a logged-in user</span>
+<span class="nf">  I want a persistent inbox of my notifications</span>
+<span class="nf">  So that I can catch up on what happened while I was away</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">the inbox consumer is running</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the database is available</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Inbox event creates an unread notification</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has an empty inbox</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an inbox event "</span><span class="s">order.confirmed</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the inbox of user "</span><span class="s">u123</span><span class="nf">" contains </span><span class="s">1</span><span class="nf"> unread notification</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the badge shows </span><span class="s">1</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Reading a notification updates state and badge</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has </span><span class="s">3</span><span class="nf"> unread notifications</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user marks one notification as read</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">that notification has status "</span><span class="s">read</span><span class="nf">" and a readAt timestamp</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the badge shows </span><span class="s">2</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Marking read is idempotent</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has </span><span class="s">1</span><span class="nf"> unread notification</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user marks it as read twice in quick succession</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the badge shows </span><span class="s">0</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the unread count never becomes negative</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Read-all clears the inbox state</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has </span><span class="s">10</span><span class="nf"> unread notifications</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user marks all as read</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">all notifications have status "</span><span class="s">read</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the badge shows </span><span class="s">0</span><span class="nf"> on every connected tab</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Redelivered event does not create a duplicate</span>
+<span class="k">    Given </span><span class="nf">the inbox contains a notification with eventId "</span><span class="s">e1</span><span class="nf">" for user "</span><span class="s">u123</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the event "</span><span class="s">e1</span><span class="nf">" is redelivered</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the inbox still contains exactly one notification with eventId "</span><span class="s">e1</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the badge count is unchanged</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> A user cannot touch another user's notification</span>
+<span class="k">    Given </span><span class="nf">a notification belongs to user "</span><span class="s">u456</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" attempts to mark it as read</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the API responds </span><span class="s">404</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the notification remains unread</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Database outage does not break ephemeral toasts</span>
+<span class="k">    Given </span><span class="nf">the database is unavailable</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">a toast event and an inbox event are published for user "</span><span class="s">u123</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the toast is displayed</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the inbox event is requeued and stored after recovery</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Nightly reconciliation fixes counter drift</span>
+<span class="k">    Given </span><span class="nf">the badge counter for user "</span><span class="s">u123</span><span class="nf">" is </span><span class="s">5</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the database contains </span><span class="s">3</span><span class="nf"> unread notifications for user "</span><span class="s">u123</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the reconciliation job runs</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the badge counter for user "</span><span class="s">u123</span><span class="nf">" is </span><span class="s">3</span>
+</code></pre></div>
+<h2 id="roadmap-l3-settimana-3">Roadmap L3 (settimana 3)</h2>
+<ol>
+<li><strong>G1:</strong> collection + indici (unique <code>eventId+userId</code>), refactor consumer: Mongo → Redis → badge event (TDD)</li>
+<li><strong>G2:</strong> API list/read/read-all con scoping utente e decremento condizionato</li>
+<li><strong>G3:</strong> <code>&lt;InboxPanel&gt;</code> — lista, stati visuali, click-to-read, read-all</li>
+<li><strong>G4:</strong> E2E Gherkin (testcontainers Rabbit+Mongo+Redis)</li>
+<li><strong>G5:</strong> job riconciliazione counter, hardening, ship</li>
+</ol>
+<hr />
+<h1 id="l4-feed-storico-con-storico-in-app">L4 — Feed storico (con storico, in-app)</h1>
+<h2 id="brainstorm-design_3">Brainstorm &amp; design</h2>
+<p><strong>Decisioni base:</strong></p>
+<ul>
+<li>Stessa collection L3: il feed è una <strong>vista diversa sugli stessi dati</strong> (append-only, consultabile), non una nuova pipeline.</li>
+<li><strong>Cursor pagination</strong> (sostituisce l'offset di L3): cursore opaco su <code>(createdAt, _id)</code>, stabile anche con insert concorrenti. <code>GET /notifications/feed?cursor=…&amp;limit=20&amp;type=…</code>.</li>
+<li>Filtri: per <code>type</code> e per range temporale. Indice aggiuntivo <code>{userId: 1, type: 1, createdAt: -1}</code>.</li>
+<li><strong>Retention</strong>: TTL index su <code>createdAt</code>, 90 giorni. Decisione collegata a OPT-L3.5: per le notifiche vale il <strong>delete fisico via TTL</strong> (deroga esplicita alla policy soft-delete: sono dati derivati, l'evento sorgente resta nel dominio; nessun valore probatorio da conservare). Se un tipo di notifica assumesse rilevanza legale → va nel log di audit, non nel feed.</li>
+<li><code>&lt;FeedPage&gt;</code>: pagina dedicata (non dropdown), infinite scroll, filtri, empty state, raggruppamento visuale per giorno.</li>
+</ul>
+<p><strong>Fuori scope:</strong> ricerca full-text, export.</p>
+<h2 id="opzioni-migliorative-a-margine_2">Opzioni migliorative (a margine)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Valore</th>
+<th>Costo/Rischio</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L4.1</td>
+<td>Retention differenziata per tipo (30/90/365gg)</td>
+<td>Igiene fine</td>
+<td>Il TTL index Mongo è unico per campo → serve campo <code>expiresAt</code> calcolato all'insert</td>
+<td>⏸ Facile da introdurre dopo (backfill di <code>expiresAt</code>); non ora</td>
+</tr>
+<tr>
+<td>OPT-L4.2</td>
+<td>Ricerca full-text (indice text o Atlas Search)</td>
+<td>Trovare notifiche vecchie</td>
+<td>Poco valore su dati che scadono a 90gg</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>OPT-L4.3</td>
+<td>Export CSV del feed</td>
+<td>Richieste sporadiche utente</td>
+<td>Banale con cursor già pronto</td>
+<td>⏸ On demand</td>
+</tr>
+<tr>
+<td>OPT-L4.4</td>
+<td>Virtualizzazione lista (react-window)</td>
+<td>Performance su feed lunghi</td>
+<td>Con page size 20 e retention 90gg il DOM regge</td>
+<td>⏸ Solo se il profiling lo chiede</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casi-positivi-negativi-edge_3">Casi positivi / negativi / edge</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Caso</th>
+<th>Comportamento atteso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅</td>
+<td>Apertura feed</td>
+<td>Prime 20, più recenti in alto, raggruppate per giorno</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Scroll a fondo pagina</td>
+<td>Fetch pagina successiva via cursore, senza duplicati né buchi</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Filtro per tipo</td>
+<td>Solo notifiche del tipo, cursore coerente col filtro</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Notifica più vecchia di 90gg</td>
+<td>Assente dal feed (TTL)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Cursore malformato/manomesso</td>
+<td>400, nessun leak di errori interni</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Cursore di un altro utente</td>
+<td>Risultati comunque scoped su <code>userId</code> → nessun dato altrui</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Nuove notifiche durante lo scroll</td>
+<td>Nessun elemento duplicato o saltato nelle pagine successive (garanzia del cursor keyset)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Cambio filtro con cursore attivo</td>
+<td>Cursore invalidato, si riparte dalla prima pagina</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Feed vuoto</td>
+<td>Empty state esplicito, non spinner infinito</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Esattamente <code>limit</code> risultati rimasti</td>
+<td><code>nextCursor</code> null solo quando non c'è davvero altro (no pagina vuota fantasma)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acceptance-gherkin-e2e_3">Acceptance — Gherkin E2E</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Notification history feed</span>
+<span class="nf">  As a logged-in user</span>
+<span class="nf">  I want to browse my past notifications</span>
+<span class="nf">  So that I can review what happened over time</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has </span><span class="s">50</span><span class="nf"> notifications spread over </span><span class="s">10</span><span class="nf"> days</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> First page is the most recent slice</span>
+<span class="k">    When </span><span class="nf">the user opens the feed</span>
+<span class="nf">    </span><span class="k">Then </span><span class="s">20</span><span class="nf"> notifications are shown, newest first</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a next cursor is provided</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Pagination is stable under concurrent inserts</span>
+<span class="k">    Given </span><span class="nf">the user has loaded the first page</span>
+<span class="nf">    </span><span class="k">When </span><span class="s">5</span><span class="nf"> new notifications arrive</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the user requests the next page with the previous cursor</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the next page contains no notification already shown</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no notification between the two pages is skipped</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Filtering by type</span>
+<span class="k">    Given </span><span class="s">10</span><span class="nf"> of the notifications have type "</span><span class="s">order.confirmed</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user filters the feed by type "</span><span class="s">order.confirmed</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">only notifications of that type are returned</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Expired notifications are gone</span>
+<span class="k">    Given </span><span class="nf">a notification older than the retention period exists</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the retention cleanup has run</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">that notification does not appear in the feed</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Tampered cursor is rejected</span>
+<span class="k">    When </span><span class="nf">the user requests the feed with cursor "</span><span class="s">not-a-valid-cursor</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the API responds </span><span class="s">400</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Empty feed shows an empty state</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u999</span><span class="nf">" has no notifications</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user opens the feed</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">an empty state message is displayed</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no loading indicator remains visible</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Last page terminates pagination</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has exactly </span><span class="s">20</span><span class="nf"> notifications</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the user loads the first page of </span><span class="s">20</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no next cursor is provided</span>
+</code></pre></div>
+<h2 id="roadmap-l4-settimana-4">Roadmap L4 (settimana 4)</h2>
+<ol>
+<li><strong>G1:</strong> endpoint feed con cursor keyset + filtri (TDD sulle proprietà del cursore: no dup, no skip)</li>
+<li><strong>G2:</strong> TTL index + verifica retention; migrazione API L3 da offset a cursor</li>
+<li><strong>G3:</strong> <code>&lt;FeedPage&gt;</code> — infinite scroll, filtri, empty state, group-by-day</li>
+<li><strong>G4:</strong> E2E Gherkin (inclusi i casi di stabilità del cursore)</li>
+<li><strong>G5:</strong> hardening, ship</li>
+</ol>
+<hr />
+<h1 id="l5-email-transazionale-one-shot-garantito">L5 — Email transazionale (one-shot garantito)</h1>
+<h2 id="brainstorm-design_4">Brainstorm &amp; design</h2>
+<p><strong>Decisioni base:</strong></p>
+<ul>
+<li><strong>Il livello dove la delivery diventa garantita.</strong> Entra il pattern <strong>Outbox</strong>: il producer scrive l'evento nella collection <code>outbox</code> <strong>nella stessa transazione</strong> del write di dominio; un dispatcher (change stream, fallback polling) pubblica su Rabbit e marca <code>published</code>. Chiude il gap "commit DB ok ma publish fallito".</li>
+<li><code>q.email</code> durable + retry topology: <code>q.email → (nack) → q.email.retry.30s → q.email → retry.5m → retry.1h → q.email.dead</code>. Backoff a scaglioni via TTL+DLX, senza codice.</li>
+<li>Adapter email: consumer che (1) verifica <strong>idempotency key</strong> <code>{eventId, channel, userId}</code> in collection <code>deliveries</code> (unique index), (2) rende il template, (3) invia via provider (nodemailer + SMTP provider / SES), (4) registra esito.</li>
+<li>Distinzione errori: <strong>4xx permanenti</strong> (indirizzo invalido, template error) → DLQ diretta senza retry; <strong>5xx/timeout transitori</strong> → retry topology.</li>
+<li>Template: engine minimale (handlebars/mjml), template versionati in repo, testo + HTML.</li>
+<li><code>q.email.dead</code> monitorata: alert se depth &gt; 0 per più di N minuti.</li>
+<li>Feature flag <code>NOTIF_EMAIL_ENABLED</code> per kill switch.</li>
+</ul>
+<p><strong>Fuori scope:</strong> preferenze opt-out granulari (L7 — a L5 solo i tipi transazionali obbligatori), bounce handling avanzato, digest.</p>
+<h2 id="opzioni-migliorative-a-margine_3">Opzioni migliorative (a margine)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Valore</th>
+<th>Costo/Rischio</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L5.1</td>
+<td><strong>Webhook bounce/complaint dal provider</strong> → suppression list</td>
+<td>Deliverability e reputazione dominio</td>
+<td>Endpoint in ingresso + collection suppression</td>
+<td>✅ Promuovere presto (settimana successiva al ship): senza, la reputazione si brucia in silenzio</td>
+</tr>
+<tr>
+<td>OPT-L5.2</td>
+<td>Quorum queues Rabbit al posto delle classic durable</td>
+<td>Resilienza a crash del nodo broker</td>
+<td>Con broker single-node non cambia nulla</td>
+<td>⏸ Trigger: cluster multi-nodo</td>
+</tr>
+<tr>
+<td>OPT-L5.3</td>
+<td>Anteprima email in dev (mailpit/mailhog in compose)</td>
+<td>DX, test visivi template</td>
+<td>Costo ~0</td>
+<td>✅ Promuovere subito in G1</td>
+</tr>
+<tr>
+<td>OPT-L5.4</td>
+<td>Publisher confirms sul dispatcher</td>
+<td>Chiude anche il gap publish→broker</td>
+<td>Rascal lo supporta in config</td>
+<td>✅ Promuovere: è una riga di config, coerente con "garantito"</td>
+</tr>
+<tr>
+<td>OPT-L5.5</td>
+<td>Tracking aperture/click (pixel, link wrapping)</td>
+<td>Metriche engagement</td>
+<td>Privacy/GDPR da valutare, valore dubbio su transazionali B2B</td>
+<td>❌ No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casi-positivi-negativi-edge_4">Casi positivi / negativi / edge</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Caso</th>
+<th>Comportamento atteso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅</td>
+<td>Evento di dominio committato</td>
+<td>Riga outbox nella stessa transazione; email inviata entro pochi secondi</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Invio riuscito</td>
+<td><code>deliveries</code> registra esito <code>sent</code>, ack del messaggio</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Provider 5xx/timeout</td>
+<td>Nack → retry 30s → 5m → 1h → dead; nessun doppio invio ai retry (idempotency)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Indirizzo invalido (4xx permanente)</td>
+<td>DLQ diretta, nessun retry, log con motivazione</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Template mancante/render error</td>
+<td>DLQ diretta (errore permanente), alert</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Feature flag off</td>
+<td>Consumer scarta con ack + log info (no accumulo in coda)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Crash del producer dopo commit, prima del publish</td>
+<td>Il dispatcher outbox recupera e pubblica (nessun evento perso)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Crash dell'adapter dopo invio, prima dell'ack</td>
+<td>Redelivery → idempotency key blocca il secondo invio</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Broker down 10 minuti</td>
+<td>Outbox accumula <code>pending</code>; al recovery tutto pubblicato in ordine</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Burst (1000 email)</td>
+<td>Prefetch limita la concorrenza; nessun superamento rate limit provider (rate limiter nell'adapter)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Messaggio in dead queue</td>
+<td>Alert operativo; replay manuale possibile dopo fix</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acceptance-gherkin-e2e_4">Acceptance — Gherkin E2E</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Guaranteed transactional email delivery</span>
+<span class="nf">  As the platform</span>
+<span class="nf">  I want transactional emails to be delivered exactly once from the user's perspective</span>
+<span class="nf">  So that critical communications are never lost nor duplicated</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">the outbox dispatcher is running</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the email adapter is consuming "</span><span class="s">q.email</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a fake SMTP server is capturing outgoing mail</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Domain event results in one email</span>
+<span class="k">    When </span><span class="nf">a domain action with an "</span><span class="s">email.order-confirmed</span><span class="nf">" notification is committed</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">exactly one email is received by the fake SMTP server within </span><span class="s">10</span><span class="nf"> seconds</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a delivery record with status "</span><span class="s">sent</span><span class="nf">" exists for the eventId</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Publish failure is recovered by the outbox</span>
+<span class="k">    Given </span><span class="nf">the message broker is unavailable</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">a domain action with an email notification is committed</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the outbox entry remains "</span><span class="s">pending</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the broker becomes available again</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the email is delivered</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the outbox entry is marked "</span><span class="s">published</span><span class="nf">"</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Transient provider failure triggers retry with backoff</span>
+<span class="k">    Given </span><span class="nf">the SMTP server fails with a transient error for </span><span class="s">1</span><span class="nf"> minute</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an email event is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the message is retried through the retry topology</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">exactly one email is eventually delivered</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no duplicate email is sent</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Redelivery after adapter crash does not duplicate the email</span>
+<span class="k">    Given </span><span class="nf">an email for eventId "</span><span class="s">e1</span><span class="nf">" was sent but not acknowledged</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the message "</span><span class="s">e1</span><span class="nf">" is redelivered</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no second email is sent</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the message is acknowledged</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Permanent failure goes straight to the dead queue</span>
+<span class="k">    When </span><span class="nf">an email event with an invalid recipient address is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the message lands in "</span><span class="s">q.email.dead</span><span class="nf">" without retries</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a failure reason is recorded</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Kill switch discards without accumulating</span>
+<span class="k">    Given </span><span class="nf">the email channel feature flag is disabled</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an email event is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no email is sent</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the message is acknowledged</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the queue depth of "</span><span class="s">q.email</span><span class="nf">" returns to zero</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Dead queue depth raises an alert</span>
+<span class="k">    Given </span><span class="nf">a message sits in "</span><span class="s">q.email.dead</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the monitoring check runs</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">an alert is emitted</span>
+</code></pre></div>
+<h2 id="roadmap-l5-settimana-5">Roadmap L5 (settimana 5)</h2>
+<ol>
+<li><strong>G1:</strong> collection outbox + dispatcher (change stream + polling fallback) con publisher confirms; mailpit in compose (TDD dispatcher)</li>
+<li><strong>G2:</strong> retry topology Rascal (30s/5m/1h/dead) + classificazione errori permanenti/transitori</li>
+<li><strong>G3:</strong> adapter email — idempotency <code>deliveries</code>, template engine, rate limiter</li>
+<li><strong>G4:</strong> E2E Gherkin (testcontainers Rabbit+Mongo + fake SMTP)</li>
+<li><strong>G5:</strong> alerting dead queue, kill switch, runbook di replay, ship</li>
+</ol>
+<hr />
+<h1 id="l6-web-push-one-shot-best-effort">L6 — Web Push (one-shot best-effort)</h1>
+<h2 id="brainstorm-design_5">Brainstorm &amp; design</h2>
+<p><strong>Decisioni base:</strong></p>
+<ul>
+<li><strong>Web Push standard</strong> (VAPID) con libreria <code>web-push</code>: niente FCM finché non esiste un'app mobile nativa.</li>
+<li>Semantica: <strong>best-effort con retry corto</strong> (1 tentativo + 1 retry 30s, poi dead). Una push è tempo-sensibile: consegnarla ore dopo è peggio che non consegnarla → <code>x-message-ttl</code> di 15 minuti su <code>q.push</code>: messaggi più vecchi scadono verso la DLQ (scarto consapevole, non errore).</li>
+<li>Collection <code>push_subscriptions</code>: <code>{userId, endpoint, keys, userAgent, createdAt}</code>, unique su <code>endpoint</code>. Un utente può avere N subscription (device/browser diversi) → invio a tutte.</li>
+<li>Ciclo di vita subscription: risposta <strong>404/410 dal push service = subscription morta → delete immediata</strong> (auto-pulizia).</li>
+<li>UX opt-in: <strong>mai</strong> chiedere il permesso browser al primo load. Prompt "soft" in-app (banner spiegazione) → solo al click parte la richiesta nativa. Permesso negato = non richiedere più (localStorage flag).</li>
+<li>Service worker: mostra la notifica, click → focus/open dell'app su <code>data.action</code>.</li>
+<li>Idempotenza: riuso collection <code>deliveries</code> con channel <code>push</code>.</li>
+<li>Fallback implicito: la push non sostituisce l'inbox — lo stesso evento arriva comunque su <code>inbox.#</code> (chi non ha push non perde nulla).</li>
+</ul>
+<p><strong>Fuori scope:</strong> mobile nativo (FCM/APNs), rich push (immagini/azioni multiple), preferenze per tipo (L7).</p>
+<h2 id="opzioni-migliorative-a-margine_4">Opzioni migliorative (a margine)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Valore</th>
+<th>Costo/Rischio</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L6.1</td>
+<td>Rich push (immagine, action buttons)</td>
+<td>UX</td>
+<td>Supporto browser disomogeneo</td>
+<td>⏸ Dopo, se le metriche di click lo giustificano</td>
+</tr>
+<tr>
+<td>OPT-L6.2</td>
+<td>Collapse key / tag (nuova push sostituisce la vecchia dello stesso tipo)</td>
+<td>Meno rumore su eventi ripetuti</td>
+<td><code>tag</code> nativo del Notification API, costo basso</td>
+<td>✅ Promuovibile, quasi gratis</td>
+</tr>
+<tr>
+<td>OPT-L6.3</td>
+<td>Astrazione multi-provider (web-push + FCM dietro interfaccia)</td>
+<td>Prepara il mobile</td>
+<td>Astrazione su un solo provider = over-engineering da manuale</td>
+<td>❌ No finché l'app mobile non è in roadmap concreta</td>
+</tr>
+<tr>
+<td>OPT-L6.4</td>
+<td>Silent push per sync dati</td>
+<td>Refresh inbox in background</td>
+<td>Restrizioni severe dei browser, affidabilità pessima</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>OPT-L6.5</td>
+<td>Quiet hours (no push 22–8)</td>
+<td>Rispetto dell'utente</td>
+<td>Richiede timezone utente; è una preferenza →</td>
+<td>⏸ Spostare in L7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casi-positivi-negativi-edge_5">Casi positivi / negativi / edge</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Caso</th>
+<th>Comportamento atteso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅</td>
+<td>Opt-in completato</td>
+<td>Subscription salvata, push di benvenuto/test ricevuta</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Evento <code>push.*</code> con browser chiuso</td>
+<td>Notifica di sistema visualizzata dal SO</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Click sulla notifica</td>
+<td>App aperta/focusata su <code>data.action</code></td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Utente con 2 device iscritti</td>
+<td>Push su entrambi</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Push service risponde 410</td>
+<td>Subscription eliminata, nessun retry su quell'endpoint</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Permesso browser negato</td>
+<td>Nessuna richiesta ripetuta; UI riflette lo stato</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Utente senza subscription</td>
+<td>Consumer ack + skip (l'evento inbox parallelo copre)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Messaggio più vecchio del TTL 15m (broker down)</td>
+<td>Scaduto verso DLQ, conteggiato come <code>expired</code>, nessun alert critico</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Redelivery stesso <code>eventId</code></td>
+<td>Idempotency <code>deliveries</code> → una sola push per endpoint</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Payload &gt; 4KB (limite push service)</td>
+<td>Validazione a monte: payload minimale + fetch dei dettagli al click</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Logout</td>
+<td>Subscription del device disattivata/rimossa</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acceptance-gherkin-e2e_5">Acceptance — Gherkin E2E</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Web push notifications</span>
+<span class="nf">  As an opted-in user</span>
+<span class="nf">  I want to receive push notifications even when the app is closed</span>
+<span class="nf">  So that I am alerted about important events</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">the push adapter is consuming "</span><span class="s">q.push</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a fake push service is capturing requests</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Opt-in stores a subscription</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has granted browser permission</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the client registers its push subscription</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">a subscription for user "</span><span class="s">u123</span><span class="nf">" is stored</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a test push is delivered to the fake push service</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Event is pushed to all user devices</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has </span><span class="s">2</span><span class="nf"> stored subscriptions</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event with routing key "</span><span class="s">push.order</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the fake push service receives </span><span class="s">2</span><span class="nf"> push requests</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">each carries the eventId exactly once</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Dead subscription is cleaned up</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has a subscription that the push service answers with </span><span class="s">410</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">a push event for user "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">that subscription is deleted</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no retry is attempted for that endpoint</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> User without subscriptions is skipped silently</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u999</span><span class="nf">" has no subscriptions</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">a push event for user "</span><span class="s">u999</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the message is acknowledged</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no push request is made</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Stale messages expire instead of being delivered late</span>
+<span class="k">    Given </span><span class="nf">the push adapter is stopped</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">a push event is published</span>
+<span class="nf">    </span><span class="k">And </span><span class="s">16</span><span class="nf"> minutes pass</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the adapter restarts</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the message is not delivered</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">it is routed to the dead queue as expired</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Redelivery does not duplicate a push</span>
+<span class="k">    Given </span><span class="nf">a push for eventId "</span><span class="s">e1</span><span class="nf">" was sent to an endpoint but not acknowledged</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the message "</span><span class="s">e1</span><span class="nf">" is redelivered</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no second push request is made for that endpoint</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Push does not replace the inbox</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has no subscriptions</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">a mixed event targeting inbox and push is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the inbox of user "</span><span class="s">u123</span><span class="nf">" contains the notification</span>
+</code></pre></div>
+<h2 id="roadmap-l6-settimana-6">Roadmap L6 (settimana 6)</h2>
+<ol>
+<li><strong>G1:</strong> collection subscriptions + API register/unregister; VAPID keys in secret</li>
+<li><strong>G2:</strong> service worker + flusso opt-in soft (banner → permesso nativo), <code>&lt;PushOptIn&gt;</code> component</li>
+<li><strong>G3:</strong> adapter push — invio multi-endpoint, cleanup 404/410, idempotency, TTL coda 15m</li>
+<li><strong>G4:</strong> E2E Gherkin (fake push service)</li>
+<li><strong>G5:</strong> metrica expired/dead, logout cleanup, ship</li>
+</ol>
+<hr />
+<h1 id="l7-mixed-preference-center-orchestrazione">L7 — Mixed + preference center (orchestrazione)</h1>
+<h2 id="brainstorm-design_6">Brainstorm &amp; design</h2>
+<p><strong>Decisioni base:</strong></p>
+<ul>
+<li><strong>Inversione del controllo sul routing</strong>: il producer smette di scegliere i canali. Pubblica un solo evento <code>event.{type}</code>; un nuovo servizio <strong>router</strong> consuma <code>q.router</code>, carica le preferenze del destinatario, e ri-pubblica i routing key canale (<code>inbox.*</code>, <code>email.*</code>, <code>push.*</code>, <code>toast.*</code>). Tutti gli adapter L1–L6 restano <strong>intoccati</strong>: il mixed è solo un consumer in più a monte.</li>
+<li><strong>Policy matrix</strong> per tipo di notifica:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Classe</th>
+<th>Canali forzati</th>
+<th>Canali configurabili</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transazionale critica (ordine, sicurezza)</td>
+<td><code>mandatory</code></td>
+<td>inbox + email</td>
+<td>push</td>
+</tr>
+<tr>
+<td>Operativa (assegnazioni, mention)</td>
+<td><code>default-on</code></td>
+<td>inbox</td>
+<td>email, push, toast</td>
+</tr>
+<tr>
+<td>Informativa (novità, marketing interno)</td>
+<td><code>default-off</code></td>
+<td>—</td>
+<td>tutti</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Collection <code>notification_preferences</code>: <code>{userId, matrix: {type: {channel: bool}}}</code>, con default derivati dalla classe. Le <code>mandatory</code> <strong>non sono disattivabili</strong> (enforcement nel router, non solo nella UI).</li>
+<li><strong>Digest</strong>: per i tipi che lo prevedono, l'utente sceglie <code>realtime | daily | weekly</code>. Il router accumula in collection <code>digest_buffer</code>; un job schedulato compone e pubblica un singolo <code>email.digest</code>. Il digest esiste <strong>solo per email</strong> (push/inbox restano realtime): un digest push non ha senso.</li>
+<li>UI <code>&lt;PreferenceCenter&gt;</code>: matrice tipo × canale, toggle disabilitati con spiegazione per le mandatory, selettore frequenza, salvataggio ottimistico con rollback su errore.</li>
+<li>Cache preferenze nel router (Redis, TTL 5m, invalidazione su update) per non colpire Mongo a ogni evento.</li>
+</ul>
+<p><strong>Fuori scope:</strong> canali nuovi (SMS, webhook — la topologia li accoglie con un binding), preferenze a livello organizzazione/tenant, A/B su template.</p>
+<h2 id="opzioni-migliorative-a-margine_5">Opzioni migliorative (a margine)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Valore</th>
+<th>Costo/Rischio</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L7.1</td>
+<td><strong>Migrazione a Novu</strong></td>
+<td>Preferenze, digest, template, canali già pronti</td>
+<td>Il threshold dell'ADR iniziale è ~qui: valutare seriamente PRIMA di costruire L7</td>
+<td>⚠️ Decisione bloccante: spike 1 giorno su Novu self-hosted prima di scrivere codice L7</td>
+</tr>
+<tr>
+<td>OPT-L7.2</td>
+<td>Quiet hours con timezone utente (ex OPT-L6.5)</td>
+<td>Rispetto utente</td>
+<td>Richiede tz in profilo; rinvio push fuori orario = coda delayed</td>
+<td>⏸ Post-L7, disegno già compatibile</td>
+</tr>
+<tr>
+<td>OPT-L7.3</td>
+<td>Preferenze a livello tenant/organizzazione (default aziendali)</td>
+<td>B2B multi-tenant</td>
+<td>Secondo livello di merge delle preferenze</td>
+<td>⏸ Trigger: primo cliente che lo chiede</td>
+</tr>
+<tr>
+<td>OPT-L7.4</td>
+<td>Canale webhook M2M</td>
+<td>Integrazione clienti</td>
+<td>Un binding + un adapter con firma HMAC</td>
+<td>⏸ Naturale estensione, on demand</td>
+</tr>
+<tr>
+<td>OPT-L7.5</td>
+<td>Collapse/aggregazione cross-evento ("3 nuovi ordini" — ex OPT-L3.3)</td>
+<td>Meno rumore</td>
+<td>Vive bene nel digest job</td>
+<td>⏸ Dentro il digest, non come feature separata</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casi-positivi-negativi-edge_6">Casi positivi / negativi / edge</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Caso</th>
+<th>Comportamento atteso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅</td>
+<td>Evento <code>default-on</code>, preferenze di default</td>
+<td>Inbox sempre; email/push secondo default di classe</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Utente disattiva email per un tipo configurabile</td>
+<td>Da quel momento solo canali attivi; inbox comunque presente se forzata</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Tipo <code>mandatory</code></td>
+<td>Inbox+email sempre, anche con tutto disattivato</td>
+</tr>
+<tr>
+<td>✅</td>
+<td>Frequenza <code>daily</code> su un tipo</td>
+<td>Nessuna email immediata; una sola email digest al giorno con gli N eventi accumulati</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>API preferenze: tentativo di disattivare una mandatory</td>
+<td>422 con motivo; router comunque enforcing (difesa in profondità)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>Preferenze illeggibili (Mongo down)</td>
+<td>Router applica i default di classe (fail-safe: mai perdere una mandatory) e requeua? No: applica default e procede — log warn. Requeue solo se anche il publish fallisce</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Update preferenze con eventi in volo</td>
+<td>Cache invalidata; eventi già instradati seguono le vecchie preferenze (accettato, documentato)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Digest senza eventi accumulati</td>
+<td>Nessuna email vuota inviata</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Digest job crash a metà composizione</td>
+<td>Buffer marcato per batch (<code>digestId</code>); replay idempotente, nessun evento perso né duplicato</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Redelivery evento al router</td>
+<td>Dedup su <code>eventId</code> nel router → nessun doppio fan-out</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Passaggio da <code>daily</code> a <code>realtime</code> con buffer pieno</td>
+<td>Buffer flushato nel prossimo digest; i nuovi eventi vanno realtime (nessun evento perso)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acceptance-gherkin-e2e_6">Acceptance — Gherkin E2E</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Multi-channel routing with user preferences</span>
+<span class="nf">  As a user</span>
+<span class="nf">  I want to control how I am notified per notification type</span>
+<span class="nf">  So that I receive important information without noise</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">the routing service is consuming "</span><span class="s">q.router</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">all channel adapters are running</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Default routing for an operational event</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" has default preferences</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event of type "</span><span class="s">task.assigned</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">an inbox notification is created</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no marketing-class channel is used</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> User disables a configurable channel</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" disabled email for type "</span><span class="s">task.assigned</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event of type "</span><span class="s">task.assigned</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">an inbox notification is created</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no email is sent</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Mandatory notifications ignore opt-outs</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" disabled every channel for every type</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event of type "</span><span class="s">order.confirmed</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">an inbox notification is created</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">an email is sent</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> API rejects disabling a mandatory channel</span>
+<span class="k">    When </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" attempts to disable email for type "</span><span class="s">order.confirmed</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the API responds </span><span class="s">422</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the preference is unchanged</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Daily digest batches events</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" set frequency "</span><span class="s">daily</span><span class="nf">" for type "</span><span class="s">product.news</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">When </span><span class="s">3</span><span class="nf"> events of type "</span><span class="s">product.news</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" are published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no immediate email is sent</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the daily digest job runs</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">exactly one digest email containing </span><span class="s">3</span><span class="nf"> items is sent</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Empty digest is not sent</span>
+<span class="k">    Given </span><span class="nf">user "</span><span class="s">u123</span><span class="nf">" set frequency "</span><span class="s">daily</span><span class="nf">" for type "</span><span class="s">product.news</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">no events were buffered</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the daily digest job runs</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no email is sent</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Preferences outage falls back to safe defaults</span>
+<span class="k">    Given </span><span class="nf">the preferences store is unavailable</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">an event of type "</span><span class="s">order.confirmed</span><span class="nf">" for userId "</span><span class="s">u123</span><span class="nf">" is published</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the mandatory channels are still used</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a warning is logged</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Router deduplicates redelivered events</span>
+<span class="k">    Given </span><span class="nf">the event "</span><span class="s">e1</span><span class="nf">" was already routed</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the event "</span><span class="s">e1</span><span class="nf">" is redelivered to the router</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no additional channel message is published</span>
+</code></pre></div>
+<h2 id="roadmap-l7-settimane-78-e-il-livello-doppio">Roadmap L7 (settimane 7–8: è il livello doppio)</h2>
+<ol>
+<li><strong>Spike (1g, bloccante):</strong> Novu self-hosted vs build — decisione in mini-ADR (OPT-L7.1). Quanto segue vale per il ramo "build".</li>
+<li><strong>G1–2:</strong> policy matrix + collection preferenze + API (validazione mandatory) — TDD sul merge classe/preferenze</li>
+<li><strong>G3:</strong> router — consume, load preferenze (cache), fan-out, dedup, fail-safe default</li>
+<li><strong>G4–5:</strong> <code>&lt;PreferenceCenter&gt;</code> UI</li>
+<li><strong>G6:</strong> digest — buffer, job, composizione template, idempotenza batch</li>
+<li><strong>G7:</strong> E2E Gherkin completi</li>
+<li><strong>G8:</strong> migrazione producer a <code>event.#</code>, deprecazione publish diretto canale, ship</li>
+</ol>
+<hr />
+<h1 id="roadmap-complessiva">Roadmap complessiva</h1>
+<table>
+<thead>
+<tr>
+<th>Settimana</th>
+<th>Ship</th>
+<th>Dipendenze</th>
+<th>Rischio principale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>L1 Toast</td>
+<td>—</td>
+<td>Reconnect handling (Rabbit + WS)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>L2 Badge</td>
+<td>L1 (canale WS)</td>
+<td>Drift counter (accettato fino a L3)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L3 Inbox</td>
+<td>L2</td>
+<td>Idempotenza consumer ↔ counter</td>
+</tr>
+<tr>
+<td>4</td>
+<td>L4 Feed</td>
+<td>L3</td>
+<td>Stabilità cursor pagination</td>
+</tr>
+<tr>
+<td>5</td>
+<td>L5 Email</td>
+<td>topologia base</td>
+<td>Outbox dispatcher; classificazione errori</td>
+</tr>
+<tr>
+<td>6</td>
+<td>L6 Push</td>
+<td>L5 (deliveries)</td>
+<td>Ciclo vita subscription</td>
+</tr>
+<tr>
+<td>7–8</td>
+<td>L7 Mixed</td>
+<td>tutti</td>
+<td><strong>Spike Novu prima di scrivere codice</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Guardrail:</strong> se a fine settimana 2 L1 non è in prod → si semplifica lo scope, non si estende. Le OPT marcate ✅ sono le uniche promuovibili senza discussione; le ⏸ richiedono il trigger indicato; le ❌ richiedono un mini-ADR che ne ribalti il verdetto.</p>
+<h2 id="riepilogo-opzioni-promuovibili-subito">Riepilogo opzioni promuovibili subito (✅)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Opzione</th>
+<th>Livello</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-L1.3</td>
+<td>Toast actionable (CTA)</td>
+<td>L1</td>
+</tr>
+<tr>
+<td>OPT-L2.3</td>
+<td>Badge in titolo tab/favicon</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>OPT-L3.2</td>
+<td>Mark as unread</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>OPT-L5.1</td>
+<td>Bounce/complaint webhook + suppression list</td>
+<td>L5 (post-ship immediato)</td>
+</tr>
+<tr>
+<td>OPT-L5.3</td>
+<td>Mailpit in dev</td>
+<td>L5 (G1)</td>
+</tr>
+<tr>
+<td>OPT-L5.4</td>
+<td>Publisher confirms</td>
+<td>L5 (G1)</td>
+</tr>
+<tr>
+<td>OPT-L6.2</td>
+<td>Collapse tag push</td>
+<td>L6</td>
+</tr>
+</tbody>
+</table>
+<h1 id="parte-b-data-layer">Parte B — Data layer</h1>
+<h2 id="b1-regola-di-assegnazione-store-il-perche-prima-del-cosa">B.1 Regola di assegnazione store (il "perché" prima del "cosa")</h2>
+<p>Ogni struttura dati vive nello store scelto secondo tre domande, in ordine:</p>
+<ol>
+<li><strong>È un messaggio in transito?</strong> → RabbitMQ. Mai usare code come storage: un messaggio o viene consumato o muore in DLQ. Se serve rileggerlo domani, è un dato, non un messaggio.</li>
+<li><strong>Perderlo è un danno?</strong> → MongoDB. Tutto ciò che è verità (inbox, esiti delivery, subscription, preferenze, outbox) sta in Mongo con indici che codificano gli invarianti (unique = idempotenza a livello DB, non solo applicativa).</li>
+<li><strong>È ricostruibile dalla verità?</strong> → Redis. Counter, dedup a finestra, cache preferenze: se Redis si svuota, si ricostruisce da Mongo. Corollario: <strong>niente in Redis può essere l'unica copia di un dato importante</strong> (l'unica eccezione, dichiarata, è il counter a L2 — sanata a L3).</li>
+</ol>
+<p>Anti-pattern esclusi esplicitamente:
+- Notifiche in Redis come storage primario (perdita silenziosa su eviction/restart)
+- Inbox dentro il documento utente (array <code>notifications</code> embedded → unbounded array, il classico errore Mongo)
+- Rabbit come event store (non è Kafka: nessun replay dopo l'ack)</p>
+<h2 id="b2-strutture-redis">B.2 Strutture Redis</h2>
+<table>
+<thead>
+<tr>
+<th>Chiave</th>
+<th>Tipo</th>
+<th>TTL</th>
+<th>Livello</th>
+<th>Perché Redis e perché questo tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>notif:unread:{userId}</code></td>
+<td>string (INCR/DECR)</td>
+<td>∞ (L2) → 30gg (da L3, ricostruibile)</td>
+<td>L2+</td>
+<td>Counter ad alta frequenza di lettura (ogni render della bell) e scrittura atomica; <code>countDocuments</code> a ogni mount non scala e INCR è O(1) atomico</td>
+</tr>
+<tr>
+<td><code>notif:seen:{eventId}</code></td>
+<td>string, <code>SET NX EX 3600</code></td>
+<td>1h</td>
+<td>L2+</td>
+<td>Dedup a finestra: il unique index Mongo (L3) copre l'idempotenza persistente, questa evita il roundtrip Mongo nei redelivery ravvicinati. NX = check-and-set atomico senza race</td>
+</tr>
+<tr>
+<td><code>notif:prefs:{userId}</code></td>
+<td>string (JSON)</td>
+<td>5m + invalidazione su update</td>
+<td>L7</td>
+<td>Cache read-through delle preferenze: il router le legge a ogni evento; senza cache, ogni notifica costa una query Mongo. JSON string e non hash: si legge sempre intera, mai per campo</td>
+</tr>
+<tr>
+<td><code>ratelimit:email</code></td>
+<td>sliding window (ZSET o token bucket)</td>
+<td>window</td>
+<td>L5</td>
+<td>Rate limiting condiviso tra N istanze adapter: in-memory non funziona con più repliche</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scelte scartate:</strong> Redis Streams al posto di Rabbit per il fan-out (avremmo due sistemi di messaging: violazione della regola infrastrutturale già decisa in ADR); pub/sub Redis per il badge (già veicolato dal canale WS di L1, un secondo trasporto è ridondante).</p>
+<h2 id="b3-collection-mongodb">B.3 Collection MongoDB</h2>
+<h4 id="notifications-l3l4-la-verita-dellinboxfeed"><code>notifications</code> (L3–L4) — la verità dell'inbox/feed</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">eventId</span><span class="o">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="s2">"u123"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"order.confirmed"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w">                    </span><span class="c1">// action, deep-link, contesto</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">"unread"</span><span class="o">|</span><span class="s2">"read"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="nx">readAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="o">|</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Indice</th>
+<th>Scopo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{userId:1, status:1, createdAt:-1}</code></td>
+<td>Query inbox "non lette, recenti prima" — copre il caso caldo</td>
+</tr>
+<tr>
+<td><code>{eventId:1, userId:1}</code> <strong>unique</strong></td>
+<td>Idempotenza: il redelivery non può duplicare, per costruzione</td>
+</tr>
+<tr>
+<td><code>{userId:1, type:1, createdAt:-1}</code></td>
+<td>Feed filtrato per tipo (L4)</td>
+</tr>
+<tr>
+<td><code>{createdAt:1}</code> TTL 90gg</td>
+<td>Retention (L4) — delete fisico, deroga documentata alla policy soft-delete</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Perché Mongo e perché fan-out on write:</strong> un documento per destinatario rende la query inbox una range scan su un solo indice, lo stato read/unread è per-utente per natura, e il volume B2B (destinatari per evento nell'ordine delle decine) non giustifica fan-out on read. Documento <strong>denormalizzato</strong> (title/body copiati, non referenziati): la notifica è uno snapshot al momento dell'evento — se l'ordine cambia dopo, la notifica storica NON deve cambiare.</p>
+<h4 id="outbox-l5-il-ponte-transazionale-dominio-rabbit"><code>outbox</code> (L5) — il ponte transazionale dominio → Rabbit</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">eventId</span><span class="o">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">routingKey</span><span class="o">:</span><span class="w"> </span><span class="s2">"email.order-confirmed"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w">                 </span><span class="c1">// message contract v1 completo</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="o">|</span><span class="s2">"published"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="nx">publishedAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="o">|</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">attempts</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Indici: <code>{status:1, createdAt:1}</code> (scan del dispatcher sui pending); TTL su <code>publishedAt</code> 7gg (i pubblicati sono usa-e-getta, breve finestra per debug).</p>
+<p><strong>Perché esiste:</strong> è l'unico modo di rendere atomico "commit di dominio + intento di notifica" senza distributed transaction verso Rabbit. Il dispatcher legge via <strong>change stream</strong> (latenza ~0) con <strong>polling di fallback ogni 30s</strong> (change stream può perdere il resume token su restart lunghi). Requisito: Mongo replica set (necessario sia per transazioni sia per change stream) — vale anche in dev (<code>mongod --replSet rs0</code> single-node).</p>
+<h4 id="deliveries-l5l6-registro-esiti-per-idempotenza-invii"><code>deliveries</code> (L5–L6) — registro esiti per idempotenza invii</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">eventId</span><span class="o">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span><span class="w"> </span><span class="nx">channel</span><span class="o">:</span><span class="w"> </span><span class="s2">"email"</span><span class="o">|</span><span class="s2">"push"</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="s2">"u123"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="o">|</span><span class="kc">null</span><span class="p">,</span><span class="w">       </span><span class="c1">// per push: subscription endpoint</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="o">|</span><span class="s2">"failed"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nx">providerMessageId</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="o">|</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="o">|</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">sentAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Indice <strong>unique</strong> <code>{eventId:1, channel:1, userId:1, endpoint:1}</code>.</p>
+<p><strong>Perché una collection separata e non un flag su <code>notifications</code>:</strong> email e push possono esistere senza documento inbox (dipende dal routing), e un invio è un <em>fatto operativo</em> con provider/errore/timestamp — dominio diverso dallo stato di lettura. È anche la base dati per il runbook di replay dalla DLQ.</p>
+<h4 id="push_subscriptions-l6"><code>push_subscriptions</code> (L6)</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">endpoint</span><span class="p">,</span><span class="w"> </span><span class="nx">keys</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">p256dh</span><span class="p">,</span><span class="w"> </span><span class="nx">auth</span><span class="p">},</span><span class="w"> </span><span class="nx">userAgent</span><span class="p">,</span><span class="w"> </span><span class="nx">createdAt</span><span class="p">,</span><span class="w"> </span><span class="nx">lastUsedAt</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Indici: unique <code>{endpoint:1}</code>; <code>{userId:1}</code>. <strong>Perché unique su endpoint e non su userId:</strong> N device per utente; l'endpoint è l'identità reale della subscription. Cleanup: delete su 404/410 (fatto dall'adapter, non da un job — il segnale arriva gratis al momento dell'invio).</p>
+<h4 id="notification_preferences-l7"><code>notification_preferences</code> (L7)</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">matrix</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"task.assigned"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">push</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">updatedAt</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Un documento per utente, unique <code>{userId:1}</code>. <strong>Sparse per design:</strong> contiene solo le deviazioni dai default di classe; il merge <code>classe → deviazioni</code> avviene nel router. Perché: i default cambiano per policy senza migrare milioni di documenti, e "torna al default" = delete della chiave.</p>
+<h4 id="digest_buffer-l7"><code>digest_buffer</code> (L7)</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="p">,</span><span class="w"> </span><span class="nx">eventId</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">,</span><span class="w"> </span><span class="nx">frequency</span><span class="o">:</span><span class="w"> </span><span class="s2">"daily"</span><span class="o">|</span><span class="s2">"weekly"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">digestId</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="o">|</span><span class="s2">"uuid"</span><span class="p">,</span><span class="w">       </span><span class="c1">// marcato dal job alla presa in carico</span>
+<span class="w">  </span><span class="nx">createdAt</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Indici: <code>{userId:1, frequency:1, digestId:1}</code>; unique <code>{eventId:1, userId:1}</code>.</p>
+<p><strong>Perché Mongo e non una delayed queue Rabbit:</strong> il digest deve <em>aggregare</em> N messaggi in una email sola — una coda consegna messaggi uno a uno, non fa group-by. Il two-phase del job (1: <code>digestId = uuid</code> sui candidati; 2: componi e invia; 3: delete by digestId) rende il replay idempotente dopo crash a metà.</p>
+<h2 id="b4-mappa-struttura-livello">B.4 Mappa struttura → livello</h2>
+<div class="highlight"><pre><span></span><code>L1  —            (nessuna persistenza: è il punto)
+L2  Redis: unread counter, seen dedup
+L3  Mongo: notifications          Redis: counter diventa cache
+L4  Mongo: TTL + indice type
+L5  Mongo: outbox, deliveries     Redis: ratelimit
+L6  Mongo: push_subscriptions     (+deliveries riusata)
+L7  Mongo: preferences, digest_buffer   Redis: prefs cache
+</code></pre></div>
+<hr />
+<h1 id="parte-c-pattern-ui-ricorrenti-react">Parte C — Pattern UI ricorrenti (React)</h1>
+<h2 id="c1-decisioni-di-stack-fe">C.1 Decisioni di stack FE</h2>
+<table>
+<thead>
+<tr>
+<th>Ruolo</th>
+<th>Scelta</th>
+<th>Perché</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server state</td>
+<td><strong>TanStack Query</strong></td>
+<td>Inbox/feed/preferenze sono server state: cache, refetch, optimistic update e infinite query sono esattamente il suo dominio. Reinventarlo con useEffect+useState è il bug factory classico</td>
+</tr>
+<tr>
+<td>Realtime</td>
+<td><strong>socket.io-client</strong> dietro un hook custom</td>
+<td>Coerente col gateway L1; l'app non importa mai socket.io direttamente (vedi 2.2)</td>
+</tr>
+<tr>
+<td>Client state</td>
+<td>Context + useReducer, <strong>niente Redux</strong></td>
+<td>Lo stato puramente client è solo la coda toast e lo stato connessione: due reducer. Redux qui è over-engineering</td>
+</tr>
+<tr>
+<td>Styling/A11y</td>
+<td>Radix primitives (Popover, Switch) o equivalente headless</td>
+<td>Dropdown bell e preference matrix hanno requisiti a11y non banali (focus trap, aria) — non reinventarli</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c2-pattern-1-notificationprovider-connessione-come-singleton-di-albero">C.2 Pattern 1 — <code>NotificationProvider</code> (connessione come singleton di albero)</h2>
+<p>Un solo provider monta la socket, gestisce auth/reconnect, ed espone un <strong>event bus tipizzato</strong>. Nessun componente apre socket proprie.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Uso nei componenti: mai socket, solo subscribe</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useNotifications</span><span class="p">();</span>
+
+<span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'toast'</span><span class="p">,</span><span class="w"> </span><span class="nx">onToast</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="nx">subscribe</span><span class="p">]);</span>
+</code></pre></div>
+<p>Responsabilità del provider: connect/disconnect col login, re-auth su token refresh, <strong>dedup centralizzata su <code>eventId</code></strong> (Set con finestra — così nessun consumer UI deve rifarla), stato connessione esposto (<code>connected|reconnecting|offline</code>) per l'indicatore.</p>
+<p><strong>Perché pattern e non libreria:</strong> il contratto (eventi tipizzati + dedup + auth) è nostro; la libreria sotto (socket.io vs SSE, OPT-L1.4) resta sostituibile senza toccare i componenti.</p>
+<h2 id="c3-pattern-2-toasthost-portal-reducer-a-coda-l1">C.3 Pattern 2 — <code>ToastHost</code>: portal + reducer a coda (L1)</h2>
+<ul>
+<li><strong>Portal</strong> su <code>document.body</code>: i toast non appartengono al layout.</li>
+<li>Stato = <code>useReducer</code> con azioni <code>PUSH | DISMISS | EXPIRE</code>: la logica "max 3 visibili, resto FIFO" è una pura funzione di reducer → <strong>unit-testabile senza render</strong>.</li>
+<li>Timer di auto-dismiss dentro il singolo <code>&lt;Toast&gt;</code> (cleanup su unmount), pausa su hover.</li>
+<li><code>aria-live="polite"</code> sul container, non sui singoli toast.</li>
+</ul>
+<p>Questo reducer è il pattern-madre: qualsiasi "coda di elementi effimeri con cap" (upload progress, undo snackbar) è lo stesso reducer con altra grafica.</p>
+<h2 id="c4-pattern-3-notificationbell-server-state-patch-realtime-l2">C.4 Pattern 3 — <code>NotificationBell</code>: server state + patch realtime (L2)</h2>
+<p>Il problema ricorrente: un dato ha <strong>due sorgenti</strong> (fetch iniziale + eventi WS). Soluzione standard, riusata identica per feed e inbox:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useQuery</span><span class="p">({</span><span class="w"> </span><span class="nx">queryKey</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'notif'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">],</span><span class="w"> </span><span class="nx">queryFn</span><span class="o">:</span><span class="w"> </span><span class="nx">fetchCount</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'badge'</span><span class="p">,</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="nx">queryClient</span><span class="p">.</span><span class="nx">setQueryData</span><span class="p">([</span><span class="s1">'notif'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">],</span><span class="w"> </span><span class="nx">count</span><span class="p">)</span><span class="w">   </span><span class="c1">// patch, non refetch</span>
+<span class="p">),</span><span class="w"> </span><span class="p">[]);</span>
+</code></pre></div>
+<p>Regole: l'evento WS <strong>patcha la cache</strong> di TanStack Query (una sola fonte di verità lato client: la query cache); su <code>reconnect</code> → <code>invalidateQueries</code> (il gap offline non è recuperabile via eventi, si risincronizza via fetch). Cap visuale 99+ è una pura funzione di formatting, testata a parte.</p>
+<h2 id="c5-pattern-4-inboxpanel-optimistic-update-con-rollback-l3">C.5 Pattern 4 — <code>InboxPanel</code>: optimistic update con rollback (L3)</h2>
+<p>Mark-as-read deve essere istantaneo. Pattern TanStack canonico:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">useMutation</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">mutationFn</span><span class="o">:</span><span class="w"> </span><span class="nx">markRead</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">onMutate</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">queryClient</span><span class="p">.</span><span class="nx">cancelQueries</span><span class="p">([</span><span class="s1">'notif'</span><span class="p">]);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">snapshot</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">patchCache</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">'read'</span><span class="w"> </span><span class="p">});</span><span class="w">   </span><span class="c1">// UI subito</span>
+<span class="w">    </span><span class="nx">decrementBadge</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">prev</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onError</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">_e</span><span class="p">,</span><span class="w"> </span><span class="nx">_id</span><span class="p">,</span><span class="w"> </span><span class="nx">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">restore</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">prev</span><span class="p">),</span><span class="w">   </span><span class="c1">// rollback</span>
+<span class="w">  </span><span class="nx">onSettled</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">queryClient</span><span class="p">.</span><span class="nx">invalidateQueries</span><span class="p">([</span><span class="s1">'notif'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">]),</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Invarianti da testare: doppio click = una sola mutation (disable durante pending); rollback ripristina anche il badge; read-all è la stessa struttura su lista intera.</p>
+<h2 id="c6-pattern-5-feedpage-useinfinitequery-guidata-dal-cursore-be-l4">C.6 Pattern 5 — <code>FeedPage</code>: <code>useInfiniteQuery</code> guidata dal cursore BE (L4)</h2>
+<div class="highlight"><pre><span></span><code><span class="nx">useInfiniteQuery</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">queryKey</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'notif'</span><span class="p">,</span><span class="s1">'feed'</span><span class="p">,</span><span class="w"> </span><span class="nx">filters</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">queryFn</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">pageParam</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fetchFeed</span><span class="p">({</span><span class="w"> </span><span class="nx">cursor</span><span class="o">:</span><span class="w"> </span><span class="nx">pageParam</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">filters</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">getNextPageParam</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">last</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">last</span><span class="p">.</span><span class="nx">nextCursor</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">undefined</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<ul>
+<li>Il cursore è <strong>opaco</strong>: la UI non lo interpreta mai (il BE può cambiarne il formato).</li>
+<li><code>filters</code> dentro la queryKey → cambio filtro = nuova query, cursore azzerato gratis (edge case della spec risolto by design).</li>
+<li>Trigger di caricamento: <code>IntersectionObserver</code> su sentinella, non scroll listener.</li>
+<li>Group-by-day è una <code>useMemo</code> di presentazione sulle pagine flatten — mai chiedere al BE di raggruppare.</li>
+</ul>
+<h2 id="c7-pattern-6-pushoptin-state-machine-del-permesso-l6">C.7 Pattern 6 — <code>PushOptIn</code>: state machine del permesso (L6)</h2>
+<p>Il permesso browser è una macchina a stati non banale, da modellare esplicitamente:</p>
+<div class="highlight"><pre><span></span><code>idle → soft-prompt-shown → native-requested → granted → subscribed
+                        ↘ dismissed (localStorage, non riproporre per X gg)
+                          native-requested → denied (terminale: solo istruzioni manuali)
+</code></pre></div>
+<p>Regole: la richiesta nativa parte <strong>solo da un gesto utente</strong> sul soft prompt; <code>denied</code> è irreversibile via codice → la UI mostra come sbloccare dalle impostazioni browser, non un bottone rotto; unsubscribe al logout.</p>
+<h2 id="c8-pattern-7-preferencecenter-matrice-controllata-optimistic-batch-l7">C.8 Pattern 7 — <code>PreferenceCenter</code>: matrice controllata + optimistic batch (L7)</h2>
+<ul>
+<li>Sorgente UI = <strong>matrice già mergiata dal BE</strong> (classe + deviazioni): il client non conosce i default di classe, così policy nuove non richiedono deploy FE.</li>
+<li>Toggle <code>mandatory</code>: renderizzati disabled con tooltip del perché — lo stato disabled arriva dal BE (<code>editable: false</code>), non hardcodato.</li>
+<li>Salvataggio: <strong>debounce + batch</strong> (una PATCH con il diff, non una per toggle), optimistic con rollback per riga.</li>
+<li>Il selettore frequenza (realtime/daily/weekly) riusa lo stesso mutation pattern di 2.5.</li>
+</ul>
+<h2 id="c9-riepilogo-3-pattern-trasversali-7-applicazioni">C.9 Riepilogo: 3 pattern trasversali, 7 applicazioni</h2>
+<table>
+<thead>
+<tr>
+<th>Pattern trasversale</th>
+<th>Dove ricorre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Query cache patchata da eventi WS</strong> (fetch = verità al mount, WS = patch incrementale, reconnect = invalidate)</td>
+<td>Bell, InboxPanel, FeedPage</td>
+</tr>
+<tr>
+<td><strong>Optimistic mutation con snapshot/rollback</strong></td>
+<td>mark read, read-all, preferenze, unsubscribe push</td>
+</tr>
+<tr>
+<td><strong>Reducer puro per stato effimero con vincoli</strong> (cap, FIFO, dedup)</td>
+<td>ToastHost, connection status, coda offline</td>
+</tr>
+</tbody>
+</table>
+<p>Se un componente nuovo non rientra in uno di questi tre, è il segnale per fermarsi e chiedersi perché — non per inventare un quarto pattern.</p>
+<hr />
+<h1 id="parte-d-scelta-del-database-mongo-e-il-migliore">Parte D — Scelta del database: Mongo è il migliore?</h1>
+<p>Risposta onesta: <strong>no in assoluto, sì in questo contesto.</strong> La decisione è infrastrutturale, non funzionale — stesso principio applicato a Rabbit-vs-BullMQ.</p>
+<h2 id="d1-confronto-sul-merito">D.1 Confronto sul merito</h2>
+<table>
+<thead>
+<tr>
+<th>Requisito del sistema</th>
+<th>MongoDB</th>
+<th>PostgreSQL</th>
+<th>Verdetto sul merito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Outbox transazionale</td>
+<td>Transazioni multi-doc, <strong>richiede replica set</strong></td>
+<td>Transazioni native, outbox = pattern da manuale</td>
+<td><strong>PG vince</strong>: l'outbox è nato lì</td>
+</tr>
+<tr>
+<td>Notifica dispatcher</td>
+<td>Change stream (+ resume token da gestire)</td>
+<td>LISTEN/NOTIFY o polling <code>FOR UPDATE SKIP LOCKED</code></td>
+<td><strong>PG vince</strong>: <code>SKIP LOCKED</code> è più semplice e robusto del change stream</td>
+</tr>
+<tr>
+<td>Documento notifica denormalizzato</td>
+<td>Naturale (payload flessibile)</td>
+<td>JSONB, equivalente</td>
+<td>Pari</td>
+</tr>
+<tr>
+<td>Retention</td>
+<td>TTL index (gratis, ma delete in batch dal monitor thread)</td>
+<td><code>pg_cron</code> + delete partizionato, o partizioni droppate</td>
+<td>Pari (PG più controllabile su volumi alti)</td>
+</tr>
+<tr>
+<td>Idempotenza via unique</td>
+<td>Unique compound index</td>
+<td>Unique constraint</td>
+<td>Pari</td>
+</tr>
+<tr>
+<td>Cursor pagination</td>
+<td>Keyset su <code>(createdAt,_id)</code></td>
+<td>Keyset identico</td>
+<td>Pari</td>
+</tr>
+</tbody>
+</table>
+<p>Se partissi da zero senza stack: <strong>PostgreSQL sarebbe la scelta di default</strong> — outbox, SKIP LOCKED e vincoli relazionali sulle preferenze pesano più della flessibilità di schema, che qui serve poco (gli schemi sono stabili).</p>
+<h2 id="d2-perche-comunque-mongo-qui">D.2 Perché comunque Mongo, qui</h2>
+<ol>
+<li><strong>È già nello stack</strong> (con Redis): introdurre PG per il solo sistema notifiche = un database in più da fare backup, monitorare, patchare. Il costo operativo di un secondo DBMS supera il vantaggio tecnico di SKIP LOCKED.</li>
+<li>Le competenze operative (indici, profiling, replica set) sono già in casa.</li>
+<li>Nessun requisito del sistema è <em>impossibile</em> o <em>fragile</em> su Mongo: change stream ha più spigoli di SKIP LOCKED, ma con polling di fallback è affidabile.</li>
+</ol>
+<p><strong>Threshold di re-valutazione (da ADR):</strong> se il progetto ospite adotta PG come primario per altre ragioni → il sistema notifiche migra (gli schemi sono già relational-friendly: nessun embedded, nessun array unbounded, by design). Vietato invece far entrare PG <em>a causa</em> delle notifiche.</p>
+<h2 id="d3-vincolo-operativo-derivante">D.3 Vincolo operativo derivante</h2>
+<p>L'outbox (L5) richiede <strong>replica set anche in dev/CI</strong> (<code>mongod --replSet rs0</code> single-node nel compose e in testcontainers). Va nel G1 di L5, non scoperto a G4.</p>
+<hr />
+<h1 id="parte-e-osservabilita-azioni-manuali-diagnosi-e-retro">Parte E — Osservabilità, azioni manuali, diagnosi e retro</h1>
+<blockquote>
+<p>Il principio: ogni livello shippa <strong>con</strong> la sua osservabilità, non "dopo". Una coda senza metrica di depth non è in prod, è in produzione-speranza.</p>
+</blockquote>
+<h2 id="e1-correlazione-leventid-e-il-trace-id">E.1 Correlazione: l'<code>eventId</code> è il trace id</h2>
+<p>Regola non negoziabile: <strong>ogni log line di ogni componente include <code>eventId</code></strong> (e <code>userId</code>, <code>channel</code> dove esistono). Log strutturati JSON col logger già in uso nei progetti. Questo rende possibile l'intera Parte E.3 (diagnosi): la storia di una notifica si ricostruisce con un solo filtro.</p>
+<p>Formato minimo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"level"</span><span class="p">:</span><span class="s2">"info"</span><span class="p">,</span><span class="w"> </span><span class="nt">"msg"</span><span class="p">:</span><span class="s2">"delivery.sent"</span><span class="p">,</span><span class="w"> </span><span class="nt">"eventId"</span><span class="p">:</span><span class="s2">"…"</span><span class="p">,</span><span class="w"> </span><span class="nt">"channel"</span><span class="p">:</span><span class="s2">"email"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"userId"</span><span class="p">:</span><span class="s2">"…"</span><span class="p">,</span><span class="w"> </span><span class="nt">"durationMs"</span><span class="p">:</span><span class="mi">142</span><span class="p">,</span><span class="w"> </span><span class="nt">"component"</span><span class="p">:</span><span class="s2">"email-adapter"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Eventi log standard (naming fisso, l'agente/il grep ci si affida): <code>outbox.stored</code>, <code>outbox.published</code>, <code>consumer.received</code>, <code>consumer.discarded</code> (+reason), <code>delivery.sent</code>, <code>delivery.failed</code> (+permanent|transient), <code>delivery.deduped</code>, <code>message.dead</code>, <code>message.expired</code>.</p>
+<h2 id="e2-metriche-e-alert-per-livello">E.2 Metriche e alert per livello</h2>
+<p>Stack: metriche Prometheus-format (esposte da ogni servizio su <code>/metrics</code>) → VictoriaMetrics; <code>rabbitmq_prometheus</code> plugin per il broker; uptime dei servizi via Uptime Kuma; error tracking Sentry.</p>
+<table>
+<thead>
+<tr>
+<th>Metrica</th>
+<th>Componente</th>
+<th>Alert</th>
+<th>Soglia iniziale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rabbitmq_queue_messages{queue}</code></td>
+<td>broker</td>
+<td>Depth crescente = consumer fermo o lento</td>
+<td>&gt;100 per 5m (durable)</td>
+</tr>
+<tr>
+<td><code>rabbitmq_queue_messages{queue=~".*dead"}</code></td>
+<td>broker</td>
+<td><strong>Qualsiasi messaggio in DLQ</strong></td>
+<td>&gt;0 per 10m → page</td>
+</tr>
+<tr>
+<td><code>notif_ws_connections</code></td>
+<td>gateway L1</td>
+<td>Crollo improvviso = gateway/auth rotto</td>
+<td>−80% in 5m</td>
+</tr>
+<tr>
+<td><code>notif_delivery_latency_seconds{channel}</code> (histogram, publish→sent)</td>
+<td>adapter</td>
+<td>Degrado silente</td>
+<td>p95 &gt;30s email, &gt;5s toast</td>
+</tr>
+<tr>
+<td><code>notif_delivery_total{channel,outcome}</code></td>
+<td>adapter</td>
+<td>Error rate</td>
+<td>failed/total &gt;5% su 15m</td>
+</tr>
+<tr>
+<td><code>notif_outbox_pending_age_seconds</code> (max age dei pending)</td>
+<td>dispatcher L5</td>
+<td><strong>Dispatcher morto</strong>: la metrica più importante del sistema</td>
+<td>&gt;120s</td>
+</tr>
+<tr>
+<td><code>notif_push_expired_total</code></td>
+<td>push L6</td>
+<td>Solo trend (scarto by design), no page</td>
+<td>review settimanale</td>
+</tr>
+<tr>
+<td><code>notif_counter_drift</code> (dal job riconciliazione)</td>
+<td>job L3</td>
+<td>Bug idempotenza se sistematico</td>
+<td>drift ≠0 su &gt;1% utenti</td>
+</tr>
+<tr>
+<td><code>notif_digest_buffer_size</code> / età max buffer</td>
+<td>L7</td>
+<td>Digest job fermo</td>
+<td>età &gt; 2× frequenza</td>
+</tr>
+</tbody>
+</table>
+<p>Dashboard: una per il <strong>funnel</strong> (published → consumed → sent, per canale — i buchi tra le barre SONO i bug) + una per broker (depth/rate per coda) + una per latenze.</p>
+<h2 id="e3-runbook-di-diagnosi-lutente-non-ha-ricevuto-la-notifica">E.3 Runbook di diagnosi: "l'utente non ha ricevuto la notifica"</h2>
+<p>Procedura in ordine, con exit point espliciti — eseguibile a mano o da un futuro slash command di diagnosi:</p>
+<div class="highlight"><pre><span></span><code>1. outbox:      db.outbox.find({eventId})
+   ├─ assente            → il dominio non ha mai emesso: bug a monte, STOP
+   ├─ status:pending     → dispatcher fermo → runbook E.4.2, STOP
+   └─ published ↓
+2. broker:      log "consumer.received" per eventId (o Rabbit mgmt se in volo)
+   ├─ mai consumato + coda profonda → consumer fermo/crash loop → E.4.3
+   └─ consumato ↓
+3. deliveries:  db.deliveries.find({eventId})
+   ├─ status:failed      → leggere error: permanente? → messaggio in DLQ → E.4.1
+   ├─ deduped            → già inviata prima: cercare la delivery originale
+   ├─ assente + log "consumer.discarded" → motivo nel log (schema? flag off? no subscription?)
+   └─ status:sent ↓
+4. provider/client:
+   ├─ email → providerMessageId presso il provider (bounce? spam?) → suppression list
+   ├─ push  → subscription eliminata (410)? permesso browser revocato?
+   ├─ toast → utente era offline: comportamento CORRETTO, non bug
+   └─ inbox → documento c'è ma UI non lo mostra → bug FE (filtri/cache)
+5. L7: verificare routing → preferenze utente + classe del tipo:
+   canale disattivato dall'utente = comportamento corretto, non bug.
+</code></pre></div>
+<p>Punto 5 è quello che distingue un incident da un non-problema: <strong>prima di aprire un bug, verificare che la mancata consegna non sia una preferenza.</strong></p>
+<h2 id="e4-runbook-azioni-manuali">E.4 Runbook azioni manuali</h2>
+<h3 id="e41-replay-dalla-dlq">E.4.1 Replay dalla DLQ</h3>
+<ol>
+<li>Leggere i messaggi in <code>q.*.dead</code> (shovel verso coda di ispezione o mgmt UI) — <strong>mai</strong> requeue alla cieca.</li>
+<li>Classificare: errore transitorio risolto (provider down) → replay; permanente (indirizzo rotto, schema) → fix a monte, poi decidere se il replay ha ancora senso (una email di conferma di 3 giorni fa forse no).</li>
+<li>Replay = ri-publish sull'exchange con routing key originale (script <code>replay-dead.js</code>, input: coda + filtro eventId opzionale). L'idempotency di <code>deliveries</code> garantisce che i già-inviati nel batch non partano due volte → <strong>il replay è sempre safe</strong>, è il motivo per cui l'idempotenza è ovunque.</li>
+<li>Registrare l'esito nella retro (E.5).</li>
+</ol>
+<h3 id="e42-outbox-bloccata-pending-age-in-alert">E.4.2 Outbox bloccata (pending age in alert)</h3>
+<ol>
+<li>Il dispatcher è vivo? (Uptime Kuma / log) — se morto: restart, il polling di fallback recupera tutto da solo.</li>
+<li>Vivo ma fermo → change stream con resume token invalido: restart forza il re-seed dal polling.</li>
+<li>Pending "avvelenati" (publish fallisce sempre, es. payload oltre limiti): marcare <code>status:"skipped"</code> + motivo, alert dedicato, fix, eventuale re-mark a pending.</li>
+</ol>
+<h3 id="e43-consumer-in-crash-loop">E.4.3 Consumer in crash loop</h3>
+<ol>
+<li>Sintomo: depth cresce + redelivery continui dello stesso messaggio (poison message che passa la validazione ajv ma rompe la logica).</li>
+<li>Azione immediata: <strong>kill switch del canale</strong> (feature flag) per fermare l'emorragia — il resto del sistema continua.</li>
+<li>Spostare il poison message in dead (reject senza requeue mirato), riattivare il canale, fix con TDD partendo dal payload incriminato come fixture.</li>
+</ol>
+<h3 id="e44-riconciliazione-counter-manuale">E.4.4 Riconciliazione counter manuale</h3>
+<p><code>node reconcile-counters.js [--user u123]</code> — stesso codice del job notturno, on-demand. Da usare dopo incident su Redis o drift in alert. Output: delta per utente, log del prima/dopo.</p>
+<h3 id="e45-purge-subscription-push">E.4.5 Purge subscription push</h3>
+<p><code>node purge-subscriptions.js --older-than 180d --dry-run</code> — subscription con <code>lastUsedAt</code> vecchio. Sempre dry-run prima. (I 404/410 si auto-puliscono; questo copre solo i device abbandonati mai più raggiunti.)</p>
+<h2 id="e5-retro-e-igiene-periodica">E.5 Retro e igiene periodica</h2>
+<p><strong>Checklist retro settimanale</strong> (input per lo slash command di retro del flusso agentico):</p>
+<ul>
+<li>[ ] DLQ: quanti messaggi, quali cause? Ogni causa ricorrente → story di fix, non replay ripetuto (replay ricorrente = bug tollerato)</li>
+<li>[ ] <code>delivery.deduped</code> count: dedup frequente = qualcuno pubblica doppio → cercare il producer</li>
+<li>[ ] Counter drift: trend a zero? Se sistematico → bug idempotenza aperto come story</li>
+<li>[ ] p95 latency per canale: trend settimana su settimana</li>
+<li>[ ] <code>push_expired</code> e subscription 410: tasso di churn push accettabile?</li>
+<li>[ ] Funnel dashboard: buchi tra published/consumed/sent spiegati?</li>
+<li>[ ] Alert scattati: quanti erano actionable? Alert mai actionable per 4 settimane → si rimuove o si rialza la soglia (igiene anti alert-fatigue)</li>
+</ul>
+<p><strong>Mensile:</strong> review soglie alert con i dati reali (le soglie in E.2 sono starting point dichiarati, non verità); test del runbook E.4.1 in ambiente di staging (un runbook mai provato è un runbook rotto).</p>
+<h2 id="e6-osservabilita-nella-roadmap-integrazione-non-fase-a-parte">E.6 Osservabilità nella roadmap (integrazione, non fase a parte)</h2>
+<table>
+<thead>
+<tr>
+<th>Settimana</th>
+<th>Ship osservabilità insieme al livello</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (L1)</td>
+<td>Log strutturati con eventId ovunque + <code>/metrics</code> base + <code>notif_ws_connections</code></td>
+</tr>
+<tr>
+<td>2 (L2)</td>
+<td>Dedup counter metric, dashboard broker (plugin prometheus Rabbit)</td>
+</tr>
+<tr>
+<td>3 (L3)</td>
+<td>Job riconciliazione + <code>counter_drift</code>, funnel dashboard v1</td>
+</tr>
+<tr>
+<td>5 (L5)</td>
+<td><code>outbox_pending_age</code> + alert (il più critico), alert DLQ, script <code>replay-dead.js</code>, runbook E.3/E.4 scritti</td>
+</tr>
+<tr>
+<td>6 (L6)</td>
+<td><code>push_expired</code>, script purge</td>
+</tr>
+<tr>
+<td>7–8 (L7)</td>
+<td>Metriche digest/routing, punto 5 della diagnosi</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Guardrail:</strong> niente tracing distribuito (OTel) in questa fase — la correlazione via eventId sui log strutturati copre il 95% della diagnosi a una frazione del costo. Trigger per OTel: quando i componenti superano ~6 servizi deployati separatamente o la diagnosi via log fallisce 3 volte in una retro.</p>
+<hr />
+<h1 id="parte-f-backlog-epiche-storie-e-stima-sp-bozza-per-potl">Parte F — Backlog: epiche, storie e stima SP (bozza per PO/TL)</h1>
+<blockquote>
+<p><strong>Bozza di primo taglio</strong> da passare al flusso Gestazionale: l'agente PO valida valore/priorità e scrive le ready story col template; l'agente TL (adversarial) contesta le stime e spacca le 8. Scala Fibonacci 1-2-3-5-8. <strong>Regola: una story da 8 non è "ready"</strong> — va spezzata prima di entrare nel flusso Tecnico. Le stime assumono lo stack già deciso (zero spike tecnologici salvo S7.0).</p>
+<p>Corsie di parallelizzazione per subagenti: <code>[BE]</code> <code>[FE]</code> <code>[QA]</code> <code>[OPS]</code>. Stories nella stessa corsia con dipendenza esplicita sono sequenziali; corsie diverse senza dipendenza girano in parallelo.</p>
+</blockquote>
+<h2 id="f0-convenzioni-per-la-decomposizione">F.0 Convenzioni per la decomposizione</h2>
+<p>Ogni ready story derivata da questa bozza deve referenziare: sezione della spec (es. <code>L3 §casi</code>), scenari Gherkin coperti (id), file di contratto (JSON Schema, Rascal config, OpenAPI quando esisterà), mappa test (quali invarianti unit vs integration vs E2E), out-of-scope ereditato dalle tabelle OPT. DoD uniforme: <code>gate-quality.sh</code> verde + scenari della story verdi + log events standard emessi.</p>
+<h2 id="ep0-foundation-dentro-settimana-1">EP0 — Foundation (dentro settimana 1)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0.1</td>
+<td>Compose dev: Rabbit(+prometheus plugin), Mongo <strong>replica set single-node</strong>, Redis, mailpit</td>
+<td>OPS</td>
+<td>—</td>
+<td>2</td>
+</tr>
+<tr>
+<td>S0.2</td>
+<td>Config Rascal dichiarativa: exchange <code>notifications</code>, convenzioni naming code/binding</td>
+<td>BE</td>
+<td>S0.1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S0.3</td>
+<td>Message contract v1: JSON Schema in repo + package validatore ajv riusabile</td>
+<td>BE</td>
+<td>—</td>
+<td>2</td>
+</tr>
+<tr>
+<td>S0.4</td>
+<td>Test harness: testcontainers (Rabbit/Mongo-RS/Redis) + aggancio a gate-quality</td>
+<td>QA</td>
+<td>S0.1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S0.5</td>
+<td>Logging strutturato: eventId ovunque + naming eventi log standard (E.1)</td>
+<td>BE</td>
+<td>—</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP0 = 12 SP</strong></p>
+<h2 id="ep1-toast-realtime-l1">EP1 — Toast realtime (L1)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1.1</td>
+<td>WS gateway: handshake JWT, room <code>user:{id}</code>, lifecycle connessioni</td>
+<td>BE</td>
+<td>EP0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S1.2</td>
+<td>Consumer <code>q.toast</code> (exclusive/auto-delete) → dispatch in room + scarto payload invalidi</td>
+<td>BE</td>
+<td>S1.1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S1.3</td>
+<td><code>NotificationProvider</code> FE: bus tipizzato, dedup eventId, stati connessione, re-auth</td>
+<td>FE</td>
+<td>S0.3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S1.4</td>
+<td><code>&lt;ToastHost&gt;</code>: reducer coda (cap 3, FIFO), portal, auto-dismiss, a11y</td>
+<td>FE</td>
+<td>S1.3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S1.5</td>
+<td>E2E L1: <code>.feature</code> + step definitions (7 scenari)</td>
+<td>QA</td>
+<td>S1.2,S1.4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S1.6</td>
+<td>Hardening reconnect (broker e WS) + metrica <code>ws_connections</code> + <code>/metrics</code> base</td>
+<td>BE/OPS</td>
+<td>S1.5</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP1 = 22 SP</strong> · Unit critici: reducer toast, dedup provider. Integration: consumer→room.</p>
+<h2 id="ep2-badge-counter-l2">EP2 — Badge counter (L2)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S2.1</td>
+<td>Consumer <code>q.inbox</code> lite: INCR + dedup <code>seen</code> NX + nack/requeue su Redis down</td>
+<td>BE</td>
+<td>EP1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S2.2</td>
+<td>API <code>GET/DELETE /notifications/count</code> con degradazione <code>{count:null}</code> e clamp</td>
+<td>BE</td>
+<td>S2.1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>S2.3</td>
+<td><code>&lt;NotificationBell&gt;</code>: query cache + patch WS + cap 99+ + broadcast azzeramento</td>
+<td>FE</td>
+<td>S1.3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S2.4</td>
+<td>E2E L2 (7 scenari) + dashboard broker</td>
+<td>QA/OPS</td>
+<td>S2.2,S2.3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP2 = 11 SP</strong> — settimana leggera: buffer naturale per lo slittamento di EP1, non riempirla di OPT.</p>
+<h2 id="ep3-inbox-l3">EP3 — Inbox (L3)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S3.1</td>
+<td>Collection <code>notifications</code> + indici (unique eventId+userId) + refactor consumer: Mongo→Redis→badge, INCR solo su insert effettivo</td>
+<td>BE</td>
+<td>EP2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S3.2</td>
+<td>API list (offset), <code>PATCH read</code> idempotente con decremento condizionato, <code>read-all</code></td>
+<td>BE</td>
+<td>S3.1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S3.3</td>
+<td><code>&lt;InboxPanel&gt;</code>: optimistic read con rollback, read-all, navigazione <code>data.action</code></td>
+<td>FE</td>
+<td>S3.2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S3.4</td>
+<td>Job riconciliazione counter + metrica <code>counter_drift</code> + CLI on-demand (E.4.4)</td>
+<td>BE/OPS</td>
+<td>S3.1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S3.5</td>
+<td>E2E L3 (8 scenari) + funnel dashboard v1</td>
+<td>QA/OPS</td>
+<td>S3.3</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP3 = 21 SP</strong> · Unit: transizioni stato + decremento condizionato. Integration: unique index sotto redelivery.</p>
+<h2 id="ep4-feed-storico-l4">EP4 — Feed storico (L4)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S4.1</td>
+<td>Endpoint feed: cursor keyset opaco + filtri type/range + indice dedicato</td>
+<td>BE</td>
+<td>EP3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S4.2</td>
+<td>TTL retention 90gg + migrazione API L3 offset→cursor</td>
+<td>BE</td>
+<td>S4.1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>S4.3</td>
+<td><code>&lt;FeedPage&gt;</code>: useInfiniteQuery, IntersectionObserver, group-by-day, empty state</td>
+<td>FE</td>
+<td>S4.1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S4.4</td>
+<td>E2E L4 (7 scenari, focus proprietà cursore: no-dup/no-skip)</td>
+<td>QA</td>
+<td>S4.3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP4 = 15 SP</strong> · Unit: encode/decode cursore, formatter group-by-day (property-based sul cursore consigliato).</p>
+<h2 id="ep5-email-garantita-l5-epica-piu-densa">EP5 — Email garantita (L5) ⚠️ epica più densa</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S5.1a</td>
+<td>Outbox: collection + write transazionale col dominio + dispatcher via change stream + publisher confirms</td>
+<td>BE</td>
+<td>EP0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S5.1b</td>
+<td>Dispatcher: polling fallback 30s, gestione resume token, stato <code>skipped</code> per avvelenati</td>
+<td>BE</td>
+<td>S5.1a</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S5.2</td>
+<td>Retry topology Rascal (30s/5m/1h/dead) + classificatore errori permanenti/transitori</td>
+<td>BE</td>
+<td>EP0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S5.3</td>
+<td>Adapter email: idempotency <code>deliveries</code> (unique), template engine, rate limiter Redis</td>
+<td>BE</td>
+<td>S5.2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S5.4</td>
+<td>E2E L5 (7 scenari, incluso outage broker e crash adapter)</td>
+<td>QA</td>
+<td>S5.1b,S5.3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S5.5</td>
+<td>OPS L5: alert <code>outbox_pending_age</code> + DLQ&gt;0, <code>replay-dead.js</code>, runbook E.3/E.4 in repo, kill switch</td>
+<td>OPS</td>
+<td>S5.4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP5 = 28 SP</strong> — sopra la velocity di una settimana: <strong>il PO deve decidere</strong> se (a) spostare S5.5 a inizio settimana 6, o (b) accettare 1,5 settimane e comprimere EP6. Raccomandazione TL: opzione (a) è vietata per l'alerting outbox/DLQ (senza, la garanzia è finta) → accettare (b).</p>
+<h2 id="ep6-web-push-l6">EP6 — Web Push (L6)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S6.1</td>
+<td>Collection subscriptions + API register/unregister + VAPID in secret + cleanup logout</td>
+<td>BE</td>
+<td>EP5</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S6.2</td>
+<td>Service worker + <code>&lt;PushOptIn&gt;</code> state machine (soft prompt, denied terminale)</td>
+<td>FE</td>
+<td>S6.1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S6.3</td>
+<td>Adapter push: fan-out multi-endpoint, delete su 404/410, idempotency, TTL coda 15m</td>
+<td>BE</td>
+<td>S6.1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S6.4</td>
+<td>E2E L6 (7 scenari, fake push service)</td>
+<td>QA</td>
+<td>S6.2,S6.3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S6.5</td>
+<td>Metrica <code>push_expired</code> + <code>purge-subscriptions.js</code> dry-run</td>
+<td>OPS</td>
+<td>S6.3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP6 = 18 SP</strong> · Unit: state machine opt-in (tutte le transizioni), selettore payload &lt;4KB.</p>
+<h2 id="ep7-mixed-preferenze-l7">EP7 — Mixed + preferenze (L7)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Story</th>
+<th>Corsia</th>
+<th>Dip.</th>
+<th>SP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S7.0</td>
+<td><strong>Spike Novu vs build</strong> — timebox 1g, output: mini-ADR. Bloccante per tutta l'epica</td>
+<td>BE</td>
+<td>EP5,EP6</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S7.1</td>
+<td>Policy matrix (classi mandatory/default-on/off) + collection preferences + API con 422 su mandatory</td>
+<td>BE</td>
+<td>S7.0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S7.2a</td>
+<td>Router core: consume <code>q.router</code>, merge classe+preferenze, fan-out routing key</td>
+<td>BE</td>
+<td>S7.1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S7.2b</td>
+<td>Router hardening: cache prefs (TTL+invalidation), dedup eventId, fail-safe default su store down</td>
+<td>BE</td>
+<td>S7.2a</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S7.3</td>
+<td><code>&lt;PreferenceCenter&gt;</code>: matrice da BE (<code>editable</code> flag), debounce+batch PATCH, optimistic per riga</td>
+<td>FE</td>
+<td>S7.1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S7.4a</td>
+<td>Digest: buffer + job two-phase (digestId) idempotente</td>
+<td>BE</td>
+<td>S7.2b</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S7.4b</td>
+<td>Digest: composizione template multi-item + frequenze + flush su cambio frequenza</td>
+<td>BE</td>
+<td>S7.4a</td>
+<td>3</td>
+</tr>
+<tr>
+<td>S7.5</td>
+<td>E2E L7 (8 scenari)</td>
+<td>QA</td>
+<td>S7.3,S7.4b</td>
+<td>5</td>
+</tr>
+<tr>
+<td>S7.6</td>
+<td>Migrazione producer → <code>event.#</code>, deprecazione publish diretto canale, metriche routing</td>
+<td>BE/OPS</td>
+<td>S7.5</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EP7 = 37 SP</strong> (2 settimane, conferma la roadmap). Se lo spike S7.0 sceglie Novu, EP7 si riscrive: S7.1–S7.4 diventano integrazione (~15-20 SP) e S7.6 resta.</p>
+<h2 id="f1-riepilogo-e-capacity-check">F.1 Riepilogo e capacity check</h2>
+<table>
+<thead>
+<tr>
+<th>Epica</th>
+<th>SP</th>
+<th>Settimana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EP0 Foundation</td>
+<td>12</td>
+<td>1 (con EP1)</td>
+</tr>
+<tr>
+<td>EP1 Toast</td>
+<td>22</td>
+<td>1 → <strong>34 con EP0: sfora</strong></td>
+</tr>
+<tr>
+<td>EP2 Badge</td>
+<td>11</td>
+<td>2</td>
+</tr>
+<tr>
+<td>EP3 Inbox</td>
+<td>21</td>
+<td>3</td>
+</tr>
+<tr>
+<td>EP4 Feed</td>
+<td>15</td>
+<td>4</td>
+</tr>
+<tr>
+<td>EP5 Email</td>
+<td>28</td>
+<td>5 (+coda in 6)</td>
+</tr>
+<tr>
+<td>EP6 Push</td>
+<td>18</td>
+<td>6</td>
+</tr>
+<tr>
+<td>EP7 Mixed</td>
+<td>37</td>
+<td>7–8</td>
+</tr>
+<tr>
+<td><strong>Totale</strong></td>
+<td><strong>164</strong></td>
+<td>8 settimane</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Flag onesto per il PO:</strong> con velocity ~20 SP/settimana, la settimana 1 (EP0+EP1 = 34) non chiude. Correzione proposta senza toccare la north-star: EP0 parte come pre-sprint (2-3 giorni prima) <strong>oppure</strong> S1.6 e la parte dashboard di S2.4 scivolano nella settimana 2, che a 11 SP ha spazio (è il suo ruolo di buffer). Seconda opzione raccomandata: EP0 anticipato "perché tanto è setup" è la scusa classica per non shippare in settimana 1.</p>
+<p><strong>Prime 3 azioni per gli agenti:</strong> (1) PO: validare priorità e trasformare EP0+EP1 in ready story col template; (2) TL adversarial: contestare le stime 5 di S1.3/S1.5 e ogni residuo split delle ex-8; (3) QA: convertire i Gherkin L1 della Parte A in <code>.feature</code> file eseguibili — sono il contratto, vanno in repo prima del primo commit di codice.</p>
+<hr />
+<h1 id="parte-g-golden-sample-ready-story-s14">Parte G — Golden sample: ready story S1.4</h1>
+<blockquote>
+<p>Formato di riferimento per tutte le ready story derivate dalla Parte F. È il contratto tra flusso Gestazionale e Tecnico: l'agente implementatore NON deve prendere decisioni fuori da quanto scritto qui — se serve una decisione non coperta, la story torna al PO, non si improvvisa.</p>
+</blockquote>
+<hr />
+<h2 id="s14-toasthost-component">S1.4 — <code>&lt;ToastHost&gt;</code> component</h2>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Epica</td>
+<td>EP1 — Toast realtime (L1)</td>
+</tr>
+<tr>
+<td>SP</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Corsia</td>
+<td>FE</td>
+</tr>
+<tr>
+<td>Dipendenze</td>
+<td>S1.3 (<code>NotificationProvider</code> — consumo della sua API)</td>
+</tr>
+<tr>
+<td>Blocca</td>
+<td>S1.5 (E2E L1)</td>
+</tr>
+<tr>
+<td>Spec ref</td>
+<td>Parte A §L1 (design, tabella casi), Parte C §C.3 (pattern reducer+portal)</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td><code>feat/S1.4-toast-host</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="story">Story</h3>
+<p>Come utente connesso, quando arrivano eventi toast voglio vederli comparire in modo non invasivo, con al massimo 3 visibili contemporaneamente e i restanti in coda, così da essere informato senza che la UI diventi rumore.</p>
+<h3 id="contratti-referenziati-input-immutabili-per-limplementatore">Contratti referenziati (input immutabili per l'implementatore)</h3>
+<ol>
+<li><strong>Message contract v1</strong> — <code>contracts/notification-event.v1.schema.json</code>. Il componente riceve eventi <strong>già validati e deduplicati</strong> dal provider: non rivalida, non rideduplica.</li>
+<li><strong>API del provider (S1.3)</strong> — unica dipendenza di runtime:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// from S1.3 — do not redefine</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">ToastEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">eventId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">                    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">data</span><span class="o">?:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">action?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="nx">ts</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
+<span class="nx">useNotifications</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">channel</span><span class="o">:</span><span class="w"> </span><span class="s1">'toast'</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="o">:</span><span class="w"> </span><span class="kt">ToastEvent</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">'connected'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'reconnecting'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'offline'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="decisioni-gia-prese-non-riaprire">Decisioni già prese (non riaprire)</h3>
+<ul>
+<li>Stato = <code>useReducer</code> con azioni <code>PUSH | DISMISS | EXPIRE</code>; il reducer è una <strong>funzione pura esportata</strong> e testata senza render.</li>
+<li>Render via <strong>portal</strong> su <code>document.body</code>; container con <code>aria-live="polite"</code> e <code>role="status"</code>.</li>
+<li>Cap: <strong>3 visibili</strong>, overflow in coda FIFO; all'uscita di uno, entra il primo in coda.</li>
+<li>Auto-dismiss <strong>5s</strong> per toast, timer nel singolo <code>&lt;Toast&gt;</code> con cleanup su unmount; <strong>pausa su hover/focus</strong>, ripresa al leave.</li>
+<li>Dismiss manuale sempre disponibile (bottone con <code>aria-label</code>).</li>
+<li>Se <code>data.action</code> presente → toast cliccabile, click = navigazione + dismiss (OPT-L1.3 promossa: unica OPT in scope).</li>
+</ul>
+<h3 id="out-of-scope-ereditato-non-implementare">Out of scope (ereditato — non implementare)</h3>
+<ul>
+<li>Persistenza/recupero eventi (❌ OPT-L1.1), stacking configurabile, posizioni multiple, suoni, animazioni oltre enter/exit base, dedup (vive nel provider), gestione stato connessione (vive nel provider).</li>
+</ul>
+<h3 id="acceptance-scenari-di-competenza-della-story">Acceptance — scenari di competenza della story</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># toast-host.component.feature — component-level (React Testing Library)</span>
+<span class="k">Feature:</span><span class="nf"> ToastHost display behavior</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Toasts appear up to the visible cap</span>
+<span class="k">    Given </span><span class="nf">the host received </span><span class="s">5</span><span class="nf"> toast events</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">exactly </span><span class="s">3</span><span class="nf"> toasts are visible</span>
+<span class="nf">    </span><span class="k">And </span><span class="s">2</span><span class="nf"> are queued in arrival order</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Queue drains in FIFO order</span>
+<span class="k">    Given </span><span class="s">3</span><span class="nf"> visible toasts and </span><span class="s">2</span><span class="nf"> queued</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the oldest visible toast is dismissed</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the first queued toast becomes visible</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Auto-dismiss after 5 seconds</span>
+<span class="k">    Given </span><span class="nf">a visible toast</span>
+<span class="nf">    </span><span class="k">When </span><span class="s">5</span><span class="nf"> seconds elapse</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the toast is removed</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Hover pauses auto-dismiss</span>
+<span class="k">    Given </span><span class="nf">a visible toast hovered at second </span><span class="s">4</span>
+<span class="nf">    </span><span class="k">When </span><span class="s">3</span><span class="nf"> more seconds elapse while hovered</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the toast is still visible</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the pointer leaves</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the toast is removed after the remaining time</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Manual dismiss removes only the target toast</span>
+<span class="k">    Given </span><span class="s">3</span><span class="nf"> visible toasts</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the second toast is dismissed manually</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the other </span><span class="s">2</span><span class="nf"> remain visible</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Actionable toast navigates on click</span>
+<span class="k">    Given </span><span class="nf">a visible toast with an action target</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">the toast body is clicked</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">navigation to the action target is triggered</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the toast is dismissed</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Container is announced politely</span>
+<span class="k">    Then </span><span class="nf">the toast container has aria-live "</span><span class="s">polite</span><span class="nf">"</span>
+</code></pre></div>
+<blockquote>
+<p>Gli scenari E2E del canale completo (publish → toast, offline, burst reale) appartengono a <strong>S1.5</strong> e non vanno duplicati qui.</p>
+</blockquote>
+<h3 id="mappa-test-tdd-top-down">Mappa test (TDD top-down)</h3>
+<table>
+<thead>
+<tr>
+<th>Livello</th>
+<th>Cosa</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit</td>
+<td>Reducer: PUSH sotto/sopra cap, DISMISS visibile/in coda, EXPIRE, ordine FIFO, DISMISS di id inesistente = no-op</td>
+<td>Prima cosa da scrivere. Zero DOM</td>
+</tr>
+<tr>
+<td>Component (RTL)</td>
+<td>I 7 scenari sopra, fake timers per i tempi</td>
+<td>Provider mockato sulla firma del contratto §2</td>
+</tr>
+<tr>
+<td>E2E</td>
+<td>—</td>
+<td>Deferito a S1.5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dod">DoD</h3>
+<ul>
+<li>[ ] <code>gate-quality.sh</code> verde (lint, type-check, coverage soglia di progetto)</li>
+<li>[ ] Reducer: 100% branch coverage (è puro, non ci sono scuse)</li>
+<li>[ ] 7 scenari component verdi</li>
+<li>[ ] Nessun import diretto di socket.io/client: solo <code>useNotifications</code></li>
+<li>[ ] Nessuna nuova dipendenza npm senza approvazione (animazioni: CSS transition, non librerie)</li>
+<li>[ ] Commit convenzionali con riferimento story</li>
+</ul>
+<h3 id="note-per-lagente-implementatore">Note per l'agente implementatore</h3>
+<p>Ordine TDD obbligato: (1) reducer test-first fino a verde completo; (2) <code>&lt;Toast&gt;</code> singolo con timer/hover; (3) host+portal componendo i due; (4) scenari component. Se durante l'implementazione emerge un caso non coperto dagli scenari (es. evento con <code>title</code> vuoto), <strong>non decidere</strong>: annotare nel report di story e chiedere — il contratto dice che il payload è già validato, quindi è probabilmente un bug di S1.3 o dello schema, non tuo.</p>
+<hr />
+<hr />
+<h1 id="parte-h-struttura-del-progetto-su-github">Parte H — Struttura del progetto su GitHub</h1>
+<blockquote>
+<p>Principio guida: <strong>il repo è la memoria degli agenti</strong>. Tutto ciò che un agente deve sapere per lavorare (contratti, story, ADR, feature file) vive versionato nel repo — GitHub Issues/Projects sono lo specchio per il tracking umano, mai la fonte di verità. Un agente che deve chiamare un'API per leggere la sua story ha già perso.</p>
+</blockquote>
+<h2 id="h1-layout-monorepo">H.1 Layout monorepo</h2>
+<div class="highlight"><pre><span></span><code>notification-system/
+├── CLAUDE.md                        # regole per gli agenti (punta a docs/, contracts/, backlog/)
+├── package.json                     # workspaces npm
+├── docker-compose.yml               # rabbit(+prometheus), mongo --replSet, redis, mailpit
+├── gate-quality.sh                  # unico gate: husky, hook Stop, CI chiamano QUESTO
+├── .github/
+│   ├── workflows/
+│   │   ├── ci.yml                   # lint+type+unit+integration (testcontainers) → gate-quality.sh
+│   │   └── e2e.yml                  # feature file su compose effimero (su PR verso develop)
+│   ├── ISSUE_TEMPLATE/story.yml     # specchio del template Parte G
+│   └── pull_request_template.md     # checklist DoD + link story
+├── contracts/                       # ⭐ fonte di verità cross-package, zero logica
+│   ├── notification-event.v1.schema.json
+│   ├── openapi.yaml                 # API REST (da S3.2 in poi)
+│   └── log-events.md                # naming eventi log standard (E.1)
+├── packages/
+│   ├── shared/                      # validatore ajv, logger factory, tipi generati dai contratti
+│   ├── rascal-config/               # topologia dichiarativa (exchange, code, retry, DLX)
+│   ├── ws-gateway/                  # L1
+│   ├── inbox-consumer/              # L2–L3
+│   ├── outbox-dispatcher/           # L5
+│   ├── adapter-email/               # L5
+│   ├── adapter-push/                # L6
+│   ├── router/                      # L7
+│   ├── api/                         # REST (count, inbox, feed, preferences)
+│   └── web/                         # React: provider, ToastHost, Bell, Inbox, Feed, PrefCenter
+├── e2e/
+│   ├── features/                    # .feature = QUESTI sono il contratto, non i blocchi nel md
+│   │   ├── L1-toast/*.feature
+│   │   └── …
+│   ├── steps/
+│   └── support/                     # testcontainers bootstrap, fake SMTP/push service
+├── ops/
+│   ├── scripts/                     # replay-dead.js, reconcile-counters.js, purge-subscriptions.js
+│   ├── runbooks/                    # E.3/E.4 come file autonomi (diagnosi.md, replay-dlq.md, …)
+│   └── dashboards/                  # json/config funnel + broker
+├── docs/it/
+│   ├── notification-system.md       # questo documento (la spec madre, Parti A–G)
+│   └── adr/
+│       ├── 0001-rabbitmq-over-bullmq.md
+│       ├── 0002-mongodb-over-postgres.md      # Parte D distillata
+│       ├── 0003-ttl-hard-delete-notifications.md
+│       ├── 0004-tanstack-query.md
+│       └── 0005-novu-vs-build.md              # esce dallo spike S7.0
+└── backlog/
+    ├── EP1-toast/
+    │   ├── S1.4-toast-host.md       # ready story = file md (formato Parte G)
+    │   └── …
+    ├── _template.md
+    └── _done/                       # story chiuse spostate qui dal retro (storico per l'agente retro)
+</code></pre></div>
+<p><strong>Perché monorepo:</strong> i contratti sono condivisi da 8 package — multi-repo = versionare i contratti come pacchetto pubblicato, cerimonia ingiustificata a questa scala. <code>contracts/</code> fuori da <code>packages/</code> deliberatamente: è input di tutti, dipendenza di nessuno.</p>
+<p><strong>Perché le story sono file in <code>backlog/</code> e non solo issue:</strong> l'agente implementatore riceve il path del file, l'adversarial reviewer ne fa il diff col codice, il retro agent legge <code>_done/</code>. Le issue GitHub sono lo specchio (via <code>gh</code> CLI o action), con link bidirezionale story-file ↔ issue.</p>
+<h2 id="h2-mapping-su-github">H.2 Mapping su GitHub</h2>
+<table>
+<thead>
+<tr>
+<th>Concetto</th>
+<th>Meccanismo GitHub</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Epica (EP0–EP7)</td>
+<td><strong>Milestone</strong></td>
+<td>Una per epica; la % di completamento traccia la settimana</td>
+</tr>
+<tr>
+<td>Story</td>
+<td><strong>Issue</strong> (template <code>story.yml</code>) + file in <code>backlog/</code></td>
+<td>Label: <code>epic:EP1</code>, <code>lane:FE</code>, <code>sp:3</code></td>
+</tr>
+<tr>
+<td>Board</td>
+<td><strong>Projects v2</strong>, colonne: <code>Ready → In progress → Review → Done</code></td>
+<td><code>Ready</code> = il file story esiste ed è validato dal PO; niente colonna "Backlog grezzo": ciò che non è ready sta solo nella Parte F</td>
+</tr>
+<tr>
+<td>OPT promosse</td>
+<td>Issue con label <code>opt</code> + riferimento <code>OPT-Lx.n</code></td>
+<td>La promozione richiede il mini-ADR nel body</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td><code>feat/S1.4-toast-host</code> (ID story nel nome)</td>
+<td>Convenzione già nella story; una story = un branch = una PR</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>Conventional Commits con ref story: <code>feat(web): toast queue reducer [S1.4]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PR</td>
+<td>Verso <code>develop</code>; template con checklist DoD della story</td>
+<td>Squash merge; il titolo PR = titolo story</td>
+</tr>
+<tr>
+<td>Release/deploy</td>
+<td>Tag per fine settimana (<code>v0.1.0-L1</code> … )</td>
+<td>Il tag È lo ship della north-star: se venerdì non c'è tag, la retro parte da lì</td>
+</tr>
+</tbody>
+</table>
+<h2 id="h3-ci-due-livelli-un-solo-gate">H.3 CI: due livelli, un solo gate</h2>
+<ul>
+<li><strong>ci.yml</strong> (ogni push): <code>gate-quality.sh</code> — lint, type-check, unit, integration con testcontainers. Identico a locale/hook: nessuna logica di qualità vive solo in CI.</li>
+<li><strong>e2e.yml</strong> (PR verso develop): compose effimero + feature file dell'epica toccata (path filter per non pagare 8 epiche a ogni PR). Su develop: suite completa notturna.</li>
+<li>I badge di stato + la depth DLQ di staging finiscono nella dashboard, non nel README.</li>
+</ul>
+<h2 id="h4-cosa-non-fare">H.4 Cosa NON fare</h2>
+<ul>
+<li>❌ Wiki GitHub per la spec (non versionata col codice, invisibile agli agenti in checkout)</li>
+<li>❌ Story scritte solo come issue (l'agente dovrebbe fare API call per leggere il proprio contratto)</li>
+<li>❌ Un repo per package (cerimonia multi-repo senza beneficio a questa scala — threshold: quando un package viene riusato da un <em>altro</em> progetto, si estrae)</li>
+<li>❌ GitFlow completo: <code>develop</code> + feature branch bastano; niente release branch per un sistema che shippa a tag settimanali</li>
+</ul>
+<p><em>Fine documento.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

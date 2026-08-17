@@ -1,0 +1,955 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Home Gateway — Spinoff City Cat (domotica felina) - XP Flow — Docs di dominio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#home-gateway-spinoff-city-cat-domotica-felina" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href="../.." title="XP Flow — Docs di dominio" class="md-header__button md-logo" aria-label="XP Flow — Docs di dominio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XP Flow — Docs di dominio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home Gateway — Spinoff City Cat (domotica felina)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="XP Flow — Docs di dominio" class="md-nav__button md-logo" aria-label="XP Flow — Docs di dominio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    XP Flow — Docs di dominio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comandi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandi (cheat-sheet)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guida-file-e-priorita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File e priorità (guida)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architettura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architettura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contesto (C4)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/domain-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modello di dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features (Gherkin)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flow/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stato del flusso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contesto-e-obiettivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contesto e obiettivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-decisioni-prese" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Decisioni prese
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vincoli-tecnici-hard-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vincoli tecnici (hard facts)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Vincoli tecnici (hard facts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#switchbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SwitchBot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#camere-tapo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camere Tapo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#petkit-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PetKit (⚠️ experimental)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicurezza-baseline-non-negoziabile-anche-in-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sicurezza (baseline, non negoziabile anche in LAN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-architettura-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Architettura target
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Slicing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ready-story-week-1-code-facing-english" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Ready story — Week 1 (code-facing, English)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-fuori-scope-esplicito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Fuori scope (esplicito)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-rischi-principali" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Rischi principali
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="home-gateway-spinoff-city-cat-domotica-felina">Home Gateway — Spinoff City Cat (domotica felina)</h1>
+<blockquote>
+<p>Brief operativo per agente. Fonte: sessione di design 17/08/2026.
+Lingua: documento in italiano, tutti gli artefatti code-facing (identificatori, filename, branch, commit, Gherkin) in inglese.
+Working name: <code>home-gateway</code> (naming definitivo TBD, non bloccante).</p>
+</blockquote>
+<h2 id="1-contesto-e-obiettivo">1. Contesto e obiettivo</h2>
+<p>Spinoff sperimentale di City Cat: software di orchestrazione domotica orientato al benessere/monitoraggio del gatto, sopra hardware di terze parti già presente in casa (SwitchBot, camere Tapo, dispositivi PetKit). Nessun hardware venduto: solo software.</p>
+<p><strong>North-star:</strong> un product increment shippato a settimana. Ogni decisione di scope si filtra su questo.</p>
+<p><strong>Primo utente:</strong> l'owner, a casa propria, col proprio gatto. Beta esterna (max ~15 utenti) solo dopo che il sistema gira stabilmente in casa per settimane.</p>
+<h2 id="2-decisioni-prese">2. Decisioni prese</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Decisione</th>
+<th>Motivazione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>Primo consumatore dei tool: <strong>bot Telegram</strong> (comandi espliciti)</td>
+<td>Interfaccia già primaria nell'ecosistema personale; zero UI da costruire; long polling → niente esposizione su internet</td>
+</tr>
+<tr>
+<td>D2</td>
+<td><strong>Adapter layer per vendor</strong> nel core (ports &amp; adapters)</td>
+<td>Isola il dominio dalle API instabili/non ufficiali; abilita futuri facade (MCP, REST, PWA) senza toccare il core</td>
+</tr>
+<tr>
+<td>D3</td>
+<td><strong>Comandi deterministici, niente NLU</strong> in fase 1</td>
+<td>Shippabile in giorni, testabile in BDD; l'NLU è un layer sopra gli stessi use case, si aggiunge dopo</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>Ordine di integrazione: <strong>SwitchBot (ufficiale) → ONVIF/RTSP → PetKit (experimental flag)</strong></td>
+<td>Dal più stabile al più fragile; PetKit ha solo API reverse-engineered</td>
+</tr>
+<tr>
+<td>D5</td>
+<td><strong>Niente monorepo tooling pesante</strong> in settimana 1</td>
+<td>npm workspaces nudo; tsup/changesets/CI completa solo quando esiste un secondo consumatore dei package</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Modello business fase demo: <strong>beta gratuita, zero incassi</strong></td>
+<td>Discussione fiscale/P.IVA fuori scope (gestita altrove); la validazione non si monetizza</td>
+</tr>
+<tr>
+<td>D7</td>
+<td><strong>Nessuna rivendita hardware</strong> in bundle; l'utente porta il proprio hardware</td>
+<td>Elimina responsabilità garanzia, logistica, ToS; per la beta niente affiliate link</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>Pattern integrazione per beta esterna: <strong>l'utente porta il proprio endpoint</strong> (webhook Home Assistant/IFTTT o credenziali proprie)</td>
+<td>Le credenziali restano dell'utente; il software orchestra, non rivende accesso ad API di terzi</td>
+</tr>
+<tr>
+<td>D9</td>
+<td>Uso marchi terzi: <strong>naming testuale con disclaimer</strong>, mai loghi o apparenza di affiliazione</td>
+<td>Riduzione rischio IP; disclaimer standard "X is a registered trademark of Y. This software is independent and not affiliated..."</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-vincoli-tecnici-hard-facts">3. Vincoli tecnici (hard facts)</h2>
+<h3 id="switchbot">SwitchBot</h3>
+<ul>
+<li>API ufficiale Open API v1.1: token + secret generati dall'app (Developer Options), firma HMAC-SHA256.</li>
+<li>REST per stato/comandi; <strong>webhook</strong> per eventi push (preferire ai polling).</li>
+<li>Rate limit ~10.000 chiamate/giorno per account: budget da rispettare, polling solo di fallback.</li>
+</ul>
+<h3 id="camere-tapo">Camere Tapo</h3>
+<ul>
+<li>Solo protocolli standard: <strong>RTSP</strong> (<code>rtsp://user:pass@IP:554/stream1|stream2</code>) e <strong>ONVIF Profile S</strong> (porta 2020; aggiunge PTZ ed eventi).</li>
+<li>Richiede <strong>camera account dedicato</strong> creato nell'app Tapo (separato dal TP-Link ID).</li>
+<li>Modelli a batteria: in genere <strong>no RTSP</strong> (eccezioni: D235/D225/TD25 se cablati). Verificare modello per modello.</li>
+<li>Accesso remoto <strong>solo via VPN</strong> (WireGuard/Tailscale). Mai port forwarding.</li>
+<li>IP camere: impostare DHCP reservation sul router.</li>
+<li>Librerie di controllo non-standard (pytapo e simili) = non ufficiali: usarle solo per feature accessorie, mai come dipendenza critica.</li>
+</ul>
+<h3 id="petkit-experimental">PetKit (⚠️ experimental)</h3>
+<ul>
+<li><strong>Nessuna API ufficiale, nessun developer program.</strong> Solo librerie reverse-engineered (riferimento: ecosistema Jezza34000 / py-petkit-api).</li>
+<li>Breaking changes possibili in qualsiasi momento: tutto dietro feature flag <code>PETKIT_ENABLED</code>, degradazione graceful se l'API cambia.</li>
+<li>Vincolo account: <strong>login su un solo device alla volta</strong>. Setup obbligatorio: account secondario via family sharing per la libreria, account primario resta sull'app mobile.</li>
+<li>Dato di valore per City Cat: storico uso lettiera/pasti/acqua per gatto (segnali di salute).</li>
+</ul>
+<h3 id="sicurezza-baseline-non-negoziabile-anche-in-lan">Sicurezza (baseline, non negoziabile anche in LAN)</h3>
+<ul>
+<li>Whitelist <code>chat_id</code> Telegram da env: messaggi da chat non in whitelist ignorati <strong>prima</strong> del parsing.</li>
+<li>Secrets (bot token, SwitchBot token+secret, camera account, credenziali PetKit) solo in env/secret manager. Mai in repo.</li>
+<li>Audit log di ogni comando eseguito: <code>timestamp, chat_id, command, args, outcome</code>.</li>
+<li>Rate limiting applicativo sui comandi che consumano quota SwitchBot.</li>
+<li>Riuso dei pattern già in uso nel portfolio personale (logger già implementati, gate di qualità, soft-delete). Non citare mai progetti lavorativi.</li>
+</ul>
+<h2 id="4-architettura-target">4. Architettura target</h2>
+<div class="highlight"><pre><span></span><code>home-gateway/
+├── packages/
+│   ├── core/                 # domain + ports: CameraProvider, ActuatorProvider, PetDeviceProvider
+│   ├── adapter-switchbot/    # official Open API v1.1 (HMAC auth, webhook receiver)
+│   ├── adapter-onvif/        # snapshot/clip via RTSP + ffmpeg, ONVIF events
+│   └── adapter-petkit/       # EXPERIMENTAL, behind PETKIT_ENABLED flag
+└── apps/
+    └── bot-telegram/         # grammY, command-based, long polling
+</code></pre></div>
+<ul>
+<li>Runtime: Node.js, JS + JSDoc, npm workspaces.</li>
+<li>Deploy: macchina in LAN (mini-PC/RPi), long polling verso Telegram, nessuna porta esposta.</li>
+<li>Snapshot camera: <code>ffmpeg -rtsp_transport tcp -i &lt;rtsp_url&gt; -frames:v 1 &lt;out.jpg&gt;</code>; clip: durata parametrica, invio come video Telegram.</li>
+<li>Facade futuri sullo stesso core (non ora): MCP server, REST API, PWA.</li>
+</ul>
+<h2 id="5-slicing">5. Slicing</h2>
+<table>
+<thead>
+<tr>
+<th>Settimana</th>
+<th>Increment</th>
+<th>Contenuto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Bot + SwitchBot</td>
+<td><code>/devices</code>, <code>/on &lt;device&gt;</code>, <code>/off &lt;device&gt;</code>, <code>/status</code>; whitelist, audit log, secrets da env</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Camere</td>
+<td><code>/snap &lt;camera&gt;</code>, <code>/clip &lt;camera&gt; &lt;seconds&gt;</code> via adapter ONVIF/RTSP</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PetKit (flag)</td>
+<td><code>/feed &lt;grams&gt;</code>, <code>/litter stats</code>; setup account secondario family sharing</td>
+</tr>
+<tr>
+<td>4+</td>
+<td>Routine</td>
+<td>Automazioni evento→azione (webhook SwitchBot → azione), primi report benessere gatto</td>
+</tr>
+</tbody>
+</table>
+<p>Guardrail anti over-engineering: se a fine settimana l'increment non è shippato, si taglia scope, non si estende infrastruttura.</p>
+<h2 id="6-ready-story-week-1-code-facing-english">6. Ready story — Week 1 (code-facing, English)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Telegram bot controls SwitchBot devices</span>
+<span class="nf">  As the home owner</span>
+<span class="nf">  I want to list and switch my SwitchBot devices from Telegram</span>
+<span class="nf">  So that I can operate my home without opening vendor apps</span>
+
+<span class="nf">  </span><span class="k">Background:</span>
+<span class="k">    Given </span><span class="nf">the bot is running with a whitelist containing my chat_id</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">SwitchBot credentials are loaded from environment variables</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Unauthorized chat is ignored</span>
+<span class="k">    When </span><span class="nf">a message arrives from a chat_id not in the whitelist</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the bot sends no reply</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the attempt is written to the audit log</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> List devices</span>
+<span class="k">    When </span><span class="nf">I send "</span><span class="s">/devices</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">I receive the list of SwitchBot devices with name and current state</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Turn a device on</span>
+<span class="k">    Given </span><span class="nf">a device named "</span><span class="s">living-light</span><span class="nf">" exists</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I send "</span><span class="s">/on living-light</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the SwitchBot API receives a turnOn command for that device</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I receive a confirmation with the resulting state</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the command is written to the audit log</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Unknown device</span>
+<span class="k">    When </span><span class="nf">I send "</span><span class="s">/on nonexistent-device</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">I receive an error listing the available device names</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> API quota protection</span>
+<span class="k">    Given </span><span class="nf">the daily SwitchBot call budget is nearly exhausted</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I send a command that requires an API call</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the bot warns me about the remaining quota before executing</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Health check</span>
+<span class="k">    When </span><span class="nf">I send "</span><span class="s">/status</span><span class="nf">"</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">I receive adapter health for switchbot including last successful call timestamp</span>
+</code></pre></div>
+<p><strong>Definition of done (week 1):</strong> comandi funzionanti sui device reali di casa; test BDD verdi; audit log verificato; nessun secret in repo; deploy sulla macchina LAN con restart automatico.</p>
+<h2 id="7-fuori-scope-esplicito">7. Fuori scope (esplicito)</h2>
+<ul>
+<li>Questioni fiscali / P.IVA / inquadramento Tech Citizen → gestite in thread separato. Nessuna monetizzazione in questa fase.</li>
+<li>Vendita/bundle hardware, affiliate link.</li>
+<li>NLU / linguaggio naturale (fase successiva, layer sopra gli use case).</li>
+<li>Dashboard PWA, MCP server, REST API pubblica (facade futuri sullo stesso core).</li>
+<li>Multi-tenant / onboarding beta esterna (richiede prima stabilità in casa + pattern D8).</li>
+</ul>
+<h2 id="8-rischi-principali">8. Rischi principali</h2>
+<table>
+<thead>
+<tr>
+<th>Rischio</th>
+<th>Mitigazione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API PetKit cambia e rompe l'adapter</td>
+<td>Feature flag, degradazione graceful, mai dipendenza critica</td>
+</tr>
+<tr>
+<td>Superamento quota SwitchBot</td>
+<td>Webhook invece di polling, budget tracking, warning nel bot</td>
+</tr>
+<tr>
+<td>Over-engineering (rischio storico)</td>
+<td>Slicing settimanale, D5, guardrail: increment non shippato → si taglia</td>
+</tr>
+<tr>
+<td>Camera a batteria senza RTSP</td>
+<td>Verifica compatibilità modello prima della settimana 2</td>
+</tr>
+<tr>
+<td>Clausole di esclusiva contratto di lavoro</td>
+<td>Verifica contrattuale prima di qualsiasi beta esterna (fuori scope tecnico ma bloccante business)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

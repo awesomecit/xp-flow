@@ -19,7 +19,7 @@
     
     
       
-        <title>7. Catena PR automatica: push scoped agli agenti, review agente, auto-merge - XP Flow — Docs di dominio</title>
+        <title>XP Flow Factory — App Template Baseline - XP Flow — Docs di dominio</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#7-catena-pr-automatica-push-scoped-agli-agenti-review-agente-auto-merge" class="md-skip">
+        <a href="#xp-flow-factory-app-template-baseline" class="md-skip">
           Vai al contenuto
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. Catena PR automatica: push scoped agli agenti, review agente, auto-merge
+              XP Flow Factory — App Template Baseline
             
           </span>
         </div>
@@ -388,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../adr/" class="md-nav__link">
         
   
   
@@ -516,10 +516,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#contesto" class="md-nav__link">
+  <a href="#cosa-non-deve-mai-mancare-in-unapp-febedevops-enterprise-compliant-e-open-source-v10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contesto
+        Cosa non deve mai mancare in un'app FE/BE/DevOps enterprise-compliant e open source · v1.0
       
     </span>
   </a>
@@ -527,10 +527,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decisione-proposta" class="md-nav__link">
+  <a href="#0-come-si-usa-nella-fabbrica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Decisione (proposta)
+        0. Come si usa nella fabbrica
       
     </span>
   </a>
@@ -538,10 +538,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alternative-scartate" class="md-nav__link">
+  <a href="#1-trasversale-tutti-i-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Alternative scartate
+        1. Trasversale (tutti i layer)
       
     </span>
   </a>
@@ -549,10 +549,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conseguenze" class="md-nav__link">
+  <a href="#2-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conseguenze
+        2. Backend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Frontend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-livelli-di-conformita-per-non-bloccarsi-al-giorno-uno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Livelli di conformità (per non bloccarsi al giorno uno)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-deroghe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Deroghe
       
     </span>
   </a>
@@ -576,64 +620,332 @@
 
 
 
-<h1 id="7-catena-pr-automatica-push-scoped-agli-agenti-review-agente-auto-merge">7. Catena PR automatica: push scoped agli agenti, review agente, auto-merge</h1>
-<p>Data: 2026-08-14 · Stato: <strong>accettata</strong> (retro #2, 14/08/2026 — CLAUDE.md e deny aggiornati contestualmente)</p>
-<h2 id="contesto">Contesto</h2>
-<p>Il traguardo "Fabbrica semi-auto" (ROADMAP) richiede che una storia ben
-specificata attraversi sviluppo → PR → review → merge senza intervento umano.
-Decisione esplicita dell'utente (14/08): il loop deve essere completo, <strong>push
-compreso</strong>. Questo confligge con un non-negoziabile scritto in due CLAUDE.md
-("mai <code>git push</code>, il push è sempre gate umano") e bloccato via deny nei
-settings — e il 14/08 stesso è stato registrato un episodio di regola
-mai-push scavalcata da un agente (commit <code>f4609bd</code>). Serve quindi una
-decisione formale e strumentata, non una deroga silenziosa: questo ADR la
-propone; per il freeze del metodo la ratifica spetta alla retro #2.</p>
-<h2 id="decisione-proposta">Decisione (proposta)</h2>
-<ol>
-<li><strong>Push scoped agli agenti</strong>: consentito SOLO <code>git push origin feat/*</code>
-   (branch di lavoro). Mai <code>main</code>, mai <code>--force</code>/<code>--no-verify</code>, mai delete
-   di ref remoti, mai tag. Tutto il resto resta deny.</li>
-<li><strong><code>main</code> intoccabile per tutti</strong> (umano compreso): branch protection con
-   required checks <code>quality</code> + <code>e2e</code> + <code>claude-review</code>, nessun push diretto.
-   Il merge avviene esclusivamente via PR.</li>
-<li><strong>Review agente obbligatoria</strong>: workflow <code>pr-review.yml</code> (claude-code-action)
-   esegue una review adversarial secondo il metodo (KISS/YAGNI, TDD rosso-prima,
-   retrocompatibilità, compliance) e risulta come check obbligatorio.</li>
-<li><strong>Auto-merge con merge commit</strong>: a check verdi la PR si fonde da sola
-   (<code>gh pr merge --auto --merge</code>). Strategia merge commit, coerente con la
-   regola "sincronizzazione via merge"; <strong>rebase resta vietato</strong>, anche come
-   strategia GitHub.</li>
-<li><strong>Attivazione a doppia chiave</strong>: (a) ratifica in retro #2 con modifica
-   contestuale dei due CLAUDE.md e dei deny (allow scoped al posto del
-   blocco totale); (b) azioni manuali GitHub: branch protection su <code>main</code>,
-   "Allow auto-merge" nel repo, variabile <code>PR_REVIEW_ENABLED=true</code> e secret
-   dell'action (<code>ANTHROPIC_API_KEY</code> o <code>CLAUDE_CODE_OAUTH_TOKEN</code>). Il
-   workflow è nel repo da subito ma <strong>spento</strong> dietro la variabile.</li>
-</ol>
-<h2 id="alternative-scartate">Alternative scartate</h2>
+<h1 id="xp-flow-factory-app-template-baseline">XP Flow Factory — App Template Baseline</h1>
+<h2 id="cosa-non-deve-mai-mancare-in-unapp-febedevops-enterprise-compliant-e-open-source-v10">Cosa non deve mai mancare in un'app FE/BE/DevOps enterprise-compliant e open source · v1.0</h2>
+<blockquote>
+<p>Documento normativo, dominio-agnostico. Ogni app creata dalla fabbrica nasce
+da questo template: le voci sono <strong>scaffold generati</strong> al bootstrap dell'app
+e <strong>check nel gate</strong>, non una checklist da ricordare. Riferimenti: 12-Factor,
+OWASP ASVS/Top 10, WCAG 2.2, OpenTelemetry, SLSA, OpenSSF Scorecard, GDPR.</p>
+<p>Legenda enforcement — 🔴 gate bloccante (script/CI) · 🟡 review AI/umana · 📄 scaffold generato</p>
+</blockquote>
+<hr />
+<h2 id="0-come-si-usa-nella-fabbrica">0. Come si usa nella fabbrica</h2>
 <ul>
-<li><strong>Push resta umano, automazione solo a valle</strong>: proposta come opzione
-  raccomandata, bocciata dall'utente il 14/08 — il gesto manuale residuo
-  vanifica il loop notturno/semi-auto.</li>
-<li><strong>Rebase-merge o squash su GitHub</strong>: contrasta "sincronizzazione via
-  merge" e riscrive la storia; il merge commit preserva l'audit.</li>
-<li><strong>Merge locale automatico senza passare da GitHub</strong>: niente PR, niente
-  audit trail, niente required checks — perde proprio i guardrail che
-  rendono accettabile il push agli agenti.</li>
+<li><code>factory/templates/app/</code> contiene lo scaffold: cartelle, file di policy, pipeline, config di base. <code>new-app.sh &lt;nome&gt;</code> lo istanzia e apre l'issue "Baseline compliance" con la checklist §1-§4 pre-compilata.</li>
+<li><code>gate-quality.sh --baseline</code> verifica le voci 🔴 (presenza file, tool in pipeline, config minime). Un'app che non passa la baseline non può promuovere a prod.</li>
+<li>Le voci 🟡 entrano nel contesto di architect e adversarial-spec-reviewer (<code>guidelines/design.md</code>) e nel report di fine sprint.</li>
+<li>Ogni deroga è un <strong>ADR</strong> ("Deroga baseline: X, motivo, scadenza") — mai silenziosa.</li>
 </ul>
-<h2 id="conseguenze">Conseguenze</h2>
-<ul>
-<li>L'audit del codice si sposta sulla PR GitHub: ogni merge ha CI, review
-  agente e cronologia — più tracciato di oggi, non meno.</li>
-<li>Rischio residuo: un agente pusha spazzatura su <code>feat/*</code> → recuperabile
-  (branch cancellabile), <code>main</code> resta protetto dai required checks.</li>
-<li>Costo Actions su repo privati: review a ogni sync di PR — mitigato con
-  <code>concurrency</code> (cancella i run superati) e kill-switch via variabile.</li>
-<li>Il secret dell'action è un gate di billing/identità: la sua creazione
-  resta azione manuale umana, mai automatizzata.</li>
-<li>Da estendere ai repo tenant (universal-canvas, futuri) solo dopo che il
-  giro funziona su xp-flow (ADR 0005: stesso pattern, un tenant alla volta).</li>
-</ul>
+<hr />
+<h2 id="1-trasversale-tutti-i-layer">1. Trasversale (tutti i layer)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requisito</th>
+<th>Enf.</th>
+<th>Come nella fabbrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Config via ambiente; secret mai nel codice; un solo build per tutti gli ambienti (12-Factor III/V)</td>
+<td>🔴</td>
+<td>gitleaks + <code>.env.example</code> + build unico promosso</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Licenza OSI esplicita (<code>LICENSE</code>), policy licenze dipendenze (deny-list GPL-incompatibili se serve)</td>
+<td>🔴</td>
+<td>scaffold + <code>license-checker</code> in CI</td>
+</tr>
+<tr>
+<td>T3</td>
+<td><strong>SBOM</strong> generata a ogni build (CycloneDX o SPDX) e pubblicata con la release</td>
+<td>🔴</td>
+<td><code>@cyclonedx/cyclonedx-npm</code> in pipeline</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Semver + changelog generato dai commit convenzionali + release firmate</td>
+<td>🔴</td>
+<td>già in <code>conventions/</code>; firma con <code>gh attestation</code>/cosign</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>Docs minime: <code>README</code>, <code>CONTRIBUTING</code>, <strong><code>SECURITY.md</code></strong> (disclosure), <code>CODE_OF_CONDUCT</code>, ADR in repo</td>
+<td>🔴</td>
+<td>scaffold; assenza = gate rosso</td>
+</tr>
+<tr>
+<td>T6</td>
+<td>Log strutturati JSON, <strong>correlation ID</strong> end-to-end (FE→BE→job), livelli, <strong>niente PII</strong> nei log</td>
+<td>🔴/🟡</td>
+<td>logger standard del template + regola lint no-log-PII + review</td>
+</tr>
+<tr>
+<td>T7</td>
+<td>Accessibilità e i18n considerati dall'inizio (stringhe esternalizzate, no testo hardcoded)</td>
+<td>🟡</td>
+<td>scaffold i18n + regola lint</td>
+</tr>
+<tr>
+<td>T8</td>
+<td><strong>Threat model leggero</strong> per ogni epic sensibile (STRIDE su una pagina)</td>
+<td>🟡</td>
+<td>prodotto dall'adversarial-spec-reviewer, allegato alla spec §6</td>
+</tr>
+<tr>
+<td>T9</td>
+<td>Data lifecycle: retention, cancellazione ed export dei dati personali by design (GDPR art. 17/20/25)</td>
+<td>🟡</td>
+<td>sezione obbligatoria nella spec quando ci sono dati personali</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-backend">2. Backend</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requisito</th>
+<th>Enf.</th>
+<th>Come nella fabbrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>AuthN standard (OIDC/OAuth2), mai custom; sessioni/JWT con scadenza, rotazione, revoca</td>
+<td>🔴</td>
+<td>libreria del template; regola "no auth fatta in casa" in guidelines</td>
+</tr>
+<tr>
+<td>B2</td>
+<td><strong>AuthZ centralizzata</strong> (RBAC/ABAC in un solo modulo, deny by default), mai sparsa negli handler</td>
+<td>🟡</td>
+<td>modulo <code>authz/</code> nello scaffold + review</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Validazione input al confine con schema (JSON Schema/zod); errori strutturati <strong>RFC 9457 problem+json</strong></td>
+<td>🔴</td>
+<td>middleware del template + test contract</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>API <strong>contract-first</strong>: OpenAPI versionato, client generato, breaking change = nuova major</td>
+<td>🔴</td>
+<td><code>openapi.yaml</code> + diff breaking in CI (<code>oasdiff</code>)</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Idempotenza sulle scritture (idempotency key), rate limiting, timeout + retry + circuit breaker verso terzi</td>
+<td>🟡</td>
+<td>pattern nello scaffold; scenari edge Gherkin li impongono</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Migrazioni DB versionate, reversibili, disaccoppiate dal deploy; mai ALTER a mano</td>
+<td>🔴</td>
+<td>migration tool del template + check "no schema drift"</td>
+</tr>
+<tr>
+<td>B7</td>
+<td><strong>Audit trail</strong> immutabile per azioni sensibili (chi/cosa/quando/da dove), append-only</td>
+<td>🔴/🟡</td>
+<td>evento di dominio + sink WORM (pattern già in uso)</td>
+</tr>
+<tr>
+<td>B8</td>
+<td>Health + readiness endpoint, metriche Prometheus, tracing <strong>OpenTelemetry</strong></td>
+<td>🔴</td>
+<td>scaffold; gate verifica gli endpoint</td>
+</tr>
+<tr>
+<td>B9</td>
+<td>Backup automatico + <strong>restore testato</strong> periodicamente (job schedulato che ripristina in ambiente effimero)</td>
+<td>🔴</td>
+<td>job in pipeline; ultimo restore riuscito &lt; 30 gg</td>
+</tr>
+<tr>
+<td>B10</td>
+<td>Multi-tenant (se applicabile): isolamento a livello DB (RLS o schema), tenant nel correlation ID</td>
+<td>🟡</td>
+<td>ADR obbligatorio sulla strategia</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-frontend">3. Frontend</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requisito</th>
+<th>Enf.</th>
+<th>Come nella fabbrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Design system con <strong>token</strong> (zero valori hardcoded), componenti dal kit</td>
+<td>🔴</td>
+<td>regola ESLint token + depcruise import solo da <code>@personal/ui-kit</code></td>
+</tr>
+<tr>
+<td>F2</td>
+<td><strong>WCAG 2.2 AA</strong>: tastiera, focus, contrasto, aria, screen reader</td>
+<td>🔴/🟡</td>
+<td><code>axe-core</code> in CI su ogni vista + review</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Client API generato dall'OpenAPI; confine netto UI ↔ dati; stato prevedibile</td>
+<td>🔴</td>
+<td>generatore nel template; no fetch "a mano" (lint)</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Sicurezza client: CSP, no secret nel bundle, sanitizzazione, CSRF/SameSite, dipendenze auditate</td>
+<td>🔴</td>
+<td>header dal template + <code>npm audit</code> + scan bundle per secret</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Ogni vista ha stati <strong>vuoto / caricamento / errore</strong> + error boundary</td>
+<td>🔴</td>
+<td>scenari edge Gherkin obbligatori + test</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Performance budget (Web Vitals) misurato in CI, lazy loading, PWA se sensata</td>
+<td>🔴</td>
+<td>Lighthouse CI con soglie</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>Feature flag client coerenti con BE (<strong>una sola fonte</strong>)</td>
+<td>🟡</td>
+<td><code>flags.json</code> unico (design doc §13.1)</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>i18n: stringhe esternalizzate, formati locale (date, numeri), RTL-ready se richiesto</td>
+<td>🟡</td>
+<td>scaffold i18n + lint no-hardcoded-text</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-devops">4. DevOps</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requisito</th>
+<th>Enf.</th>
+<th>Come nella fabbrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td><strong>Tutto as-code</strong>: infra (OpenTofu), pipeline, policy, ambienti; drift detection schedulata</td>
+<td>🔴</td>
+<td>design doc §16</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Pipeline con gate deterministici: lint · SAST · secret scan · dep audit · test+coverage · <strong>SBOM</strong> · <strong>container scan</strong> (Trivy/Grype)</td>
+<td>🔴</td>
+<td><code>gate-quality.sh</code> + job CI</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Artefatto <strong>immutabile</strong> promosso tra ambienti (mai ricompilato); tag = digest</td>
+<td>🔴</td>
+<td>pipeline build-once</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>Supply chain: lockfile pinnato, Renovate/Dependabot, provenance/firma (<strong>SLSA</strong>), <strong>OpenSSF Scorecard</strong> ≥ soglia</td>
+<td>🔴</td>
+<td>Actions ufficiali; Scorecard badge nel README</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Least privilege: identità per servizio (workload identity), secret in vault, niente credenziali statiche di lunga durata</td>
+<td>🔴/🟡</td>
+<td>tofu + policy; review su ogni IAM</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Deploy con rollback banale (blue-green/canary o rollout progressivo); migration separata dal deploy</td>
+<td>🔴</td>
+<td>strategia nel template Cloud Run/K8s</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Osservabilità centralizzata + <strong>alerting su SLO</strong> (non su metriche grezze) + <strong>runbook</strong> per ogni alert</td>
+<td>🟡</td>
+<td>scaffold <code>slo.yaml</code> + <code>runbooks/</code>; alert senza runbook = review rossa</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>Backup/DR con <strong>RPO/RTO dichiarati</strong> e restore provato</td>
+<td>🔴</td>
+<td>doc + job (vedi B9)</td>
+</tr>
+<tr>
+<td>D9</td>
+<td>Ambienti effimeri per PR (preview) e parità dev/stage/prod</td>
+<td>🔴</td>
+<td>preview deploy in pipeline (già §7 design)</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>Container: immagine minima/distroless, non-root, read-only FS, healthcheck</td>
+<td>🔴</td>
+<td>Dockerfile del template + Trivy config check</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-livelli-di-conformita-per-non-bloccarsi-al-giorno-uno">5. Livelli di conformità (per non bloccarsi al giorno uno)</h2>
+<p>Non tutto serve dal primo commit: la baseline si applica per <strong>livello</strong>, e il livello richiesto sale con l'esposizione dell'app.</p>
+<table>
+<thead>
+<tr>
+<th>Livello</th>
+<th>Quando</th>
+<th>Voci obbligatorie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L0 — Interno</strong> (dashboard dietro Tailscale)</td>
+<td>dall'inizio, sempre</td>
+<td>T1, T5, T6, B1, B3, B8, F5, D2 (senza container scan), D3, D9</td>
+</tr>
+<tr>
+<td><strong>L1 — Open source pubblico</strong></td>
+<td>prima del primo tag pubblico</td>
+<td>L0 + T2, T3, T4, D4 (Scorecard, SBOM), F2, F4, D10</td>
+</tr>
+<tr>
+<td><strong>L2 — Enterprise / dati di terzi</strong></td>
+<td>prima di utenti reali o dati personali altrui</td>
+<td>L1 + T8, T9, B2, B4, B6, B7, B9, D1, D5, D6, D7, D8</td>
+</tr>
+</tbody>
+</table>
+<p>Il livello vive nel frontmatter dell'app (<code>compliance_level: L1</code>) e il gate applica le voci corrispondenti. Salire di livello è una <strong>story</strong> con la sua checklist.</p>
+<h2 id="6-deroghe">6. Deroghe</h2>
+<p>Ogni voce non rispettata richiede un ADR con: voce, motivo, rischio accettato, <strong>scadenza</strong> della deroga. Il gate legge gli ADR di deroga attivi e non blocca finché non scadono; alla scadenza torna rosso. Nessuna deroga senza scadenza.</p>
+<hr />
+<p><em>Nota per la fabbrica: le tre voci che tipicamente mancano — SBOM + container scan (D2/T3), threat model (T8), SECURITY.md (T5) — sono nello scaffold del template: nascono con l'app e non si dimenticano.</em></p>
 
 
 
