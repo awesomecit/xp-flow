@@ -1,7 +1,7 @@
 # CLAUDE.md — Progetti personali (XP Flow)
 
 ## ⛔ Governo del metodo + North-star
-- **Il metodo si modifica SOLO in `/retro`** (regola permanente; il freeze iniziale è stato sciolto dalla retro #2 del 14/08/2026, che ha validato il pattern: 19 feedback ordinati invece di modifiche in corsa). Fuori dalla retro, un difetto del metodo si logga come evento `{"cmd":"metodo_feedback","note":"..."}` e si prosegue. Nessun file di metodo (CLAUDE.md, docs/metodo*, comandi, agenti, policy) si tocca fuori da quel momento; protezione tecnica: hook freeze-guard (attivazione = azione dello sprint corrente). Push degli agenti: solo `feat/*` via ADR 0007 (accettata).
+- **Il metodo si modifica SOLO in `/retro`** (regola permanente; il freeze iniziale è stato sciolto dalla retro #2 del 14/08/2026, che ha validato il pattern: 19 feedback ordinati invece di modifiche in corsa). Fuori dalla retro, un difetto del metodo si logga come evento `{"cmd":"metodo_feedback","note":"..."}` e si prosegue. Nessun file di metodo (CLAUDE.md, docs/metodo*, comandi, agenti, policy) si tocca fuori da quel momento; protezione tecnica: hook freeze-guard (attivazione = azione dello sprint corrente). Push degli agenti: solo `feat/*` via ADR 0007 (accettata). **Ciclo GitHub delegato** (ratificato in retro #3, 17/08/2026): gli agenti possono aprire e mergiare PR (`gh pr create/checks/merge`) SOLO dopo `gh pr checks` verde verificato; mai `--admin`, mai delete di branch o tag.
 - **North-star: 1 incremento di prodotto rilasciato a settimana** (feature utilizzabile di un prodotto reale, non infrastruttura della fabbrica). È LA metrica: le metriche interne (SP, eventi, escalation) servono solo a spiegarla. Se a fine settembre la fabbrica non ha spedito prodotto: si semplifica il metodo, non lo si estende.
 
 ## Metodo
@@ -22,11 +22,17 @@ Roster in `.claude/agents/`: problem-explorer (haiku) · solution-architect (opu
 - `/compact` solo a confine di fase; fine sprint = sessione nuova.
 - Regole nuove stabili dalle retro → promosse qui.
 
-## Ciclo di lavoro
+## Ciclo di lavoro (cerimonie separate — retro #3, 17/08/2026)
 1. `/brainstorm <idea>` → specifica Gherkin + E2E rossi + stime + tracking
-2. `/sprint` → TDD top-down su trunk, timebox 2 giorni
-3. `/pair-review` → review adversarial dei test (obbligatoria per chiudere uno scenario)
-4. `/retro` → fine settimana
+2. Planning game (`/pianifica`) → contenuto del timebox da TODO + velocity, appende `sprint/avviato`
+3. `/sprint` → TDD top-down su trunk, timebox 2 giorni
+4. `/pair-review` → review adversarial dei test (obbligatoria per chiudere uno scenario)
+5. `/chiusura` → fine timebox, guarda al PRODOTTO: acceptance, demo verificata dal README, velocity, evento `sprint/chiuso`
+6. `/retro` → guarda al PROCESSO: metodo_feedback, causa radice, max 3 azioni
+
+Tre momenti distinti, mai fusi (la discussione di prodotto mangia il tempo
+della riflessione di processo). XP direbbe "iterazione": nel log resta
+`sprint` per stabilità di vocabolario.
 
 ## Regole di giudizio (sempre attive)
 - **KISS/YAGNI**: complessità solo per problemi presenti; astrazioni solo dal refactoring.

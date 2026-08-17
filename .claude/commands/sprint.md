@@ -9,7 +9,10 @@ Focus: $ARGUMENTS (se vuoto, proponi dagli item in cima a `TODO.md`)
 
 ## Setup
 1. Verifica sync `TODO.md` ↔ issue GitHub. Se divergono, FERMATI e riallinea prima.
-2. Ambiente **Docker locale** su: `docker compose up -d`. Se manca il compose, crealo (stessa base per test e prod).
+2. Se il timebox non è ancora aperto nel log (nessun `sprint/avviato` senza
+   `sprint/chiuso` successivo), appendi l'evento di apertura con issue e SP
+   pianificati: `{"ts":"...","cmd":"sprint","esito":"avviato","issue":...,"sp":...,"note":"planning: ..."}`.
+3. Ambiente **Docker locale** su: `docker compose up -d`. Se manca il compose, crealo (stessa base per test e prod).
 
 ## Ciclo TDD top-down
 3. Parti dal flusso utente/admin/macchina e percorri i passi dall'alto verso il basso.
