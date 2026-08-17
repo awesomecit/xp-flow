@@ -1,7 +1,7 @@
 # CLAUDE.md — Progetti personali (XP Flow)
 
-## ⛔ Freeze del metodo + North-star
-- **Il metodo è CONGELATO fino alla seconda retrospettiva.** Nessun file di metodo (CLAUDE.md, docs/metodo*, comandi, agenti, policy) si modifica fuori da `/retro`: se durante il lavoro emerge un difetto del metodo, si logga un evento `{"cmd":"metodo_feedback","note":"..."}` e si prosegue. Solo la retro decide le modifiche.
+## ⛔ Governo del metodo + North-star
+- **Il metodo si modifica SOLO in `/retro`** (regola permanente; il freeze iniziale è stato sciolto dalla retro #2 del 14/08/2026, che ha validato il pattern: 19 feedback ordinati invece di modifiche in corsa). Fuori dalla retro, un difetto del metodo si logga come evento `{"cmd":"metodo_feedback","note":"..."}` e si prosegue. Nessun file di metodo (CLAUDE.md, docs/metodo*, comandi, agenti, policy) si tocca fuori da quel momento; protezione tecnica: hook freeze-guard (attivazione = azione dello sprint corrente). Push degli agenti: solo `feat/*` via ADR 0007 (accettata).
 - **North-star: 1 incremento di prodotto rilasciato a settimana** (feature utilizzabile di un prodotto reale, non infrastruttura della fabbrica). È LA metrica: le metriche interne (SP, eventi, escalation) servono solo a spiegarla. Se a fine settembre la fabbrica non ha spedito prodotto: si semplifica il metodo, non lo si estende.
 
 ## Metodo

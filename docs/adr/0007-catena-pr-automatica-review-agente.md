@@ -1,6 +1,6 @@
 # 7. Catena PR automatica: push scoped agli agenti, review agente, auto-merge
 
-Data: 2026-08-14 · Stato: proposta (gate di ratifica: retro #2)
+Data: 2026-08-14 · Stato: **accettata** (retro #2, 14/08/2026 — CLAUDE.md e deny aggiornati contestualmente)
 
 ## Contesto
 Il traguardo "Fabbrica semi-auto" (ROADMAP) richiede che una storia ben

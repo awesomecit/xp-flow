@@ -14,7 +14,7 @@
 | Cosa succede adesso, in concreto? | `/next` | UN passo: cosa fa Claude, e l'eventuale gate che tocca a me |
 | Fine giornata: chiudo e riordino | `/consolida` | fonde i md del giorno in un unico canonico `agile/YYYY-MM-DD.md`, pota il deprecato col perché, history di sviluppo — leggibile anche dagli agenti |
 
-Ogni output viene anche salvato nel diario `~/dev/personal/agile/YYYY-MM-DD-<comando>.md`.
+Ogni output viene anche salvato nel diario `agile/YYYY-MM-DD-<comando>.md` di questo repo.
 
 ## "Si lavora" — flusso XP (li orchestra Claude, dentro una sessione xp-flow)
 
@@ -27,7 +27,9 @@ Ogni output viene anche salvato nel diario `~/dev/personal/agile/YYYY-MM-DD-<com
 
 ## Gate umani (l'unica cosa che eseguo io)
 
-`git push` · secret/token · pagamenti · verifiche in-app · scritture su DB.
+`git push` verso `main` (gli agenti possono SOLO `git push origin feat/*`, ADR
+0007 — main si entra via PR con required checks) · secret/token · pagamenti ·
+verifiche in-app · scritture su DB.
 Vengono sempre elencati in "serve da te" (standup/stato) e tracciati come eventi
 `azione_manuale` nell'event log finché non li chiudo.
 
