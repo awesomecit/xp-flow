@@ -27,7 +27,7 @@ repo non si caricano).
 | `docs/adr/` | decisioni architetturali numerate (MADR) | una decisione = un file, con stato proposta/accettata |
 | `docs/retro/` | un file per retrospettiva (`YYYY-WW.md`) | dati, causa radice, max 3 azioni con criterio di verifica |
 | `docs/drafts/` | materiale in lavorazione per le retro (audit, bozze) | non è fonte di verità |
-| `docs/` (resto) | [comandi](docs/comandi.md) · [metodo](docs/metodo-sviluppo-agentico.md) · [modelli](docs/model-selection.md) · [installazione](docs/installazione.md) | pubblicata via MkDocs |
+| `docs/` (resto) | [comandi](docs/comandi.md) · [file e priorità](docs/guida-file-e-priorita.md) · [metodo](docs/metodo-sviluppo-agentico.md) · [modelli](docs/model-selection.md) · [installazione](docs/installazione.md) | pubblicata via MkDocs |
 | `agile/` | diario narrativo, un file per sessione | append-only, mai fonte di verità |
 | `features/` | scenari Gherkin BDD della CLI | partenza del TDD top-down |
 | `apps/dashboard/` | il monitor (React + TanStack Start), pnpm workspace | il PRODOTTO pilota |
