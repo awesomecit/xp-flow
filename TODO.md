@@ -8,6 +8,7 @@
 - [ ] A3 — Guardrail e igiene: freeze-guard hook attivo, `manual_done` arretrati, fix tech debt #7 — 2 SP
 
 ## In coda
+- [ ] Prodotto — baseline security & observability: pianificare la Fase 0 del report guida `docs/drafts/2026-08-17-ricerca-baseline-security-observability.md` (hardening SSH/UFW+fail2ban, Cloudflare WAF free + origin allowlist/Tunnel, secrets SOPS/Infisical, Pino JSON con redaction, Uptime Kuma, Sentry free, Trivy+Dependabot in CI; enterprise-gate SSO/SCIM/audit-viewer DIFFERITE alla prima richiesta scritta, ordine RBAC→audit→SSO→SCIM) — candidato /pianifica
 - [ ] Catalogo pattern FE — slice 1: `apps/patterns`, landing hello-world + catalogo dati dei pattern del workspace (issue GH dedicata, ADR 0009; niente copia di codice, solo censimento con puntatori a universal-canvas/dashboard) — 3 SP
 - [ ] Setup docs-as-code Fase 1 (mkdocs + Action + Pages) — 2 SP
 - [ ] Import tecniche brainstorming BMAD in /brainstorm — 2 SP
