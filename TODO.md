@@ -12,7 +12,7 @@
 - [ ] Prodotto — sistema notifiche: spec casi d'uso L1–L7 completa (topologia RabbitMQ, message contract v1, Gherkin E2E per livello, roadmap 7 settimane) in `docs/drafts/2026-08-17-notification-system.md` — candidato /pianifica quando entra in sprint
 - [ ] Prodotto — home-gateway (spinoff City Cat, domotica felina): brief operativo con decisioni D1–D9, vincoli SwitchBot/Tapo/PetKit e ready story week 1 in `docs/drafts/2026-08-17-home-gateway-brief.md` — candidato /brainstorm→/pianifica; collocazione tenant secondo ADR 0005
 - [ ] Metodo — app template baseline della fabbrica (documento normativo: enforcement gate/review/scaffold, livelli conformità L0/L1/L2, deroghe solo via ADR con scadenza) in `docs/drafts/2026-08-17-xpflow-app-template-baseline.md` — file di metodo: ratifica in retro, incrocia il report baseline security/observability
-- [ ] Catalogo pattern FE — slice 1: `apps/patterns`, landing hello-world + catalogo dati dei pattern del workspace (issue GH dedicata, ADR 0009; niente copia di codice, solo censimento con puntatori a universal-canvas/dashboard) — 3 SP
+- [ ] Tech debt #10 — hardening test apps/patterns (rilievi non bloccanti ri-review issue #6): guardia anti-slug fragile con label i18n identiche allo slug (categoria `i18n`), test `patterns={[]}` mancante, guardia `CATEGORIES` senza `all`, smoke test `App` e dedup `length===24` — 1 SP
 - [ ] Setup docs-as-code Fase 1 (mkdocs + Action + Pages) — 2 SP
 - [ ] Import tecniche brainstorming BMAD in /brainstorm — 2 SP
 - [ ] Regole dependency-cruiser boundary DDD — 3 SP
@@ -46,6 +46,7 @@
 - [ ] Metodo — regola "mai git push, lo eseguo io" (CLAUDE.md globale + workspace, 30/07): in questa sessione (14/08) ho dato autorizzazione puntuale a Claude per push branch + `gh pr create` (xp-flow feat/monorepo-dashboard) e push tag (canvas archive/storia-c-dati-reali), scavalcando la regola invece di modificarla. Decidere in retro: (a) tenere la regola invariata e trattare ogni eccezione come puntuale/esplicita come oggi, o (b) modificare CLAUDE.md con condizioni esplicite sotto cui Claude può pushare in autonomia (es. solo dopo parità CI locale verificata + conferma esplicita in sessione) — evitare che le eccezioni puntuale-per-puntuale diventino la norma non scritta — candidato retro #2
 
 ## Fatto
+- [x] #6 Catalogo pattern FE — slice 1: `apps/patterns`, landing hello-world + catalogo dati (ADR 0009, costituzione di stile in docs/architecture) — 3 SP, PR #7 e #8 (readme) mergiate il 17/08 ✅ secondo incremento di prodotto spedito
 - [x] #2 Dashboard di controllo slice 1 nel monorepo `apps/dashboard` (ADR 0006) — 16 SP, PR #3 mergiata il 14/08 ✅ NORTH-STAR: primo incremento di prodotto spedito (A token bridge · B stile viste, 138 e2e · C dati reali · D cleanup) ✅
 - [x] #1 Event log JSONL + comando `xpflow status` — 3 SP ✅
 - [x] Config — collisione nome `/discovery`: unico comando in `~/dev/.claude/commands/discovery.md` (esplorazione codice + interview DDD "spiegami come a un bambino" innestata dentro); duplicato utente rimosso ✅
