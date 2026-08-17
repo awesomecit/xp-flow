@@ -17,6 +17,9 @@ reale di un pattern in `packages/` resta un evento separato, a trigger
 
 ## Avvio rapido
 
+Prerequisiti (dalla radice del monorepo): `nvm use` (Node 22 da `.nvmrc`)
+e `pnpm install` — da rifare dopo ogni pull che tocca i `package.json`.
+
 ```bash
 pnpm --filter patterns dev         # dev server, http://localhost:8090
 pnpm --filter patterns build       # build di produzione (Vite)
