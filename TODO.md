@@ -9,6 +9,9 @@
 
 ## In coda
 - [ ] Prodotto — baseline security & observability: pianificare la Fase 0 del report guida `docs/drafts/2026-08-17-ricerca-baseline-security-observability.md` (hardening SSH/UFW+fail2ban, Cloudflare WAF free + origin allowlist/Tunnel, secrets SOPS/Infisical, Pino JSON con redaction, Uptime Kuma, Sentry free, Trivy+Dependabot in CI; enterprise-gate SSO/SCIM/audit-viewer DIFFERITE alla prima richiesta scritta, ordine RBAC→audit→SSO→SCIM) — candidato /pianifica
+- [ ] Prodotto — sistema notifiche: spec casi d'uso L1–L7 completa (topologia RabbitMQ, message contract v1, Gherkin E2E per livello, roadmap 7 settimane) in `docs/drafts/2026-08-17-notification-system.md` — candidato /pianifica quando entra in sprint
+- [ ] Prodotto — home-gateway (spinoff City Cat, domotica felina): brief operativo con decisioni D1–D9, vincoli SwitchBot/Tapo/PetKit e ready story week 1 in `docs/drafts/2026-08-17-home-gateway-brief.md` — candidato /brainstorm→/pianifica; collocazione tenant secondo ADR 0005
+- [ ] Metodo — app template baseline della fabbrica (documento normativo: enforcement gate/review/scaffold, livelli conformità L0/L1/L2, deroghe solo via ADR con scadenza) in `docs/drafts/2026-08-17-xpflow-app-template-baseline.md` — file di metodo: ratifica in retro, incrocia il report baseline security/observability
 - [ ] Catalogo pattern FE — slice 1: `apps/patterns`, landing hello-world + catalogo dati dei pattern del workspace (issue GH dedicata, ADR 0009; niente copia di codice, solo censimento con puntatori a universal-canvas/dashboard) — 3 SP
 - [ ] Setup docs-as-code Fase 1 (mkdocs + Action + Pages) — 2 SP
 - [ ] Import tecniche brainstorming BMAD in /brainstorm — 2 SP
