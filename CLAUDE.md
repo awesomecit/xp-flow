@@ -18,7 +18,9 @@ Roster in `.claude/agents/`: problem-explorer (haiku) · solution-architect (opu
 
 ## Stato e memoria
 - Lo stato vive su file: ogni comando appende un evento a `.xpflow/events.jsonl` (`{ts, cmd, issue, sp, esito, note}`) e aggiorna TODO/ROADMAP/issue.
+- **Vocabolario eventi canonico** (ratificato in retro #3, 17/08/2026) — `cmd`: `brainstorm` · `pianifica` · `sprint` · `pair-review` · `chiusura` · `retro` · `manual_done` · `metodo_feedback`; `esito`: `avviato` · `in_corso` · `chiuso` · `bloccato` · `azione_manuale` · `escalation` (assente = evento informativo). La storia non si riscrive: i reader tollerano gli alias storici (`ok`→`chiuso`, `approvata`→`chiuso`, `bocciata`→`bloccato`, `pair_review`→`pair-review`) e NON scartano mai una riga (cmd ignoto = nota generica). Il gate in scrittura si decide con lo spike A1 (beads o attuazione A).
 - **Azioni non automatizzabili**: quando un'attività richiede l'umano (secret da configurare, pagamenti, verifiche in-app, permessi), l'agente NON la salta in silenzio: appende un evento con `esito:"azione_manuale"` e `note` con l'istruzione precisa. Si chiude appendendo `{"cmd":"manual_done","ref":"<ts evento originale>"}`. Ogni comando termina elencando le azioni manuali pendenti.
+- **Politica "ritarda l'umano"** (retro #3): gli agenti percorrono TUTTE le fasi del ciclo senza fermarsi ai gate umani intermedi — ogni blocco diventa `azione_manuale` in coda e si prosegue con ciò che non ne dipende; il gate umano si presenta UNA volta, a fine ciclo, con l'elenco completo. Eccezioni che fermano subito: azioni irreversibili/one-way-door e i gate hard (push main, force, billing).
 - `/compact` solo a confine di fase; fine sprint = sessione nuova.
 - Regole nuove stabili dalle retro → promosse qui.
 

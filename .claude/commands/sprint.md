@@ -8,6 +8,9 @@ argument-hint: [issue/scenario da affrontare, opzionale]
 Focus: $ARGUMENTS (se vuoto, proponi dagli item in cima a `TODO.md`)
 
 ## Setup
+0. **Precondizione** (ordine delle fasi, retro #3): la storia ha una specifica
+   (evento `brainstorm` o `pianifica` nel log, feature Gherkin o issue con
+   acceptance). Se manca, FERMATI e passa prima da `/brainstorm`.
 1. Verifica sync `TODO.md` ↔ issue GitHub. Se divergono, FERMATI e riallinea prima.
 2. Se il timebox non è ancora aperto nel log (nessun `sprint/avviato` senza
    `sprint/chiuso` successivo), appendi l'evento di apertura con issue e SP
