@@ -13,4 +13,6 @@ Input: $ARGUMENTS
 4. Stima ogni scenario in **SP Fibonacci** (1,2,3,5,8,13). Se >8: scomponi.
 5. Genera lo scheletro dei **test E2E** che mappano gli acceptance criteria (rossi, non implementati).
 6. Aggiorna `TODO.md` e `ROADMAP.md` con gli item stimati e apri/aggiorna le issue GitHub corrispondenti (`gh issue`) mantenendo la sincronizzazione bidirezionale.
-7. Chiudi con riepilogo: scenari, SP totali, cosa entra nel prossimo sprint da 2 giorni.
+7. Appendi l'evento a `.xpflow/events.jsonl` (vocabolario canonico, retro #3):
+   `{"ts":"...","cmd":"brainstorm","issue":...,"sp":<SP totali>,"esito":"chiuso","note":"..."}`.
+8. Chiudi con riepilogo: scenari, SP totali, cosa entra nel prossimo sprint da 2 giorni.
