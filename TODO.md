@@ -8,6 +8,9 @@
 - [ ] R3 — Guardrail e igiene (ex A3 + marker RED): freeze-guard attivo, marker RED `.xpflow/red-open` nel pre-commit condiviso, fix tech debt #7, `manual_done` arretrati del 13/08 — 3 SP
 - [ ] A1 — Spike beads sul backlog reale → verdetto adotta/copia-contratto in ADR 0008 — 2 SP (carry-over retro #2, primo candidato del planning game)
 
+## Sprint B (20–21/08) — prodotto (planning game 17/08)
+- [ ] Dashboard — fix reader sul log reale (vocabolario canonico retro #3): tolleranza totale (mai scartare righe: cmd ignoto = nota generica), tabella alias storici (`ok`→`chiuso`, `approvata`→`chiuso`, `bocciata`→`bloccato`, `pair_review`→`pair-review`), semantica sprint `avviato`/`chiuso` in `selectActiveSprint` — piano della sessione parallela (plan mode 17/08) — ~3 SP
+
 ## In coda
 - [ ] Prodotto — baseline security & observability: pianificare la Fase 0 del report guida `docs/drafts/2026-08-17-ricerca-baseline-security-observability.md` (hardening SSH/UFW+fail2ban, Cloudflare WAF free + origin allowlist/Tunnel, secrets SOPS/Infisical, Pino JSON con redaction, Uptime Kuma, Sentry free, Trivy+Dependabot in CI; enterprise-gate SSO/SCIM/audit-viewer DIFFERITE alla prima richiesta scritta, ordine RBAC→audit→SSO→SCIM) — candidato /pianifica
 - [ ] Prodotto — sistema notifiche: spec casi d'uso L1–L7 completa (topologia RabbitMQ, message contract v1, Gherkin E2E per livello, roadmap 7 settimane) in `docs/drafts/2026-08-17-notification-system.md` — candidato /pianifica quando entra in sprint
@@ -31,9 +34,8 @@
 - [ ] Metodo — freeze-guard: hook PreToolUse che blocca modifiche ai file di metodo fuori da `/retro` — candidato retro #2 (design nell'event log del 13/08)
 - [ ] Monorepo — spostare la CLI in `packages/cli` quando nasce `packages/events` (trigger in ADR 0006) — 2 SP
 - [ ] Monorepo — duplicazione parser eventi: CLI `src/events.ts` vs dashboard `src/domain/events.ts` → candidata `packages/events` (ADR 0002 L1) — 3 SP
-- [ ] Dominio — vocabolario eventi: TRE cataloghi divergenti (CLI `status.ts`: `avviato`/`ok`/`scenario`; dashboard `schema.ts`: `in_corso`/`chiuso`/`bloccato`/`escalation`; legacy `agile/XP`: `todo`/`claimed`/`red`/`green`/`refactor`/`done` + eventi `transition` con `from`/`to`). Sul log reale la dashboard scarta 7 righe (`esito:"ok"`, `cmd:"pianifica"`). Convergenza proposta: outcomes della dashboard + `transition from/to` del legacy, CLI allineata — decisione vocabolario in retro #2 — 2 SP
+- [ ] Dominio — vocabolario eventi: DECISO in retro #3 (17/08, vocabolario canonico + alias nel CLAUDE.md). Resta il lavoro: reader dashboard (Sprint B, sopra) e allineamento CLI `status.ts` — quest'ultimo dopo lo spike A1 (se beads vince, la CLI cambia natura) — 2 SP
 - [ ] Metodo — macchina a stati esplicita (TEMA UNIFICANTE retro #2): stati storia/sprint/review dichiarati come dato, transizioni all'indietro con causa (bocciature review e riaperture visibili nel log), validazione all'append (evento fuori vocabolario o transizione illegale → rifiutato); poi `xpflow next` che CALCOLA il prossimo passo (sprint attivo? review pendenti? azioni manuali? cima TODO) — dopo la decisione di vocabolario: attuazione A in CLI ~5 SP, B `packages/events` a vocabolario stabile. **ALTERNATIVA dall'audit 14/08**: adottare `beads` (Yegge, `bd ready` = il nostro `next`) o copiarne solo il contratto — spike di valutazione 2 SP, decisione alla retro col dossier `docs/drafts/2026-08-14-audit-make-or-reuse.md`
-- [ ] Metodo — comandi che non loggano: `/pair-review` e `/retro` non hanno mai prodotto eventi propri nel log reale; `manual_done` mai usato (il ciclo azione_manuale non si è mai chiuso formalmente) — i prompt sono file di metodo, retro #2
 - [ ] Tech debt #7 — `xpflow status` esce su "nessuno sprint attivo" senza stampare le azioni manuali pendenti (`bin/xpflow.ts`) — 1 SP
 - [ ] Tech debt #8 — `ref` fuori da `XpEventInput` (letto via cast in `status.ts`) e `ts` sovrascrivibile dallo spread in `events.ts` — 1 SP
 - [ ] Tech debt #9 — dashboard `parseFlowEvents`: payload API fuori contratto → fallimento silenzioso con `discardedRows=0` — 1 SP
@@ -44,6 +46,7 @@
 - [ ] Semi-auto — costituzione di codice a livello repo: dipendenze-verso-l'interno, no-duplicazione e superfici-piccole vivono SOLO nei CLAUDE.md utente/workspace → invisibili agli agenti headless/CI (il checkout vede solo il repo); idem gli agenti kiss-yagni/qa-adversarial/compliance (in `dev/.claude`, non nel repo). Promuovere le regole nel CLAUDE.md di xp-flow (file di metodo → retro #2) e renderle gate eseguibili: dependency-cruiser (già in coda), eslint-plugin-sonarjs + soglia complessità cognitiva dichiarata ma mai implementata (già in coda), valutare jscpd per la duplicazione — 2 SP di consolidamento
 
 ## Fatto
+- [x] Metodo — comandi che non loggano (retro #3, 17/08): `/brainstorm` e `/pair-review` ora appendono eventi propri (il verdetto della review lascia sempre traccia), precondizioni d'ordine testuali nei comandi; enforcement programmatico post-spike ✅
 - [x] Metodo — regola push/delega GitHub chiusa: ADR 0007 (retro #2) + ratifica delega ciclo `gh pr` con vincolo merge-solo-con-CI-verde (retro #3, 17/08) — le eccezioni puntuali sono diventate regola scritta ✅
 - [x] Metodo — cerimonie separate chiusura/retro/planning (retro #3, 17/08): nuovo comando `/chiusura` (prodotto), `/retro` snellita (processo), `/sprint` appende `sprint/avviato` ✅
 - [x] #6 Catalogo pattern FE — slice 1: `apps/patterns`, landing hello-world + catalogo dati (ADR 0009, costituzione di stile in docs/architecture) — 3 SP, PR #7 e #8 (readme) mergiate il 17/08 ✅ secondo incremento di prodotto spedito
