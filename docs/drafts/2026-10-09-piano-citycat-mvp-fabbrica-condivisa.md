@@ -123,3 +123,22 @@ manuali. Kill switch: variabile `AGENT_ENABLED` per repo.
 - **Scope creep della fabbrica:** se dopo l'iterazione 2 City Cat non è
   online, si ferma il kit e si torna al modello BEG manuale. Vale la regola
   north-star.
+
+## 6. Riproducibilità, dati e memoria
+
+Ogni affermazione sul sistema si deve poter rifare: un assunto, la sua
+confutazione, un bug prima e dopo il fix. Resta legata all'iterazione in cui
+è nata e si ripete copiando un comando, anche se la rifà uno junior. La prova
+è sempre un artefatto eseguibile, cioè un test, uno script o una query.
+
+| Pratica | Come | Gate |
+|---|---|---|
+| Script e query in sola lettura | `scripts/read/`, tecnici e di dominio, con un utente DB che ha solo permessi di lettura | permessi del DB |
+| Mai sui dati reali in chiaro | ambiente `test` con seed, o copia anonimizzata di `prod` rigenerata da script; `prod` diretto mai | deny + credenziali separate |
+| Seed deterministico | `seed/` versionato, condiviso da e2e, demo e copia anonimizzata; mock solo MSW stateful | CI |
+| Infra, docs e pipeline come codice | Dockerfile, compose, workflow, MkDocs; CI su ogni PR, deploy umano | CI |
+| Ogni lancio si storicizza | `npm run read -- <script>` salva input, sintesi, commit e iterazione nel file dell'item; output completo come artefatto CI | wrapper |
+| Assunti e confutazioni | sezione **Assunti** nel file dell'item: stato (aperto / confermato / confutato) e link alla prova | review |
+| Bug riproducibili | test rosso che riproduce il bug prima del fix, lo stesso test verde dopo, nella stessa PR | TDD |
+| Memoria del progetto | query utili in `scripts/read/` con "a cosa serve"; glossario in `docs/dominio.md`; decisioni in ADR | review |
+| Scritto per uno junior | ogni item ha "Come riprodurre" con comandi da copiare, nessun gergo fuori glossario | template dell'item |
