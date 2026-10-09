@@ -13,7 +13,23 @@ di fine settembre è passato senza un incremento di prodotto dopo il 17/08,
 e la regola dice: **si semplifica, non si estende**.
 
 Per questo la proposta aggiunge un solo pezzo nuovo, il gate sul rischio, e lo
-mette dentro un workflow che esiste già.
+mette dentro un workflow che esiste già. Più l'innesco che oggi manca:
+**gli agenti non partono da soli**, li lanci tu in sessione.
+
+## Il riferimento che funziona: il project "BEG — sito"
+
+Sullo stesso periodo, il sito BEG ha 26 issue in Done con un flusso più leggero:
+
+- GitHub Project con le viste Iterazione corrente (board Todo / In Progress / Done), Backlog, Roadmap, Le mie card, Formazione
+- issue con codice nel titolo (`C05b · traduzioni: titoli, alt, aria-label…`), campo Estimate (1, 2…), label di tipo (`fix`) e di filone (`formazione`)
+- iterazione come campo del project, non come evento in un file
+
+XP Flow tiene invece lo stesso stato in quattro posti (TODO.md, ROADMAP.md,
+issue, events.jsonl) da sincronizzare a mano. **Domanda per la retro:** il
+project GitHub diventa la fonte di verità del backlog e delle iterazioni,
+come su BEG, e `events.jsonl` resta solo per ciò che il project non ha
+(`azione_manuale`, `escalation`, `metodo_feedback`)? Sarebbe la
+semplificazione che la regola north-star chiede.
 
 ## Mappa: schema OpenAI → XP Flow
 
@@ -140,7 +156,67 @@ Criterio di verifica: tre PR di prova. Una solo docs deve fondersi da sola.
 Una che tocca `.claude/` deve restare aperta con `risk:high`. Una con un test
 esistente modificato dall'implementatore deve avere il check rosso.
 
-### P3 — Metrica: interventi umani a settimana · 0 SP
+### P3 — L'agente parte dalla issue · 3 SP
+
+È il pezzo che manca perché la fabbrica "vada da sola". Metti la label
+`agente` su una issue pronta (con scenario Gherkin e Estimate) e una Action
+implementa, apre la PR, e da lì prosegue la catena di P1 e P2. Tu entri solo
+su `risk:high` e sulle `azione_manuale`.
+
+```yaml
+# .github/workflows/agente-issue.yml — proposta
+name: agente-issue
+
+on:
+  issues:
+    types: [labeled]
+
+concurrency:
+  group: agente-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  implementa:
+    if: ${{ github.event.label.name == 'agente' && vars.AGENT_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: --allowedTools "Read,Edit,Write,Bash(pnpm:*),Bash(git add:*),Bash(git commit:*),Bash(git checkout -b feat/*),Bash(git push origin feat/*),Bash(gh pr create:*),Bash(gh issue comment:*)"
+          prompt: |
+            Implementa la issue #${{ github.event.issue.number }} secondo CLAUDE.md.
+            Se la issue non ha uno scenario Gherkin, non implementare: commenta
+            sulla issue cosa manca e fermati.
+            Altrimenti: branch feat/issue-${{ github.event.issue.number }},
+            TDD top-down dallo scenario, `pnpm lint && pnpm typecheck && pnpm test`
+            verdi prima di aprire la PR, commit convenzionali in italiano,
+            PR con "Closes #${{ github.event.issue.number }}".
+            Se dopo due tentativi i test restano rossi, apri la PR in draft e
+            spiega nel corpo dove ti sei fermato.
+```
+
+Da verificare al primo giro:
+- **La PR deve far partire la CI.** Push e PR fatti con il `GITHUB_TOKEN`
+  non attivano altri workflow. Bisogna controllare che l'action usi il token
+  della Claude GitHub App (installata sul repo); altrimenti `ci.yml` e
+  `pr-review.yml` non partono e la catena si ferma.
+- **Kill switch:** la variabile `AGENT_ENABLED`, come `PR_REVIEW_ENABLED`.
+- **Costo:** un run fino a 60 minuti per issue; si parte con issue da 1–2 SP.
+
+## Misura: interventi umani a settimana · 0 SP
 
 Non serve una label nuova: gli interventi umani sono già nel log come
 `azione_manuale` ed `escalation`.
