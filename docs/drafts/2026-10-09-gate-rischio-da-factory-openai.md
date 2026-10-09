@@ -12,6 +12,14 @@ chiuso, e l'ultimo evento nel log risale al 18/08. Il checkpoint north-star
 di fine settembre è passato senza un incremento di prodotto dopo il 17/08,
 e la regola dice: **si semplifica, non si estende**.
 
+**Causa del fermo (dichiarata da Antonio, 09/10):** XP Flow è fermo dal 18/08
+proprio perché l'automazione non funziona. Anche con le specifiche pronte,
+il ciclo richiede che lui sia sempre presente: lancia le sessioni, approva i
+passaggi e fa push e merge a mano. Il problema non è la mancanza di specifiche
+o di metodo, ma la mancanza di esecuzione autonoma. Per questo P3 (l'agente
+che parte dalla issue) e P1+P2 (merge senza di lui sotto `risk:high`) sono il
+cuore della proposta. Il resto è contorno.
+
 Per questo la proposta aggiunge un solo pezzo nuovo, il gate sul rischio, e lo
 mette dentro un workflow che esiste già. Più l'innesco che oggi manca:
 **gli agenti non partono da soli**, li lanci tu in sessione.
