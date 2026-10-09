@@ -16,20 +16,41 @@ Per questo la proposta aggiunge un solo pezzo nuovo, il gate sul rischio, e lo
 mette dentro un workflow che esiste già. Più l'innesco che oggi manca:
 **gli agenti non partono da soli**, li lanci tu in sessione.
 
-## Il riferimento che funziona: il project "BEG — sito"
+## Il riferimento che funziona: il tenant `beg-s-digital-canvas`
 
-Sullo stesso periodo, il sito BEG ha 26 issue in Done con un flusso più leggero:
+BEG è un tenant di xp-flow (ADR 0005), e il metodo lì è andato più avanti
+che nella fabbrica. Dal 04/09 il sito è online e ha avuto le release da
+0.2.0 a 0.6.0, con 26 issue in Done nel project «BEG — sito». Le pratiche
+che lo fanno funzionare:
 
-- GitHub Project con le viste Iterazione corrente (board Todo / In Progress / Done), Backlog, Roadmap, Le mie card, Formazione
-- issue con codice nel titolo (`C05b · traduzioni: titoli, alt, aria-label…`), campo Estimate (1, 2…), label di tipo (`fix`) e di filone (`formazione`)
-- iterazione come campo del project, non come evento in un file
+| Pratica in BEG | Dove | Equivalente in xp-flow |
+|---|---|---|
+| Il project è la fonte di verità del backlog: iterazione di 7 giorni e campo Estimate | `.github/project.json`, applicato con `npm run github:project -- --apply` | TODO.md + ROADMAP.md + issue + JSONL, sincronizzati a mano |
+| Board come configurazione versionata (viste e campi via PR) | `.github/project.json` | assente |
+| Un file corto per item: perché, Gherkin, decisioni, contesti da caricare | `agile/items/<n>-<slug>.md` | assente: il contesto sta sparso nel log |
+| "Fatto" vuol dire in produzione, non mergiato | `docs/rilascio.md` | "fatto" = chiusura sprint |
+| PR in draft finché e2e non è verde, poi ready | `CLAUDE.md` del tenant | assente |
+| CI che salta build ed e2e sulle PR di sola documentazione | `.github/workflows/ci.yml` | CI piena su ogni PR |
+| CHANGELOG da frammenti per PR, versione dai commit | `changelogs/`, `scripts/release` | git-cliff previsto, non attivo |
+| Un worktree per ticket | `CLAUDE.md` del tenant | assente |
 
-XP Flow tiene invece lo stesso stato in quattro posti (TODO.md, ROADMAP.md,
-issue, events.jsonl) da sincronizzare a mano. **Domanda per la retro:** il
-project GitHub diventa la fonte di verità del backlog e delle iterazioni,
-come su BEG, e `events.jsonl` resta solo per ciò che il project non ha
-(`azione_manuale`, `escalation`, `metodo_feedback`)? Sarebbe la
-semplificazione che la regola north-star chiede.
+Tre attriti visti nei dati, da portare in retro:
+
+- **Issue doppie.** Per esempio #50/#51, #72/#75 e #73/#76, poi chiuse come
+  `duplicate`. È probabile che un agente abbia creato la issue due volte,
+  quindi la creazione va resa idempotente: cercare il titolo prima di creare.
+- **Una issue anche per i chore.** Ogni PR ha la sua issue gemella con lo
+  stesso titolo (#68/#69, #73/#74…). Per `chore`, `ci` e `docs` è doppio
+  lavoro senza informazione in più.
+- **Il merge è sempre umano.** Le PR sono mergiate da `awesomecit`, e questo è
+  proprio il collo di bottiglia che P1 e P2 tolgono.
+
+**Domanda per la retro:** riportare in xp-flow il modello di BEG, invece di
+estendere la fabbrica? Il project diventa la fonte di verità, `agile/items/`
+sostituisce il contesto sparso, `events.jsonl` resta solo per ciò che il
+project non ha (`azione_manuale`, `escalation`, `metodo_feedback`), e
+TODO.md e ROADMAP.md si riducono all'orizzonte. Sarebbe la semplificazione
+che la regola north-star chiede.
 
 ## Mappa: schema OpenAI → XP Flow
 
