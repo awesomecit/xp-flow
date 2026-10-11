@@ -28,7 +28,8 @@ umano. BEG non si tocca finché la catena non ha funzionato su City Cat, perché
 | 8 | Issue gemella per ogni PR di chore | BEG #68/69, #73/74… | `chore`, `ci`, `docs`: PR senza issue; issue solo per `feat` e `fix` | metodo (retro) |
 | 9 | Le azioni della retro restano in coda, lo sprint non si chiude | retro #3, Sprint A mai chiuso | le azioni della retro diventano issue nell'iterazione corrente; l'iterazione si chiude per data (campo Iteration), non con un evento | `project.json` |
 | 10 | Push negato in sessione locale nonostante l'allow | evento 18/08 | diventa irrilevante: l'agente pusha da Actions; in locale resta da indagare (R3) | — |
-| 11 | Configurazione del project duplicata per repo | BEG `.github/project.json` + `scripts/github-project.mjs` | lo script entra nel kit; ogni repo tiene solo il suo `project.json` | workflow riusabile `project-apply` |
+| 11 | Configurazione del project duplicata per repo | BEG `.github/project.json` + `scripts/github-project.mjs` | lo script entra nel kit come script locale, non come workflow: si lancia di rado, col `gh` dell'umano (scope `project`); in CI servirebbe un PAT, perché `GITHUB_TOKEN` non scrive sui project di un utente. Ogni repo tiene solo il suo `project.json`; xp-flow lo usa già con `--config` (ponte) | `scripts/` del kit |
+| 12 | L'auto-merge abilitato con `GITHUB_TOKEN` non fa partire i workflow su `main` | stessa regola del #4: il push del merge risulta fatto da quel token, quindi `docs.yml` (`on: push`) non gira e sito, CHANGELOG e flow-status restano indietro | lo step di gate abilita l'auto-merge con il token di una GitHub App (`actions/create-github-app-token`), non con `GITHUB_TOKEN`; da verificare con la PR di prova docs | `pr-review` |
 
 ## 2. Cosa si versiona: il kit della fabbrica dentro xp-flow
 
@@ -41,7 +42,8 @@ xp-flow/
   .github/workflows/
     pr-review.yml        on: workflow_call   review + rischio + gate + auto-merge
     agent-issue.yml      on: workflow_call   issue con label agente → PR
-    project-apply.yml    on: workflow_call   applica .github/project.json del chiamante
+  scripts/
+    github-project.mjs   locale, da BEG       applica .github/project.json del chiamante (--config)
   .claude/agents/ .claude/commands/          già qui (ADR 0005)
   templates/             PR template, item template (da BEG), project.json di base
 ```
@@ -142,3 +144,31 @@ confutazione, un bug prima e dopo il fix. Resta legata all'iterazione in cui
 | Bug riproducibili | test rosso che riproduce il bug prima del fix, lo stesso test verde dopo, nella stessa PR | TDD |
 | Memoria del progetto | query utili in `scripts/read/` con "a cosa serve"; glossario in `docs/dominio.md`; decisioni in ADR | review |
 | Scritto per uno junior | ogni item ha "Come riprodurre" con comandi da copiare, nessun gergo fuori glossario | template dell'item |
+
+## 7. Strumenti di qualità e sicurezza: cosa gira davvero
+
+Situazione verificata nei repo il 09/10/2026. Conta ciò che fa fallire la
+build, non ciò che è scritto nei documenti.
+
+| Strumento | A cosa serve | xp-flow | BEG |
+|---|---|---|---|
+| Husky | controlli prima di commit e push | attivo, ma gli hook delegano a `~/.claude/shared-hooks`, fuori dal repo | assente |
+| commitlint | Conventional Commits, base per versione e CHANGELOG | attivo in locale, non in CI | assente |
+| ESLint | errori e stile, zero warning | attivo, anche in CI | attivo, anche in CI |
+| TypeScript strict | errori di tipo | attivo, anche in CI | dentro la build in CI |
+| Test unit ed e2e | regressioni | in CI (tap, vitest, Playwright) | e2e Playwright in CI |
+| git-cliff | versione e CHANGELOG dai commit | installato | script proprio, CHANGELOG a frammenti |
+| eslint-plugin-sonarjs + soglia di complessità cognitiva | codice troppo complesso o duplicato | solo nei documenti | assente |
+| gitleaks | segreti nel codice | solo nei documenti | assente |
+| Dependabot o Trivy | dipendenze vulnerabili | solo nei documenti | assente |
+| dependency-cruiser | confini tra moduli | solo nel backlog | assente |
+
+Due conseguenze per il kit:
+
+- **Gli hook vanno versionati nel repo.** Un agente che fa commit in Actions
+  non trova `~/.claude/shared-hooks`: il commit fallisce o i controlli
+  saltano.
+- **Ciò che protegge deve girare in CI**, perché è lì che lavora l'agente.
+  Minimo da attivare: commitlint, gitleaks, la regola di complessità di
+  sonarjs dentro ESLint (senza server Sonar) e Dependabot (nativo e gratuito
+  su GitHub).
