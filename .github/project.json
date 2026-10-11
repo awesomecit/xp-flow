@@ -1,0 +1,52 @@
+{
+  "$comment": "Configurazione dichiarativa del GitHub Project di xp-flow (proposta v4, si applica solo dopo la retro #4). Ponte fino al kit (ADR-003): si applica con lo script del tenant BEG, node <beg>/scripts/github-project.mjs --config .github/project.json [--apply]. Un campo già esistente non viene modificato: la durata dell'iterazione si decide prima del primo --apply.",
+  "owner": "awesomecit",
+  "projectTitle": "xp-flow",
+  "fields": [
+    {
+      "name": "Iteration",
+      "type": "ITERATION",
+      "startDate": "2026-10-12",
+      "durationDays": 7,
+      "count": 6,
+      "titlePrefix": "Iterazione"
+    },
+    {
+      "name": "Estimate",
+      "type": "NUMBER"
+    }
+  ],
+  "views": [
+    {
+      "name": "Backlog",
+      "layout": "TABLE",
+      "filter": "",
+      "fields": [
+        "Title",
+        "Status",
+        "Iteration",
+        "Estimate",
+        "Labels",
+        "Linked pull requests"
+      ],
+      "aliases": [
+        "Table",
+        "View 1"
+      ]
+    },
+    {
+      "name": "Iterazione corrente",
+      "layout": "BOARD",
+      "filter": "iteration:@current",
+      "fields": [
+        "Title",
+        "Estimate",
+        "Labels",
+        "Linked pull requests"
+      ],
+      "aliases": [
+        "Board"
+      ]
+    }
+  ]
+}
